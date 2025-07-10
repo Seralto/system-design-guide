@@ -1,0 +1,412 @@
+{
+  "nav": {
+    "title": "Guia de Design de Sistemas",
+    "architecture": "Arquitetura",
+    "scalability": "Escalabilidade",
+    "communication": "Comunicação",
+    "async": "Padrões Assíncronos",
+    "performance": "Performance",
+    "security": "Segurança"
+  },
+  "topics": {
+    "loadBalancers": "Balanceadores de Carga",
+    "appServers": "Servidores de Aplicação",
+    "caching": "Cache",
+    "databases": "Bancos de Dados",
+    "storage": "Armazenamento",
+    "replication": "Replicação",
+    "sharding": "Sharding",
+    "cdn": "Rede de Distribuição de Conteúdo",
+    "scalingTypes": "Tipos de Escalabilidade",
+    "capTheorem": "Teorema CAP",
+    "httpGrpc": "HTTP vs gRPC",
+    "restGraphql": "REST vs GraphQL",
+    "websockets": "WebSockets",
+    "apiGateway": "Gateway de API",
+    "serviceMesh": "Service Mesh",
+    "messageQueues": "Filas de Mensagens",
+    "eventualConsistency": "Consistência Eventual",
+    "eventSourcing": "Event Sourcing",
+    "cqrs": "CQRS",
+    "cachingPatterns": "Padrões de Cache",
+    "circuitBreaker": "Circuit Breaker",
+    "retryTimeout": "Lógica de Retry e Timeouts",
+    "observability": "Observabilidade",
+    "jwt": "JWT e OAuth2",
+    "rateLimiting": "Rate Limiting",
+    "tls": "TLS/HTTPS",
+    "featureFlags": "Feature Flags",
+    "deployment": "Estratégias de Deploy"
+  },
+  "content": {
+    "httpGrpc": {
+      "title": "HTTP vs gRPC",
+      "description": "HTTP e gRPC são protocolos de comunicação para sistemas distribuídos, cada um com características distintas, perfis de performance e casos de uso para diferentes requisitos arquiteturais.",
+      "keyPoints": [
+        "Escolher protocolo apropriado baseado em necessidades de performance e compatibilidade",
+        "Considerar complexidade de desenvolvimento e suporte do ecossistema",
+        "Avaliar eficiência de rede e requisitos de tamanho de payload",
+        "Equilibrar legibilidade humana com eficiência de máquina",
+        "Planejar para debugging, monitoramento e requisitos operacionais"
+      ],
+      "httpCharacteristics": [
+        "Protocolo baseado em texto com formato legível por humanos",
+        "Modelo request-response sem estado com amplo suporte de navegadores",
+        "Extensas capacidades de ferramentas e debugging",
+        "Padrões de design RESTful e payloads JSON/XML",
+        "Mecanismos de cache integrados e compatibilidade com CDN"
+      ],
+      "grpcCharacteristics": [
+        "Protocolo binário com serialização Protocol Buffers",
+        "Suporte de streaming bidirecional e multiplexing",
+        "Tipagem forte com geração de código a partir de esquemas",
+        "Baseado em HTTP/2 com reutilização de conexões e compressão",
+        "Autenticação, balanceamento de carga e health checking integrados"
+      ]
+    },
+    "restGraphql": {
+      "title": "REST vs GraphQL",
+      "description": "REST e GraphQL são paradigmas de design de API oferecendo diferentes abordagens para busca de dados, com REST fornecendo endpoints baseados em recursos e GraphQL habilitando acesso flexível a dados dirigido por consultas.",
+      "keyPoints": [
+        "Escolher baseado em padrões de busca de dados e requisitos do cliente",
+        "Considerar complexidade de desenvolvimento e curva de aprendizado",
+        "Avaliar estratégias de cache e características de performance",
+        "Planejar para evolução de API e compatibilidade retroativa",
+        "Equilibrar flexibilidade com simplicidade e suporte de ferramentas"
+      ]
+    },
+    "websockets": {
+      "title": "WebSockets",
+      "description": "WebSockets fornecem canais de comunicação full-duplex sobre TCP, habilitando troca de dados bidirecional em tempo real entre clientes e servidores para aplicações interativas.",
+      "keyPoints": [
+        "Habilitam comunicação bidirecional em tempo real entre cliente e servidor",
+        "Mantêm conexões persistentes para troca de dados de baixa latência",
+        "Suportam vários padrões de mensageria e protocolos",
+        "Requerem gerenciamento cuidadoso de conexões e tratamento de erros",
+        "Essenciais para aplicações interativas e colaborativas"
+      ]
+    },
+    "apiGateway": {
+      "title": "Gateway de API",
+      "description": "API Gateway atua como um ponto de entrada único para requisições de clientes, fornecendo gerenciamento centralizado de tráfego de API, segurança, monitoramento e preocupações transversais em arquiteturas de microsserviços.",
+      "keyPoints": [
+        "Centralizar gerenciamento de API e fornecer ponto de entrada único",
+        "Lidar com preocupações transversais como autenticação e rate limiting",
+        "Habilitar composição de API e abstração de serviços backend",
+        "Fornecer monitoramento, analytics e visibilidade operacional",
+        "Suportar versionamento de API e compatibilidade retroativa"
+      ]
+    },
+    "serviceMesh": {
+      "title": "Service Mesh",
+      "description": "Service mesh fornece uma camada de infraestrutura dedicada para comunicação serviço-a-serviço, oferecendo gerenciamento de tráfego, segurança e observabilidade sem requerer mudanças no código da aplicação.",
+      "keyPoints": [
+        "Fornecer infraestrutura dedicada para comunicação de serviços",
+        "Lidar com gerenciamento de tráfego, segurança e observabilidade transparentemente",
+        "Habilitar aplicação de políticas e gerenciamento de configuração",
+        "Suportar adoção gradual e ambientes políglotas",
+        "Separar preocupações de infraestrutura da lógica de aplicação"
+      ]
+    },
+    "appServers": {
+      "title": "Servidores de Aplicação",
+      "description": "Servidores de aplicação hospedam e executam lógica de negócio, fornecendo ambientes de execução para aplicações e gerenciando recursos como conexões, transações e segurança.",
+      "keyPoints": [
+        "Hospedam e executam lógica de negócio e processamento de aplicações",
+        "Gerenciam ciclo de vida de aplicações e alocação de recursos",
+        "Fornecem ambientes de execução e serviços de middleware",
+        "Lidam com requisições concorrentes de usuários e gerenciamento de sessões",
+        "Integram com bancos de dados, filas de mensagens e serviços externos"
+      ],
+      "types": [
+        "Servidores Java - Tomcat, JBoss, WebLogic, WebSphere",
+        "Servidores .NET - IIS, Kestrel, Azure App Service",
+        "Servidores Node.js - Express, Fastify, aplicações NestJS",
+        "Servidores Python - Django, Flask, aplicações FastAPI",
+        "Baseados em contêineres - Contêineres Docker com orquestração"
+      ]
+    },
+    "caching": {
+      "title": "Cache",
+      "description": "Cache armazena dados frequentemente acessados em camadas de armazenamento rápido para reduzir latência, melhorar performance e diminuir carga em sistemas backend e bancos de dados.",
+      "keyPoints": [
+        "Melhora dramaticamente tempos de resposta e experiência do usuário",
+        "Reduz carga em bancos de dados e operações backend custosas",
+        "Reduz custos de infraestrutura através de menor uso de recursos",
+        "Habilita melhor escalabilidade sob condições de alto tráfego",
+        "Fornece resistência durante interrupções de serviços backend"
+      ]
+    },
+    "databases": {
+      "title": "Bancos de Dados",
+      "description": "Bancos de dados fornecem armazenamento e recuperação persistente de dados estruturados e não estruturados, oferecendo diferentes modelos otimizados para vários casos de uso e requisitos de performance.",
+      "keyPoints": [
+        "Fornecem armazenamento persistente e confiável para dados de aplicação",
+        "Suportam consultas complexas e relacionamentos de dados",
+        "Garantem consistência, integridade e durabilidade de dados (ACID)",
+        "Permitem acesso concorrente com gerenciamento de transações",
+        "Oferecem diferentes modelos otimizados para casos de uso específicos"
+      ]
+    },
+    "storage": {
+      "title": "Armazenamento",
+      "description": "Sistemas de armazenamento fornecem diferentes tipos de persistência de dados com características variadas de performance, durabilidade e custo para atender diversos requisitos de aplicação.",
+      "keyPoints": [
+        "Fornecem armazenamento persistente com diferentes características de performance",
+        "Oferecem vários tipos de armazenamento otimizados para casos de uso específicos",
+        "Equilibram requisitos de custo, performance e durabilidade",
+        "Suportam diferentes padrões de acesso e gerenciamento de ciclo de vida de dados",
+        "Habilitam estratégias de backup, arquivamento e recuperação de desastres"
+      ]
+    },
+    "replication": {
+      "title": "Replicação",
+      "description": "Replicação cria cópias de dados através de múltiplos servidores ou localizações para melhorar disponibilidade, tolerância a falhas e performance de leitura enquanto garante consistência de dados.",
+      "keyPoints": [
+        "Melhora disponibilidade do sistema e tolerância a falhas através de redundância",
+        "Melhora performance de leitura distribuindo consultas entre réplicas",
+        "Fornece distribuição geográfica para latência reduzida",
+        "Habilita recuperação de desastres e continuidade do negócio",
+        "Suporta balanceamento de carga para cargas de trabalho intensivas em leitura"
+      ],
+      "types": [
+        "Master-Slave - Um nó primário de escrita, múltiplas réplicas de leitura",
+        "Master-Master - Múltiplos nós podem aceitar escritas",
+        "Síncrona - Escritas confirmadas em todas as réplicas antes do sucesso",
+        "Assíncrona - Escritas confirmadas imediatamente, replicadas depois",
+        "Semi-Síncrona - Abordagem híbrida com consistência configurável"
+      ]
+    },
+    "sharding": {
+      "title": "Sharding",
+      "description": "Sharding particiona horizontalmente dados através de múltiplos bancos de dados ou servidores, distribuindo tanto dados quanto carga para alcançar melhor performance e escalabilidade.",
+      "keyPoints": [
+        "Particiona horizontalmente dados através de múltiplas instâncias de banco de dados",
+        "Distribui tanto armazenamento quanto carga computacional",
+        "Habilita escalabilidade linear adicionando mais shards",
+        "Melhora performance de consultas através de processamento paralelo",
+        "Suporta conjuntos de dados muito grandes que excedem capacidade de servidor único"
+      ]
+    },
+    "cdn": {
+      "title": "Rede de Distribuição de Conteúdo (CDN)",
+      "description": "CDNs distribuem conteúdo através de servidores geograficamente dispersos para entregar conteúdo web e serviços com alta performance, disponibilidade e latência reduzida para usuários mundialmente.",
+      "keyPoints": [
+        "Reduz latência servindo conteúdo de servidores geograficamente mais próximos",
+        "Melhora performance do site e experiência do usuário globalmente",
+        "Reduz custos de largura de banda e carga do servidor",
+        "Fornece proteção DDoS e segurança aprimorada",
+        "Habilita escalabilidade global para entrega de conteúdo"
+      ]
+    },
+    "scalingTypes": {
+      "title": "Tipos de Escalabilidade",
+      "description": "Estratégias de escalabilidade definem como sistemas lidam com carga aumentada através de escalabilidade vertical (adicionar mais poder) ou escalabilidade horizontal (adicionar mais servidores) para atender demandas de performance.",
+      "keyPoints": [
+        "Abordam carga crescente e requisitos de performance",
+        "Escolhem entre abordagens de escalabilidade vertical e horizontal",
+        "Equilibram custo, complexidade e benefícios de performance",
+        "Planejam para necessidades de escalabilidade imediatas e de longo prazo",
+        "Consideram arquitetura de aplicação e restrições tecnológicas"
+      ]
+    },
+    "capTheorem": {
+      "title": "Teorema CAP",
+      "description": "Teorema CAP estabelece que sistemas distribuídos só podem garantir duas de três propriedades: Consistência, Disponibilidade e Tolerância a partições, requerendo decisões de trade-off no design do sistema.",
+      "keyPoints": [
+        "Princípio fundamental governando design de sistemas distribuídos",
+        "Apenas duas de três propriedades podem ser garantidas simultaneamente",
+        "Força decisões explícitas de trade-off na arquitetura do sistema",
+        "Ajuda a entender limitações de sistemas distribuídos",
+        "Guia seleção de tecnologia e padrões de design"
+      ]
+    },
+    "messageQueues": {
+      "title": "Filas de Mensagens",
+      "description": "Filas de mensagens permitem comunicação assíncrona entre serviços armazenando mensagens em uma fila até que possam ser processadas, fornecendo baixo acoplamento e melhor resiliência do sistema.",
+      "keyPoints": [
+        "Permitem comunicação assíncrona entre serviços distribuídos",
+        "Fornecem baixo acoplamento e melhor resiliência do sistema",
+        "Suportam balanceamento de carga e escalabilidade horizontal de consumidores",
+        "Garantem durabilidade de mensagens e garantias de entrega",
+        "Habilitam arquiteturas orientadas a eventos e comunicação de microsserviços"
+      ],
+      "types": [
+        "Ponto-a-Ponto - Um produtor envia para um consumidor",
+        "Publish-Subscribe - Um produtor envia para múltiplos consumidores",
+        "Request-Reply - Comunicação síncrona sobre canais assíncronos",
+        "Dead Letter Queue - Lidar com processamento de mensagens falhadas",
+        "Priority Queue - Processar mensagens de alta prioridade primeiro"
+      ]
+    },
+    "eventualConsistency": {
+      "title": "Consistência Eventual",
+      "description": "Consistência eventual é um modelo de consistência onde o sistema se tornará consistente ao longo do tempo, permitindo inconsistências temporárias para alcançar melhor disponibilidade e tolerância a partições.",
+      "keyPoints": [
+        "Permite inconsistências temporárias para melhor disponibilidade",
+        "Sistema se torna consistente ao longo do tempo sem intervenção externa",
+        "Habilita alta disponibilidade e tolerância a partições (AP no CAP)",
+        "Reduz latência evitando coordenação síncrona",
+        "Essencial para sistemas distribuídos de grande escala"
+      ]
+    },
+    "eventSourcing": {
+      "title": "Event Sourcing",
+      "description": "Event sourcing armazena o estado de uma entidade de negócio como uma sequência de eventos que mudam o estado, fornecendo uma trilha de auditoria completa e habilitando capacidades poderosas de consulta e reconstrução.",
+      "keyPoints": [
+        "Armazenar eventos como única fonte da verdade em vez do estado atual",
+        "Fornecer trilha de auditoria completa e reconstrução histórica",
+        "Habilitar consultas temporais e análise point-in-time",
+        "Suportar replay de eventos para debugging e testes",
+        "Facilitar integração com arquiteturas orientadas a eventos"
+      ]
+    },
+    "cqrs": {
+      "title": "CQRS (Command Query Responsibility Segregation)",
+      "description": "CQRS separa operações de leitura e escrita em modelos diferentes, permitindo estruturas de dados e padrões de processamento otimizados para comandos (escritas) e consultas (leituras).",
+      "keyPoints": [
+        "Separar modelos de leitura e escrita para performance ótima",
+        "Habilitar escalabilidade independente de operações de leitura e escrita",
+        "Suportar lógica de negócio complexa no processamento de comandos",
+        "Permitir múltiplos modelos de leitura otimizados para diferentes casos de uso",
+        "Facilitar arquiteturas orientadas a eventos e consistência eventual"
+      ]
+    },
+    "rateLimiting": {
+      "title": "Rate Limiting",
+      "description": "Rate limiting controla o número de requisições que um cliente pode fazer para uma API ou serviço dentro de uma janela de tempo específica, protegendo sistemas contra abuso e garantindo uso justo de recursos.",
+      "keyPoints": [
+        "Previne sobrecarga do sistema e protege contra abuso",
+        "Garante alocação justa de recursos entre usuários",
+        "Melhora estabilidade e performance do sistema",
+        "Reduz custos prevenindo desperdício de recursos",
+        "Essencial para monetização de APIs e aplicação de SLAs"
+      ],
+      "types": [
+        "Token Bucket - Tokens adicionados em taxa fixa, consumidos por requisição",
+        "Leaky Bucket - Requisições processadas em taxa constante independente da entrada",
+        "Fixed Window - Número fixo de requisições por janela de tempo",
+        "Sliding Window - Janela de tempo deslizante para limitação mais precisa",
+        "Sliding Window Counter - Abordagem híbrida com melhor eficiência de memória"
+      ],
+      "considerations": [
+        "Escolher janelas de tempo apropriadas (segundos, minutos, horas)",
+        "Tratar respostas de limite excedido graciosamente",
+        "Considerar limites diferentes para diferentes níveis de usuário",
+        "Implementar mensagens de erro adequadas e orientação de retry",
+        "Monitorar efetividade do rate limiting e ajustar conforme necessário"
+      ]
+    }
+  },
+  "home": {
+    "hero": {
+      "subtitle": "Domine os fundamentos de sistemas distribuídos, escalabilidade e padrões de arquitetura moderna"
+    },
+    "framework": {
+      "title": "Framework para Entrevistas de Design de Sistemas",
+      "subtitle": "Uma abordagem estruturada para enfrentar qualquer entrevista de design de sistemas com confiança",
+      "steps": {
+        "step1": {
+          "title": "1. Esclarecer Requisitos (5-10 min)",
+          "points": [
+            "Comece entendendo o que você está construindo e as restrições com as quais está trabalhando.",
+            "Pergunte sobre requisitos funcionais (o que o sistema deve fazer)",
+            "Discuta requisitos não-funcionais (escala, performance, disponibilidade)",
+            "Identifique quaisquer restrições ou suposições",
+            "Confirme seu entendimento com o entrevistador"
+          ]
+        },
+        "step2": {
+          "title": "2. Design de Alto Nível (10-15 min)",
+          "points": [
+            "Desenhe os principais componentes e suas interações",
+            "Comece simples - arquitetura básica cliente-servidor",
+            "Identifique serviços principais e fluxos de dados",
+            "Mostre como as requisições fluem pelo sistema",
+            "Mantenha em alto nível, evite detalhes de implementação"
+          ]
+        },
+        "step3": {
+          "title": "3. Aprofundamento e Design de Dados (15-20 min)",
+          "points": [
+            "Projete o schema do banco de dados e modelos de dados",
+            "Escolha tipos apropriados de banco de dados (SQL vs NoSQL)",
+            "Discuta estratégias de particionamento e sharding de dados",
+            "Aborde consistência e replicação de dados",
+            "Projete APIs e interfaces de serviços"
+          ]
+        },
+        "step4": {
+          "title": "4. Escalar e Iterar (10-15 min)",
+          "points": [
+            "Identifique gargalos no seu design atual",
+            "Adicione camadas de cache (Redis, CDN, cache de aplicação)",
+            "Implemente balanceamento de carga e auto-scaling",
+            "Adicione monitoramento, logging e observabilidade",
+            "Discuta preocupações de deploy e operacionais"
+          ]
+        },
+        "step5": {
+          "title": "5. Finalizar e Trade-offs (5 min)",
+          "points": [
+            "Resuma seu design e decisões principais",
+            "Discuta trade-offs que você fez e alternativas",
+            "Aborde quaisquer preocupações ou questões restantes",
+            "Mencione considerações adicionais (segurança, compliance)",
+            "Mostre consciência de desafios operacionais do mundo real"
+          ]
+        }
+      },
+      "timeAllocation": {
+        "title": "Alocação de Tempo (entrevista de 45-60 min)",
+        "phases": {
+          "clarify": "esclarecer requisitos",
+          "highlevel": "design de alto nível",
+          "deepdive": "aprofundamento e design de dados",
+          "iterate": "escalar e iterar",
+          "wrapup": "finalizar e trade-offs"
+        }
+      },
+      "whyWorks": {
+        "title": "Por que Este Framework Funciona",
+        "points": [
+          "Demonstra pensamento estruturado e abordagem de resolução de problemas",
+          "Mostra que você pode trabalhar dentro de restrições e fazer perguntas esclarecedoras",
+          "Prova que você entende tanto requisitos técnicos quanto de negócio",
+          "Exibe conhecimento de padrões de escalabilidade e trade-offs",
+          "Mostra consciência de preocupações operacionais do mundo real"
+        ]
+      },
+      "tldr": {
+        "title": "Framework Resumido",
+        "steps": [
+          "esclarecer o que você está construindo e restrições",
+          "desenhar componentes de alto nível e fluxo de dados",
+          "projetar modelos de dados e escolher bancos de dados",
+          "identificar gargalos e adicionar soluções de escala",
+          "resumir design e discutir trade-offs"
+        ]
+      }
+    },
+    "categories": {
+      "title": "Explorar Tópicos de Design de Sistemas",
+      "exploreTopics": "Explorar Tópicos"
+    },
+    "quickStart": {
+      "title": "Início Rápido",
+      "subtitle": "Novo em design de sistemas? Comece com estes conceitos fundamentais",
+      "loadBalancers": {
+        "title": "Balanceadores de Carga",
+        "description": "Aprenda como distribuir tráfego entre múltiplos servidores"
+      },
+      "databases": {
+        "title": "Bancos de Dados",
+        "description": "Entenda SQL vs NoSQL e quando usar cada um"
+      },
+      "caching": {
+        "title": "Cache",
+        "description": "Melhore performance com estratégias efetivas de cache"
+      }
+    }
+  }
+}
