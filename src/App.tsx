@@ -1,10 +1,10 @@
-import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
 import Layout from './components/Layout/Layout';
 import HomePage from './components/Content/HomePage';
 import ContentPage from './components/Content/ContentPage';
 import CategoryPage from './components/Content/CategoryPage';
+import SystemDesignFrameworkPage from './components/Content/SystemDesignFrameworkPage';
 import './i18n';
 
 function App() {
@@ -14,6 +14,7 @@ function App() {
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
+            <Route path="/system-design-framework" element={<SystemDesignFrameworkPage />} />
             
             {/* Category Pages */}
             <Route path="/architecture" element={<CategoryPage categoryKey="architecture" />} />

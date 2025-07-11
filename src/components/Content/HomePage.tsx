@@ -1,498 +1,505 @@
-import React, { useState } from 'react';
-import { useTranslation } from 'react-i18next';
-import { Link } from 'react-router-dom';
-import { 
-  Server, 
-  Database, 
-  Globe, 
-  Zap, 
-  Shield, 
-  BarChart3,
-  ArrowRight,
+import React from 'react';
+import {
   BookOpen,
-  CheckCircle,
-  Clock,
-  Target,
-  Users,
-  Lightbulb,
-  TrendingUp,
-  Share2,
-  Check,
-  Settings,
-  Activity,
-  Lock
+  HelpCircle,
+  List,
+  Server,
+  Database,
+  Network,
+  ExternalLink,
+  FileText,
+  Clipboard,
+  BarChart2,
+  AlertTriangle,
+  RefreshCw,
+  CheckCircle
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
-  const { t } = useTranslation();
-  const [copied, setCopied] = useState(false);
-
-  const categories = [
-    {
-      icon: Server,
-      titleKey: 'nav.architecture',
-      color: 'bg-blue-500',
-      topics: ['Load Balancers', 'App Servers', 'Caching', 'Databases', 'Storage']
-    },
-    {
-      icon: BarChart3,
-      titleKey: 'nav.scalability',
-      color: 'bg-green-500',
-      topics: ['Replication', 'Sharding', 'CDN', 'Scaling Types', 'CAP Theorem']
-    },
-    {
-      icon: Globe,
-      titleKey: 'nav.communication',
-      color: 'bg-purple-500',
-      topics: ['HTTP vs gRPC', 'REST vs GraphQL', 'WebSockets', 'API Gateway']
-    },
-    {
-      icon: Zap,
-      titleKey: 'nav.async',
-      color: 'bg-yellow-500',
-      topics: ['Message Queues', 'Event Sourcing', 'CQRS', 'Consistency']
-    },
-    {
-      icon: Database,
-      titleKey: 'nav.performance',
-      color: 'bg-red-500',
-      topics: ['Caching Patterns', 'Circuit Breaker', 'Observability', 'Retry Logic']
-    },
-    {
-      icon: Shield,
-      titleKey: 'nav.security',
-      color: 'bg-indigo-500',
-      topics: ['JWT & OAuth2', 'Rate Limiting', 'TLS/HTTPS', 'Feature Flags']
-    }
-  ];
-
-  const interviewSteps = [
-    {
-      icon: Target,
-      titleKey: 'home.framework.steps.step1.title',
-      pointsKey: 'home.framework.steps.step1.points',
-      color: 'bg-red-500'
-    },
-    {
-      icon: BarChart3,
-      titleKey: 'home.framework.steps.step2.title',
-      pointsKey: 'home.framework.steps.step2.points',
-      color: 'bg-blue-500'
-    },
-    {
-      icon: Database,
-      titleKey: 'home.framework.steps.step3.title',
-      pointsKey: 'home.framework.steps.step3.points',
-      color: 'bg-gray-600'
-    },
-    {
-      icon: TrendingUp,
-      titleKey: 'home.framework.steps.step4.title',
-      pointsKey: 'home.framework.steps.step4.points',
-      color: 'bg-purple-500'
-    },
-    {
-      icon: CheckCircle,
-      titleKey: 'home.framework.steps.step5.title',
-      pointsKey: 'home.framework.steps.step5.points',
-      color: 'bg-green-500'
-    }
-  ];
-
-  const timeAllocation = [
-    { phaseKey: 'home.framework.timeAllocation.phases.clarify', duration: '5-10min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.highlevel', duration: '10-15min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.deepdive', duration: '15-20min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.iterate', duration: '10-15min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.wrapup', duration: '5min' }
-  ];
-
-  const handleShare = async () => {
-    const currentUrl = window.location.href;
-    
-    try {
-      await navigator.clipboard.writeText(currentUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      // Fallback for browsers that don't support clipboard API
-      const textArea = document.createElement('textarea');
-      textArea.value = currentUrl;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
-  const renderStep1Content = () => {
-    const points = t('home.framework.steps.step1.points', { returnObjects: true }) as string[];
-    
-    return (
-      <div className="space-y-6">
-        <p className="text-gray-600 dark:text-gray-300 mb-6">
-          {points[0]}
-        </p>
-        
-        {/* Functional Requirements */}
-        <div className="bg-blue-50 dark:bg-blue-900/10 rounded-lg p-6 border border-blue-200 dark:border-blue-800">
-          <div className="flex items-center mb-4">
-            <Settings className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
-            <h4 className="text-lg font-semibold text-blue-900 dark:text-blue-100">
-              Functional Requirements: What the system should DO
-            </h4>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2">
-            <div>
-              <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">User Actions</h5>
-              <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                <li>• Post content, search, send messages</li>
-                <li>• Upload files, share media</li>
-                <li>• User registration and profiles</li>
-              </ul>
-            </div>
-            <div>
-              <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">System Behaviors</h5>
-              <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                <li>• Notifications and recommendations</li>
-                <li>• Data processing and analytics</li>
-                <li>• Content moderation</li>
-              </ul>
-            </div>
-          </div>
-          <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/20 rounded border-l-4 border-blue-500">
-            <p className="text-sm text-blue-800 dark:text-blue-200">
-              <strong>Example:</strong> "Users can create posts, like/comment on posts, follow other users"
-            </p>
-          </div>
-        </div>
-
-        {/* Non-Functional Requirements */}
-        <div className="bg-green-50 dark:bg-green-900/10 rounded-lg p-6 border border-green-200 dark:border-green-800">
-          <div className="flex items-center mb-4">
-            <Activity className="w-5 h-5 text-green-600 dark:text-green-400 mr-2" />
-            <h4 className="text-lg font-semibold text-green-900 dark:text-green-100">
-              Non-Functional Requirements: HOW WELL the system should perform
-            </h4>
-          </div>
-          <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
-            <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Scale</h5>
-              <p className="text-sm text-green-700 dark:text-green-300">
-                How many users? (100K DAU vs 100M DAU)
-              </p>
-            </div>
-            <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Performance</h5>
-              <p className="text-sm text-green-700 dark:text-green-300">
-                Response time (&lt;200ms), throughput (1000 QPS)
-              </p>
-            </div>
-            <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Availability</h5>
-              <p className="text-sm text-green-700 dark:text-green-300">
-                Uptime requirements (99.9% vs 99.99%)
-              </p>
-            </div>
-            <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Consistency</h5>
-              <p className="text-sm text-green-700 dark:text-green-300">
-                Strong vs eventual consistency needs
-              </p>
-            </div>
-            <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Security</h5>
-              <p className="text-sm text-green-700 dark:text-green-300">
-                Authentication, authorization, data privacy
-              </p>
-            </div>
-          </div>
-          <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/20 rounded border-l-4 border-green-500">
-            <p className="text-sm text-green-800 dark:text-green-200">
-              <strong>Example:</strong> "Support 10M users, &lt;100ms response time, 99.9% uptime"
-            </p>
-          </div>
-        </div>
-
-        {/* Edge Cases & Constraints */}
-        <div className="bg-purple-50 dark:bg-purple-900/10 rounded-lg p-6 border border-purple-200 dark:border-purple-800">
-          <div className="flex items-center mb-4">
-            <Lock className="w-5 h-5 text-purple-600 dark:text-purple-400 mr-2" />
-            <h4 className="text-lg font-semibold text-purple-900 dark:text-purple-100">
-              Edge Cases & Constraints
-            </h4>
-          </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
-                <Globe className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">Geographic</h5>
-              <p className="text-sm text-purple-700 dark:text-purple-300">Global distribution requirements</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
-                <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">Platform</h5>
-              <p className="text-sm text-purple-700 dark:text-purple-300">Mobile vs web considerations</p>
-            </div>
-            <div className="text-center">
-              <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
-                <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
-              </div>
-              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">Budget</h5>
-              <p className="text-sm text-purple-700 dark:text-purple-300">Cost and resource limits</p>
-            </div>
-          </div>
-        </div>
-
-        {/* Final Step */}
-        <div className="bg-gray-50 dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700">
-          <p className="text-gray-700 dark:text-gray-300 font-medium">
-            {points[points.length - 1]}
-          </p>
-        </div>
-      </div>
-    );
-  };
-
+  
   return (
     <div className="max-w-6xl mx-auto p-8">
-      {/* Hero Section */}
-      <div className="text-center mb-12">
-        <div className="flex items-center justify-center mb-6">
-          <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mr-4">
-            <BookOpen className="w-8 h-8 text-white" />
-          </div>
-          <button
-            onClick={handleShare}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
-            title="Share this page"
-          >
-            {copied ? (
-              <>
-                <Check className="w-4 h-4" />
-                <span className="text-sm">Copied!</span>
-              </>
-            ) : (
-              <>
-                <Share2 className="w-4 h-4" />
-                <span className="text-sm">Share</span>
-              </>
-            )}
-          </button>
-        </div>
-        <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-          {t('nav.title')}
+      <div className="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl shadow-lg">
+        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6 text-center">
+          The Fundamentals of System Design
         </h1>
-        <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-          {t('home.hero.subtitle')}
+        <p className="text-center text-gray-700 dark:text-gray-300 text-lg mb-4">
+          A comprehensive guide to building scalable, reliable, and maintainable systems
         </p>
-      </div>
 
-      {/* System Design Interview Framework */}
-      <div className="mb-16">
-        <div className="text-center mb-8">
-          <h2 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            {t('home.framework.title')}
+        {/* What is System Design Section */}
+        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+            <HelpCircle className="mr-2 text-blue-500 dark:text-blue-400" size={24} />
+            What is System Design?
           </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300">
-            {t('home.framework.subtitle')}
-          </p>
-        </div>
+          <div className="prose dark:prose-invert max-w-none">
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
+              <strong className="text-gray-900 dark:text-white">System design</strong> is the process of defining the architecture, components, data flow, and interactions of a software system to meet specified goals. It involves making high-level decisions that balance trade-offs across <strong className="text-gray-900 dark:text-white">performance</strong>, <strong className="text-gray-900 dark:text-white">scalability</strong>, <strong className="text-gray-900 dark:text-white">reliability</strong>, <strong className="text-gray-900 dark:text-white">maintainability</strong>, <strong className="text-gray-900 dark:text-white">cost</strong>, and <strong className="text-gray-900 dark:text-white">complexity</strong>.
+            </p>
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
+              At its core, system design is about solving real-world problems through structured thinking, clear abstractions, and technical insight. Whether you're building a <strong className="text-gray-900 dark:text-white">social media platform</strong>, an <strong className="text-gray-900 dark:text-white">e-commerce website</strong>, or a <strong className="text-gray-900 dark:text-white">real-time multiplayer game</strong>, system design ensures that your system can grow, adapt, and perform under load.
+            </p>
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
+              Unlike implementation, which focuses on isolated features, system design looks at the <strong className="text-gray-900 dark:text-white">"big picture"</strong>, how different parts of a system fit and work together. It's a collaborative and creative process that often starts long before the first line of code is written.
+            </p>
+          </div>
+        </section>
 
-        {/* Interview Steps */}
-        <div className="space-y-6 mb-12">
-          {interviewSteps.map((step, index) => {
-            const Icon = step.icon;
-            
-            return (
-              <div
-                key={index}
-                className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm"
-              >
-                <div className="flex items-start mb-4">
-                  <div className={`w-10 h-10 ${step.color} rounded-lg flex items-center justify-center mr-4 flex-shrink-0`}>
-                    <Icon className="w-5 h-5 text-white" />
-                  </div>
-                  <div className="flex-1">
-                    <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
-                      {t(step.titleKey)}
-                    </h3>
-                    {index === 0 ? (
-                      renderStep1Content()
-                    ) : (
-                      <ul className="space-y-2">
-                        {(t(step.pointsKey, { returnObjects: true }) as string[]).map((point, pointIndex) => (
-                          <li key={pointIndex} className="text-gray-600 dark:text-gray-300">
-                            {point.startsWith('•') ? (
-                              <div className="ml-4">{point}</div>
-                            ) : (
-                              <div className="flex items-start">
-                                <div className="w-2 h-2 bg-blue-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                                <span>{point}</span>
-                              </div>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    )}
-                  </div>
+        {/* 10 Key Questions Section */}
+        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h2 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+            <List className="mr-2 text-green-500 dark:text-green-400" size={24} />
+            System Design: 10 Key Questions
+          </h2>
+          <div className="prose dark:prose-invert max-w-none">
+            <p className="mb-8 text-gray-800 dark:text-gray-200">
+              A well-designed system must answer these ten fundamental questions. These questions help guide architectural decisions and prepare the system for scale, change, and resilience.
+            </p>
+
+            <div className="space-y-6">
+              {/* Question 1 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">1</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Scalability</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">How will the system handle increasing numbers of users, requests, and data volume efficiently?</p>
                 </div>
               </div>
-            );
-          })}
-        </div>
-
-        {/* Time Allocation & Additional Info Grid */}
-        <div className="grid gap-8 lg:grid-cols-2 mb-12">
-          {/* Time Allocation */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-            <div className="flex items-center mb-4">
-              <Clock className="w-5 h-5 text-blue-500 mr-2" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                {t('home.framework.timeAllocation.title')}
-              </h3>
-            </div>
-            <div className="space-y-3">
-              {timeAllocation.map((item, index) => (
-                <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700 last:border-b-0">
-                  <span className="text-gray-600 dark:text-gray-300 capitalize">{t(item.phaseKey)}</span>
-                  <span className="text-gray-900 dark:text-white font-medium">{item.duration}</span>
+              
+              {/* Question 2 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">2</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Latency and Performance</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">How can we ensure low response times and consistent performance under load?</p>
                 </div>
-              ))}
+              </div>
+              
+              {/* Question 3 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">3</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Fault Tolerance and Reliability</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">What happens when a component fails? Can the system detect, recover, and remain available?</p>
+                </div>
+              </div>
+              
+              {/* Question 4 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">4</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Data Management</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">How should data be stored, retrieved, indexed, and cached to ensure integrity and performance?</p>
+                </div>
+              </div>
+              
+              {/* Question 5 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">5</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Communication</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">How do system components interact, synchronously or asynchronously, and through what protocols (e.g., HTTP, gRPC, message queues)?</p>
+                </div>
+              </div>
+              
+              {/* Question 6 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">6</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Security</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">How do we protect against unauthorized access, data leaks, and attacks like DDoS or injection?</p>
+                </div>
+              </div>
+              
+              {/* Question 7 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">7</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Observability and Monitoring</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">How do we gain visibility into the system's health, errors, and usage patterns?</p>
+                </div>
+              </div>
+              
+              {/* Question 8 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">8</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Compliance and Privacy</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">Are we meeting regulatory requirements (e.g., GDPR, HIPAA)? How is sensitive data secured and handled?</p>
+                </div>
+              </div>
+              
+              {/* Question 9 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">9</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Maintainability and Extensibility</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">Can the system be easily debugged, monitored, updated, and expanded as requirements evolve?</p>
+                </div>
+              </div>
+              
+              {/* Question 10 */}
+              <div className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">10</div>
+                <div className="ml-4">
+                  <strong className="text-gray-900 dark:text-white text-lg">Cost Efficiency</strong>
+                  <p className="italic text-gray-700 dark:text-gray-300 mt-3">Are we balancing performance and reliability with infrastructure and operational costs?</p>
+                </div>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Why This Works */}
-          <div className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700">
-            <div className="flex items-center mb-4">
-              <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
-              <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                {t('home.framework.whyWorks.title')}
+        {/* Key Components Section */}
+        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h2 className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+            <Server className="mr-2 text-purple-500 dark:text-purple-400" size={24} />
+            Key Components of a Software System
+          </h2>
+          <div className="prose dark:prose-invert max-w-none">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700 pb-2">Understanding the Building Blocks</h3>
+            <p className="mb-6 text-gray-800 dark:text-gray-200">A typical software system consists of several foundational components, each contributing to the system's overall capability and resilience:</p>
+
+            {/* Client/Frontend */}
+            <div className="mb-6 border-l-4 border-blue-500 pl-4 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-r-lg">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <BookOpen className="mr-2" size={20} />
+                1. Client / Frontend
               </h3>
-            </div>
-            <ul className="space-y-3">
-              {(t('home.framework.whyWorks.points', { returnObjects: true }) as string[]).map((point, index) => (
-                <li key={index} className="flex items-start">
-                  <div className="w-2 h-2 bg-green-500 rounded-full mt-2 mr-3 flex-shrink-0"></div>
-                  <span className="text-gray-600 dark:text-gray-300">{point}</span>
+              <p className="text-gray-800 dark:text-gray-200">The <strong className="text-gray-900 dark:text-white">client</strong> is the interface through which users interact with the system (i.e. web browsers and mobile apps).</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200 pb-3">
+                  <strong className="text-gray-900 dark:text-white">Responsibilities</strong>:
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200">• Render the user interface (UI)</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Capture and validate user input</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Communicate with backend APIs (e.g., REST, GraphQL)</li>
+                  </ul>
                 </li>
-              ))}
-            </ul>
-          </div>
-        </div>
+              </ul>
+            </div>
 
-        {/* TL;DR Framework */}
-        <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-6 border border-blue-200 dark:border-blue-800">
-          <div className="flex items-center mb-4">
-            <Lightbulb className="w-5 h-5 text-yellow-500 mr-2" />
-            <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-              {t('home.framework.tldr.title')}
-            </h3>
-          </div>
-          <ol className="space-y-2">
-            {(t('home.framework.tldr.steps', { returnObjects: true }) as string[]).map((step, index) => (
-              <li key={index} className="flex items-start">
-                <span className="inline-flex items-center justify-center w-6 h-6 bg-blue-500 text-white text-sm font-medium rounded-full mr-3 flex-shrink-0">
-                  {index + 1}
-                </span>
-                <span className="text-gray-600 dark:text-gray-300 capitalize">{step}</span>
-              </li>
-            ))}
-          </ol>
-        </div>
-      </div>
+            {/* Server/Backend */}
+            <div className="mb-6 border-l-4 border-green-500 pl-4 bg-green-50 dark:bg-green-900/20 p-4 rounded-r-lg">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Server className="mr-2" size={20} />
+                2. Server / Backend
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">The <strong className="text-gray-900 dark:text-white">backend</strong> powers the business logic and orchestrates the system's behavior.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">
+                  <strong className="text-gray-900 dark:text-white">Responsibilities</strong>:
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200">• Process user requests</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Handle authentication and authorization</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Execute workflows and background tasks</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Communicate with databases and services</li>
+                  </ul>
+                </li>
+                <li className="text-gray-800 dark:text-gray-200">
+                  <strong className="text-gray-900 dark:text-white">Common Patterns</strong>:
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200">• Monolith</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Microservices</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Serverless</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
 
-      {/* Categories Grid */}
-      <div className="mb-12">
-        <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-6 text-center">
-          {t('home.categories.title')}
-        </h2>
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
-          {categories.map((category, index) => {
-            const Icon = category.icon;
-            return (
-              <div
-                key={index}
-                className="group bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:scale-105"
-              >
-                <div className="flex items-center mb-4">
-                  <div className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mr-4`}>
-                    <Icon className="w-6 h-6 text-white" />
-                  </div>
-                  <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {t(category.titleKey)}
-                  </h3>
-                </div>
-                <ul className="space-y-2 mb-4">
-                  {category.topics.map((topic, topicIndex) => (
-                    <li key={topicIndex} className="text-sm text-gray-600 dark:text-gray-300">
-                      • {topic}
+            {/* Database/Storage */}
+            <div className="mb-6 border-l-4 border-purple-500 pl-4 bg-purple-50 dark:bg-purple-900/20 p-4 rounded-r-lg">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Database className="mr-2" size={20} />
+                3. Database / Storage
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">This component is responsible for <strong className="text-gray-900 dark:text-white">persisting and managing data.</strong></p>
+              <p className="text-gray-800 dark:text-gray-200">Here are some common types:</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">SQL</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• PostgreSQL/MySQL (structured data, transactions)</li>
+                      </ul>
                     </li>
-                  ))}
-                </ul>
-                <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-                  <span className="text-sm font-medium">{t('home.categories.exploreTopics')}</span>
-                  <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </div>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">NoSQL</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• MongoDB (flexible schema)</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Cassandra (high throughput)</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">In-memory</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Redis/Memcached (fast caching)</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Object Storage</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Amazon S3/GCP Storage (files and media blobs as images, videos, etc.)</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
 
-      {/* Quick Start Section */}
-      <div className="bg-gradient-to-r from-blue-50 to-purple-50 dark:from-blue-900/10 dark:to-purple-900/10 rounded-xl p-8 border border-blue-200 dark:border-blue-800">
-        <div className="text-center mb-6">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">
-            {t('home.quickStart.title')}
+            {/* Networking & Infrastructure */}
+            <div className="mb-6 border-l-4 border-orange-500 pl-4 bg-orange-50 dark:bg-orange-900/20 p-4 rounded-r-lg">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Network className="mr-2" size={20} />
+                4. Networking & Infrastructure Layer
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">This layer ensures <strong className="text-gray-900 dark:text-white">secure and efficient communication</strong> across the system.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Load balancers</strong>: Distribute traffic
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• HAProxy</li>
+                        <li className="text-gray-800 dark:text-gray-200">• AWS ALB</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">API gateways</strong>: Centralize request routing, auth, rate-limiting
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Kong</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Amazon API Gateway</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">CDNs</strong>: Cache static assets close to users
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Cloudflare</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Akamai</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Service mesh</strong>: Manage service-to-service communication in microservices
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Istio</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Linkerd</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            {/* Third-Party Services */}
+            <div className="mb-6 border-l-4 border-yellow-500 pl-4 bg-yellow-50 dark:bg-yellow-900/20 p-4 rounded-r-lg">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <ExternalLink className="mr-2" size={20} />
+                5. Third-Party & External Services
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">Modern systems often integrate external platforms to offload complex or non-core functionality. These tools help reduce time to market and allow teams to focus on core business logic. Some examples include:</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Authentication</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Auth0</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Firebase Auth</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Payments</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Stripe</li>
+                        <li className="text-gray-800 dark:text-gray-200">• PayPal</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Notifications</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Twilio (SMS)</li>
+                        <li className="text-gray-800 dark:text-gray-200">• SendGrid (email)</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Firebase Cloud Messaging (push)</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">Monitoring</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• Datadog</li>
+                        <li className="text-gray-800 dark:text-gray-200">• New Relic</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Sentry</li>
+                      </ul>
+                    </li>
+                    <li className="text-gray-800 dark:text-gray-200 pb-2">
+                      <strong className="text-gray-900 dark:text-white">ML/AI APIs</strong>:
+                      <ul>
+                        <li className="text-gray-800 dark:text-gray-200">• OpenAI</li>
+                        <li className="text-gray-800 dark:text-gray-200">• AWS Rekognition</li>
+                        <li className="text-gray-800 dark:text-gray-200">• Google Cloud Vision</li>
+                      </ul>
+                    </li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* System Design Process Section */}
+        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h2 className="text-2xl font-bold text-orange-600 dark:text-orange-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+            <FileText className="mr-2 text-orange-500 dark:text-orange-400" size={24} />
+            The System Design Process
           </h2>
-          <p className="text-gray-600 dark:text-gray-300">
-            {t('home.quickStart.subtitle')}
-          </p>
-        </div>
-        
-        <div className="grid gap-4 md:grid-cols-3">
-          <Link 
-            to="/load-balancers"
-            className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-          >
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-              {t('home.quickStart.loadBalancers.title')}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              {t('home.quickStart.loadBalancers.description')}
+          <div className="prose dark:prose-invert max-w-none">
+            <h3 className="text-xl font-semibold mb-4 text-gray-800 dark:text-gray-200 border-b border-gray-200 dark:border-gray-700 pb-2">From Requirements to Blueprint</h3>
+            <p className="mb-6 text-gray-800 dark:text-gray-200">Designing a system isn't a rigid checklist, it's an <strong className="text-gray-900 dark:text-white">iterative process</strong> that evolves through exploration, validation, and refinement. Here's a proven step-by-step framework:</p>
+
+            {/* Requirements Gathering */}
+            <div className="mb-6 border-l-4 border-blue-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Clipboard className="mr-2" size={20} />
+                1. Requirements Gathering
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">Understand what the system must achieve.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Functional Requirements</strong>: What should it do? (e.g., upload photos, send messages)</li>
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Non-Functional Requirements</strong> (NFRs): Performance, latency, uptime, consistency</li>
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• User Modeling</strong>: Who are the users? What are their use cases and volume?</li>
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Constraints</strong>: Tech stacks, budgets, SLAs, legal requirements</li>
+              </ul>
+            </div>
+
+            {/* Back-of-the-Envelope Estimations */}
+            <div className="mb-6 border-l-4 border-green-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <BarChart2 className="mr-2" size={20} />
+                2. Back-of-the-Envelope Estimations
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">Estimate the scale to make technology and architecture choices:</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Storage Needs</strong>: GBs/TBs per day or per user</li>
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Traffic Load</strong>: Peak QPS, reads vs. writes</li>
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Network Bandwidth</strong>: Data transferred between users/services</li>
+                <li className="text-gray-800 dark:text-gray-200"><strong className="text-gray-900 dark:text-white">• Server Count</strong>: Number of replicas needed to serve expected load</li>
+              </ul>
+              <p className="mt-2 text-blue-600 dark:text-yellow-400">
+                💡 <em>Quick estimates help you avoid overengineering or undershooting your architecture.</em>
+              </p>
+            </div>
+
+            {/* High-Level Design */}
+            <div className="mb-6 border-l-4 border-purple-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Server className="mr-2" size={20} />
+                3. High-Level Design (HLD)
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">Sketch the system's architecture and data flow.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">• Identify major modules (e.g., user service, feed service, auth)</li>
+                <li className="text-gray-800 dark:text-gray-200">• Map interactions between components</li>
+                <li className="text-gray-800 dark:text-gray-200">• Define external dependencies (e.g., third-party APIs)</li>
+                <li className="text-gray-800 dark:text-gray-200">• Choose foundational technologies (databases, frameworks, hosting)</li>
+              </ul>
+            </div>
+
+            {/* Data Modeling & API Design */}
+            <div className="mb-6 border-l-4 border-orange-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Database className="mr-2" size={20} />
+                4. Data Modeling & API Design
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">Define the internal and external interfaces.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">• Database Design: Choose data models, schema, indexing, partitioning</li>
+                <li className="text-gray-800 dark:text-gray-200">
+                  • API Design: Define RESTful or RPC endpoints, contracts, auth
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200">• <code>POST /tweet</code> → creates a tweet</li>
+                    <li className="text-gray-800 dark:text-gray-200">• <code>GET /timeline</code> → fetches a user's feed</li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+
+            {/* Detailed Design */}
+            <div className="mb-6 border-l-4 border-yellow-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <Server className="mr-2" size={20} />
+                5. Detailed Design & Component Deep Dive
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">Zoom in on each service or module.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">• Define responsibilities, inputs/outputs, failure modes</li>
+                <li className="text-gray-800 dark:text-gray-200">• Apply caching, replication, queuing, and load balancing</li>
+                <li className="text-gray-800 dark:text-gray-200">• Ensure each component meets its NFRs (availability, security, observability)</li>
+              </ul>
+            </div>
+
+            {/* Bottlenecks and Trade-offs */}
+            <div className="mb-6 border-l-4 border-orange-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <AlertTriangle className="mr-2" size={20} />
+                6. Bottlenecks, Trade-offs, and Failure Points
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">No design is perfect. Analyze risk and justify decisions.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">• Bottlenecks: Which parts will be stressed first?</li>
+                <li className="text-gray-800 dark:text-gray-200">• Failure Points: Where's the system vulnerable?</li>
+                <li className="text-gray-800 dark:text-gray-200 pt-2">
+                  <strong className="text-gray-900 dark:text-white">Trade-offs</strong>:
+                  <ul>
+                    <li className="text-gray-800 dark:text-gray-200">• Consistency vs. availability (CAP theorem)</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Cost vs. latency</li>
+                    <li className="text-gray-800 dark:text-gray-200">• Simplicity vs. extensibility</li>
+                  </ul>
+                </li>
+              </ul>
+              <p className="mt-2 text-red-600 dark:text-red-400">
+                ⚠️ <em>Always document trade-offs and fallback plans.</em>
+              </p>
+            </div>
+
+            {/* Review and Iterate */}
+            <div className="mb-6 border-l-4 border-blue-500 pl-4">
+              <h3 className="text-xl font-semibold mb-2 flex items-center text-gray-800 dark:text-gray-200">
+                <RefreshCw className="mr-2" size={20} />
+                7. Review, Validate, and Iterate
+              </h3>
+              <p className="text-gray-800 dark:text-gray-200">System design is a living process.</p>
+              <ul className="mt-2 space-y-1">
+                <li className="text-gray-800 dark:text-gray-200">• Explain your design to peers or stakeholders</li>
+                <li className="text-gray-800 dark:text-gray-200">• Use diagrams to support communication</li>
+                <li className="text-gray-800 dark:text-gray-200">• Iterate based on feedback and testing (load tests, chaos tests)</li>
+                <li className="text-gray-800 dark:text-gray-200">• Monitor and adjust in production</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        {/* Conclusion Section */}
+        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+          <h2 className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+            <CheckCircle className="mr-2 text-teal-500 dark:text-teal-400" size={24} />
+            Conclusion
+          </h2>
+          <div className="prose dark:prose-invert max-w-none">
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
+              Designing robust, scalable, and maintainable systems is both a technical discipline and a creative craft. It demands foresight, collaboration, and structured problem-solving.
             </p>
-          </Link>
-          
-          <Link 
-            to="/databases"
-            className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-          >
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-              {t('home.quickStart.databases.title')}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              {t('home.quickStart.databases.description')}
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
+              By breaking down the process, from identifying requirements and estimating scale to architecting components and validating decisions, you create systems that can <strong className="text-gray-900 dark:text-white">scale gracefully</strong>, <strong className="text-gray-900 dark:text-white">recover from failure</strong>, and <strong className="text-gray-900 dark:text-white">adapt to change</strong>.
             </p>
-          </Link>
-          
-          <Link 
-            to="/caching"
-            className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
-          >
-            <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
-              {t('home.quickStart.caching.title')}
-            </h3>
-            <p className="text-sm text-gray-600 dark:text-gray-300">
-              {t('home.quickStart.caching.description')}
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
+              Whether you're tackling a small feature or building a global platform, the mindset and tools of system design remain the same: <strong className="text-gray-900 dark:text-white">clarity, resilience, and purpose</strong>.
             </p>
-          </Link>
-        </div>
+            <blockquote className="border-l-4 border-teal-500 pl-4 italic bg-teal-50 dark:bg-teal-900/20 p-4 rounded-r-lg">
+              <strong className="text-gray-900 dark:text-white">Mastering system design is not about memorizing patterns, it's about applying principles to real problems with context-aware judgment.</strong>
+            </blockquote>
+          </div>
+        </section>
       </div>
     </div>
   );

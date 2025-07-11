@@ -1,6 +1,8 @@
 {
   "nav": {
     "title": "System Design Guide",
+    "fundamentals": "Fundamentals of System Design",
+    "systemDesignFramework": "System Design Framework",
     "architecture": "Architecture",
     "scalability": "Scalability", 
     "communication": "Communication",

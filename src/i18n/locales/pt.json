@@ -1,6 +1,8 @@
 {
   "nav": {
     "title": "Guia de Design de Sistemas",
+    "fundamentals": "Fundamentos de Design de Sistemas",
+    "systemDesignFramework": "Framework de Design de Sistemas",
     "architecture": "Arquitetura",
     "scalability": "Escalabilidade",
     "communication": "Comunicação",

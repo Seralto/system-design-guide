@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
-import { ChevronDown, ChevronRight } from 'lucide-react';
+import { ChevronDown, ChevronRight, BookOpen, Layout } from 'lucide-react';
 
 interface SidebarSection {
   key: string;
@@ -112,6 +112,29 @@ const Sidebar: React.FC = () => {
   return (
     <div className="w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen overflow-y-auto">
       <nav className="p-4 space-y-2">
+        {/* <Link to="/" className="flex items-center mb-6 px-2">
+          <span className="text-xl font-semibold text-gray-800 dark:text-white">
+            {t('nav.title')}
+          </span>
+        </Link> */}
+        <Link 
+          to="/" 
+          className={`flex items-center px-4 py-2 mb-4 rounded-md ${location.pathname === '/' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+        >
+          <BookOpen className="mr-2" size={18} />
+          <span className="text-sm font-medium">
+            {t('nav.fundamentals')}
+          </span>
+        </Link>
+        <Link 
+          to="/system-design-framework" 
+          className={`flex items-center px-4 py-2 mb-4 rounded-md ${location.pathname === '/system-design-framework' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+        >
+          <Layout className="mr-2" size={18} />
+          <span className="text-sm font-medium">
+            {t('nav.systemDesignFramework')}
+          </span>
+        </Link>
         {sidebarSections.map((section) => (
           <div key={section.key} className="mb-4">
             <div className="flex items-center">
