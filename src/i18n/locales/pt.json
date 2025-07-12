@@ -2,12 +2,12 @@
   "nav": {
     "title": "Guia de Design de Sistemas",
     "fundamentals": "Fundamentos de Design de Sistemas",
-    "systemDesignFramework": "Framework de Design de Sistemas",
+    "systemDesignFramework": "Estrutura de Design de Sistemas",
     "architecture": "Arquitetura",
     "scalability": "Escalabilidade",
     "communication": "Comunicação",
     "async": "Padrões Assíncronos",
-    "performance": "Performance",
+    "performance": "Desempenho",
     "security": "Segurança"
   },
   "topics": {
@@ -17,303 +17,1577 @@
     "databases": "Bancos de Dados",
     "storage": "Armazenamento",
     "replication": "Replicação",
-    "sharding": "Sharding",
+    "sharding": "Fragmentação",
     "cdn": "Rede de Distribuição de Conteúdo",
-    "scalingTypes": "Tipos de Escalabilidade",
+    "scalingTypes": "Tipos de Escalonamento",
     "capTheorem": "Teorema CAP",
     "httpGrpc": "HTTP vs gRPC",
     "restGraphql": "REST vs GraphQL",
     "websockets": "WebSockets",
     "apiGateway": "Gateway de API",
-    "serviceMesh": "Service Mesh",
+    "serviceMesh": "Malha de Serviços",
     "messageQueues": "Filas de Mensagens",
     "eventualConsistency": "Consistência Eventual",
-    "eventSourcing": "Event Sourcing",
+    "eventSourcing": "Origem de Eventos",
     "cqrs": "CQRS",
     "cachingPatterns": "Padrões de Cache",
-    "circuitBreaker": "Circuit Breaker",
-    "retryTimeout": "Lógica de Retry e Timeouts",
+    "circuitBreaker": "Disjuntor",
+    "retryTimeout": "Lógica de Tentativa e Tempos de Espera",
     "observability": "Observabilidade",
     "jwt": "JWT e OAuth2",
-    "rateLimiting": "Rate Limiting",
+    "rateLimiting": "Limitação de Taxa",
     "tls": "TLS/HTTPS",
-    "featureFlags": "Feature Flags",
-    "deployment": "Estratégias de Deploy"
+    "featureFlags": "Bandeiras de Funcionalidade",
+    "deployment": "Estratégias de Implantação"
   },
   "content": {
     "httpGrpc": {
       "title": "HTTP vs gRPC",
-      "description": "HTTP e gRPC são protocolos de comunicação para sistemas distribuídos, cada um com características distintas, perfis de performance e casos de uso para diferentes requisitos arquiteturais.",
+      "description": "HTTP e gRPC são protocolos de comunicação para sistemas distribuídos, cada um com características, perfis de desempenho e casos de uso distintos para diferentes requisitos arquiteturais.",
+      "learningTip": "Compare o HTTP a enviar cartões postais (legíveis por humanos, funciona em qualquer lugar) e o gRPC a enviar pacotes com números de rastreamento (eficiente, estruturado, mas requer manuseio especial). Pratique explicar quando você escolheria cada um, pensando nas diferentes necessidades de comunicação na vida diária.",
       "keyPoints": [
-        "Escolher protocolo apropriado baseado em necessidades de performance e compatibilidade",
-        "Considerar complexidade de desenvolvimento e suporte do ecossistema",
-        "Avaliar eficiência de rede e requisitos de tamanho de payload",
-        "Equilibrar legibilidade humana com eficiência de máquina",
-        "Planejar para debugging, monitoramento e requisitos operacionais"
+        "Escolha o protocolo apropriado com base nas necessidades de desempenho e compatibilidade",
+        "Considere a complexidade de desenvolvimento e suporte ao ecossistema",
+        "Avalie a eficiência da rede e os requisitos de tamanho da carga útil",
+        "Equilibre a legibilidade humana com a eficiência da máquina",
+        "Planeje para depuração, monitoramento e requisitos operacionais"
       ],
       "httpCharacteristics": [
         "Protocolo baseado em texto com formato legível por humanos",
-        "Modelo request-response sem estado com amplo suporte de navegadores",
-        "Extensas capacidades de ferramentas e debugging",
-        "Padrões de design RESTful e payloads JSON/XML",
-        "Mecanismos de cache integrados e compatibilidade com CDN"
+        "Modelo de solicitação-resposta sem estado com amplo suporte a navegadores",
+        "Amplas capacidades de ferramentas e depuração",
+        "Padrões de design RESTful e cargas úteis JSON/XML",
+        "Mecanismos de cache embutidos e compatibilidade com CDN"
       ],
       "grpcCharacteristics": [
-        "Protocolo binário com serialização Protocol Buffers",
-        "Suporte de streaming bidirecional e multiplexing",
+        "Protocolo binário com serialização de Protocol Buffers",
+        "Suporte a streaming bidirecional e multiplexação",
         "Tipagem forte com geração de código a partir de esquemas",
-        "Baseado em HTTP/2 com reutilização de conexões e compressão",
-        "Autenticação, balanceamento de carga e health checking integrados"
+        "Baseado em HTTP/2 com reutilização de conexão e compressão",
+        "Autenticação, balanceamento de carga e verificação de saúde integrados"
+      ],
+      "httpUseCases": [
+        "APIs públicas que requerem ampla compatibilidade",
+        "Aplicações web com clientes baseados em navegadores",
+        "Serviços RESTful com operações CRUD",
+        "Sistemas que requerem depuração e monitoramento extensivos",
+        "Integração com infraestrutura HTTP existente"
+      ],
+      "grpcUseCases": [
+        "Comunicação de microsserviços de alto desempenho",
+        "Aplicações em tempo real que requerem streaming",
+        "APIs internas com ambientes de cliente controlados",
+        "Sistemas que requerem tipagem forte e geração de código",
+        "Ambientes poliglotas com várias linguagens de programação"
+      ],
+      "performanceComparison": [
+        "gRPC: Menor latência, tamanhos de carga útil menores, melhor throughput",
+        "HTTP: Maior latência, cargas úteis maiores, depuração mais simples",
+        "gRPC: Melhor para comunicação interna de alta frequência",
+        "HTTP: Melhor para APIs públicas e integração web",
+        "gRPC: Requer suporte HTTP/2, HTTP: Funciona com HTTP/1.1"
       ]
     },
     "restGraphql": {
       "title": "REST vs GraphQL",
-      "description": "REST e GraphQL são paradigmas de design de API oferecendo diferentes abordagens para busca de dados, com REST fornecendo endpoints baseados em recursos e GraphQL habilitando acesso flexível a dados dirigido por consultas.",
+      "description": "REST e GraphQL são paradigmas de design de API que oferecem diferentes abordagens para busca de dados, com REST fornecendo endpoints baseados em recursos e GraphQL permitindo acesso a dados orientado por consultas flexíveis.",
+      "learningTip": "Pense no REST como um menu de restaurante com pratos fixos (endpoints) e no GraphQL como um buffet onde você escolhe exatamente o que quer. Pratique projetando ambas as abordagens para uma API de blog simples para entender quando a flexibilidade do GraphQL vale a complexidade adicional.",
       "keyPoints": [
-        "Escolher baseado em padrões de busca de dados e requisitos do cliente",
-        "Considerar complexidade de desenvolvimento e curva de aprendizado",
-        "Avaliar estratégias de cache e características de performance",
-        "Planejar para evolução de API e compatibilidade retroativa",
-        "Equilibrar flexibilidade com simplicidade e suporte de ferramentas"
+        "Escolha com base nos padrões de busca de dados e requisitos do cliente",
+        "Considere a complexidade de desenvolvimento e curva de aprendizado",
+        "Avalie estratégias de cache e características de desempenho",
+        "Planeje para evolução da API e compatibilidade retroativa",
+        "Equilibre flexibilidade com simplicidade e suporte de ferramentas"
+      ],
+      "restCharacteristics": [
+        "URLs baseados em recursos com métodos HTTP padrão",
+        "Comunicação sem estado com clara separação de preocupações",
+        "Múltiplos endpoints para diferentes recursos e operações",
+        "Padrões bem estabelecidos e amplo suporte de ferramentas",
+        "Cache simples com cabeçalhos de cache HTTP"
+      ],
+      "graphqlCharacteristics": [
+        "Endpoint único com linguagem de consulta flexível",
+        "Requisitos de dados especificados pelo cliente e consultas aninhadas",
+        "Sistema de tipos forte com capacidades de introspecção",
+        "Assinaturas em tempo real e busca de dados eficiente",
+        "Desenvolvimento baseado em esquema com geração de código"
+      ],
+      "restAdvantages": [
+        "Simples de entender e implementar",
+        "Excelente suporte a cache com padrões HTTP",
+        "Amplo suporte de ferramentas e padrões estabelecidos",
+        "Depuração fácil com ferramentas HTTP padrão",
+        "Bom para operações CRUD e gerenciamento de recursos"
+      ],
+      "graphqlAdvantages": [
+        "Elimina busca excessiva ou insuficiente de dados",
+        "Solicitação única para requisitos de dados complexos",
+        "Tipagem forte com validação em tempo de compilação",
+        "Excelente experiência de desenvolvedor com introspecção",
+        "Eficiente para clientes móveis e com restrições de banda"
+      ],
+      "restChallenges": [
+        "Múltiplas solicitações para dados complexos (problema N+1)",
+        "Busca excessiva de dados desnecessários",
+        "Versionamento de API e compatibilidade retroativa",
+        "Acoplamento estreito entre endpoints de cliente e servidor",
+        "Flexibilidade limitada para requisitos de cliente em evolução"
+      ],
+      "graphqlChallenges": [
+        "Cache complexo devido a consultas dinâmicas",
+        "Potencial para consultas caras e problemas N+1",
+        "Curva de aprendizado para linguagem de consulta e conceitos",
+        "Complexidade de upload de arquivos e cache HTTP limitado",
+        "Desafios de depuração com endpoint único"
+      ],
+      "whenToUseRest": [
+        "Operações CRUD simples com recursos bem definidos",
+        "APIs públicas que requerem ampla compatibilidade",
+        "Aplicações com relacionamentos de dados simples",
+        "Equipes que preferem padrões e ferramentas estabelecidos",
+        "Sistemas que requerem cache HTTP extensivo"
+      ],
+      "whenToUseGraphql": [
+        "Relacionamentos de dados complexos e consultas aninhadas",
+        "Aplicações móveis com restrições de banda",
+        "Desenvolvimento de frontend rápido com requisitos mutáveis",
+        "Agregação de microsserviços e federação de dados",
+        "Aplicações em tempo real que requerem assinaturas"
       ]
     },
     "websockets": {
       "title": "WebSockets",
-      "description": "WebSockets fornecem canais de comunicação full-duplex sobre TCP, habilitando troca de dados bidirecional em tempo real entre clientes e servidores para aplicações interativas.",
+      "description": "WebSockets fornecem canais de comunicação full-duplex sobre TCP, permitindo troca de dados bidirecional em tempo real entre clientes e servidores para aplicações interativas.",
+      "learningTip": "Compare WebSockets a uma ligação telefônica (conversa em tempo real, bidirecional) versus HTTP como enviar cartas de ida e volta. Pratique identificar quais aplicativos precisam de comunicação de 'ligação telefônica' (chat, jogos) versus comunicação de 'carta' (ler artigos, compras) para entender quando usar WebSockets.",
       "keyPoints": [
         "Habilitam comunicação bidirecional em tempo real entre cliente e servidor",
         "Mantêm conexões persistentes para troca de dados de baixa latência",
-        "Suportam vários padrões de mensageria e protocolos",
-        "Requerem gerenciamento cuidadoso de conexões e tratamento de erros",
+        "Suportam vários padrões de mensagens e protocolos",
+        "Requerem gerenciamento cuidadoso de conexão e tratamento de erros",
         "Essenciais para aplicações interativas e colaborativas"
+      ],
+      "websockets": [
+        "Conexão TCP persistente com baixa sobrecarga",
+        "Comunicação full-duplex permitindo envio/recebimento simultâneos",
+        "Modelo de programação orientado a eventos com manipuladores de mensagens",
+        "Suporte para transmissão de dados de texto e binários",
+        "Quadros ping/pong embutidos para monitoramento da saúde da conexão"
+      ],
+      "pollingTypes": [
+        "Short Polling - Solicitações HTTP regulares em intervalos fixos",
+        "Long Polling - Servidor mantém a solicitação até que dados estejam disponíveis",
+        "WebSockets - Conexão bidirecional persistente",
+        "Server-Sent Events - Streaming unidirecional de servidor para cliente",
+        "HTTP/2 Server Push - Servidor inicia a transmissão de dados"
+      ],
+      "serverSentEvents": [
+        "Comunicação unidirecional de servidor para cliente",
+        "Construído em HTTP padrão com reconexão automática",
+        "Protocolo simples baseado em texto com streaming de eventos",
+        "Melhor suporte em navegadores e implementação mais simples",
+        "Ideal para atualizações ao vivo e notificações"
+      ],
+      "streamingPatterns": [
+        "Chat em tempo real e aplicações de mensagens",
+        "Feeds de dados ao vivo e atualizações de mercado financeiro",
+        "Edição colaborativa e compartilhamento de documentos",
+        "Jogos e aplicações multimídia interativas",
+        "Comunicação de dispositivos IoT e streaming de dados de sensores"
+      ],
+      "implementationConsiderations": [
+        "Escalabilidade de conexão e gerenciamento de recursos",
+        "Fila de mensagens e garantias de entrega",
+        "Autenticação e autorização para conexões persistentes",
+        "Degradação graciosa e mecanismos de fallback",
+        "Requisitos de balanceamento de carga e sessões persistentes"
       ]
     },
     "apiGateway": {
       "title": "Gateway de API",
-      "description": "API Gateway atua como um ponto de entrada único para requisições de clientes, fornecendo gerenciamento centralizado de tráfego de API, segurança, monitoramento e preocupações transversais em arquiteturas de microsserviços.",
+      "description": "O Gateway de API atua como um ponto de entrada único para solicitações de clientes, fornecendo gerenciamento centralizado de tráfego de API, segurança, monitoramento e preocupações transversais em arquiteturas de microsserviços.",
+      "learningTip": "Pense no Gateway de API como um concierge de hotel - os hóspedes (clientes) vão até uma pessoa que sabe como rotear solicitações para diferentes serviços do hotel (microsserviços). Pratique desenhar um layout de hotel e explicar como o concierge lida com autenticação, direções e coordenação de serviços.",
       "keyPoints": [
-        "Centralizar gerenciamento de API e fornecer ponto de entrada único",
-        "Lidar com preocupações transversais como autenticação e rate limiting",
-        "Habilitar composição de API e abstração de serviços backend",
-        "Fornecer monitoramento, analytics e visibilidade operacional",
+        "Centralizar o gerenciamento de API e fornecer um ponto de entrada único",
+        "Lidar com preocupações transversais como autenticação e limitação de taxa",
+        "Habilitar composição de API e abstração de serviços de backend",
+        "Fornecer monitoramento, análises e visibilidade operacional",
         "Suportar versionamento de API e compatibilidade retroativa"
+      ],
+      "coreFeatures": [
+        "Roteamento de solicitações e balanceamento de carga para serviços de backend",
+        "Autenticação, autorização e aplicação de segurança",
+        "Limitação de taxa, controle de tráfego e gerenciamento de cotas",
+        "Transformação de solicitação/resposta e tradução de protocolo",
+        "Coleta de monitoramento, registros e análises"
+      ],
+      "securityFeatures": [
+        "Gerenciamento e validação de chaves de API",
+        "Validação de tokens OAuth2 e JWT",
+        "Listas brancas e negras de IPs",
+        "Terminação SSL e gerenciamento de certificados",
+        "Proteção contra DDoS e detecção de ameaças"
+      ],
+      "trafficManagement": [
+        "Balanceamento de carga em várias instâncias de backend",
+        "Padrão de disjuntor para tolerância a falhas",
+        "Lógica de tentativa e configuração de tempo limite",
+        "Cache para melhorar o desempenho",
+        "Compressão e otimização de solicitação/resposta"
+      ],
+      "operationalFeatures": [
+        "Monitoramento e alertas em tempo real",
+        "Análises e relatórios de uso de API",
+        "Verificações de saúde e descoberta de serviços",
+        "Testes A/B e implantações canárias",
+        "Documentação de API e portal de desenvolvedores"
+      ],
+      "implementationPatterns": [
+        "Gateway centralizado para todo o tráfego de API",
+        "Padrão Backend for Frontend (BFF)",
+        "Micro-gateway para domínios de serviço específicos",
+        "Gateway de borda para tráfego externo",
+        "Gateway interno para comunicação entre serviços"
       ]
     },
     "serviceMesh": {
-      "title": "Service Mesh",
-      "description": "Service mesh fornece uma camada de infraestrutura dedicada para comunicação serviço-a-serviço, oferecendo gerenciamento de tráfego, segurança e observabilidade sem requerer mudanças no código da aplicação.",
+      "title": "Malha de Serviços",
+      "description": "A malha de serviços fornece uma camada de infraestrutura dedicada para comunicação entre serviços, oferecendo gerenciamento de tráfego, segurança e observabilidade sem exigir alterações no código da aplicação.",
+      "learningTip": "Visualize a malha de serviços como a infraestrutura rodoviária de uma cidade - os serviços são prédios, e a malha é as estradas, semáforos e placas que gerenciam o fluxo de tráfego entre eles. Pratique explicar como você pode atualizar as estradas sem mudar os prédios (serviços).",
       "keyPoints": [
-        "Fornecer infraestrutura dedicada para comunicação de serviços",
-        "Lidar com gerenciamento de tráfego, segurança e observabilidade transparentemente",
+        "Fornecer infraestrutura dedicada para comunicação entre serviços",
+        "Gerenciar tráfego, segurança e observabilidade de forma transparente",
         "Habilitar aplicação de políticas e gerenciamento de configuração",
-        "Suportar adoção gradual e ambientes políglotas",
-        "Separar preocupações de infraestrutura da lógica de aplicação"
-      ]
-    },
-    "appServers": {
-      "title": "Servidores de Aplicação",
-      "description": "Servidores de aplicação hospedam e executam lógica de negócio, fornecendo ambientes de execução para aplicações e gerenciando recursos como conexões, transações e segurança.",
-      "keyPoints": [
-        "Hospedam e executam lógica de negócio e processamento de aplicações",
-        "Gerenciam ciclo de vida de aplicações e alocação de recursos",
-        "Fornecem ambientes de execução e serviços de middleware",
-        "Lidam com requisições concorrentes de usuários e gerenciamento de sessões",
-        "Integram com bancos de dados, filas de mensagens e serviços externos"
+        "Suportar adoção gradual e ambientes poliglotas",
+        "Separar preocupações de infraestrutura da lógica da aplicação"
       ],
-      "types": [
-        "Servidores Java - Tomcat, JBoss, WebLogic, WebSphere",
-        "Servidores .NET - IIS, Kestrel, Azure App Service",
-        "Servidores Node.js - Express, Fastify, aplicações NestJS",
-        "Servidores Python - Django, Flask, aplicações FastAPI",
-        "Baseados em contêineres - Contêineres Docker com orquestração"
-      ]
-    },
-    "caching": {
-      "title": "Cache",
-      "description": "Cache armazena dados frequentemente acessados em camadas de armazenamento rápido para reduzir latência, melhorar performance e diminuir carga em sistemas backend e bancos de dados.",
-      "keyPoints": [
-        "Melhora dramaticamente tempos de resposta e experiência do usuário",
-        "Reduz carga em bancos de dados e operações backend custosas",
-        "Reduz custos de infraestrutura através de menor uso de recursos",
-        "Habilita melhor escalabilidade sob condições de alto tráfego",
-        "Fornece resistência durante interrupções de serviços backend"
-      ]
-    },
-    "databases": {
-      "title": "Bancos de Dados",
-      "description": "Bancos de dados fornecem armazenamento e recuperação persistente de dados estruturados e não estruturados, oferecendo diferentes modelos otimizados para vários casos de uso e requisitos de performance.",
-      "keyPoints": [
-        "Fornecem armazenamento persistente e confiável para dados de aplicação",
-        "Suportam consultas complexas e relacionamentos de dados",
-        "Garantem consistência, integridade e durabilidade de dados (ACID)",
-        "Permitem acesso concorrente com gerenciamento de transações",
-        "Oferecem diferentes modelos otimizados para casos de uso específicos"
-      ]
-    },
-    "storage": {
-      "title": "Armazenamento",
-      "description": "Sistemas de armazenamento fornecem diferentes tipos de persistência de dados com características variadas de performance, durabilidade e custo para atender diversos requisitos de aplicação.",
-      "keyPoints": [
-        "Fornecem armazenamento persistente com diferentes características de performance",
-        "Oferecem vários tipos de armazenamento otimizados para casos de uso específicos",
-        "Equilibram requisitos de custo, performance e durabilidade",
-        "Suportam diferentes padrões de acesso e gerenciamento de ciclo de vida de dados",
-        "Habilitam estratégias de backup, arquivamento e recuperação de desastres"
-      ]
-    },
-    "replication": {
-      "title": "Replicação",
-      "description": "Replicação cria cópias de dados através de múltiplos servidores ou localizações para melhorar disponibilidade, tolerância a falhas e performance de leitura enquanto garante consistência de dados.",
-      "keyPoints": [
-        "Melhora disponibilidade do sistema e tolerância a falhas através de redundância",
-        "Melhora performance de leitura distribuindo consultas entre réplicas",
-        "Fornece distribuição geográfica para latência reduzida",
-        "Habilita recuperação de desastres e continuidade do negócio",
-        "Suporta balanceamento de carga para cargas de trabalho intensivas em leitura"
+      "architecture": [
+        "Plano de Dados - Proxies sidecar lidando com comunicação de serviços",
+        "Plano de Controle - Gerenciamento e configuração do plano de dados",
+        "Descoberta de Serviços - Detecção e registro automáticos",
+        "Gerenciamento de Configuração - Regras de roteamento e políticas",
+        "Coleta de Telemetria - Métricas, logs e rastreamento distribuído"
       ],
-      "types": [
-        "Master-Slave - Um nó primário de escrita, múltiplas réplicas de leitura",
-        "Master-Master - Múltiplos nós podem aceitar escritas",
-        "Síncrona - Escritas confirmadas em todas as réplicas antes do sucesso",
-        "Assíncrona - Escritas confirmadas imediatamente, replicadas depois",
-        "Semi-Síncrona - Abordagem híbrida com consistência configurável"
-      ]
-    },
-    "sharding": {
-      "title": "Sharding",
-      "description": "Sharding particiona horizontalmente dados através de múltiplos bancos de dados ou servidores, distribuindo tanto dados quanto carga para alcançar melhor performance e escalabilidade.",
-      "keyPoints": [
-        "Particiona horizontalmente dados através de múltiplas instâncias de banco de dados",
-        "Distribui tanto armazenamento quanto carga computacional",
-        "Habilita escalabilidade linear adicionando mais shards",
-        "Melhora performance de consultas através de processamento paralelo",
-        "Suporta conjuntos de dados muito grandes que excedem capacidade de servidor único"
-      ]
-    },
-    "cdn": {
-      "title": "Rede de Distribuição de Conteúdo (CDN)",
-      "description": "CDNs distribuem conteúdo através de servidores geograficamente dispersos para entregar conteúdo web e serviços com alta performance, disponibilidade e latência reduzida para usuários mundialmente.",
-      "keyPoints": [
-        "Reduz latência servindo conteúdo de servidores geograficamente mais próximos",
-        "Melhora performance do site e experiência do usuário globalmente",
-        "Reduz custos de largura de banda e carga do servidor",
-        "Fornece proteção DDoS e segurança aprimorada",
-        "Habilita escalabilidade global para entrega de conteúdo"
-      ]
-    },
-    "scalingTypes": {
-      "title": "Tipos de Escalabilidade",
-      "description": "Estratégias de escalabilidade definem como sistemas lidam com carga aumentada através de escalabilidade vertical (adicionar mais poder) ou escalabilidade horizontal (adicionar mais servidores) para atender demandas de performance.",
-      "keyPoints": [
-        "Abordam carga crescente e requisitos de performance",
-        "Escolhem entre abordagens de escalabilidade vertical e horizontal",
-        "Equilibram custo, complexidade e benefícios de performance",
-        "Planejam para necessidades de escalabilidade imediatas e de longo prazo",
-        "Consideram arquitetura de aplicação e restrições tecnológicas"
-      ]
-    },
-    "capTheorem": {
-      "title": "Teorema CAP",
-      "description": "Teorema CAP estabelece que sistemas distribuídos só podem garantir duas de três propriedades: Consistência, Disponibilidade e Tolerância a partições, requerendo decisões de trade-off no design do sistema.",
-      "keyPoints": [
-        "Princípio fundamental governando design de sistemas distribuídos",
-        "Apenas duas de três propriedades podem ser garantidas simultaneamente",
-        "Força decisões explícitas de trade-off na arquitetura do sistema",
-        "Ajuda a entender limitações de sistemas distribuídos",
-        "Guia seleção de tecnologia e padrões de design"
+      "trafficManagement": [
+        "Balanceamento de carga inteligente e roteamento de tráfego",
+        "Políticas de disjuntor e tentativa",
+        "Gerenciamento de tempo limite e prazo",
+        "Divisão de tráfego para implantações canárias",
+        "Injeção de falhas para engenharia de caos"
+      ],
+      "securityFeatures": [
+        "TLS mútuo (mTLS) para criptografia entre serviços",
+        "Controle de acesso baseado em identidade e autorização",
+        "Gerenciamento e rotação de certificados",
+        "Aplicação de políticas de segurança e conformidade",
+        "Princípios de rede de confiança zero"
+      ],
+      "observabilityFeatures": [
+        "Rastreamento distribuído através de limites de serviço",
+        "Coleta de métricas e monitoramento",
+        "Registros de acesso e trilhas de auditoria",
+        "Visualização de topologia de serviços",
+        "Análise de desempenho e identificação de gargalos"
+      ],
+      "popularSolutions": [
+        "Istio - Malha de serviços abrangente com recursos extensivos",
+        "Linkerd - Malha de serviços leve e simples",
+        "Consul Connect - Solução de malha de serviços da HashiCorp",
+        "AWS App Mesh - Malha de serviços gerenciada para AWS",
+        "Envoy Proxy - Proxy de alto desempenho para plano de dados de malha de serviços"
+      ],
+      "adoptionStrategy": [
+        "Comece com recursos de observabilidade e monitoramento",
+        "Adicione gradualmente capacidades de gerenciamento de tráfego",
+        "Implemente políticas de segurança e mTLS",
+        "Expanda para recursos avançados como injeção de falhas",
+        "Considere a complexidade operacional e experiência da equipe"
       ]
     },
     "messageQueues": {
       "title": "Filas de Mensagens",
-      "description": "Filas de mensagens permitem comunicação assíncrona entre serviços armazenando mensagens em uma fila até que possam ser processadas, fornecendo baixo acoplamento e melhor resiliência do sistema.",
+      "description": "Filas de mensagens permitem comunicação assíncrona entre serviços, armazenando mensagens em uma fila até que possam ser processadas, proporcionando acoplamento fraco e maior resiliência do sistema.",
+      "learningTip": "Use a analogia dos correios - remetentes depositam cartas em caixas de correio (produtores para filas) e carteiros entregam quando conveniente (consumidores processam mensagens). Pratique explicar como isso evita que o remetente espere e o que acontece quando o carteiro está doente (falha do consumidor).",
       "keyPoints": [
-        "Permitem comunicação assíncrona entre serviços distribuídos",
-        "Fornecem baixo acoplamento e melhor resiliência do sistema",
-        "Suportam balanceamento de carga e escalabilidade horizontal de consumidores",
-        "Garantem durabilidade de mensagens e garantias de entrega",
+        "Habilitam comunicação assíncrona entre serviços distribuídos",
+        "Fornecem acoplamento fraco e maior resiliência do sistema",
+        "Suportam balanceamento de carga e escalonamento horizontal de consumidores",
+        "Garantem durabilidade e garantias de entrega de mensagens",
         "Habilitam arquiteturas orientadas a eventos e comunicação de microsserviços"
       ],
       "types": [
         "Ponto-a-Ponto - Um produtor envia para um consumidor",
-        "Publish-Subscribe - Um produtor envia para múltiplos consumidores",
-        "Request-Reply - Comunicação síncrona sobre canais assíncronos",
-        "Dead Letter Queue - Lidar com processamento de mensagens falhadas",
-        "Priority Queue - Processar mensagens de alta prioridade primeiro"
+        "Publicar-Inscrever - Um produtor envia para múltiplos consumidores",
+        "Solicitação-Resposta - Comunicação síncrona sobre canais assíncronos",
+        "Fila de Letras Mortas - Lida com falhas no processamento de mensagens",
+        "Fila de Prioridade - Processa mensagens de alta prioridade primeiro"
+      ],
+      "patterns": [
+        "Produtor-Consumidor - Envio e recebimento básico de mensagens",
+        "Fila de Trabalho - Distribui tarefas entre múltiplos trabalhadores",
+        "Fan-out - Transmite mensagens para múltiplos consumidores",
+        "Roteamento - Roteia mensagens com base em conteúdo ou cabeçalhos",
+        "RPC sobre MQ - Chamadas de procedimento remoto usando filas de mensagens"
+      ],
+      "considerations": [
+        "Ordenação de mensagens e garantias de entrega",
+        "Requisitos de durabilidade e persistência da fila",
+        "Tratamento de erros e mecanismos de tentativa",
+        "Serialização de mensagens e evolução de esquemas",
+        "Monitoramento da profundidade da fila e atraso do consumidor"
+      ],
+      "whenToUse": [
+        "Desacoplamento da comunicação de microsserviços",
+        "Gerenciamento de picos de tráfego e balanceamento de carga",
+        "Implementação de arquiteturas orientadas a eventos",
+        "Processamento de tarefas em segundo plano",
+        "Integração de sistemas com diferentes velocidades de processamento"
+      ],
+      "popularSolutions": [
+        "Apache Kafka - Streaming distribuído de alto rendimento",
+        "RabbitMQ - Corretor de mensagens rico em recursos",
+        "Amazon SQS - Serviço de fila de mensagens gerenciado na nuvem",
+        "Redis Pub/Sub - Mensagens em memória para aplicações em tempo real",
+        "Apache Pulsar - Mensagens multi-tenant e geo-replicadas"
       ]
     },
     "eventualConsistency": {
       "title": "Consistência Eventual",
-      "description": "Consistência eventual é um modelo de consistência onde o sistema se tornará consistente ao longo do tempo, permitindo inconsistências temporárias para alcançar melhor disponibilidade e tolerância a partições.",
+      "description": "A consistência eventual é um modelo de consistência onde o sistema se tornará consistente ao longo do tempo, permitindo inconsistências temporárias para alcançar melhor disponibilidade e tolerância a partições.",
+      "learningTip": "Pense na consistência eventual como fofocas se espalhando por uma escola - nem todos ouvem a notícia ao mesmo tempo, mas eventualmente todos sabem. Pratique explicar por que esse atraso é aceitável para curtidas em redes sociais, mas não para saldos bancários.",
       "keyPoints": [
         "Permite inconsistências temporárias para melhor disponibilidade",
-        "Sistema se torna consistente ao longo do tempo sem intervenção externa",
+        "O sistema se torna consistente ao longo do tempo sem intervenção externa",
         "Habilita alta disponibilidade e tolerância a partições (AP no CAP)",
-        "Reduz latência evitando coordenação síncrona",
-        "Essencial para sistemas distribuídos de grande escala"
+        "Reduz a latência ao evitar coordenação síncrona",
+        "Essencial para sistemas distribuídos em grande escala"
+      ],
+      "types": [
+        "Consistência Eventual Forte - Convergência garantida",
+        "Consistência Fraca - Sem garantias sobre quando a consistência ocorre",
+        "Consistência de Sessão - Consistência dentro de uma sessão de usuário",
+        "Consistência de Leitura Monotônica - Leituras nunca retrocedem",
+        "Consistência Causal - Operações relacionadas causalmente são ordenadas"
+      ],
+      "patterns": [
+        "Origem de Eventos - Armazena eventos e repete para consistência",
+        "CQRS - Modelos de leitura e escrita separados com sincronização assíncrona",
+        "Padrão Saga - Gerencia transações distribuídas",
+        "Tipos de Dados Replicados sem Conflitos (CRDTs)",
+        "Relógios Vetoriais - Rastreia causalidade em sistemas distribuídos"
+      ],
+      "considerations": [
+        "Tolerância do negócio para inconsistências temporárias",
+        "Estratégias e políticas de resolução de conflitos",
+        "Experiência do usuário durante estados inconsistentes",
+        "Monitoramento e alertas para atraso de consistência",
+        "Mecanismos de reconciliação e reparo de dados"
+      ],
+      "whenToUse": [
+        "Sistemas distribuídos globais com necessidades de alta disponibilidade",
+        "Plataformas de mídia social e compartilhamento de conteúdo",
+        "Sistemas de inventário e catálogo de comércio eletrônico",
+        "Aplicações de colaboração em tempo real",
+        "Sistemas de coleta de dados de IoT e sensores"
+      ],
+      "tradeOffs": [
+        "Disponibilidade vs Consistência - Escolhe disponibilidade em vez de consistência imediata",
+        "Desempenho vs Correção - Respostas mais rápidas com consistência atrasada",
+        "Complexidade vs Simplicidade - Lógica de resolução de conflitos mais complexa",
+        "Experiência do Usuário vs Design do Sistema - Lidar com estados inconsistentes de forma graciosa"
       ]
     },
     "eventSourcing": {
-      "title": "Event Sourcing",
-      "description": "Event sourcing armazena o estado de uma entidade de negócio como uma sequência de eventos que mudam o estado, fornecendo uma trilha de auditoria completa e habilitando capacidades poderosas de consulta e reconstrução.",
+      "title": "Origem de Eventos",
+      "description": "A origem de eventos armazena o estado de uma entidade de negócios como uma sequência de eventos que alteram o estado, fornecendo uma trilha de auditoria completa e permitindo capacidades poderosas de consulta e reconstrução.",
+      "learningTip": "Compare a origem de eventos a manter um diário detalhado em vez de apenas atualizar seu status atual. Pratique 'reconstruir' seu dia lendo entradas do diário cronologicamente - isso reflete como a origem de eventos reconstrói o estado atual a partir de eventos históricos.",
       "keyPoints": [
-        "Armazenar eventos como única fonte da verdade em vez do estado atual",
-        "Fornecer trilha de auditoria completa e reconstrução histórica",
-        "Habilitar consultas temporais e análise point-in-time",
-        "Suportar replay de eventos para debugging e testes",
-        "Facilitar integração com arquiteturas orientadas a eventos"
+        "Armazena eventos como a única fonte de verdade em vez do estado atual",
+        "Fornece trilha de auditoria completa e reconstrução histórica",
+        "Habilita consultas temporais e análise de pontos no tempo",
+        "Suporta repetição de eventos para depuração e testes",
+        "Facilita integração com arquiteturas orientadas a eventos"
+      ],
+      "types": [
+        "Eventos de Comando - Ações que alteram o estado do sistema",
+        "Eventos de Domínio - Ocorrências significativas para o negócio",
+        "Eventos de Integração - Eventos de sistema entre limites",
+        "Eventos de Instantâneo - Instantâneos periódicos do estado para desempenho",
+        "Eventos Compensatórios - Desfazem ou corrigem eventos anteriores"
+      ],
+      "patterns": [
+        "Armazenamento de Eventos - Banco de dados especializado para armazenar eventos",
+        "Streaming de Eventos - Processamento e distribuição de eventos em tempo real",
+        "Projeção - Constrói modelos de leitura a partir de fluxos de eventos",
+        "Instantâneo - Instantâneos periódicos do estado para desempenho",
+        "Versionamento de Eventos - Lida com evolução de esquemas ao longo do tempo"
+      ],
+      "considerations": [
+        "Design de esquemas de eventos e estratégias de versionamento",
+        "Requisitos de armazenamento para fluxos de eventos crescentes",
+        "Desempenho de consulta e manutenção de projeção",
+        "Ordenação de eventos e garantias de consistência",
+        "Privacidade e conformidade com retenção de dados"
+      ],
+      "whenToUse": [
+        "Sistemas que requerem trilhas de auditoria completas",
+        "Domínios de negócios complexos com comportamento rico",
+        "Aplicações que precisam de consultas temporais",
+        "Sistemas com requisitos de conformidade regulatória",
+        "Arquiteturas de microsserviços orientadas a eventos"
+      ],
+      "benefits": [
+        "Trilha de auditoria completa e análise histórica",
+        "Adequação natural para arquiteturas orientadas a eventos",
+        "Testes simplificados com repetição de eventos",
+        "Geração flexível de modelos de leitura",
+        "Suporte para fluxos de trabalho de negócios complexos"
+      ],
+      "challenges": [
+        "Aumento dos requisitos de armazenamento ao longo do tempo",
+        "Complexidade na evolução de esquemas de eventos",
+        "Considerações de desempenho para grandes fluxos de eventos",
+        "Curva de aprendizado para equipes de desenvolvimento",
+        "Consistência eventual em modelos de leitura"
       ]
     },
     "cqrs": {
-      "title": "CQRS (Command Query Responsibility Segregation)",
-      "description": "CQRS separa operações de leitura e escrita em modelos diferentes, permitindo estruturas de dados e padrões de processamento otimizados para comandos (escritas) e consultas (leituras).",
+      "title": "CQRS (Segregação de Responsabilidade de Comando e Consulta)",
+      "description": "CQRS separa operações de leitura e escrita em diferentes modelos, permitindo estruturas de dados e padrões de processamento otimizados para comandos (escritas) e consultas (leituras).",
+      "learningTip": "Pense no CQRS como filas de checkout separadas em uma loja - uma otimizada para compras rápidas (escritas) e outra para navegação e comparação de produtos (leituras). Pratique projetar exemplos simples onde as necessidades de leitura e escrita são muito diferentes, como um blog ou site de comércio eletrônico.",
       "keyPoints": [
-        "Separar modelos de leitura e escrita para performance ótima",
-        "Habilitar escalabilidade independente de operações de leitura e escrita",
-        "Suportar lógica de negócio complexa no processamento de comandos",
-        "Permitir múltiplos modelos de leitura otimizados para diferentes casos de uso",
-        "Facilitar arquiteturas orientadas a eventos e consistência eventual"
+        "Separa modelos de leitura e escrita para desempenho ideal",
+        "Permite escalonamento independente de operações de leitura e escrita",
+        "Suporta lógica de negócios complexa no processamento de comandos",
+        "Permite múltiplos modelos de leitura otimizados para diferentes casos de uso",
+        "Facilita arquiteturas orientadas a eventos e consistência eventual"
+      ],
+      "types": [
+        "CQRS Simples - Modelos separados, banco de dados compartilhado",
+        "CQRS com Origem de Eventos - Eventos como fonte de verdade",
+        "CQRS com Bancos de Dados Separados - Armazenamentos diferentes para leituras/escritas",
+        "CQRS Somente Leitura - Otimiza apenas o lado da leitura",
+        "CQRS Completo - Separação completa com sincronização assíncrona"
+      ],
+      "patterns": [
+        "Manipulador de Comando - Processa e valida comandos",
+        "Manipulador de Consulta - Executa operações de leitura otimizadas",
+        "Projeção - Constrói modelos de leitura a partir de eventos do modelo de escrita",
+        "Saga - Coordena processos de negócios complexos",
+        "Barramento de Eventos - Comunica entre lados de comando e consulta"
+      ],
+      "considerations": [
+        "Aumento da complexidade em comparação com operações CRUD simples",
+        "Consistência eventual entre modelos de leitura e escrita",
+        "Sincronização de dados e manutenção de projeção",
+        "Estratégias de teste para modelos separados",
+        "Requisitos de habilidades da equipe e curva de aprendizado"
+      ],
+      "whenToUse": [
+        "Domínios complexos com diferentes requisitos de leitura/escrita",
+        "Aplicações de alto desempenho com necessidades de escalonamento de leitura/escrita",
+        "Sistemas orientados a eventos com lógica de negócios rica",
+        "Aplicações que requerem múltiplos modelos de leitura especializados",
+        "Sistemas com necessidades complexas de relatórios e análises"
+      ],
+      "benefits": [
+        "Otimização independente de operações de leitura e escrita",
+        "Melhor desempenho através de modelos de dados especializados",
+        "Escalabilidade aprimorada com estratégias de escalonamento separadas",
+        "Segurança aprimorada com acesso baseado em papéis",
+        "Manipulação simplificada de lógica de negócios complexa"
+      ],
+      "challenges": [
+        "Aumento da complexidade do sistema e sobrecarga de desenvolvimento",
+        "Gerenciamento de consistência eventual entre modelos",
+        "Complexidade adicional de infraestrutura e operacional",
+        "Possível duplicação de código entre modelos",
+        "Curva de aprendizado para equipes de desenvolvimento"
+      ],
+      "implementationPatterns": [
+        "Padrão Mediador - Roteia comandos e consultas para manipuladores",
+        "Padrão Repositório - Abstrai acesso a dados para cada modelo",
+        "Unidade de Trabalho - Gerencia transações no processamento de comandos",
+        "Padrão Especificação - Encapsula lógica de consulta",
+        "Eventos de Domínio - Comunica mudanças entre contextos delimitados"
+      ]
+    },
+    "appServers": {
+      "title": "Servidores de Aplicação",
+      "description": "Servidores de aplicação hospedam e executam lógica de negócios, fornecendo ambientes de execução para aplicações e gerenciando recursos como conexões, transações e segurança.",
+      "learningTip": "Pense nos servidores de aplicação como restaurantes - eles recebem pedidos (solicitações), preparam comida (processam lógica de negócios) e servem clientes (retornam respostas). Pratique listar quais 'equipamentos de cozinha' (serviços de middleware) diferentes tipos de restaurantes (Java, .NET, Node.js) precisariam.",
+      "keyPoints": [
+        "Hospedar e executar lógica de negócios e processamento de aplicações",
+        "Gerenciar o ciclo de vida da aplicação e alocação de recursos",
+        "Fornecer ambientes de execução e serviços de middleware",
+        "Lidar com solicitações simultâneas de usuários e gerenciamento de sessões",
+        "Integrar com bancos de dados, filas de mensagens e serviços externos"
+      ],
+      "types": [
+        "Servidores de Aplicação Java - Tomcat, JBoss, WebLogic, WebSphere",
+        "Servidores de Aplicação .NET - IIS, Kestrel, Azure App Service",
+        "Servidores Node.js - Aplicações Express, Fastify, NestJS",
+        "Servidores Python - Aplicações Django, Flask, FastAPI",
+        "Baseado em Contêineres - Contêineres Docker com orquestração"
+      ],
+      "coreFeatures": [
+        "Processamento de Solicitações - Lida com solicitações HTTP e roteia para manipuladores",
+        "Gerenciamento de Sessões - Mantém o estado do usuário entre solicitações",
+        "Pool de Conexões - Gerencia conexões com banco de dados e externas",
+        "Segurança - Autenticação, autorização e proteção de dados",
+        "Monitoramento - Verificações de saúde, métricas e capacidades de registro"
+      ],
+      "considerations": [
+        "Gerenciamento de recursos e otimização de memória",
+        "Tratamento de solicitações simultâneas e segurança de threads",
+        "Integração com balanceadores de carga e proxies reversos",
+        "Estratégias de implantação e configuração de ambiente",
+        "Monitoramento, registro e otimização de desempenho"
+      ],
+      "whenToUse": [
+        "Aplicações web que requerem processamento de lógica de negócios",
+        "Serviços de API e arquiteturas de microsserviços",
+        "Aplicações empresariais com fluxos de trabalho complexos",
+        "Aplicações que requerem gerenciamento de sessões e estado",
+        "Sistemas que precisam de integração com várias fontes de dados"
+      ],
+      "bestPractices": [
+        "Implementar tratamento de erros adequado e registro",
+        "Usar pool de conexões para acesso ao banco de dados",
+        "Configurar pools de threads apropriados e limites de recursos",
+        "Implementar verificações de saúde e pontos de extremidade de monitoramento",
+        "Seguir as melhores práticas de segurança para autenticação e autorização"
+      ],
+      "scalingStrategies": [
+        "Escalonamento horizontal com múltiplas instâncias de servidor",
+        "Escalonamento vertical aumentando os recursos do servidor",
+        "Auto-escalonamento baseado em métricas de CPU, memória ou solicitações",
+        "Balanceamento de carga em vários servidores de aplicação",
+        "Contêinerização para implantação e escalonamento mais fáceis"
+      ]
+    },
+    "caching": {
+      "title": "Cache",
+      "description": "O cache armazena dados frequentemente acessados em camadas de armazenamento rápidas para reduzir latência, melhorar desempenho e diminuir a carga em sistemas de backend e bancos de dados.",
+      "learningTip": "Crie uma 'pirâmide de hierarquia de cache' desenhando com seu cérebro no topo (mais rápido), depois anotações em papel, depois livros, depois biblioteca. Pratique explicar por que você verificaria cada nível antes de passar para o próximo - isso reflete como os caches de computador funcionam do CPU ao disco.",
+      "keyPoints": [
+        "Melhora drasticamente os tempos de resposta da aplicação e a experiência do usuário",
+        "Reduz a carga em bancos de dados e operações de backend custosas",
+        "Reduz os custos de infraestrutura por meio do uso reduzido de recursos",
+        "Permite melhor escalabilidade em condições de alto tráfego",
+        "Fornece resiliência durante interrupções de serviços de backend"
+      ],
+      "types": [
+        "Cache do Navegador - Cache do lado do cliente em navegadores web",
+        "Cache CDN - Distribuição geográfica de conteúdo estático",
+        "Cache de Proxy Reverso - Cache do lado do servidor na borda",
+        "Cache de Aplicação - Cache em memória dentro das aplicações",
+        "Cache de Banco de Dados - Cache de resultados de consultas e pools de buffer"
+      ],
+      "cachingStrategies": [
+        "Cache-Aside (Carregamento Preguiçoso) - A aplicação gerencia o cache explicitamente",
+        "Write-Through - Escreve no cache e no banco de dados simultaneamente",
+        "Write-Behind (Write-Back) - Escreve no cache primeiro, no banco de dados depois",
+        "Refresh-Ahead - Atualiza proativamente o cache antes da expiração",
+        "Read-Through - O cache carrega automaticamente os dados em caso de falha de cache"
+      ],
+      "considerations": [
+        "Estratégias de invalidação de cache e consistência de dados",
+        "Otimização de uso de memória e políticas de despejo",
+        "Monitoramento da taxa de acertos de cache e ajuste de desempenho",
+        "Requisitos de frescor de dados e configuração de TTL",
+        "Estratégias de aquecimento de cache para inicialização de aplicação"
+      ],
+      "whenToUse": [
+        "Dados frequentemente acessados com baixa frequência de mudança",
+        "Consultas de banco de dados custosas ou resultados computacionais",
+        "Entrega de conteúdo estático (imagens, CSS, JavaScript)",
+        "Armazenamento de dados de sessão e preferências do usuário",
+        "Respostas de API com padrões de acesso previsíveis"
+      ],
+      "bestPractices": [
+        "Implementar convenções consistentes de nomeação de chaves de cache",
+        "Monitorar taxas de acertos de cache e métricas de desempenho",
+        "Usar valores de TTL apropriados para diferentes tipos de dados",
+        "Planejar para cenários de falha de cache e mecanismos de fallback",
+        "Implementar aquecimento de cache para dados críticos da aplicação"
+      ],
+      "popularSolutions": [
+        "Redis - Armazenamento de estrutura de dados em memória com persistência",
+        "Memcached - Cache de memória distribuído de alto desempenho",
+        "Hazelcast - Plataforma de computação em memória distribuída",
+        "Caffeine - Biblioteca de cache Java de alto desempenho",
+        "Varnish - Acelerador HTTP e cache de proxy reverso"
+      ]
+    },
+    "databases": {
+      "title": "Bancos de Dados",
+      "description": "Bancos de dados fornecem armazenamento e recuperação persistente de dados estruturados e não estruturados, oferecendo diferentes modelos otimizados para vários casos de uso e requisitos de desempenho.",
+      "learningTip": "Use a analogia de armário de arquivamento - bancos de dados SQL são como armários organizados com pastas rotuladas (tabelas) e regras rígidas, enquanto bancos de dados NoSQL são como caixas de armazenamento flexíveis onde você pode jogar diferentes itens juntos. Pratique categorizar aplicativos reais (Instagram, bancos) em necessidades de SQL vs NoSQL.",
+      "keyPoints": [
+        "Fornecem armazenamento confiável e persistente para dados da aplicação",
+        "Suportam consultas complexas e relacionamentos de dados",
+        "Garantem consistência, integridade e durabilidade de dados (ACID)",
+        "Habilitam acesso concorrente com gerenciamento de transações",
+        "Oferecem diferentes modelos otimizados para casos de uso específicos"
+      ],
+      "sqlDatabases": [
+        "Estrutura relacional com tabelas, linhas e colunas",
+        "Conformidade ACID para consistência e confiabilidade de dados",
+        "Consultas complexas com JOINs e agregações",
+        "Ecossistema maduro com amplo suporte de ferramentas",
+        "Exemplos: PostgreSQL, MySQL, Oracle, SQL Server"
+      ],
+      "nosqlTypes": [
+        "Armazenamentos de Documentos - MongoDB, CouchDB para esquemas flexíveis",
+        "Armazenamentos Chave-Valor - Redis, DynamoDB para buscas simples",
+        "Família de Colunas - Cassandra, HBase para dados de colunas amplas",
+        "Bancos de Dados de Grafos - Neo4j, Amazon Neptune para relacionamentos",
+        "Multi-Modelo - CosmosDB, ArangoDB suportando múltiplos paradigmas"
+      ],
+      "considerations": [
+        "Requisitos de consistência de dados (ACID vs consistência eventual)",
+        "Complexidade de consulta e requisitos de desempenho",
+        "Necessidades de escalabilidade (escalonamento vertical vs horizontal)",
+        "Flexibilidade de esquema e requisitos de evolução",
+        "Complexidade operacional e experiência da equipe"
+      ],
+      "whenToUse": [
+        "SQL: Relacionamentos complexos, requisitos ACID, relatórios",
+        "Documento: Esquemas flexíveis, desenvolvimento rápido, gerenciamento de conteúdo",
+        "Chave-Valor: Buscas simples, cache, armazenamento de sessão",
+        "Grafo: Redes sociais, recomendações, detecção de fraudes",
+        "Coluna: Dados de séries temporais, análises, alto volume de escrita"
+      ],
+      "bestPractices": [
+        "Escolher o tipo de banco de dados certo para seu caso de uso",
+        "Projetar índices eficientes para desempenho de consulta",
+        "Implementar backup adequado e recuperação de desastres",
+        "Monitorar métricas de desempenho e otimização de consultas",
+        "Planejar para crescimento de dados e requisitos de escalonamento"
+      ],
+      "decisionFactors": [
+        "Estrutura de dados e complexidade de relacionamento",
+        "Requisitos de consistência e transação",
+        "Prioridades de desempenho de leitura vs escrita",
+        "Requisitos de escalabilidade e disponibilidade",
+        "Experiência da equipe e capacidades operacionais"
+      ]
+    },
+    "storage": {
+      "title": "Armazenamento",
+      "description": "Sistemas de armazenamento fornecem diferentes tipos de persistência de dados com diferentes características de desempenho, durabilidade e custo para atender a diversos requisitos de aplicação.",
+      "learningTip": "Compare tipos de armazenamento à organização do seu armário - roupas frequentemente usadas (dados quentes) ao alcance fácil, itens sazonais (dados mornos) em prateleiras mais altas e roupas antigas (dados frios) em caixas de armazenamento. Pratique combinar diferentes recursos de aplicativos com tipos de armazenamento com base em padrões de acesso.",
+      "keyPoints": [
+        "Fornecem armazenamento de dados persistente com diferentes características de desempenho",
+        "Oferecem vários tipos de armazenamento otimizados para casos de uso específicos",
+        "Equilibram custo, desempenho e requisitos de durabilidade",
+        "Suportam diferentes padrões de acesso e gerenciamento de ciclo de vida de dados",
+        "Habilitam estratégias de backup, arquivamento e recuperação de desastres"
+      ],
+      "memoryStorage": [
+        "Tempos de acesso mais rápidos com latência de nanossegundos",
+        "Armazenamento volátil que perde dados na perda de energia",
+        "Capacidade limitada, mas desempenho extremamente alto",
+        "Usado para cache, armazenamento de sessão e processamento em tempo real",
+        "Exemplos: RAM, Redis, Memcached, bancos de dados em memória"
+      ],
+      "diskStorage": [
+        "Armazenamento persistente com tempos de acesso em milissegundos",
+        "Capacidade muito maior que armazenamento em memória",
+        "SSD vs HDD equilibrando velocidade e custo",
+        "Usado para bancos de dados, sistemas de arquivos e dados de aplicação",
+        "Exemplos: SSDs locais, armazenamento conectado à rede (NAS)"
+      ],
+      "blobStorage": [
+        "Armazenamento de objetos para dados não estruturados como arquivos e mídia",
+        "Altamente escalável com capacidade praticamente ilimitada",
+        "Acesso por API REST com capacidades de distribuição global",
+        "Custo-benefício para armazenamento de dados em grande escala e arquivamento",
+        "Exemplos: Amazon S3, Azure Blob Storage, Google Cloud Storage"
+      ],
+      "considerations": [
+        "Requisitos de desempenho (latência, throughput, IOPS)",
+        "Requisitos de durabilidade e disponibilidade",
+        "Otimização de custos para diferentes camadas de armazenamento",
+        "Políticas de gerenciamento de ciclo de vida de dados e arquivamento",
+        "Estratégias de backup, replicação e recuperação de desastres"
+      ],
+      "whenToUse": [
+        "Memória: Processamento em tempo real, cache, dados de sessão",
+        "Disco: Armazenamento de banco de dados, sistemas de arquivos, dados de aplicação",
+        "Blob: Arquivos de mídia, backups, arquivamento de dados, conteúdo estático",
+        "Híbrido: Armazenamento em camadas com movimento automático de dados",
+        "Distribuído: Alta disponibilidade e distribuição geográfica"
+      ],
+      "storagePatterns": [
+        "Armazenamento Quente - Dados frequentemente acessados com alto desempenho",
+        "Armazenamento Morno - Dados ocasionalmente acessados com desempenho moderado",
+        "Armazenamento Frio - Dados raramente acessados com menor custo",
+        "Armazenamento de Arquivo - Retenção de longo prazo com acesso mínimo",
+        "Armazenamento em Camadas - Movimento automático entre classes de armazenamento"
+      ],
+      "bestPractices": [
+        "Escolher tipos de armazenamento apropriados para diferentes categorias de dados",
+        "Implementar políticas de ciclo de vida de dados para otimização de custos",
+        "Projetar para durabilidade com replicação e backups",
+        "Monitorar desempenho de armazenamento e utilização de capacidade",
+        "Planejar para crescimento de dados e requisitos de escalonamento"
+      ]
+    },
+    "replication": {
+      "title": "Replicação",
+      "description": "A replicação cria cópias de dados em vários servidores ou locais para melhorar a disponibilidade, tolerância a falhas e desempenho de leitura, garantindo consistência de dados.",
+      "learningTip": "Pratique o 'sistema de amigos de backup' - explique a replicação como ter parceiros de estudo que mantêm cópias das suas anotações. Desenhe configurações mestre-escravo como uma pessoa fazendo anotações (mestre) enquanto outros copiam (escravos), depois pratique explicar o que acontece quando o anotador está ausente.",
+      "keyPoints": [
+        "Melhora a disponibilidade do sistema e tolerância a falhas por meio de redundância",
+        "Melhora o desempenho de leitura distribuindo consultas entre réplicas",
+        "Fornece distribuição geográfica para redução de latência",
+        "Habilita recuperação de desastres e continuidade de negócios",
+        "Suporta balanceamento de carga para cargas de trabalho intensivas em leitura"
+      ],
+      "types": [
+        "Mestre-Escravo - Um nó de escrita primário, várias réplicas de leitura",
+        "Mestre-Mestre - Múltiplos nós podem aceitar escritas",
+        "Síncrono - Escritas confirmadas em todas as réplicas antes do sucesso",
+        "Assíncrono - Escritas confirmadas imediatamente, replicadas depois",
+        "Semi-Síncrono - Abordagem híbrida com consistência configurável"
+      ],
+      "patterns": [
+        "Réplicas de Leitura - Nós dedicados para operações de leitura",
+        "Standby Quente - Sistemas de backup prontos para ativação",
+        "Replicação Geográfica - Distribuição de dados entre regiões",
+        "Replicação em Cascata - Hierarquias de replicação em múltiplos níveis",
+        "Replicação Seletiva - Replica apenas subconjuntos de dados específicos"
+      ],
+      "considerations": [
+        "Equilíbrio entre consistência e disponibilidade (teorema CAP)",
+        "Atraso de replicação e implicações de consistência eventual",
+        "Largura de banda de rede e sobrecarga de armazenamento",
+        "Resolução de conflitos em configurações mestre-mestre",
+        "Monitoramento da saúde da replicação e métricas de atraso"
+      ],
+      "whenToUse": [
+        "Requisitos de alta disponibilidade com tempo de inatividade mínimo",
+        "Cargas de trabalho intensivas em leitura que requerem escalonamento horizontal",
+        "Distribuição geográfica para aplicações globais",
+        "Planejamento de recuperação de desastres e continuidade de negócios",
+        "Requisitos de conformidade para redundância de dados"
+      ],
+      "bestPractices": [
+        "Monitorar o atraso de replicação e configurar alertas apropriados",
+        "Implementar procedimentos de failover e failback adequados",
+        "Testar cenários de recuperação de desastres regularmente",
+        "Escolher o nível de consistência com base nos requisitos de negócios",
+        "Planejar para partições de rede e cenários de cérebro dividido"
+      ],
+      "challenges": [
+        "Gerenciar consistência entre réplicas distribuídas",
+        "Lidar com partições de rede e cenários de cérebro dividido",
+        "Aumento de custos de armazenamento e rede",
+        "Complexidade na resolução de conflitos e fusão de dados",
+        "Sobrecarga operacional para monitoramento e manutenção"
+      ]
+    },
+    "sharding": {
+      "title": "Fragmentação",
+      "description": "A fragmentação particiona dados horizontalmente em vários bancos de dados ou servidores, distribuindo dados e carga para alcançar melhor desempenho e escalabilidade.",
+      "learningTip": "Use uma analogia de pizza - em vez de fazer uma pizza gigante (escalonamento vertical), faça várias pizzas menores (fragmentação) que diferentes fornos (servidores) podem lidar. Pratique desenhar como você dividiria dados de usuários por geografia, intervalos de ID de usuário ou recursos para internalizar estratégias de particionamento.",
+      "keyPoints": [
+        "Particiona dados horizontalmente em várias instâncias de banco de dados",
+        "Distribui carga de armazenamento e computacional",
+        "Permite escalabilidade linear adicionando mais fragmentos",
+        "Melhora o desempenho de consulta por meio de processamento paralelo",
+        "Suporta conjuntos de dados muito grandes que excedem a capacidade de um único servidor"
+      ],
+      "strategies": [
+        "Fragmentação Baseada em Intervalo - Particiona por intervalos de valores de dados",
+        "Fragmentação Baseada em Hash - Usa função de hash para distribuição uniforme",
+        "Fragmentação Baseada em Diretório - Serviço de busca mapeia chaves para fragmentos",
+        "Fragmentação Geográfica - Particiona por regiões geográficas",
+        "Fragmentação Baseada em Recursos - Separa por recursos da aplicação"
+      ],
+      "considerations": [
+        "Escolha de chave de fragmentação apropriada para distribuição uniforme",
+        "Lidar com consultas entre fragmentos e transações",
+        "Rebalanceamento de dados ao adicionar ou remover fragmentos",
+        "Gerenciamento de pontos quentes e distribuição desigual de dados",
+        "Aumento da complexidade da aplicação para roteamento de fragmentos"
+      ],
+      "whenToUse": [
+        "Conjuntos de dados muito grandes para servidores de banco de dados únicos",
+        "Requisitos de alto rendimento de escrita",
+        "Necessidade de escalabilidade horizontal além dos limites verticais",
+        "Requisitos de distribuição geográfica",
+        "Otimização de custos por meio de hardware comum"
+      ],
+      "challenges": [
+        "Consultas complexas entre fragmentos e junções",
+        "Manutenção da integridade referencial entre fragmentos",
+        "Rebalanceamento de dados durante adições/remoções de fragmentos",
+        "Lidar com falhas de fragmentos e recuperação",
+        "Aumento da complexidade operacional e monitoramento"
+      ],
+      "bestPractices": [
+        "Escolher chaves de fragmentação que distribuam dados uniformemente",
+        "Projetar a aplicação para minimizar operações entre fragmentos",
+        "Implementar monitoramento adequado para saúde e equilíbrio de fragmentos",
+        "Planejar para rebalanceamento de fragmentos e migração de dados",
+        "Usar hash consistente para melhor distribuição"
+      ],
+      "implementationPatterns": [
+        "Fragmentação em nível de aplicação com lógica de roteamento",
+        "Fragmentação baseada em proxy com roteamento transparente",
+        "Recursos de fragmentação nativos do banco de dados",
+        "Soluções de middleware para gerenciamento de fragmentos",
+        "Microsserviços com armazenamentos de dados dedicados"
+      ]
+    },
+    "cdn": {
+      "title": "Rede de Distribuição de Conteúdo (CDN)",
+      "description": "CDNs distribuem conteúdo em servidores geograficamente dispersos para entregar conteúdo e serviços web com alto desempenho, disponibilidade e latência reduzida para usuários em todo o mundo.",
+      "learningTip": "Imagine CDNs como uma cadeia de cafeterias - em vez de todos viajarem para um local central, você coloca lojas em cada bairro. Pratique explicar por que um usuário em Tóquio tem carregamento mais rápido da Netflix do que se todos os servidores estivessem na Califórnia, usando analogias de tempo de viagem.",
+      "keyPoints": [
+        "Reduz a latência ao servir conteúdo de servidores geograficamente mais próximos",
+        "Melhora o desempenho do site e a experiência do usuário globalmente",
+        "Reduz os custos de largura de banda e carga do servidor",
+        "Fornece proteção contra DDoS e segurança aprimorada",
+        "Permite escalabilidade global para entrega de conteúdo"
+      ],
+      "types": [
+        "CDN Estático - Cache de ativos estáticos como imagens, CSS, JavaScript",
+        "CDN Dinâmico - Cache e otimização de conteúdo dinâmico",
+        "CDN de Vídeo - Especializado para streaming e entrega de vídeo",
+        "CDN de API - Cache e aceleração de respostas de API",
+        "CDN de Computação de Borda - Executa código em locais de borda"
+      ],
+      "coreFeatures": [
+        "Pontos de Presença Globais (PoPs) para distribuição de conteúdo",
+        "Cache inteligente com TTL e invalidação de cache",
+        "Balanceamento de carga e failover entre servidores de borda",
+        "Compressão e otimização para entrega mais rápida",
+        "Análises e monitoramento de desempenho em tempo real"
+      ],
+      "considerations": [
+        "Estratégias de invalidação de cache e frescor de conteúdo",
+        "Cobertura geográfica e localizações de servidores de borda",
+        "Otimização de custos para largura de banda e solicitações",
+        "Gerenciamento de certificados SSL/TLS em nós de borda",
+        "Integração com servidores de origem e aplicações"
+      ],
+      "whenToUse": [
+        "Aplicações globais com usuários internacionais",
+        "Sites de alto tráfego que requerem entrega de conteúdo rápida",
+        "Aplicações ricas em mídia com grandes ativos estáticos",
+        "Sites de comércio eletrônico que precisam de tempos de carregamento de página rápidos",
+        "Serviços de API que requerem otimização de desempenho global"
+      ],
+      "benefits": [
+        "Tempos de carregamento de página significativamente reduzidos globalmente",
+        "Custos de largura de banda mais baixos e uso de recursos do servidor",
+        "Classificações de SEO aprimoradas por meio de desempenho mais rápido",
+        "Experiência do usuário e engajamento aprimorados",
+        "Proteção contra DDoS e recursos de segurança integrados"
+      ],
+      "popularSolutions": [
+        "Cloudflare - CDN global com recursos de segurança",
+        "Amazon CloudFront - Serviço de CDN integrado com AWS",
+        "Fastly - CDN em tempo real com computação de borda",
+        "Azure CDN - Entrega de conteúdo global da Microsoft",
+        "Google Cloud CDN - Integrado com a infraestrutura do Google"
+      ]
+    },
+    "scalingTypes": {
+      "title": "Tipos de Escalonamento",
+      "description": "Estratégias de escalonamento definem como os sistemas lidam com carga aumentada por meio de escalonamento vertical (adicionando mais potência) ou escalonamento horizontal (adicionando mais servidores) para atender às demandas de desempenho.",
+      "learningTip": "Use a analogia de 'músculo vs equipe' - escalonamento vertical é como obter músculos mais fortes (servidor maior), escalonamento horizontal é como adicionar mais pessoas à sua equipe (mais servidores). Pratique identificar quando você escolheria cada abordagem para diferentes cenários do mundo real, como restaurantes ou serviços de entrega.",
+      "keyPoints": [
+        "Abordar requisitos crescentes de carga e desempenho",
+        "Escolher entre abordagens de escalonamento vertical e horizontal",
+        "Equilibrar custo, complexidade e benefícios de desempenho",
+        "Planejar para necessidades de escalonamento imediato e de longo prazo",
+        "Considerar a arquitetura da aplicação e restrições tecnológicas"
+      ],
+      "verticalScaling": [
+        "Adicionar mais CPU, RAM ou armazenamento a servidores existentes",
+        "Mais simples de implementar com mudanças mínimas no código",
+        "Limitado por restrições de hardware e pontos únicos de falha",
+        "Mais caro por unidade de capacidade adicional",
+        "Adequado para aplicações com estado compartilhado ou transações complexas"
+      ],
+      "horizontalScaling": [
+        "Adicionar mais servidores para distribuir a carga entre instâncias",
+        "Potencial de escalonamento praticamente ilimitado",
+        "Requer design de aplicação sem estado e balanceamento de carga",
+        "Mais custo-benefício para requisitos de grande escala",
+        "Melhor tolerância a falhas por meio de redundância"
+      ],
+      "considerations": [
+        "Requisitos de gerenciamento de estado e arquitetura da aplicação",
+        "Limitações de escalonamento do banco de dados e estratégias",
+        "Implicações de largura de banda de rede e latência",
+        "Requisitos de complexidade operacional e monitoramento",
+        "Análise de custos para diferentes abordagens de escalonamento"
+      ],
+      "whenToUse": [
+        "Vertical: Aplicações legadas, bancos de dados, correções rápidas",
+        "Horizontal: Aplicações web, microsserviços, alta disponibilidade",
+        "Híbrido: Combina ambas as abordagens para resultados ótimos",
+        "Auto-escalonamento: Ajuste dinâmico baseado na demanda",
+        "Escalonamento Preditivo: Escalonamento proativo baseado em padrões"
+      ],
+      "bestPractices": [
+        "Projetar aplicações para serem sem estado para escalonamento horizontal",
+        "Implementar balanceamento de carga adequado e verificações de saúde",
+        "Monitorar métricas de desempenho e gatilhos de escalonamento",
+        "Planejar para degradação graciosa durante eventos de escalonamento",
+        "Testar procedimentos de escalonamento e automação regularmente"
+      ],
+      "hybridApproaches": [
+        "Começar com escalonamento vertical para simplicidade",
+        "Transicionar para escalonamento horizontal conforme os requisitos crescem",
+        "Usar grupos de auto-escalonamento para ajuste dinâmico",
+        "Implementar microsserviços para escalonamento independente",
+        "Combinar computação de borda com processamento centralizado"
+      ]
+    },
+    "capTheorem": {
+      "title": "Teorema CAP",
+      "description": "O Teorema CAP afirma que sistemas distribuídos só podem garantir duas de três propriedades: Consistência, Disponibilidade e Tolerância a Partições, exigindo decisões de troca em design de sistemas.",
+      "learningTip": "Lembre-se do CAP com a 'regra do triângulo' - desenhe um triângulo com C, A, P em cada canto e pratique explicar sistemas reais cobrindo um canto. Por exemplo, bancos tradicionais escolhem CA (consistência + disponibilidade), enquanto redes sociais frequentemente escolhem AP (disponibilidade + tolerância a partições).",
+      "keyPoints": [
+        "Princípio fundamental que rege o design de sistemas distribuídos",
+        "Apenas duas de três propriedades podem ser garantidas simultaneamente",
+        "Força decisões explícitas de troca na arquitetura do sistema",
+        "Ajuda a entender limitações de sistemas distribuídos",
+        "Orienta a seleção de tecnologia e padrões de design"
+      ],
+      "consistency": [
+        "Todos os nós veem os mesmos dados simultaneamente",
+        "Consistência forte garante sincronização imediata de dados",
+        "Transações ACID fornecem garantias de consistência",
+        "Pode exigir mecanismos de coordenação e bloqueio",
+        "Pode impactar o desempenho e a disponibilidade do sistema"
+      ],
+      "availability": [
+        "O sistema permanece operacional e responsivo",
+        "As solicitações recebem respostas sem garantir os dados mais recentes",
+        "Requer redundância e mecanismos de failover",
+        "Pode servir dados antigos durante problemas de rede",
+        "Crítico para aplicações voltadas para o usuário e serviços"
+      ],
+      "partitionTolerance": [
+        "O sistema continua operando apesar de falhas de rede",
+        "Essencial para sistemas distribuídos em redes",
+        "Lida com falhas de comunicação entre nós",
+        "Requer mecanismos de replicação e consenso",
+        "Requisito fundamental para distribuição geográfica"
+      ],
+      "systemTypes": [
+        "Sistemas CP - Consistência + Tolerância a Partições (MongoDB, Redis)",
+        "Sistemas AP - Disponibilidade + Tolerância a Partições (Cassandra, DynamoDB)",
+        "Sistemas CA - Consistência + Disponibilidade (RDBMS tradicional)",
+        "Consistência Eventual - Favorece disponibilidade com consistência eventual",
+        "Consistência Ajustável - Permite configuração de níveis de consistência"
+      ],
+      "tradeOffs": [
+        "CP: Sacrifica disponibilidade por consistência forte",
+        "AP: Aceita consistência eventual por alta disponibilidade",
+        "CA: Limitado a nó único ou redes perfeitas",
+        "Requisitos de negócios orientam decisões de troca",
+        "Diferentes partes do sistema podem fazer escolhas diferentes"
+      ],
+      "whenToUse": [
+        "CP: Sistemas financeiros, gerenciamento de inventário, dados críticos",
+        "AP: Mídias sociais, entrega de conteúdo, preferências do usuário",
+        "Híbrido: Diferentes níveis de consistência para diferentes tipos de dados",
+        "Ajustável: Permite que aplicações escolham o nível de consistência",
+        "Dependente do contexto: Corresponde aos requisitos das propriedades do sistema"
+      ]
+    },
+    "loadBalancers": {
+      "title": "Balanceadores de Carga",
+      "description": "Balanceadores de carga distribuem o tráfego de rede de entrada entre vários servidores para garantir alta disponibilidade, confiabilidade e desempenho ideal das aplicações.",
+      "learningTip": "Pratique desenhar arquiteturas de balanceadores de carga à mão e explique o fluxo de tráfego em voz alta. Comece com uma configuração simples de round-robin, depois adicione complexidade como verificações de saúde e sessões persistentes para construir seu modelo mental passo a passo.",
+      "keyPoints": [
+        "Distribuem tráfego entre vários servidores para evitar sobrecarga",
+        "Fornecem alta disponibilidade por meio de redundância e failover",
+        "Melhoram os tempos de resposta roteando para servidores ótimos",
+        "Habilitam escalonamento horizontal adicionando mais servidores",
+        "Realizam verificações de saúde para rotear tráfego apenas para servidores saudáveis"
+      ],
+      "types": [
+        "Camada 4 (Transporte) - Roteia com base em IP e porta",
+        "Camada 7 (Aplicação) - Roteia com base em conteúdo e cabeçalhos HTTP",
+        "Balanceadores de Carga de Hardware - Dispositivos físicos dedicados",
+        "Balanceadores de Carga de Software - Aplicações executadas em servidores padrão",
+        "Balanceadores de Carga na Nuvem - Serviços gerenciados de provedores de nuvem"
+      ],
+      "patterns": [
+        "Round Robin - Solicitações distribuídas sequencialmente",
+        "Round Robin Ponderado - Servidores atribuídos com diferentes pesos",
+        "Menos Conexões - Roteia para o servidor com menos conexões ativas",
+        "Hash de IP - Roteia com base no hash do IP do cliente",
+        "Geográfico - Roteia com base na localização do cliente"
+      ],
+      "considerations": [
+        "Ponto único de falha se não configurado corretamente",
+        "Terminação SSL e gerenciamento de certificados",
+        "Persistência de sessão e sessões persistentes",
+        "Monitoramento e alertas para saúde do balanceador de carga",
+        "Considerações de custo para soluções de hardware vs software"
       ]
     },
     "rateLimiting": {
-      "title": "Rate Limiting",
-      "description": "Rate limiting controla o número de requisições que um cliente pode fazer para uma API ou serviço dentro de uma janela de tempo específica, protegendo sistemas contra abuso e garantindo uso justo de recursos.",
+      "title": "Limitação de Taxa",
+      "description": "A limitação de taxa controla o número de solicitações que um cliente pode fazer a uma API ou serviço dentro de uma janela de tempo específica, protegendo sistemas contra abuso e garantindo uso justo de recursos.",
+      "learningTip": "Crie uma simulação simples de balde de tokens usando moedas ou tokens na sua mesa. Pratique calcular quantas solicitações podem ser tratadas por minuto com diferentes tamanhos de balde e taxas de recarga para internalizar o conceito.",
       "keyPoints": [
         "Previne sobrecarga do sistema e protege contra abuso",
         "Garante alocação justa de recursos entre usuários",
-        "Melhora estabilidade e performance do sistema",
-        "Reduz custos prevenindo desperdício de recursos",
-        "Essencial para monetização de APIs e aplicação de SLAs"
+        "Melhora a estabilidade e o desempenho do sistema",
+        "Reduz custos evitando desperdício de recursos",
+        "Essencial para monetização de API e aplicação de SLA"
       ],
       "types": [
-        "Token Bucket - Tokens adicionados em taxa fixa, consumidos por requisição",
-        "Leaky Bucket - Requisições processadas em taxa constante independente da entrada",
-        "Fixed Window - Número fixo de requisições por janela de tempo",
-        "Sliding Window - Janela de tempo deslizante para limitação mais precisa",
-        "Sliding Window Counter - Abordagem híbrida com melhor eficiência de memória"
+        "Balde de Tokens - Tokens adicionados a uma taxa fixa, consumidos por solicitação",
+        "Balde Furado - Solicitações processadas a uma taxa constante independentemente da entrada",
+        "Janela Fixa - Número fixo de solicitações por janela de tempo",
+        "Janela Deslizante - Janela de tempo rolante para limitação mais precisa",
+        "Contador de Janela Deslizante - Abordagem híbrida com melhor eficiência de memória"
       ],
       "considerations": [
         "Escolher janelas de tempo apropriadas (segundos, minutos, horas)",
-        "Tratar respostas de limite excedido graciosamente",
-        "Considerar limites diferentes para diferentes níveis de usuário",
-        "Implementar mensagens de erro adequadas e orientação de retry",
-        "Monitorar efetividade do rate limiting e ajustar conforme necessário"
+        "Lidar com respostas de limite de taxa excedido de forma graciosa",
+        "Considerar diferentes limites para diferentes níveis de usuário",
+        "Implementar mensagens de erro apropriadas e orientação de tentativa",
+        "Monitorar a eficácia da limitação de taxa e ajustar conforme necessário"
+      ],
+      "whenToUse": [
+        "APIs públicas para prevenir abuso e garantir disponibilidade",
+        "Recursos voltados para o usuário para prevenir spam e uso indevido",
+        "Operações intensivas em recursos como uploads de arquivos",
+        "Integrações de terceiros para respeitar seus limites",
+        "Comunicação de microsserviços para prevenir falhas em cascata"
+      ],
+      "bestPractices": [
+        "Usar limitação de taxa distribuída para escalabilidade",
+        "Implementar várias camadas de limitação de taxa (usuário, IP, chave de API)",
+        "Fornecer cabeçalhos de limite de taxa claros nas respostas",
+        "Permitir capacidade de burst para picos de tráfego legítimos",
+        "Registrar e monitorar eventos de limitação de taxa para análise"
+      ],
+      "implementationPatterns": [
+        "Contadores em memória para aplicações de servidor único",
+        "Limitação de taxa distribuída baseada em Redis",
+        "Limitação de taxa baseada em banco de dados para persistência",
+        "Limitação de taxa baseada em borda usando capacidades de CDN",
+        "Limitação de taxa integrada ao gateway de API"
+      ]
+    },
+    "jwt": {
+      "title": "JWT e OAuth2",
+      "description": "Tokens Web JSON (JWT) e OAuth2 fornecem mecanismos de autenticação e autorização seguros para aplicações modernas, permitindo autenticação sem estado e acesso seguro a APIs.",
+      "learningTip": "Decodifique um token JWT real usando jwt.io e examine cada seção (cabeçalho, carga útil, assinatura). Pratique explicar a diferença entre autenticação ('quem você é') e autorização ('o que você pode fazer') usando exemplos do dia a dia como cartões de identificação e chaves.",
+      "keyPoints": [
+        "Autenticação sem estado sem sessões do lado do servidor",
+        "Tokens autônomos com informações de usuário codificadas",
+        "Autorização segura baseada em tokens para APIs",
+        "Protocolos padronizados para integrações de terceiros",
+        "Autenticação escalável em sistemas distribuídos"
+      ],
+      "types": [
+        "Tokens de Acesso - Tokens de curta duração para acesso a APIs",
+        "Tokens de Atualização - Tokens de longa duração para obter novos tokens de acesso",
+        "Tokens de Identidade - Contém informações de identidade do usuário",
+        "Tokens de Portador - Tipo de token mais comum para cabeçalhos HTTP",
+        "Tokens Assinados - Assinados criptograficamente para integridade"
+      ],
+      "considerations": [
+        "Expiração de token e estratégias de atualização",
+        "Armazenamento seguro de token no lado do cliente",
+        "Mecanismos de revogação de token e lista negra",
+        "Gerenciamento e rotação adequados de chaves secretas",
+        "Proteção contra roubo de token e ataques de repetição"
+      ],
+      "whenToUse": [
+        "Implementações de Single Sign-On (SSO)",
+        "Autenticação de API para aplicativos móveis e web",
+        "Autenticação e autorização de microsserviços",
+        "Integrações de serviços de terceiros",
+        "Requisitos de autenticação sem estado"
+      ],
+      "bestPractices": [
+        "Usar HTTPS para todas as transmissões de token",
+        "Implementar validação e verificação de token adequadas",
+        "Definir tempos de expiração de token apropriados",
+        "Armazenar tokens de forma segura (cookies HttpOnly, armazenamento seguro)",
+        "Implementar logout adequado e limpeza de token"
+      ],
+      "securityFeatures": [
+        "Assinaturas digitais para integridade do token",
+        "Criptografia para dados sensíveis do token",
+        "Validação de audiência e emissor",
+        "Validação baseada em tempo (exp, iat, nbf)",
+        "Controle de acesso baseado em escopo"
+      ]
+    },
+    "tls": {
+      "title": "TLS/HTTPS",
+      "description": "A Segurança da Camada de Transporte (TLS) e HTTPS fornecem canais de comunicação criptografados, garantindo confidencialidade, integridade e autenticação de dados entre clientes e servidores.",
+      "learningTip": "Use a analogia de enviar uma caixa trancada pelo correio - pratique explicar o handshake TLS como troca de chaves, verificação de identidade e acordo sobre o tipo de cadeado. Verifique os detalhes de certificados reais no seu navegador para ver esses conceitos em ação.",
+      "keyPoints": [
+        "Criptografa dados em trânsito para prevenir espionagem",
+        "Fornece autenticação do servidor por meio de certificados",
+        "Garante a integridade dos dados e previne adulteração",
+        "Essencial para comunicações web seguras",
+        "Necessário para padrões web modernos e SEO"
+      ],
+      "types": [
+        "TLS 1.2 - Versão amplamente suportada e segura",
+        "TLS 1.3 - Versão mais recente com segurança e desempenho aprimorados",
+        "SSL (obsoleto) - Protocolo mais antigo, não mais recomendado",
+        "mTLS - TLS mútuo com autenticação de certificado de cliente",
+        "Criptografia de Ponta a Ponta - Criptografia completa do cliente ao servidor"
+      ],
+      "considerations": [
+        "Gerenciamento e renovação de certificados",
+        "Impacto de desempenho da criptografia/descriptografia",
+        "Seleção de suítes de cifras e segurança",
+        "Validação de certificados e cadeias de confiança",
+        "Problemas de conteúdo misto em aplicações web"
+      ],
+      "whenToUse": [
+        "Todas as aplicações web que lidam com dados sensíveis",
+        "Endpoints de API que transmitem informações confidenciais",
+        "Sistemas de autenticação e autorização",
+        "Aplicações de comércio eletrônico e financeiras",
+        "Qualquer aplicação que requer conformidade com privacidade de dados"
+      ],
+      "bestPractices": [
+        "Usar apenas TLS 1.2 ou versões superiores",
+        "Implementar HTTP Strict Transport Security (HSTS)",
+        "Usar suítes de cifras fortes e desativar as fracas",
+        "Implementar fixação de certificados para aplicativos móveis",
+        "Monitoramento e renovação regular de certificados"
+      ],
+      "implementationPatterns": [
+        "Terminação SSL do balanceador de carga",
+        "Criptografia de ponta a ponta através de proxies",
+        "Automação de certificados com Let's Encrypt",
+        "Certificados curinga para subdomínios",
+        "Monitoramento de transparência de certificados"
+      ]
+    },
+    "featureFlags": {
+      "title": "Bandeiras de Funcionalidade",
+      "description": "Bandeiras de funcionalidade (toggles de funcionalidade) permitem que desenvolvedores habilitem ou desabilitem funcionalidades dinamicamente sem implantar novo código, permitindo implantações mais seguras e lançamentos de funcionalidades controlados.",
+      "learningTip": "Pense nas bandeiras de funcionalidade como interruptores de luz em sua casa - você pode ligar/desligar funcionalidades para diferentes quartos (grupos de usuários). Pratique projetar uma simples instrução if/else que verifica uma bandeira antes de mostrar uma funcionalidade para entender a implementação básica.",
+      "keyPoints": [
+        "Habilitar/desabilitar funcionalidades sem implantação de código",
+        "Reduzir o risco de implantação por meio de lançamentos graduais",
+        "Suportar testes A/B e experimentação",
+        "Permitir reversão rápida de funcionalidades se surgirem problemas",
+        "Habilitar diferentes funcionalidades para diferentes segmentos de usuários"
+      ],
+      "types": [
+        "Bandeiras de Lançamento - Controlam a disponibilidade de funcionalidades em produção",
+        "Bandeiras de Experimento - Suportam testes A/B e experimentos",
+        "Bandeiras Operacionais - Controlam o comportamento e desempenho do sistema",
+        "Bandeiras de Permissão - Controlam o acesso com base em papéis do usuário",
+        "Interruptores de Emergência - Capacidades de desativação de funcionalidades emergenciais"
+      ],
+      "considerations": [
+        "Gerenciamento do ciclo de vida das bandeiras e limpeza",
+        "Impacto de desempenho da avaliação de bandeiras",
+        "Consistência em sistemas distribuídos",
+        "Gerenciamento e versionamento de configuração de bandeiras",
+        "Dívida técnica de bandeiras de longa duração"
+      ],
+      "whenToUse": [
+        "Lançamentos de novas funcionalidades e implantações canárias",
+        "Testes A/B e experimentos de experiência do usuário",
+        "Capacidades de desativação de funcionalidades emergenciais",
+        "Segmentação e personalização de usuários",
+        "Migração gradual para novos componentes do sistema"
+      ],
+      "bestPractices": [
+        "Implementar cache de avaliação de bandeiras para desempenho",
+        "Usar convenções de nomeação estruturadas para bandeiras",
+        "Limpeza regular de bandeiras e gerenciamento de dívida técnica",
+        "Implementar auditoria e monitoramento de mudanças de bandeiras",
+        "Separar configuração de bandeiras do código da aplicação"
+      ],
+      "implementationPatterns": [
+        "Bandeiras baseadas em arquivo de configuração",
+        "Gerenciamento de bandeiras baseado em banco de dados",
+        "Serviços de bandeiras de funcionalidade externas",
+        "Bandeiras baseadas em variáveis de ambiente",
+        "Atualizações de bandeiras em tempo real por meio de mensagens"
+      ]
+    },
+    "deployment": {
+      "title": "Estratégias de Implantação",
+      "description": "As estratégias de implantação definem como novas versões de aplicações são lançadas em produção, equilibrando velocidade, segurança e utilização de recursos, enquanto minimizam o tempo de inatividade e o risco.",
+      "learningTip": "Use notas adesivas coloridas para simular diferentes estratégias de implantação em um quadro branco. Notas azuis para a versão antiga, verdes para a nova - pratique movê-las para visualizar implantações azul-verde, canárias e rolantes até que os padrões se tornem intuitivos.",
+      "keyPoints": [
+        "Minimizar o tempo de inatividade durante atualizações de aplicações",
+        "Reduzir o risco por meio de processos de lançamento controlados",
+        "Permitir reversão rápida se problemas forem detectados",
+        "Suportar diferentes cadências de lançamento e requisitos",
+        "Equilibrar a utilização de recursos e a velocidade de implantação"
+      ],
+      "types": [
+        "Implantação Azul-Verde - Dois ambientes de produção idênticos",
+        "Implantação Rolante - Substituição gradual de instâncias",
+        "Implantação Canária - Teste em um pequeno subconjunto antes do lançamento completo",
+        "Teste A/B - Comparar diferentes versões com tráfego de usuário",
+        "Implantação de Recriação - Para a versão antiga, inicia a nova versão"
+      ],
+      "considerations": [
+        "Migração de banco de dados e compatibilidade de esquemas",
+        "Gerenciamento de sessões durante implantações",
+        "Requisitos de recursos para ambientes paralelos",
+        "Monitoramento e condições de gatilho para reversão",
+        "Estratégias de teste para validação de implantação"
+      ],
+      "whenToUse": [
+        "Aplicações de alta disponibilidade que requerem tempo de inatividade zero",
+        "Aplicações com requisitos rigorosos de SLA",
+        "Sistemas que requerem validação gradual de funcionalidades",
+        "Aplicações com dependências complexas de banco de dados",
+        "Serviços que requerem testes extensivos de integração"
+      ],
+      "bestPractices": [
+        "Implementar verificações de saúde abrangentes",
+        "Usar infraestrutura como código para consistência",
+        "Automatizar procedimentos e gatilhos de reversão",
+        "Monitorar métricas-chave durante implantações",
+        "Manter documentação de implantação e runbooks"
+      ],
+      "implementationPatterns": [
+        "Implantações baseadas em orquestração de contêineres",
+        "Troca de tráfego assistida por balanceadores de carga",
+        "Lançamentos controlados por bandeiras de funcionalidade",
+        "Automação de migração de banco de dados",
+        "Pipelines automatizados de teste e validação"
+      ]
+    },
+    "circuitBreaker": {
+      "title": "Disjuntor",
+      "description": "O padrão de disjuntor previne falhas em cascata em sistemas distribuídos ao monitorar chamadas de serviço e bloquear temporariamente solicitações para serviços que estão falhando, permitindo que eles tenham tempo para se recuperar.",
+      "learningTip": "Compare disjuntores a disjuntores elétricos em sua casa - quando há uma sobrecarga, eles 'disparam' para evitar danos. Pratique desenhar os três estados (fechado, aberto, semiaberto) e simule ser o disjuntor tomando decisões sobre quando bloquear solicitações.",
+      "keyPoints": [
+        "Previne falhas em cascata em sistemas distribuídos",
+        "Fornece resposta rápida a falhas em vez de esperar por tempos limite",
+        "Permite que serviços com falhas tenham tempo para se recuperar",
+        "Melhora a resiliência e estabilidade geral do sistema",
+        "Reduz o consumo de recursos em dependências com falhas"
+      ],
+      "types": [
+        "Estado Fechado - Operação normal, solicitações passam",
+        "Estado Aberto - Solicitações bloqueadas, serviço considerado com falha",
+        "Estado Semiaberto - Solicitações limitadas para testar a recuperação",
+        "Baseado em Tempo Limite - Abre com base em limiares de tempo de resposta",
+        "Baseado em Taxa de Falha - Abre com base em limiares de taxa de erro"
+      ],
+      "considerations": [
+        "Limiares apropriados de tempo limite e falha",
+        "Tempo de recuperação e duração do estado semiaberto",
+        "Mecanismos de fallback quando o circuito está aberto",
+        "Monitoramento e alertas para mudanças de estado do circuito",
+        "Impacto na experiência do usuário durante falhas"
+      ],
+      "whenToUse": [
+        "Arquiteturas de microsserviços com dependências de serviço",
+        "Integrações de API externas com preocupações de confiabilidade",
+        "Conexões de banco de dados propensas a falhas",
+        "Chamadas de rede em conexões não confiáveis",
+        "Qualquer sistema que requer tolerância a falhas e resiliência"
+      ],
+      "bestPractices": [
+        "Implementar mecanismos de fallback adequados",
+        "Monitorar métricas e estados do disjuntor",
+        "Configurar limiares apropriados para seu caso de uso",
+        "Fornecer mensagens de erro significativas aos usuários",
+        "Testar o comportamento do disjuntor em ambientes de teste"
+      ],
+      "implementationPatterns": [
+        "Disjuntores baseados em bibliotecas (Hystrix, Resilience4j)",
+        "Disjuntores integrados em malha de serviços",
+        "Recursos de disjuntor em gateways de API",
+        "Implementação personalizada com gerenciamento de estado",
+        "Disjuntores gerenciados por provedores de nuvem"
+      ]
+    },
+    "retryTimeout": {
+      "title": "Lógica de Tentativa e Tempos Limite",
+      "description": "A lógica de tentativa e os mecanismos de tempo limite lidam com falhas transitórias de forma graciosa, retryando automaticamente operações que falharam com atrasos apropriados e desistindo após limites de tempo razoáveis.",
+      "learningTip": "Pratique a 'dança de backoff exponencial' - bata palmas com atrasos crescentes (1 seg, 2 seg, 4 seg, 8 seg) para sentir o ritmo. Essa memória física ajuda a lembrar por que não tentamos novamente imediatamente e evitamos sobrecarregar serviços com falhas.",
+      "keyPoints": [
+        "Lidar com falhas transitórias automaticamente sem intervenção do usuário",
+        "Melhorar a confiabilidade do sistema e a experiência do usuário",
+        "Evitar desperdício de recursos em operações travadas",
+        "Fornecer degradação graciosa em condições de falha",
+        "Equilibrar entre persistência e proteção do sistema"
+      ],
+      "types": [
+        "Tentativa com Atraso Fixo - Tempo constante entre tentativas",
+        "Backoff Exponencial - Atraso crescente entre tentativas",
+        "Backoff Linear - Atrasos de tentativa aumentando linearmente",
+        "Tentativa com Jitter - Componente aleatório para evitar efeito manada",
+        "Integração com Disjuntor - Para tentativas quando o circuito abre"
+      ],
+      "considerations": [
+        "Número máximo de tentativas e duração total do tempo limite",
+        "Estratégias de atraso apropriadas para diferentes tipos de falha",
+        "Requisitos de idempotência para operações de tentativa",
+        "Consumo de recursos durante tentativas",
+        "Experiência do usuário durante operações de tentativa"
+      ],
+      "whenToUse": [
+        "Chamadas de rede propensas a falhas transitórias",
+        "Operações de banco de dados que podem falhar temporariamente",
+        "Integrações de serviços externos com problemas de confiabilidade",
+        "Operações de sistema de arquivos em ambientes distribuídos",
+        "Qualquer operação onde falhas temporárias são esperadas"
+      ],
+      "bestPractices": [
+        "Implementar backoff exponencial com jitter",
+        "Definir contagens máximas de tentativas e tempos limite razoáveis",
+        "Garantir que as operações sejam idempotentes antes de tentar novamente",
+        "Registrar tentativas para monitoramento e depuração",
+        "Fornecer feedback ao usuário durante sequências longas de tentativa"
+      ],
+      "implementationPatterns": [
+        "Padrão decorador para adicionar lógica de tentativa",
+        "Async/await com bibliotecas de tentativa",
+        "Mecanismos de tentativa baseados em filas de mensagens",
+        "Implementação de tentativa baseada em proxy",
+        "Capacidades de tentativa integradas em frameworks"
+      ]
+    },
+    "observability": {
+      "title": "Observabilidade",
+      "description": "A observabilidade fornece insights abrangentes sobre o comportamento do sistema por meio de métricas, logs e rastreamentos, permitindo que as equipes entendam, depurem e otimizem sistemas distribuídos de forma eficaz.",
+      "learningTip": "Lembre-se dos 'três pilares' usando seus sentidos: Métricas são como medir sua temperatura (números), Logs são como manter um diário (eventos), e Rastreamentos são como seguir migalhas de pão por uma floresta (caminhos de solicitação). Pratique identificar qual pilar ajudaria a depurar diferentes problemas.",
+      "keyPoints": [
+        "Fornece insights profundos sobre o comportamento e desempenho do sistema",
+        "Permite detecção e resolução proativa de problemas",
+        "Suporta tomada de decisão baseada em dados e otimização",
+        "Essencial para depuração de sistemas distribuídos complexos",
+        "Melhora o tempo médio de detecção e resolução (MTTD/MTTR)"
+      ],
+      "types": [
+        "Métricas - Medições numéricas do comportamento do sistema",
+        "Logs - Registros estruturados de eventos do sistema",
+        "Rastreamentos - Rastreamento de fluxo de solicitações entre serviços",
+        "Eventos - Ocorrências discretas no sistema",
+        "Perfis - Análise de desempenho e uso de recursos"
+      ],
+      "considerations": [
+        "Volume de dados e custos de armazenamento para dados de observabilidade",
+        "Impacto no desempenho da sobrecarga de instrumentação",
+        "Políticas de retenção de dados e requisitos de conformidade",
+        "Fadiga de alertas e gerenciamento de notificações",
+        "Privacidade e segurança dos dados de observabilidade"
+      ],
+      "whenToUse": [
+        "Sistemas de produção que requerem monitoramento e alertas",
+        "Sistemas distribuídos com interações de serviço complexas",
+        "Aplicações com requisitos rigorosos de SLA",
+        "Sistemas que requerem otimização de desempenho",
+        "Qualquer sistema onde entender o comportamento é crítico"
+      ],
+      "bestPractices": [
+        "Implementar logs estruturados com formatos consistentes",
+        "Usar rastreamento distribuído para visibilidade do fluxo de solicitações",
+        "Configurar alertas significativos baseados em SLIs e SLOs",
+        "Implementar estratégias de amostragem adequadas para dados de alto volume",
+        "Criar painéis focados em métricas de negócios e operacionais"
+      ],
+      "observabilityFeatures": [
+        "Capacidades de monitoramento e alerta em tempo real",
+        "Rastreamento distribuído através de limites de serviço",
+        "Agregação de logs e funcionalidade de busca",
+        "Rastreamento de métricas personalizadas e KPIs de negócios",
+        "Detecção e alerta automatizados de anomalias"
+      ]
+    },
+    "cachingPatterns": {
+      "title": "Padrões de Cache",
+      "description": "Os padrões de cache definem estratégias para armazenar e recuperar dados frequentemente acessados para melhorar o desempenho da aplicação, reduzir a latência e diminuir a carga em sistemas de backend.",
+      "learningTip": "Use sua cozinha como uma analogia de cache - itens frequentemente usados (sal, óleo) ficam no balcão (cache), enquanto itens raramente usados vão para a despensa (banco de dados). Pratique explicar cache-aside vs write-through usando cenários de cozinha para tornar os padrões memoráveis.",
+      "keyPoints": [
+        "Melhoram significativamente os tempos de resposta da aplicação",
+        "Reduzem a carga em bancos de dados e serviços de backend",
+        "Reduzem os custos de infraestrutura por meio do uso reduzido de recursos",
+        "Melhoram a experiência do usuário com acesso mais rápido aos dados",
+        "Permitem melhor escalabilidade sob cargas de tráfego altas"
+      ],
+      "types": [
+        "Cache-Aside (Carregamento Preguiçoso) - A aplicação gerencia o cache explicitamente",
+        "Write-Through - Escreve no cache e no banco de dados simultaneamente",
+        "Write-Behind (Write-Back) - Escreve no cache primeiro, no banco de dados depois",
+        "Refresh-Ahead - Atualiza proativamente o cache antes da expiração",
+        "Read-Through - O cache carrega automaticamente os dados em caso de falha de cache"
+      ],
+      "considerations": [
+        "Estratégias de invalidação de cache e consistência",
+        "Uso de memória e limitações de tamanho do cache",
+        "Otimização da taxa de acertos de cache e monitoramento",
+        "Requisitos de frescor de dados e configurações de TTL",
+        "Estratégias de aquecimento de cache para inicializações a frio"
+      ],
+      "whenToUse": [
+        "Dados frequentemente acessados com baixa frequência de mudança",
+        "Consultas de banco de dados custosas ou cálculos",
+        "Entrega de conteúdo estático ou semi-estático",
+        "Dados de sessão e preferências do usuário",
+        "Respostas de API com padrões de acesso previsíveis"
+      ],
+      "bestPractices": [
+        "Implementar convenções consistentes de nomeação de chaves de cache",
+        "Monitorar taxas de acertos de cache e métricas de desempenho",
+        "Usar valores de TTL apropriados para diferentes tipos de dados",
+        "Implementar aquecimento de cache para dados críticos",
+        "Planejar para cenários de falha de cache e mecanismos de fallback"
+      ],
+      "implementationPatterns": [
+        "Cache em memória com Redis ou Memcached",
+        "Cache em nível de aplicação com armazenamento local",
+        "Cache baseado em CDN para conteúdo estático",
+        "Cache de resultados de consultas de banco de dados",
+        "Hierarquias de cache em múltiplos níveis"
       ]
     }
   },
   "home": {
     "hero": {
-      "subtitle": "Domine os fundamentos de sistemas distribuídos, escalabilidade e padrões de arquitetura moderna"
+      "subtitle": "Domine os fundamentos de sistemas distribuídos, escalabilidade e padrões de arquitetura modernos"
     },
     "framework": {
-      "title": "Framework para Entrevistas de Design de Sistemas",
+      "title": "Estrutura para Entrevistas de Design de Sistemas",
+      "example": "Exemplo",
+      "tip": "Dica",
+      "step2": {
+        "architecture": {
+          "title": "Arquitetura de Alto Nível",
+          "components": {
+            "title": "Componentes Principais",
+            "items": [
+              "Aplicações cliente (web, móvel)",
+              "Balanceadores de carga",
+              "Servidores de aplicação",
+              "Bancos de dados (SQL, NoSQL)",
+              "Camadas de cache",
+              "Filas de mensagens",
+              "Sistemas de armazenamento"
+            ]
+          },
+          "patterns": {
+            "title": "Padrões Arquiteturais",
+            "items": [
+              "Microsserviços vs Monolito",
+              "Arquitetura orientada a eventos",
+              "Arquitetura em camadas",
+              "Arquitetura sem servidor"
+            ]
+          },
+          "tip": "Desenhe um diagrama simples para visualizar o fluxo de dados entre os componentes"
+        },
+        "dataModel": {
+          "title": "Modelo de Dados e Armazenamento",
+          "entities": {
+            "title": "Entidades de Dados",
+            "description": "Defina os principais objetos e suas relações:",
+            "items": [
+              "Perfis de usuário",
+              "Conteúdo/postagens",
+              "Relacionamentos (seguidores, curtidas)",
+              "Logs de atividades"
+            ]
+          },
+          "storage": {
+            "title": "Decisões de Armazenamento",
+            "items": [
+              "Trade-offs entre SQL e NoSQL",
+              "Estratégia de particionamento de dados",
+              "Abordagem de replicação",
+              "Planos de backup e recuperação"
+            ]
+          }
+        }
+      },
+      "step1": {
+        "functionalRequirements": {
+          "title": "Requisitos Funcionais: O que o sistema deve FAZER",
+          "userActions": {
+            "title": "Ações do Usuário",
+            "items": {
+              "posting": "Postar conteúdo, pesquisar, enviar mensagens",
+              "upload": "Fazer upload de arquivos, compartilhar mídia",
+              "registration": "Registro de usuários e perfis"
+            }
+          },
+          "systemBehaviors": {
+            "title": "Comportamentos do Sistema",
+            "items": {
+              "notifications": "Notificações e recomendações",
+              "processing": "Processamento de dados e análises",
+              "moderation": "Moderação de conteúdo"
+            }
+          },
+          "example": "Os usuários podem criar postagens, curtir/comentar postagens, seguir outros usuários"
+        },
+        "nonFunctionalRequirements": {
+          "title": "Requisitos Não Funcionais: QUÃO BEM o sistema deve funcionar",
+          "scale": {
+            "title": "Escala",
+            "description": "Quantos usuários? (100 mil DAU vs 100 milhões DAU)"
+          },
+          "performance": {
+            "title": "Desempenho",
+            "description": "Tempo de resposta (<200ms), throughput (1000 QPS)"
+          },
+          "availability": {
+            "title": "Disponibilidade",
+            "description": "Requisitos de uptime (99,9% vs 99,99%)"
+          },
+          "consistency": {
+            "title": "Consistência",
+            "description": "Necessidades de consistência forte vs consistência eventual"
+          },
+          "security": {
+            "title": "Segurança",
+            "description": "Autenticação, autorização, privacidade de dados"
+          },
+          "example": "Suportar 10 milhões de usuários, tempo de resposta <100ms, uptime de 99,9%"
+        },
+        "edgeCases": {
+          "title": "Casos Extremos e Restrições",
+          "geographic": {
+            "title": "Geográfico",
+            "description": "Requisitos de distribuição global"
+          },
+          "platform": {
+            "title": "Plataforma",
+            "description": "Considerações para dispositivos móveis vs web"
+          },
+          "budget": {
+            "title": "Orçamento",
+            "description": "Limites de custo e recursos"
+          }
+        }
+      },
       "subtitle": "Uma abordagem estruturada para enfrentar qualquer entrevista de design de sistemas com confiança",
       "steps": {
         "step1": {
           "title": "1. Esclarecer Requisitos (5-10 min)",
           "points": [
-            "Comece entendendo o que você está construindo e as restrições com as quais está trabalhando.",
+            "Comece entendendo o que você está construindo e as restrições em que está trabalhando.",
             "Pergunte sobre requisitos funcionais (o que o sistema deve fazer)",
-            "Discuta requisitos não-funcionais (escala, performance, disponibilidade)",
+            "Discuta requisitos não funcionais (escala, desempenho, disponibilidade)",
             "Identifique quaisquer restrições ou suposições",
             "Confirme seu entendimento com o entrevistador"
           ]
@@ -322,84 +1596,108 @@
           "title": "2. Design de Alto Nível (10-15 min)",
           "points": [
             "Desenhe os principais componentes e suas interações",
-            "Comece simples - arquitetura básica cliente-servidor",
-            "Identifique serviços principais e fluxos de dados",
-            "Mostre como as requisições fluem pelo sistema",
+            "Comece de forma simples - arquitetura básica cliente-servidor",
+            "Identifique serviços-chave e fluxos de dados",
+            "Mostre como as solicitações fluem pelo sistema",
             "Mantenha em alto nível, evite detalhes de implementação"
           ]
         },
         "step3": {
           "title": "3. Aprofundamento e Design de Dados (15-20 min)",
           "points": [
-            "Projete o schema do banco de dados e modelos de dados",
-            "Escolha tipos apropriados de banco de dados (SQL vs NoSQL)",
-            "Discuta estratégias de particionamento e sharding de dados",
-            "Aborde consistência e replicação de dados",
-            "Projete APIs e interfaces de serviços"
+            "Projete o esquema do banco de dados e os modelos de dados",
+            "Escolha tipos de banco de dados apropriados (SQL vs NoSQL)",
+            "Discuta estratégias de particionamento e fragmentação de dados",
+            "Aborde a consistência de dados e replicação",
+            "Projete APIs e interfaces de serviço"
           ]
         },
         "step4": {
-          "title": "4. Escalar e Iterar (10-15 min)",
+          "title": "4. Escala e Iteração (10-15 min)",
           "points": [
-            "Identifique gargalos no seu design atual",
+            "Identifique gargalos no design atual",
             "Adicione camadas de cache (Redis, CDN, cache de aplicação)",
-            "Implemente balanceamento de carga e auto-scaling",
-            "Adicione monitoramento, logging e observabilidade",
-            "Discuta preocupações de deploy e operacionais"
+            "Implemente balanceamento de carga e autoescalonamento",
+            "Adicione monitoramento, registro e observabilidade",
+            "Discuta preocupações de implantação e operacionais"
           ]
         },
         "step5": {
-          "title": "5. Finalizar e Trade-offs (5 min)",
+          "title": "5. Encerramento e Trade-offs (5 min)",
           "points": [
             "Resuma seu design e decisões principais",
-            "Discuta trade-offs que você fez e alternativas",
-            "Aborde quaisquer preocupações ou questões restantes",
-            "Mencione considerações adicionais (segurança, compliance)",
-            "Mostre consciência de desafios operacionais do mundo real"
+            "Discuta os trade-offs feitos e alternativas",
+            "Aborde quaisquer preocupações ou perguntas restantes",
+            "Mencione considerações adicionais (segurança, conformidade)",
+            "Mostre consciência dos desafios operacionais do mundo real"
           ]
         }
       },
       "timeAllocation": {
-        "title": "Alocação de Tempo (entrevista de 45-60 min)",
+        "title": "Alocação de Tempo",
+        "subtitle": "Divisão de tempo sugerida para uma entrevista de 45-60 minutos",
         "phases": {
-          "clarify": "esclarecer requisitos",
-          "highlevel": "design de alto nível",
-          "deepdive": "aprofundamento e design de dados",
-          "iterate": "escalar e iterar",
-          "wrapup": "finalizar e trade-offs"
+          "clarify": {
+            "title": "Esclarecer Requisitos",
+            "duration": "5-10min"
+          },
+          "highlevel": {
+            "title": "Design de Alto Nível",
+            "duration": "10-15min"
+          },
+          "deepdive": {
+            "title": "Aprofundamento",
+            "duration": "15-20min"
+          },
+          "iterate": {
+            "title": "Iterar e Otimizar",
+            "duration": "10-15min"
+          },
+          "wrapup": {
+            "title": "Encerramento",
+            "duration": "5min"
+          }
         }
       },
       "whyWorks": {
-        "title": "Por que Este Framework Funciona",
+        "title": "Por que Esta Estrutura Funciona",
         "points": [
           "Demonstra pensamento estruturado e abordagem de resolução de problemas",
           "Mostra que você pode trabalhar dentro de restrições e fazer perguntas esclarecedoras",
-          "Prova que você entende tanto requisitos técnicos quanto de negócio",
+          "Prova que você entende os requisitos técnicos e de negócios",
           "Exibe conhecimento de padrões de escalabilidade e trade-offs",
-          "Mostra consciência de preocupações operacionais do mundo real"
+          "Mostra consciência das preocupações operacionais do mundo real"
         ]
       },
       "tldr": {
-        "title": "Framework Resumido",
+        "title": "Resumo da Estrutura",
         "steps": [
-          "esclarecer o que você está construindo e restrições",
+          "esclarecer o que você está construindo e as restrições",
           "desenhar componentes de alto nível e fluxo de dados",
           "projetar modelos de dados e escolher bancos de dados",
-          "identificar gargalos e adicionar soluções de escala",
-          "resumir design e discutir trade-offs"
+          "identificar gargalos e adicionar soluções de escalabilidade",
+          "resumir o design e discutir trade-offs"
         ]
       }
     },
     "categories": {
       "title": "Explorar Tópicos de Design de Sistemas",
-      "exploreTopics": "Explorar Tópicos"
+      "exploreTopics": "Explorar Tópicos",
+      "topics": {
+        "architecture": ["Balanceadores de Carga", "Servidores de Aplicação", "Cache", "Bancos de Dados", "Armazenamento"],
+        "scalability": ["Replicação", "Fragmentação", "CDN", "Tipos de Escalonamento", "Teorema CAP"],
+        "communication": ["HTTP vs gRPC", "REST vs GraphQL", "WebSockets", "Gateway de API"],
+        "async": ["Filas de Mensagens", "Origem de Eventos", "CQRS", "Consistência"],
+        "performance": ["Padrões de Cache", "Disjuntor", "Observabilidade", "Lógica de Tentativa"],
+        "security": ["JWT e OAuth2", "Limitação de Taxa", "TLS/HTTPS", "Bandeiras de Funcionalidade"]
+      }
     },
     "quickStart": {
       "title": "Início Rápido",
-      "subtitle": "Novo em design de sistemas? Comece com estes conceitos fundamentais",
+      "subtitle": "Novo no design de sistemas? Comece com esses conceitos fundamentais",
       "loadBalancers": {
         "title": "Balanceadores de Carga",
-        "description": "Aprenda como distribuir tráfego entre múltiplos servidores"
+        "description": "Aprenda como distribuir tráfego entre vários servidores"
       },
       "databases": {
         "title": "Bancos de Dados",
@@ -407,7 +1705,7 @@
       },
       "caching": {
         "title": "Cache",
-        "description": "Melhore performance com estratégias efetivas de cache"
+        "description": "Melhore o desempenho com estratégias de cache eficazes"
       }
     }
   }
