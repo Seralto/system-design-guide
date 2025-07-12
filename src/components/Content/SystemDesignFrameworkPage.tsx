@@ -270,28 +270,6 @@ const SystemDesignFrameworkPage: React.FC = () => {
 
           {/* Hero Section */}
           <div className="text-center mb-12">
-            <div className="flex items-center justify-center mb-6">
-              <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-600 rounded-2xl mr-4">
-                <BookOpen className="w-8 h-8 text-white" />
-              </div>
-              <button
-                onClick={handleShare}
-                className="flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
-                title="Share this page"
-              >
-                {copied ? (
-                  <>
-                    <Check className="w-4 h-4" />
-                    <span className="text-sm">Copied!</span>
-                  </>
-                ) : (
-                  <>
-                    <Share2 className="w-4 h-4" />
-                    <span className="text-sm">Share</span>
-                  </>
-                )}
-              </button>
-            </div>
             <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
               {t('home.framework.title')}
             </h1>
