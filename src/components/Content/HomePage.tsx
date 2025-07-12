@@ -19,11 +19,11 @@ const HomePage: React.FC = () => {
   
   return (
     <div className="max-w-6xl mx-auto p-8">
-      <div className="mb-12 bg-gradient-to-r from-blue-50 to-indigo-50 dark:from-gray-800 dark:to-gray-900 p-8 rounded-2xl shadow-lg">
+      <div className="mb-12 p-8">
         <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6 text-center">
           The Fundamentals of System Design
         </h1>
-        <p className="text-center text-gray-700 dark:text-gray-300 text-lg mb-4">
+        <p className="text-center text-gray-700 dark:text-gray-300 text-lg mb-8">
           A comprehensive guide to building scalable, reliable, and maintainable systems
         </p>
 

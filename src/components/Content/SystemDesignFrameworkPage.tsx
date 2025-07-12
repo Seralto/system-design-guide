@@ -269,11 +269,11 @@ const SystemDesignFrameworkPage: React.FC = () => {
         <div className="max-w-6xl mx-auto p-8">
 
           {/* Hero Section */}
-          <div className="text-center mb-12">
-            <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+          <div className="p-8">
+            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6 text-center">
               {t('home.framework.title')}
             </h1>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+            <p className="text-center text-gray-700 dark:text-gray-300 text-lg">
               {t('home.framework.subtitle')}
             </p>
           </div>
