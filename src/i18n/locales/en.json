@@ -1466,8 +1466,121 @@
     "hero": {
       "subtitle": "Master the fundamentals of distributed systems, scalability, and modern architecture patterns"
     },
+
     "framework": {
       "title": "System Design Interview Framework",
+      "example": "Example",
+      "tip": "Tip",
+      "step2": {
+        "architecture": {
+          "title": "High-Level Architecture",
+          "components": {
+            "title": "Key Components",
+            "items": [
+              "Client applications (web, mobile)",
+              "Load balancers",
+              "Application servers",
+              "Databases (SQL, NoSQL)",
+              "Caching layers",
+              "Message queues",
+              "Storage systems"
+            ]
+          },
+          "patterns": {
+            "title": "Architectural Patterns",
+            "items": [
+              "Microservices vs Monolith",
+              "Event-driven architecture",
+              "Layered architecture",
+              "Serverless architecture"
+            ]
+          },
+          "tip": "Draw a simple diagram to visualize the flow of data between components"
+        },
+        "dataModel": {
+          "title": "Data Model & Storage",
+          "entities": {
+            "title": "Data Entities",
+            "description": "Define the main objects and their relationships:",
+            "items": [
+              "User profiles",
+              "Content/posts",
+              "Relationships (follows, likes)",
+              "Activity logs"
+            ]
+          },
+          "storage": {
+            "title": "Storage Decisions",
+            "items": [
+              "SQL vs NoSQL tradeoffs",
+              "Data partitioning strategy",
+              "Replication approach",
+              "Backup and recovery plans"
+            ]
+          }
+        }
+      },
+      "step1": {
+        "functionalRequirements": {
+          "title": "Functional Requirements: What the system should DO",
+          "userActions": {
+            "title": "User Actions",
+            "items": {
+              "posting": "Post content, search, send messages",
+              "upload": "Upload files, share media",
+              "registration": "User registration and profiles"
+            }
+          },
+          "systemBehaviors": {
+            "title": "System Behaviors",
+            "items": {
+              "notifications": "Notifications and recommendations",
+              "processing": "Data processing and analytics",
+              "moderation": "Content moderation"
+            }
+          },
+          "example": "Users can create posts, like/comment on posts, follow other users"
+        },
+        "nonFunctionalRequirements": {
+          "title": "Non-Functional Requirements: HOW WELL the system should perform",
+          "scale": {
+            "title": "Scale",
+            "description": "How many users? (100K DAU vs 100M DAU)"
+          },
+          "performance": {
+            "title": "Performance",
+            "description": "Response time (<200ms), throughput (1000 QPS)"
+          },
+          "availability": {
+            "title": "Availability",
+            "description": "Uptime requirements (99.9% vs 99.99%)"
+          },
+          "consistency": {
+            "title": "Consistency",
+            "description": "Strong vs eventual consistency needs"
+          },
+          "security": {
+            "title": "Security",
+            "description": "Authentication, authorization, data privacy"
+          },
+          "example": "Support 10M users, <100ms response time, 99.9% uptime"
+        },
+        "edgeCases": {
+          "title": "Edge Cases & Constraints",
+          "geographic": {
+            "title": "Geographic",
+            "description": "Global distribution requirements"
+          },
+          "platform": {
+            "title": "Platform",
+            "description": "Mobile vs web considerations"
+          },
+          "budget": {
+            "title": "Budget",
+            "description": "Cost and resource limits"
+          }
+        }
+      },
       "subtitle": "A structured approach to tackle any system design interview with confidence",
       "steps": {
         "step1": {
@@ -1522,13 +1635,29 @@
         }
       },
       "timeAllocation": {
-        "title": "Time Allocation (45-60 min interview)",
+        "title": "Time Allocation",
+        "subtitle": "Suggested time breakdown for a 45-60 minute interview",
         "phases": {
-          "clarify": "clarify requirements",
-          "highlevel": "high-level design", 
-          "deepdive": "deep dive & data design",
-          "iterate": "scale & iterate",
-          "wrapup": "wrap up & trade-offs"
+          "clarify": {
+            "title": "Clarify Requirements",
+            "duration": "5-10min"
+          },
+          "highlevel": {
+            "title": "High-Level Design",
+            "duration": "10-15min"
+          },
+          "deepdive": {
+            "title": "Deep Dive",
+            "duration": "15-20min"
+          },
+          "iterate": {
+            "title": "Iterate & Optimize",
+            "duration": "10-15min"
+          },
+          "wrapup": {
+            "title": "Wrap Up",
+            "duration": "5min"
+          }
         }
       },
       "whyWorks": {
@@ -1554,7 +1683,15 @@
     },
     "categories": {
       "title": "Explore System Design Topics",
-      "exploreTopics": "Explore Topics"
+      "exploreTopics": "Explore Topics",
+      "topics": {
+        "architecture": ["Load Balancers", "App Servers", "Caching", "Databases", "Storage"],
+        "scalability": ["Replication", "Sharding", "CDN", "Scaling Types", "CAP Theorem"],
+        "communication": ["HTTP vs gRPC", "REST vs GraphQL", "WebSockets", "API Gateway"],
+        "async": ["Message Queues", "Event Sourcing", "CQRS", "Consistency"],
+        "performance": ["Caching Patterns", "Circuit Breaker", "Observability", "Retry Logic"],
+        "security": ["JWT & OAuth2", "Rate Limiting", "TLS/HTTPS", "Feature Flags"]
+      }
     },
     "quickStart": {
       "title": "Quick Start",

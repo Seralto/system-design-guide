@@ -29,37 +29,37 @@ const SystemDesignFrameworkPage: React.FC = () => {
       icon: Server,
       titleKey: 'nav.architecture',
       color: 'bg-blue-500',
-      topics: ['Load Balancers', 'App Servers', 'Caching', 'Databases', 'Storage']
+      topicsKey: 'home.categories.topics.architecture'
     },
     {
       icon: BarChart3,
       titleKey: 'nav.scalability',
       color: 'bg-green-500',
-      topics: ['Replication', 'Sharding', 'CDN', 'Scaling Types', 'CAP Theorem']
+      topicsKey: 'home.categories.topics.scalability'
     },
     {
       icon: Globe,
       titleKey: 'nav.communication',
       color: 'bg-purple-500',
-      topics: ['HTTP vs gRPC', 'REST vs GraphQL', 'WebSockets', 'API Gateway']
+      topicsKey: 'home.categories.topics.communication'
     },
     {
       icon: Zap,
       titleKey: 'nav.async',
       color: 'bg-yellow-500',
-      topics: ['Message Queues', 'Event Sourcing', 'CQRS', 'Consistency']
+      topicsKey: 'home.categories.topics.async'
     },
     {
       icon: Database,
       titleKey: 'nav.performance',
       color: 'bg-red-500',
-      topics: ['Caching Patterns', 'Circuit Breaker', 'Observability', 'Retry Logic']
+      topicsKey: 'home.categories.topics.performance'
     },
     {
       icon: Shield,
       titleKey: 'nav.security',
       color: 'bg-indigo-500',
-      topics: ['JWT & OAuth2', 'Rate Limiting', 'TLS/HTTPS', 'Feature Flags']
+      topicsKey: 'home.categories.topics.security'
     }
   ];
 
@@ -97,11 +97,11 @@ const SystemDesignFrameworkPage: React.FC = () => {
   ];
 
   const timeAllocation = [
-    { phaseKey: 'home.framework.timeAllocation.phases.clarify', duration: '5-10min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.highlevel', duration: '10-15min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.deepdive', duration: '15-20min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.iterate', duration: '10-15min' },
-    { phaseKey: 'home.framework.timeAllocation.phases.wrapup', duration: '5min' }
+    { phaseKey: 'home.framework.timeAllocation.phases.clarify', duration: t('home.framework.timeAllocation.phases.clarify.duration') },
+    { phaseKey: 'home.framework.timeAllocation.phases.highlevel', duration: t('home.framework.timeAllocation.phases.highlevel.duration') },
+    { phaseKey: 'home.framework.timeAllocation.phases.deepdive', duration: t('home.framework.timeAllocation.phases.deepdive.duration') },
+    { phaseKey: 'home.framework.timeAllocation.phases.iterate', duration: t('home.framework.timeAllocation.phases.iterate.duration') },
+    { phaseKey: 'home.framework.timeAllocation.phases.wrapup', duration: t('home.framework.timeAllocation.phases.wrapup.duration') }
   ];
   const renderStep1Content = () => {
     const points = t('home.framework.steps.step1.points', { returnObjects: true }) as string[];
@@ -117,30 +117,30 @@ const SystemDesignFrameworkPage: React.FC = () => {
           <div className="flex items-center mb-4">
             <Settings className="w-5 h-5 text-blue-600 dark:text-blue-400 mr-2" />
             <h4 className="text-lg font-semibold text-blue-900 dark:text-blue-100">
-              Functional Requirements: What the system should DO
+              {t('home.framework.step1.functionalRequirements.title')}
             </h4>
           </div>
           <div className="grid gap-4 md:grid-cols-2">
             <div>
-              <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">User Actions</h5>
+              <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">{t('home.framework.step1.functionalRequirements.userActions.title')}</h5>
               <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                <li>• Post content, search, send messages</li>
-                <li>• Upload files, share media</li>
-                <li>• User registration and profiles</li>
+                <li>• {t('home.framework.step1.functionalRequirements.userActions.items.posting')}</li>
+                <li>• {t('home.framework.step1.functionalRequirements.userActions.items.upload')}</li>
+                <li>• {t('home.framework.step1.functionalRequirements.userActions.items.registration')}</li>
               </ul>
             </div>
             <div>
-              <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">System Behaviors</h5>
+              <h5 className="font-medium text-blue-800 dark:text-blue-200 mb-2">{t('home.framework.step1.functionalRequirements.systemBehaviors.title')}</h5>
               <ul className="text-sm text-blue-700 dark:text-blue-300 space-y-1">
-                <li>• Notifications and recommendations</li>
-                <li>• Data processing and analytics</li>
-                <li>• Content moderation</li>
+                <li>• {t('home.framework.step1.functionalRequirements.systemBehaviors.items.notifications')}</li>
+                <li>• {t('home.framework.step1.functionalRequirements.systemBehaviors.items.processing')}</li>
+                <li>• {t('home.framework.step1.functionalRequirements.systemBehaviors.items.moderation')}</li>
               </ul>
             </div>
           </div>
           <div className="mt-4 p-3 bg-blue-100 dark:bg-blue-900/20 rounded border-l-4 border-blue-500">
             <p className="text-sm text-blue-800 dark:text-blue-200">
-              <strong>Example:</strong> "Users can create posts, like/comment on posts, follow other users"
+              <strong>{t('home.framework.example')}:</strong> {t('home.framework.step1.functionalRequirements.example')}
             </p>
           </div>
         </div>
@@ -150,44 +150,44 @@ const SystemDesignFrameworkPage: React.FC = () => {
           <div className="flex items-center mb-4">
             <Activity className="w-5 h-5 text-green-600 dark:text-green-400 mr-2" />
             <h4 className="text-lg font-semibold text-green-900 dark:text-green-100">
-              Non-Functional Requirements: HOW WELL the system should perform
+              {t('home.framework.step1.nonFunctionalRequirements.title')}
             </h4>
           </div>
           <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
             <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Scale</h5>
+              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">{t('home.framework.step1.nonFunctionalRequirements.scale.title')}</h5>
               <p className="text-sm text-green-700 dark:text-green-300">
-                How many users? (100K DAU vs 100M DAU)
+                {t('home.framework.step1.nonFunctionalRequirements.scale.description')}
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Performance</h5>
+              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">{t('home.framework.step1.nonFunctionalRequirements.performance.title')}</h5>
               <p className="text-sm text-green-700 dark:text-green-300">
-                Response time (&lt;200ms), throughput (1000 QPS)
+                {t('home.framework.step1.nonFunctionalRequirements.performance.description')}
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Availability</h5>
+              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">{t('home.framework.step1.nonFunctionalRequirements.availability.title')}</h5>
               <p className="text-sm text-green-700 dark:text-green-300">
-                Uptime requirements (99.9% vs 99.99%)
+                {t('home.framework.step1.nonFunctionalRequirements.availability.description')}
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Consistency</h5>
+              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">{t('home.framework.step1.nonFunctionalRequirements.consistency.title')}</h5>
               <p className="text-sm text-green-700 dark:text-green-300">
-                Strong vs eventual consistency needs
+                {t('home.framework.step1.nonFunctionalRequirements.consistency.description')}
               </p>
             </div>
             <div>
-              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">Security</h5>
+              <h5 className="font-medium text-green-800 dark:text-green-200 mb-2">{t('home.framework.step1.nonFunctionalRequirements.security.title')}</h5>
               <p className="text-sm text-green-700 dark:text-green-300">
-                Authentication, authorization, data privacy
+                {t('home.framework.step1.nonFunctionalRequirements.security.description')}
               </p>
             </div>
           </div>
           <div className="mt-4 p-3 bg-green-100 dark:bg-green-900/20 rounded border-l-4 border-green-500">
             <p className="text-sm text-green-800 dark:text-green-200">
-              <strong>Example:</strong> "Support 10M users, &lt;100ms response time, 99.9% uptime"
+              <strong>{t('home.framework.example')}:</strong> {t('home.framework.step1.nonFunctionalRequirements.example')}
             </p>
           </div>
         </div>
@@ -197,7 +197,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
           <div className="flex items-center mb-4">
             <Lock className="w-5 h-5 text-purple-600 dark:text-purple-400 mr-2" />
             <h4 className="text-lg font-semibold text-purple-900 dark:text-purple-100">
-              Edge Cases & Constraints
+              {t('home.framework.step1.edgeCases.title')}
             </h4>
           </div>
           <div className="grid gap-4 md:grid-cols-3">
@@ -205,22 +205,22 @@ const SystemDesignFrameworkPage: React.FC = () => {
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
                 <Globe className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
-              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">Geographic</h5>
-              <p className="text-sm text-purple-700 dark:text-purple-300">Global distribution requirements</p>
+              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">{t('home.framework.step1.edgeCases.geographic.title')}</h5>
+              <p className="text-sm text-purple-700 dark:text-purple-300">{t('home.framework.step1.edgeCases.geographic.description')}</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
                 <Users className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
-              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">Platform</h5>
-              <p className="text-sm text-purple-700 dark:text-purple-300">Mobile vs web considerations</p>
+              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">{t('home.framework.step1.edgeCases.platform.title')}</h5>
+              <p className="text-sm text-purple-700 dark:text-purple-300">{t('home.framework.step1.edgeCases.platform.description')}</p>
             </div>
             <div className="text-center">
               <div className="w-12 h-12 bg-purple-100 dark:bg-purple-900/30 rounded-lg flex items-center justify-center mx-auto mb-2">
                 <BarChart3 className="w-6 h-6 text-purple-600 dark:text-purple-400" />
               </div>
-              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">Budget</h5>
-              <p className="text-sm text-purple-700 dark:text-purple-300">Cost and resource limits</p>
+              <h5 className="font-medium text-purple-800 dark:text-purple-200 mb-1">{t('home.framework.step1.edgeCases.budget.title')}</h5>
+              <p className="text-sm text-purple-700 dark:text-purple-300">{t('home.framework.step1.edgeCases.budget.description')}</p>
             </div>
           </div>
         </div>
@@ -380,7 +380,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
                       </h3>
                     </div>
                     <ul className="space-y-2 mb-4">
-                      {category.topics.map((topic, topicIndex) => (
+                      {(t(category.topicsKey, { returnObjects: true }) as string[]).map((topic, topicIndex) => (
                         <li key={topicIndex} className="text-sm text-gray-600 dark:text-gray-300">
                           • {topic}
                         </li>
