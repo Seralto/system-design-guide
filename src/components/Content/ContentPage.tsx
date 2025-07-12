@@ -132,7 +132,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
             <div className="flex items-center mb-4">
               <CheckCircle className="w-5 h-5 text-green-500 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                Key Points
+                {t('sectionHeaders.keyPoints')}
               </h2>
             </div>
             <ul className="space-y-3">
@@ -152,18 +152,17 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
             <div className="flex items-center mb-4">
               <Info className="w-5 h-5 text-blue-500 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                {displayContent.types ? 'Types' : 
+                {displayContent.types ? t('sectionHeaders.types') : 
                  displayContent.sqlDatabases ? 'SQL Databases' : 
-                 displayContent.memoryStorage ? 'Memory Storage' : 
-                 displayContent.strategies ? 'Sharding Strategies' :
+                 displayContent.memoryStorage ? 'Memory Storage' :
+                 displayContent.strategies ? 'Strategies' :
                  displayContent.verticalScaling ? 'Vertical Scaling' :
                  displayContent.consistency ? 'Consistency' :
                   displayContent.httpCharacteristics ? 'HTTP Characteristics' :
                   displayContent.restCharacteristics ? 'REST Characteristics' :
                   displayContent.websockets ? 'WebSockets' :
                   displayContent.coreFeatures ? 'Core Features' :
-                  displayContent.architecture ? 'Architecture' :
-                 'Considerations'}
+                  'Architecture'}
               </h2>
             </div>
             <ul className="space-y-3">
@@ -187,7 +186,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <div className="flex items-center mb-4">
                 <Info className="w-5 h-5 text-purple-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {displayContent.patterns ? 'Patterns' : 
+                  {displayContent.patterns ? t('sectionHeaders.patterns') : 
                    displayContent.nosqlTypes ? 'NoSQL Types' :
                    displayContent.cachingStrategies ? 'Caching Strategies' :
                    displayContent.horizontalScaling ? 'Horizontal Scaling' :
@@ -214,11 +213,11 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <div className="flex items-center mb-4">
                 <Info className="w-5 h-5 text-orange-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {displayContent.considerations ? 'Considerations' : 
-                   displayContent.whenToUse ? 'When to Use' : 
+                  {displayContent.considerations ? t('sectionHeaders.considerations') : 
+                   displayContent.whenToUse ? t('sectionHeaders.whenToUse') : 
                    displayContent.diskStorage ? 'Disk Storage' :
-                   displayContent.challenges ? 'Challenges' :
-                   displayContent.benefits ? 'Benefits' :
+                   displayContent.challenges ? t('sectionHeaders.challenges') :
+                   displayContent.benefits ? t('sectionHeaders.benefits') :
                    displayContent.availability ? 'Availability' :
                    displayContent.httpUseCases ? 'HTTP Use Cases' :
                    displayContent.restAdvantages ? 'REST Advantages' :
@@ -248,8 +247,8 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <div className="flex items-center mb-4">
                 <Info className="w-5 h-5 text-indigo-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {displayContent.blobStorage ? 'Blob Storage' :
-                   displayContent.bestPractices ? 'Best Practices' :
+                  {displayContent.blobStorage ? t('sectionHeaders.blobStorage') :
+                   displayContent.bestPractices ? t('sectionHeaders.bestPractices') :
                    displayContent.hybridApproaches ? 'Hybrid Approaches' :
                    displayContent.grpcUseCases ? 'gRPC Use Cases' :
                    displayContent.graphqlAdvantages ? 'GraphQL Advantages' :
@@ -272,7 +271,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <div className="flex items-center mb-4">
                 <Info className="w-5 h-5 text-teal-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  {displayContent.storagePatterns ? 'Storage Patterns' :
+                  {displayContent.storagePatterns ? t('sectionHeaders.storagePatterns') :
                    displayContent.decisionFactors ? 'Decision Factors' :
                    displayContent.partitionTolerance ? 'Partition Tolerance' :
                    displayContent.performanceComparison ? 'Performance Comparison' :
@@ -304,7 +303,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                 <div className="flex items-center mb-4">
                   <Info className="w-5 h-5 text-pink-500 mr-2" />
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {displayContent.systemTypes ? 'System Types' :
+                    {displayContent.systemTypes ? t('sectionHeaders.systemTypes') :
                      displayContent.tradeOffs ? 'Trade-offs' :
                      'GraphQL Challenges'}
                   </h2>
@@ -390,7 +389,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
         <div className="flex items-center mb-4">
           <Lightbulb className="w-5 h-5 text-yellow-500 mr-2" />
           <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-            Learning Tip
+            {t('sectionHeaders.learningTip')}
           </h2>
         </div>
         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">

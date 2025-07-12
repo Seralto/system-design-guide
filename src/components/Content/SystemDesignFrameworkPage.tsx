@@ -311,7 +311,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
                 <div className="space-y-3">
                   {timeAllocation.map((item, index) => (
                     <div key={index} className="flex justify-between items-center py-2 border-b border-gray-100 dark:border-gray-700 last:border-b-0">
-                      <span className="text-gray-600 dark:text-gray-300 capitalize">{t(item.phaseKey)}</span>
+                      <span className="text-gray-600 dark:text-gray-300 capitalize">{t(`${item.phaseKey}.title`)}</span>
                       <span className="text-gray-900 dark:text-white font-medium">{item.duration}</span>
                     </div>
                   ))}

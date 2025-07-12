@@ -40,6 +40,20 @@
     "featureFlags": "Banderas de Funcionalidad",
     "deployment": "Estrategias de Despliegue"
   },
+  "sectionHeaders": {
+    "keyPoints": "Puntos Clave",
+    "types": "Tipos",
+    "patterns": "Patrones",
+    "considerations": "Consideraciones",
+    "learningTip": "Consejo de Aprendizaje",
+    "whenToUse": "Cuándo Usar",
+    "bestPractices": "Mejores Prácticas",
+    "challenges": "Desafíos",
+    "benefits": "Beneficios",
+    "blobStorage": "Almacenamiento Blob",
+    "storagePatterns": "Patrones de Almacenamiento",
+    "systemTypes": "Tipos de Sistemas"
+  },
   "content": {
     "httpGrpc": {
       "title": "HTTP vs gRPC",

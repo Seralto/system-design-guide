@@ -40,6 +40,20 @@
     "featureFlags": "Feature Flags",
     "deployment": "Deployment Strategies"
   },
+  "sectionHeaders": {
+    "keyPoints": "Key Points",
+    "types": "Types",
+    "patterns": "Patterns",
+    "considerations": "Considerations",
+    "learningTip": "Learning Tip",
+    "whenToUse": "When to Use",
+    "bestPractices": "Best Practices",
+    "challenges": "Challenges",
+    "benefits": "Benefits",
+    "blobStorage": "Blob Storage",
+    "storagePatterns": "Storage Patterns",
+    "systemTypes": "System Types"
+  },
   "content": {
     "httpGrpc": {
       "title": "HTTP vs gRPC",
