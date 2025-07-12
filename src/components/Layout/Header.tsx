@@ -17,39 +17,10 @@ const Header: React.FC = () => {
 
   const changeLanguage = (langCode: string) => {
     i18n.changeLanguage(langCode);
-    // Show a subtle feedback that the language was changed
-    const currentLang = languages.find(lang => lang.code === langCode);
-    if (currentLang) {
-      // Create a temporary toast-like notification
-      const notification = document.createElement('div');
-      notification.className = 'fixed top-4 right-4 bg-green-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 transition-all duration-300';
-      notification.textContent = `Language changed to ${currentLang.name}`;
-      document.body.appendChild(notification);
-      
-      setTimeout(() => {
-        notification.style.opacity = '0';
-        setTimeout(() => {
-          document.body.removeChild(notification);
-        }, 300);
-      }, 2000);
-    }
   };
 
   const handleThemeToggle = () => {
     toggleTheme();
-    // Show a subtle feedback that the theme was changed
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    const notification = document.createElement('div');
-    notification.className = 'fixed top-4 right-4 bg-blue-500 text-white px-4 py-2 rounded-lg shadow-lg z-50 transition-all duration-300';
-    notification.textContent = `Switched to ${newTheme} theme`;
-    document.body.appendChild(notification);
-    
-    setTimeout(() => {
-      notification.style.opacity = '0';
-      setTimeout(() => {
-        document.body.removeChild(notification);
-      }, 300);
-    }, 2000);
   };
 
   return (

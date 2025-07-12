@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
 import { 
@@ -9,25 +9,20 @@ import {
   Shield, 
   BarChart3,
   ArrowRight,
-  BookOpen,
   CheckCircle,
   Clock,
   Target,
   Users,
   Lightbulb,
   TrendingUp,
-  Share2,
-  Check,
   Settings,
   Activity,
-  Lock,
-  Menu
+  Lock
 } from 'lucide-react';
 
 const SystemDesignFrameworkPage: React.FC = () => {
   const { t } = useTranslation();
-  const [copied, setCopied] = useState(false);
-  const [showLeftMenu, setShowLeftMenu] = useState(false);
+  const showLeftMenu = false;
 
   const categories = [
     {
@@ -108,27 +103,6 @@ const SystemDesignFrameworkPage: React.FC = () => {
     { phaseKey: 'home.framework.timeAllocation.phases.iterate', duration: '10-15min' },
     { phaseKey: 'home.framework.timeAllocation.phases.wrapup', duration: '5min' }
   ];
-
-  const handleShare = async () => {
-    const currentUrl = window.location.href;
-    
-    try {
-      await navigator.clipboard.writeText(currentUrl);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    } catch (err) {
-      // Fallback for browsers that don't support clipboard API
-      const textArea = document.createElement('textarea');
-      textArea.value = currentUrl;
-      document.body.appendChild(textArea);
-      textArea.select();
-      document.execCommand('copy');
-      document.body.removeChild(textArea);
-      setCopied(true);
-      setTimeout(() => setCopied(false), 2000);
-    }
-  };
-
   const renderStep1Content = () => {
     const points = t('home.framework.steps.step1.points', { returnObjects: true }) as string[];
     
