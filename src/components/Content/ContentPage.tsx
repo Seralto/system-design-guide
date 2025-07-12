@@ -1,10 +1,53 @@
 import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
-import { CheckCircle, Info, Lightbulb, Share2, Check } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { CheckCircle, Info, Lightbulb, Share2, Check, ArrowLeft, ArrowRight } from 'lucide-react';
 
 interface ContentPageProps {
   topicKey: string;
 }
+
+// Define the page navigation structure
+const pageNavigation: Record<string, { prev?: { key: string; path: string }, next?: { key: string; path: string } }> = {
+  // Architecture category
+  loadBalancers: { next: { key: 'appServers', path: '/app-servers' } },
+  appServers: { prev: { key: 'loadBalancers', path: '/load-balancers' }, next: { key: 'caching', path: '/caching' } },
+  caching: { prev: { key: 'appServers', path: '/app-servers' }, next: { key: 'databases', path: '/databases' } },
+  databases: { prev: { key: 'caching', path: '/caching' }, next: { key: 'storage', path: '/storage' } },
+  storage: { prev: { key: 'databases', path: '/databases' } },
+  
+  // Scalability category
+  replication: { next: { key: 'sharding', path: '/sharding' } },
+  sharding: { prev: { key: 'replication', path: '/replication' }, next: { key: 'cdn', path: '/cdn' } },
+  cdn: { prev: { key: 'sharding', path: '/sharding' }, next: { key: 'scalingTypes', path: '/scaling-types' } },
+  scalingTypes: { prev: { key: 'cdn', path: '/cdn' }, next: { key: 'capTheorem', path: '/cap-theorem' } },
+  capTheorem: { prev: { key: 'scalingTypes', path: '/scaling-types' } },
+  
+  // Communication category
+  httpGrpc: { next: { key: 'restGraphql', path: '/rest-graphql' } },
+  restGraphql: { prev: { key: 'httpGrpc', path: '/http-grpc' }, next: { key: 'websockets', path: '/websockets' } },
+  websockets: { prev: { key: 'restGraphql', path: '/rest-graphql' }, next: { key: 'apiGateway', path: '/api-gateway' } },
+  apiGateway: { prev: { key: 'websockets', path: '/websockets' }, next: { key: 'serviceMesh', path: '/service-mesh' } },
+  serviceMesh: { prev: { key: 'apiGateway', path: '/api-gateway' } },
+  
+  // Async patterns category
+  messageQueues: { next: { key: 'eventualConsistency', path: '/eventual-consistency' } },
+  eventualConsistency: { prev: { key: 'messageQueues', path: '/message-queues' }, next: { key: 'eventSourcing', path: '/event-sourcing' } },
+  eventSourcing: { prev: { key: 'eventualConsistency', path: '/eventual-consistency' }, next: { key: 'cqrs', path: '/cqrs' } },
+  cqrs: { prev: { key: 'eventSourcing', path: '/event-sourcing' } },
+  
+  // Performance category
+  cachingPatterns: { next: { key: 'circuitBreaker', path: '/circuit-breaker' } },
+  circuitBreaker: { prev: { key: 'cachingPatterns', path: '/caching-patterns' }, next: { key: 'retryTimeout', path: '/retry-timeout' } },
+  retryTimeout: { prev: { key: 'circuitBreaker', path: '/circuit-breaker' }, next: { key: 'observability', path: '/observability' } },
+  observability: { prev: { key: 'retryTimeout', path: '/retry-timeout' } },
+  
+  // Security category
+  jwtOauth: { next: { key: 'rateLimiting', path: '/rate-limiting' } },
+  rateLimiting: { prev: { key: 'jwtOauth', path: '/jwt-oauth' }, next: { key: 'tlsHttps', path: '/tls-https' } },
+  tlsHttps: { prev: { key: 'rateLimiting', path: '/rate-limiting' }, next: { key: 'featureFlags', path: '/feature-flags' } },
+  featureFlags: { prev: { key: 'tlsHttps', path: '/tls-https' } }
+};
 
 const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
   const { t } = useTranslation();
@@ -353,6 +396,45 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
         <p className="text-gray-600 dark:text-gray-300 leading-relaxed">
           {displayContent.learningTip || `When studying ${displayContent.title.toLowerCase()}, focus on understanding the trade-offs and when to apply different approaches. Practice with real-world scenarios to solidify your knowledge.`}
         </p>
+      </div>
+
+      {/* Previous/Next Page Navigation */}
+      <div className="mt-12 grid grid-cols-2 gap-6">
+        {pageNavigation[topicKey]?.prev && (
+          <Link 
+            to={pageNavigation[topicKey].prev!.path}
+            className="flex items-center justify-start p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all group"
+          >
+            <div className="flex items-center">
+              <ArrowLeft className="w-5 h-5 mr-3 text-blue-500 group-hover:-translate-x-1 transition-transform" />
+              <div>
+                <p className="text-sm text-gray-500 dark:text-gray-400">Previous</p>
+                <h3 className="font-medium text-gray-900 dark:text-white">
+                  {t(`topics.${pageNavigation[topicKey].prev!.key}`)}
+                </h3>
+              </div>
+            </div>
+          </Link>
+        )}
+        
+        {!pageNavigation[topicKey]?.prev && <div></div>}
+        
+        {pageNavigation[topicKey]?.next && (
+          <Link 
+            to={pageNavigation[topicKey].next!.path}
+            className="flex items-center justify-end p-4 bg-white dark:bg-gray-800 rounded-xl border border-gray-200 dark:border-gray-700 hover:shadow-md transition-all group"
+          >
+            <div className="flex items-center">
+              <div className="text-right">
+                <p className="text-sm text-gray-500 dark:text-gray-400">Next</p>
+                <h3 className="font-medium text-gray-900 dark:text-white">
+                  {t(`topics.${pageNavigation[topicKey].next!.key}`)}
+                </h3>
+              </div>
+              <ArrowRight className="w-5 h-5 ml-3 text-blue-500 group-hover:translate-x-1 transition-transform" />
+            </div>
+          </Link>
+        )}
       </div>
     </div>
   );
