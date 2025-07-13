@@ -537,7 +537,7 @@
       "learningTip": "Pense no Gateway de API como um concierge de hotel - os hóspedes (clientes) vão até uma pessoa que sabe como rotear solicitações para diferentes serviços do hotel (microsserviços). Pratique desenhar um layout de hotel e explicar como o concierge lida com autenticação, direções e coordenação de serviços.",
       "keyPoints": [
         "Centralizar o gerenciamento de API e fornecer um ponto de entrada único",
-        "Lidar com preocupações transversais como autenticação e limitação de taxa",
+        "Lidar com preocupações transversais como autenticação e rate limiting",
         "Habilitar composição de API e abstração de serviços de backend",
         "Fornecer monitoramento, análises e visibilidade operacional",
         "Suportar versionamento de API e compatibilidade retroativa"
@@ -545,7 +545,7 @@
       "coreFeatures": [
         "Roteamento de solicitações e balanceamento de carga para serviços de backend",
         "Autenticação, autorização e aplicação de segurança",
-        "Limitação de taxa, controle de tráfego e gerenciamento de cotas",
+        "Rate limiting, controle de tráfego e gerenciamento de cotas",
         "Transformação de solicitação/resposta e tradução de protocolo",
         "Coleta de monitoramento, registros e análises"
       ],
@@ -780,7 +780,7 @@
       ]
     },
     "cqrs": {
-      "title": "CQRS (Segregação de Responsabilidade de Comando e Consulta)",
+      "title": "CQRS (Command Query Responsibility Segregation)",
       "description": "CQRS separa operações de leitura e escrita em diferentes modelos, permitindo estruturas de dados e padrões de processamento otimizados para comandos (escritas) e consultas (leituras).",
       "learningTip": "Pense no CQRS como filas de checkout separadas em uma loja - uma otimizada para compras rápidas (escritas) e outra para navegação e comparação de produtos (leituras). Pratique projetar exemplos simples onde as necessidades de leitura e escrita são muito diferentes, como um blog ou site de comércio eletrônico.",
       "keyPoints": [
@@ -1367,8 +1367,8 @@
       ]
     },
     "rateLimiting": {
-      "title": "Limitação de Taxa",
-      "description": "A limitação de taxa controla o número de solicitações que um cliente pode fazer a uma API ou serviço dentro de uma janela de tempo específica, protegendo sistemas contra abuso e garantindo uso justo de recursos.",
+      "title": "Rate Limiting",
+      "description": "Rate Limiting controla o número de solicitações que um cliente pode fazer a uma API ou serviço dentro de uma janela de tempo específica, protegendo sistemas contra abuso e garantindo uso justo de recursos.",
       "learningTip": "Crie uma simulação simples de balde de tokens usando moedas ou tokens na sua mesa. Pratique calcular quantas solicitações podem ser tratadas por minuto com diferentes tamanhos de balde e taxas de recarga para internalizar o conceito.",
       "keyPoints": [
         "Previne sobrecarga do sistema e protege contra abuso",
@@ -1389,7 +1389,7 @@
         "Lidar com respostas de limite de taxa excedido de forma graciosa",
         "Considerar diferentes limites para diferentes níveis de usuário",
         "Implementar mensagens de erro apropriadas e orientação de tentativa",
-        "Monitorar a eficácia da limitação de taxa e ajustar conforme necessário"
+        "Monitorar a eficácia da rate limiting e ajustar conforme necessário"
       ],
       "whenToUse": [
         "APIs públicas para prevenir abuso e garantir disponibilidade",
@@ -1399,18 +1399,18 @@
         "Comunicação de microsserviços para prevenir falhas em cascata"
       ],
       "bestPractices": [
-        "Usar limitação de taxa distribuída para escalabilidade",
-        "Implementar várias camadas de limitação de taxa (usuário, IP, chave de API)",
-        "Fornecer cabeçalhos de limite de taxa claros nas respostas",
+        "Usar rate limiting distribuído para escalabilidade",
+        "Implementar várias camadas de rate limiting (usuário, IP, chave de API)",
+        "Fornecer cabeçalhos de rate limiting claros nas respostas",
         "Permitir capacidade de burst para picos de tráfego legítimos",
-        "Registrar e monitorar eventos de limitação de taxa para análise"
+        "Registrar e monitorar eventos de rate limiting para análise"
       ],
       "implementationPatterns": [
         "Contadores em memória para aplicações de servidor único",
-        "Limitação de taxa distribuída baseada em Redis",
-        "Limitação de taxa baseada em banco de dados para persistência",
-        "Limitação de taxa baseada em borda usando capacidades de CDN",
-        "Limitação de taxa integrada ao gateway de API"
+        "Rate limiting distribuído baseada em Redis",
+        "Rate limiting baseada em banco de dados para persistência",
+        "Rate limiting baseada em borda usando capacidades de CDN",
+        "Rate limiting integrada ao gateway de API"
       ]
     },
     "jwt": {
@@ -1508,9 +1508,9 @@
       ]
     },
     "featureFlags": {
-      "title": "Bandeiras de Funcionalidade",
-      "description": "Bandeiras de funcionalidade (toggles de funcionalidade) permitem que desenvolvedores habilitem ou desabilitem funcionalidades dinamicamente sem implantar novo código, permitindo implantações mais seguras e lançamentos de funcionalidades controlados.",
-      "learningTip": "Pense nas bandeiras de funcionalidade como interruptores de luz em sua casa - você pode ligar/desligar funcionalidades para diferentes quartos (grupos de usuários). Pratique projetar uma simples instrução if/else que verifica uma bandeira antes de mostrar uma funcionalidade para entender a implementação básica.",
+      "title": "Feature Flags",
+      "description": "Feature flags permitem que desenvolvedores habilitem ou desabilitem funcionalidades dinamicamente sem implantar novo código, permitindo implantações mais seguras e lançamentos de funcionalidades controlados.",
+      "learningTip": "Pense nas feature flags como interruptores de luz em sua casa - você pode ligar/desligar funcionalidades para diferentes quartos (grupos de usuários). Pratique projetar uma simples instrução if/else que verifica uma feature flag antes de mostrar uma funcionalidade para entender a implementação básica.",
       "keyPoints": [
         "Habilitar/desabilitar funcionalidades sem implantação de código",
         "Reduzir o risco de implantação por meio de lançamentos graduais",
@@ -1519,18 +1519,18 @@
         "Habilitar diferentes funcionalidades para diferentes segmentos de usuários"
       ],
       "types": [
-        "Bandeiras de Lançamento - Controlam a disponibilidade de funcionalidades em produção",
-        "Bandeiras de Experimento - Suportam testes A/B e experimentos",
-        "Bandeiras Operacionais - Controlam o comportamento e desempenho do sistema",
-        "Bandeiras de Permissão - Controlam o acesso com base em papéis do usuário",
-        "Interruptores de Emergência - Capacidades de desativação de funcionalidades emergenciais"
+        "Feature flags de Lançamento - Controlam a disponibilidade de funcionalidades em produção",
+        "Feature flags de Experimento - Suportam testes A/B e experimentos",
+        "Feature flags Operacionais - Controlam o comportamento e desempenho do sistema",
+        "Feature flags de Permissão - Controlam o acesso com base em papéis do usuário",
+        "Feature flags de Emergência - Capacidades de desativação de funcionalidades emergenciais"
       ],
       "considerations": [
-        "Gerenciamento do ciclo de vida das bandeiras e limpeza",
-        "Impacto de desempenho da avaliação de bandeiras",
+        "Gerenciamento do ciclo de vida das feature flags e limpeza",
+        "Impacto de desempenho da avaliação de feature flags",
         "Consistência em sistemas distribuídos",
-        "Gerenciamento e versionamento de configuração de bandeiras",
-        "Dívida técnica de bandeiras de longa duração"
+        "Gerenciamento e versionamento de configuração de feature flags",
+        "Dívida técnica de feature flags de longa duração"
       ],
       "whenToUse": [
         "Lançamentos de novas funcionalidades e implantações canárias",
@@ -1540,18 +1540,18 @@
         "Migração gradual para novos componentes do sistema"
       ],
       "bestPractices": [
-        "Implementar cache de avaliação de bandeiras para desempenho",
-        "Usar convenções de nomeação estruturadas para bandeiras",
-        "Limpeza regular de bandeiras e gerenciamento de dívida técnica",
-        "Implementar auditoria e monitoramento de mudanças de bandeiras",
-        "Separar configuração de bandeiras do código da aplicação"
+        "Implementar cache de avaliação de feature flags para desempenho",
+        "Usar convenções de nomeação estruturadas para feature flags",
+        "Limpeza regular de feature flags e gerenciamento de dívida técnica",
+        "Implementar auditoria e monitoramento de mudanças de feature flags",
+        "Separar configuração de feature flags do código da aplicação"
       ],
       "implementationPatterns": [
-        "Bandeiras baseadas em arquivo de configuração",
-        "Gerenciamento de bandeiras baseado em banco de dados",
-        "Serviços de bandeiras de funcionalidade externas",
-        "Bandeiras baseadas em variáveis de ambiente",
-        "Atualizações de bandeiras em tempo real por meio de mensagens"
+        "Feature flags baseadas em arquivo de configuração",
+        "Gerenciamento de feature flags baseado em banco de dados",
+        "Serviços de feature flags externos",
+        "Feature flags baseadas em variáveis de ambiente",
+        "Atualizações de feature flags em tempo real por meio de mensagens"
       ]
     },
     "deployment": {
@@ -1596,15 +1596,15 @@
       "implementationPatterns": [
         "Implantações baseadas em orquestração de contêineres",
         "Troca de tráfego assistida por balanceadores de carga",
-        "Lançamentos controlados por bandeiras de funcionalidade",
+        "Lançamentos controlados por feature flags",
         "Automação de migração de banco de dados",
         "Pipelines automatizados de teste e validação"
       ]
     },
     "circuitBreaker": {
-      "title": "Disjuntor",
-      "description": "O padrão de disjuntor previne falhas em cascata em sistemas distribuídos ao monitorar chamadas de serviço e bloquear temporariamente solicitações para serviços que estão falhando, permitindo que eles tenham tempo para se recuperar.",
-      "learningTip": "Compare disjuntores a disjuntores elétricos em sua casa - quando há uma sobrecarga, eles 'disparam' para evitar danos. Pratique desenhar os três estados (fechado, aberto, semiaberto) e simule ser o disjuntor tomando decisões sobre quando bloquear solicitações.",
+      "title": "Circuit Breaker",
+      "description": "O padrão de circuit breaker previne falhas em cascata em sistemas distribuídos ao monitorar chamadas de serviço e bloquear temporariamente solicitações para serviços que estão falhando, permitindo que eles tenham tempo para se recuperar.",
+      "learningTip": "Compare circuit breakers a disjuntores elétricos em sua casa - quando há uma sobrecarga, eles 'disparam' para evitar danos. Pratique desenhar os três estados (fechado, aberto, semiaberto) e simule ser o disjuntor tomando decisões sobre quando bloquear solicitações.",
       "keyPoints": [
         "Previne falhas em cascata em sistemas distribuídos",
         "Fornece resposta rápida a falhas em vez de esperar por tempos limite",
@@ -1649,8 +1649,8 @@
       ]
     },
     "retryTimeout": {
-      "title": "Lógica de Tentativa e Tempos Limite",
-      "description": "A lógica de tentativa e os mecanismos de tempo limite lidam com falhas transitórias de forma graciosa, retryando automaticamente operações que falharam com atrasos apropriados e desistindo após limites de tempo razoáveis.",
+      "title": "Lógica de Retry e Timeout",
+      "description": "A lógica de retry e os mecanismos de timeout lidam com falhas transitórias de forma graciosa, retryando automaticamente operações que falharam com atrasos apropriados e desistindo após limites de tempo razoáveis.",
       "learningTip": "Pratique a 'dança de backoff exponencial' - bata palmas com atrasos crescentes (1 seg, 2 seg, 4 seg, 8 seg) para sentir o ritmo. Essa memória física ajuda a lembrar por que não tentamos novamente imediatamente e evitamos sobrecarregar serviços com falhas.",
       "keyPoints": [
         "Lidar com falhas transitórias automaticamente sem intervenção do usuário",
@@ -2017,7 +2017,7 @@
         "communication": ["HTTP vs gRPC", "REST vs GraphQL", "WebSockets", "Gateway de API"],
         "async": ["Filas de Mensagens", "Origem de Eventos", "CQRS", "Consistência"],
         "performance": ["Padrões de Cache", "Disjuntor", "Observabilidade", "Lógica de Tentativa"],
-        "security": ["JWT e OAuth2", "Limitação de Taxa", "TLS/HTTPS", "Bandeiras de Funcionalidade"]
+        "security": ["JWT e OAuth2", "Rate Limiting", "TLS/HTTPS", "Feature Flags"]
       }
     },
     "quickStart": {

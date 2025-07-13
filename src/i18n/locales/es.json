@@ -188,24 +188,24 @@
         "description": "Esta capa garantiza una comunicación segura y eficiente en todo el sistema.",
         "types": {
           "loadBalancers": {
-            "title": "Balanceadores de carga",
-            "description": "Distribuyen el tráfico",
+            "title": "Balanceadores de carga (Load Balancers)",
+            "description": "Distribuyen el tráfico de red entre múltiples servidores para garantizar alta disponibilidad y rendimiento de aplicaciones.",
             "examples": [
               "HAProxy",
               "AWS ALB"
             ]
           },
           "apiGateways": {
-            "title": "Puertas de enlace API",
-            "description": "Centralizan el enrutamiento de solicitudes, autenticación, limitación de tasa",
+            "title": "Puertas de enlace API (API Gateways)",
+            "description": "Centralizan el enrutamiento de solicitudes, autenticación, limitación de tasa, gestión de tráfico y más.",
             "examples": [
               "Kong",
               "Amazon API Gateway"
             ]
           },
           "cdns": {
-            "title": "CDNs",
-            "description": "Almacenan en caché activos estáticos cerca de los usuarios",
+            "title": "CDNs (Content Delivery Networks)",
+            "description": "Almacenan en caché activos estáticos (imágenes, videos, etc.) cerca de los usuarios para reducir la latencia y mejorar el rendimiento.",
             "examples": [
               "Cloudflare",
               "Akamai"
@@ -213,7 +213,7 @@
           },
           "serviceMesh": {
             "title": "Service mesh",
-            "description": "Gestiona la comunicación servicio a servicio en microservicios",
+            "description": "Gestiona la comunicación servicio a servicio en microservicios, proporcionando funciones de enrutamiento de tráfico, seguridad, observabilidad y resiliencia.",
             "examples": [
               "Istio",
               "Linkerd"
@@ -226,8 +226,8 @@
         "description": "Los sistemas modernos a menudo integran plataformas externas para descargar funcionalidades complejas o no centrales. Estas herramientas ayudan a reducir el tiempo de comercialización y permiten a los equipos centrarse en la lógica empresarial principal. Algunos ejemplos incluyen:",
         "types": {
           "authentication": {
-            "title": "Autenticación",
-            "description": "Gestionan autenticación y autorización",
+            "title": "Proveedores de autenticación",
+            "description": "Gestionan autenticación y autorización de usuarios.",
             "examples": [
               "Auth0",
               "Firebase Auth",
@@ -235,8 +235,8 @@
             ]
           },
           "payments": {
-            "title": "Pagos",
-            "description": "Gestionan pagos y transacciones financieras",
+            "title": "Procesadores de pagos",
+            "description": "Gestionan pagos y transacciones financieras.",
             "examples": [
               "Stripe",
               "PayPal",
@@ -244,8 +244,8 @@
             ]
           },
           "notifications": {
-            "title": "Notificaciones",
-            "description": "Gestionan notificaciones y mensajes",
+            "title": "Servicios de notificaciones",
+            "description": "Gestionan notificaciones y mensajes a través de diferentes canales.",
             "examples": [
               "Twilio (SMS)",
               "SendGrid (email)",
@@ -253,8 +253,8 @@
             ]
           },
           "monitoring": {
-            "title": "Monitoreo",
-            "description": "Gestionan monitoreo y métricas",
+            "title": "Herramientas de monitoreo",
+            "description": "Monitorean la salud y el rendimiento del sistema.",
             "examples": [
               "Datadog",
               "New Relic",
@@ -263,7 +263,7 @@
           },
           "ai": {
             "title": "Servicios de IA/ML",
-            "description": "Agregar inteligencia a los aplicativos",
+            "description": "Soluciones basadas en inteligencia artificial que ofrecen herramientas y funcionalidades para automatizar tareas, analizar datos, tomar decisiones y mejorar procesos.",
             "examples": [
               "OpenAI API",
               "Google Cloud AI",
@@ -579,7 +579,7 @@
       ]
     },
     "serviceMesh": {
-      "title": "Malla de Servicios",
+      "title": "Malla de Servicios (Service Mesh)",
       "description": "La malla de servicios proporciona una capa de infraestructura dedicada para la comunicación entre servicios, ofreciendo gestión de tráfico, seguridad y observabilidad sin requerir cambios en el código de la aplicación.",
       "learningTip": "Visualiza la malla de servicios como la infraestructura vial de una ciudad: los servicios son edificios, y la malla son las carreteras, semáforos y señales que gestionan el flujo de tráfico entre ellos. Practica explicando cómo puedes mejorar las carreteras sin cambiar los edificios (servicios).",
       "keyPoints": [
@@ -726,7 +726,7 @@
       ]
     },
     "eventSourcing": {
-      "title": "Sourcing de Eventos",
+      "title": "Sourcing de Eventos (Event Sourcing)",
       "description": "El sourcing de eventos almacena el estado de una entidad de negocio como una secuencia de eventos que cambian el estado, proporcionando una pista de auditoría completa y habilitando capacidades de consulta y reconstrucción potentes.",
       "learningTip": "Compara el sourcing de eventos con llevar un diario detallado en lugar de solo actualizar tu estado actual. Practica 'reconstruir' tu día leyendo las entradas del diario cronológicamente: esto refleja cómo el sourcing de eventos reconstruye el estado actual a partir de eventos históricos.",
       "keyPoints": [
@@ -780,7 +780,7 @@
       ]
     },
     "cqrs": {
-      "title": "CQRS (Segregación de Responsabilidad de Consulta y Comando)",
+      "title": "CQRS (Command Query Responsibility Segregation)",
       "description": "CQRS separa las operaciones de lectura y escritura en diferentes modelos, permitiendo estructuras de datos y patrones de procesamiento optimizados para comandos (escrituras) y consultas (lecturas).",
       "learningTip": "Piensa en CQRS como tener filas separadas en una tienda: una optimizada para compras rápidas (escrituras) y otra para explorar y comparar productos (lecturas). Practica diseñando ejemplos simples donde las necesidades de lectura y escritura son muy diferentes, como un blog o un sitio de comercio electrónico.",
       "keyPoints": [
@@ -895,7 +895,7 @@
       ]
     },
     "caching": {
-      "title": "Caché",
+      "title": "Caching",
       "description": "El caché almacena datos accedidos frecuentemente en capas de almacenamiento rápidas para reducir la latencia, mejorar el rendimiento y disminuir la carga en los sistemas backend y bases de datos.",
       "learningTip": "Crea una 'pirámide de jerarquía de caché' dibujando con tu cerebro en la cima (el más rápido), luego notas en papel, luego libros, luego biblioteca. Practica explicando por qué revisarías cada nivel antes de pasar al siguiente: esto refleja cómo funcionan los cachés de computadora desde la CPU hasta el disco.",
       "keyPoints": [
@@ -1367,8 +1367,8 @@
       ]
     },
     "rateLimiting": {
-      "title": "Limitación de Tasa",
-      "description": "La limitación de tasa controla el número de solicitudes que un cliente puede hacer a una API o servicio dentro de una ventana de tiempo específica, protegiendo los sistemas de abuso y asegurando un uso justo de los recursos.",
+      "title": "Rate Limiting",
+      "description": "Rate Limiting controla el número de solicitudes que un cliente puede hacer a una API o servicio dentro de una ventana de tiempo específica, protegiendo los sistemas de abuso y asegurando un uso justo de los recursos.",
       "learningTip": "Crea una simulación simple de cubo de tokens usando monedas o tokens en tu escritorio. Practica calculando cuántas solicitudes se pueden manejar por minuto con diferentes tamaños de cubo y tasas de recarga para interiorizar el concepto.",
       "keyPoints": [
         "Previene la sobrecarga del sistema y protege contra abusos",
@@ -1508,9 +1508,9 @@
       ]
     },
     "featureFlags": {
-      "title": "Banderas de Funcionalidad",
-      "description": "Las banderas de funcionalidad (toggles de características) permiten a los desarrolladores habilitar o deshabilitar funciones dinámicamente sin desplegar nuevo código, habilitando despliegues más seguros y lanzamientos controlados de funciones.",
-      "learningTip": "Piensa en las banderas de funcionalidad como interruptores de luz en tu hogar: puedes encender/apagar funciones para diferentes habitaciones (grupos de usuarios). Practica diseñando una declaración if/else simple que verifica una bandera antes de mostrar una función para entender la implementación básica.",
+      "title": "Feature Flags",
+      "description": "Las feature flags permiten a los desarrolladores habilitar o deshabilitar funciones dinámicamente sin desplegar nuevo código, habilitando despliegues más seguros y lanzamientos controlados de funciones.",
+      "learningTip": "Piensa en las feature flags como interruptores de luz en tu hogar: puedes encender/apagar funciones para diferentes habitaciones (grupos de usuarios). Practica diseñando una declaración if/else simple que verifica una feature flag antes de mostrar una función para entender la implementación básica.",
       "keyPoints": [
         "Habilitar/deshabilitar funciones sin despliegue de código",
         "Reducir el riesgo de despliegue mediante lanzamientos graduales",
@@ -1519,18 +1519,18 @@
         "Habilitar diferentes funciones para diferentes segmentos de usuarios"
       ],
       "types": [
-        "Banderas de Lanzamiento - Controlar la disponibilidad de funciones en producción",
-        "Banderas de Experimento - Soportar pruebas A/B y experimentos",
-        "Banderas Operativas - Controlar el comportamiento y rendimiento del sistema",
-        "Banderas de Permisos - Controlar el acceso basado en roles de usuario",
-        "Interruptores de Emergencia - Capacidades de desactivación de funciones de emergencia"
+        "Feature Flags de Lanzamiento - Controlar la disponibilidad de funciones en producción",
+        "Feature Flags de Experimento - Soportar pruebas A/B y experimentos",
+        "Feature Flags Operativas - Controlar el comportamiento y rendimiento del sistema",
+        "Feature Flags de Permisos - Controlar el acceso basado en roles de usuario",
+        "Feature Flags de Emergencia - Capacidades de desactivación de funciones de emergencia"
       ],
       "considerations": [
-        "Gestión del ciclo de vida y limpieza de banderas",
-        "Impacto en el rendimiento de la evaluación de banderas",
+        "Gestión del ciclo de vida y limpieza de feature flags",
+        "Impacto en el rendimiento de la evaluación de feature flags",
         "Consistencia en sistemas distribuidos",
-        "Gestión de configuración y versionado de banderas",
-        "Deuda técnica por banderas de larga duración"
+        "Gestión de configuración y versionado de feature flags",
+        "Deuda técnica por feature flags de larga duración"
       ],
       "whenToUse": [
         "Lanzamientos de nuevas funciones y despliegues canary",
@@ -1540,18 +1540,18 @@
         "Migración gradual a nuevos componentes del sistema"
       ],
       "bestPractices": [
-        "Implementar caché de evaluación de banderas para rendimiento",
-        "Usar convenciones de nombres de banderas estructuradas",
-        "Limpieza regular de banderas y gestión de deuda técnica",
-        "Implementar auditoría y monitoreo de cambios de banderas",
-        "Separar la configuración de banderas del código de la aplicación"
+        "Implementar caché de evaluación de feature flags para rendimiento",
+        "Usar convenciones de nombres de feature flags estructuradas",
+        "Limpieza regular de feature flags y gestión de deuda técnica",
+        "Implementar auditoría y monitoreo de cambios de feature flags",
+        "Separar la configuración de feature flags del código de la aplicación"
       ],
       "implementationPatterns": [
-        "Banderas basadas en archivos de configuración",
-        "Gestión de banderas impulsada por base de datos",
-        "Servicios de banderas de funcionalidad externos",
-        "Banderas basadas en variables de entorno",
-        "Actualizaciones de banderas en tiempo real a través de mensajería"
+        "Feature Flags basadas en archivos de configuración",
+        "Gestión de feature flags impulsada por base de datos",
+        "Servicios de feature flags externos",
+        "Feature Flags basadas en variables de entorno",
+        "Actualizaciones de feature flags en tiempo real a través de mensajería"
       ]
     },
     "deployment": {
@@ -1649,8 +1649,8 @@
     ]
   },
   "retryTimeout": {
-    "title": "Lógica de Reintento y Tiempos de Espera",
-    "description": "La lógica de reintento y los mecanismos de tiempos de espera manejan fallos transitorios de manera elegante al reintentar automáticamente operaciones fallidas con retrasos apropiados y desistir después de límites de tiempo razonables.",
+    "title": "Lógica de Retry y Timeout",
+    "description": "La lógica de retry y los mecanismos de timeout manejan fallos transitorios de manera elegante al reintentar automáticamente operaciones fallidas con retrasos apropiados y desistir después de límites de tiempo razonables.",
     "learningTip": "Practica la 'danza de retroceso exponencial': aplaude con retrasos crecientes (1 seg, 2 seg, 4 seg, 8 seg) para sentir el ritmo. Esta memoria física te ayuda a recordar por qué no reintentamos inmediatamente y evitamos abrumar servicios que fallan.",
     "keyPoints": [
       "Maneja fallos transitorios automáticamente sin intervención del usuario",
@@ -2017,7 +2017,7 @@
         "communication": ["HTTP vs gRPC", "REST vs GraphQL", "WebSockets", "Puerta de Enlace API"],
         "async": ["Colas de Mensajes", "Sourcing de Eventos", "CQRS", "Consistencia"],
         "performance": ["Patrones de Caché", "Interruptor de Circuito", "Observabilidad", "Lógica de Reintento"],
-        "security": ["JWT y OAuth2", "Limitación de Tasa", "TLS/HTTPS", "Banderas de Funcionalidad"]
+        "security": ["JWT y OAuth2", "Limitación de Tasa", "TLS/HTTPS", "Feature Flags"]
       }
     },
     "quickStart": {
