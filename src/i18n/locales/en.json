@@ -54,6 +54,318 @@
     "storagePatterns": "Storage Patterns",
     "systemTypes": "System Types"
   },
+  "homePage": {
+    "title": "The Fundamentals of System Design",
+    "subtitle": "A comprehensive guide to building scalable, reliable, and maintainable systems",
+    "whatIsSystemDesign": {
+      "title": "What is System Design?",
+      "paragraph1": "System design is the process of defining the architecture, components, data flow, and interactions of a software system to meet specified goals. It involves making high-level decisions that balance trade-offs across performance, scalability, reliability, maintainability, cost, and complexity.",
+      "paragraph2": "At its core, system design is about solving real-world problems through structured thinking, clear abstractions, and technical insight. Whether you're building a social media platform, an e-commerce website, or a real-time multiplayer game, system design ensures that your system can grow, adapt, and perform under load.",
+      "paragraph3": "Unlike implementation, which focuses on isolated features, system design looks at the \"big picture\", how different parts of a system fit and work together. It's a collaborative and creative process that often starts long before the first line of code is written."
+    },
+    "keyQuestions": {
+      "title": "System Design: 10 Key Questions",
+      "intro": "A well-designed system must answer these ten fundamental questions. These questions help guide architectural decisions and prepare the system for scale, change, and resilience.",
+      "questions": [
+        {
+          "number": 1,
+          "title": "Scalability",
+          "question": "How will the system handle increasing users, requests, and data volume efficiently?"
+        },
+        {
+          "number": 2,
+          "title": "Latency & Performance",
+          "question": "How can we ensure low response times and consistent performance under load?"
+        },
+        {
+          "number": 3,
+          "title": "Fault Tolerance & Reliability",
+          "question": "What happens when a component fails? Can the system detect, recover, and remain available?"
+        },
+        {
+          "number": 4,
+          "title": "Data Management",
+          "question": "How should data be stored, retrieved, indexed, and cached to ensure integrity and performance?"
+        },
+        {
+          "number": 5,
+          "title": "Communication",
+          "question": "How do system components interact, synchronously or asynchronously, and through what protocols (e.g., HTTP, gRPC, message queues)?"
+        },
+        {
+          "number": 6,
+          "title": "Security",
+          "question": "How do we protect against unauthorized access, data leaks, and attacks like DDoS or injection?"
+        },
+        {
+          "number": 7,
+          "title": "Observability & Monitoring",
+          "question": "How do we gain visibility into system health, errors, and usage patterns?"
+        },
+        {
+          "number": 8,
+          "title": "Compliance & Privacy",
+          "question": "Are we meeting regulatory requirements (e.g., GDPR, HIPAA)? How are sensitive data secured and handled?"
+        },
+        {
+          "number": 9,
+          "title": "Maintainability & Extensibility",
+          "question": "Can the system be easily debugged, monitored, updated, and expanded as requirements evolve?"
+        },
+        {
+          "number": 10,
+          "title": "Cost Efficiency",
+          "question": "Are we balancing performance and reliability with infrastructure and operational costs?"
+        }
+      ]
+    },
+    "keyComponents": {
+      "title": "Key Components of a Software System",
+      "subtitle": "Understanding the Building Blocks",
+      "intro": "A typical software system consists of several fundamental components, each contributing to the overall capability and resilience of the system:",
+      "client": {
+        "title": "1. Client / Frontend",
+        "description": "The client is the interface through which users interact with the system (i.e., web browsers and mobile apps).",
+        "responsibilities": "Responsibilities",
+        "responsibilitiesList": [
+          "Render the user interface (UI)",
+          "Capture and validate user input",
+          "Communicate with backend APIs (e.g., REST, GraphQL)"
+        ]
+      },
+      "server": {
+        "title": "2. Server / Backend",
+        "description": "The backend powers the business logic and orchestrates system behavior.",
+        "responsibilities": "Responsibilities",
+        "responsibilitiesList": [
+          "Process user requests",
+          "Handle authentication and authorization",
+          "Execute workflows and background tasks",
+          "Communicate with databases and services"
+        ],
+        "patterns": "Common Patterns",
+        "patternsList": [
+          "Monolith",
+          "Microservices",
+          "Serverless"
+        ]
+      },
+      "database": {
+        "title": "3. Database / Storage",
+        "description": "This component is responsible for persisting and managing data.",
+        "intro": "Here are some common types:",
+        "types": {
+          "sql": {
+            "title": "SQL",
+            "examples": [
+              "PostgreSQL/MySQL (structured data, transactions)"
+            ]
+          },
+          "nosql": {
+            "title": "NoSQL",
+            "examples": [
+              "MongoDB (flexible schema)",
+              "Cassandra (high throughput)"
+            ]
+          },
+          "inmemory": {
+            "title": "In-memory",
+            "examples": [
+              "Redis/Memcached (fast caching)"
+            ]
+          },
+          "objectStorage": {
+            "title": "Object Storage",
+            "examples": [
+              "Amazon S3/GCP Storage (files and media blobs like images, videos, etc.)"
+            ]
+          }
+        }
+      },
+      "networking": {
+        "title": "4. Networking & Infrastructure Layer",
+        "description": "This layer ensures secure and efficient communication across the system.",
+        "types": {
+          "loadBalancers": {
+            "title": "Load balancers",
+            "description": "Distribute traffic",
+            "examples": [
+              "HAProxy",
+              "AWS ALB"
+            ]
+          },
+          "apiGateways": {
+            "title": "API gateways",
+            "description": "Centralize request routing, auth, rate-limiting",
+            "examples": [
+              "Kong",
+              "Amazon API Gateway"
+            ]
+          },
+          "cdns": {
+            "title": "CDNs",
+            "description": "Cache static assets close to users",
+            "examples": [
+              "Cloudflare",
+              "Akamai"
+            ]
+          },
+          "serviceMesh": {
+            "title": "Service mesh",
+            "description": "Manage service-to-service communication in microservices",
+            "examples": [
+              "Istio",
+              "Linkerd"
+            ]
+          }
+        }
+      },
+      "thirdParty": {
+        "title": "5. Third-Party & External Services",
+        "description": "External services that provide specialized functionality to your system.",
+        "types": {
+          "authentication": {
+            "title": "Authentication providers",
+            "description": "Handle user identity and access",
+            "examples": [
+              "Auth0",
+              "Firebase Auth",
+              "Okta"
+            ]
+          },
+          "payments": {
+            "title": "Payment processors",
+            "description": "Handle financial transactions",
+            "examples": [
+              "Stripe",
+              "PayPal",
+              "Square"
+            ]
+          },
+          "notifications": {
+            "title": "Notification services",
+            "description": "Deliver messages across channels",
+            "examples": [
+              "Twilio",
+              "SendGrid",
+              "Firebase Cloud Messaging"
+            ]
+          },
+          "monitoring": {
+            "title": "Monitoring tools",
+            "description": "Track system health and performance",
+            "examples": [
+              "Datadog",
+              "New Relic",
+              "Prometheus"
+            ]
+          },
+          "ai": {
+            "title": "AI/ML services",
+            "description": "Add intelligence to applications",
+            "examples": [
+              "OpenAI API",
+              "Google Cloud AI",
+              "AWS Rekognition"
+            ]
+          }
+        }
+      }
+    },
+    "designProcess": {
+      "title": "The System Design Process",
+      "subtitle": "From Requirements to Blueprint",
+      "intro": "Designing a system isn't a rigid checklist, it's an iterative process that evolves through exploration, validation, and refinement. Here's a proven step-by-step framework:",
+      "steps": {
+        "requirements": {
+          "title": "1. Requirements Gathering",
+          "description": "Understand what the system needs to accomplish.",
+          "items": [
+            "Functional Requirements: What should it do? (e.g., upload photos, send messages)",
+            "Non-Functional Requirements (NFRs): Performance, latency, uptime, consistency",
+            "User Modeling: Who are the users? What are their use cases and volume?",
+            "Constraints: Tech stacks, budgets, SLAs, legal requirements"
+          ]
+        },
+        "estimations": {
+          "title": "2. Back-of-the-Envelope Estimations",
+          "description": "Estimate scale to inform technology and architecture decisions:",
+          "items": [
+            "Storage Needs: GBs/TBs per day or per user",
+            "Traffic Load: Peak QPS, reads vs. writes",
+            "Network Bandwidth: Data transferred between users/services",
+            "Server Count: Number of replicas needed to serve expected load"
+          ],
+          "tip": "Quick estimations help you avoid over-engineering or underestimating your architecture."
+        },
+        "hld": {
+          "title": "3. High-Level Design (HLD)",
+          "description": "Sketch out the system architecture and data flow.",
+          "items": [
+            "Identify core modules (e.g., user service, feed service, authentication)",
+            "Map interactions between components",
+            "Define external dependencies (e.g., third-party APIs)",
+            "Choose foundational technologies (databases, frameworks, hosting)"
+          ]
+        },
+        "dataModeling": {
+          "title": "4. Data Modeling & API Design",
+          "description": "Define the internal and external interfaces.",
+          "items": [
+            "Database Design: Choose data models, schema, indexing, partitioning",
+            "API Design: Define RESTful or RPC endpoints, contracts, authentication"
+          ],
+          "examples": [
+            "POST /tweet → creates a tweet",
+            "GET /timeline → fetches a user's feed"
+          ]
+        },
+        "detailedDesign": {
+          "title": "5. Detailed Design & Component Deep Dive",
+          "description": "Zoom into each service or module.",
+          "items": [
+            "Define responsibilities, inputs/outputs, failure modes",
+            "Apply caching, replication, queuing, and load balancing",
+            "Ensure each component meets its NFRs (availability, security, observability)"
+          ]
+        },
+        "bottlenecks": {
+          "title": "6. Bottlenecks, Trade-offs & Failure Points",
+          "description": "No design is perfect. Analyze risks and justify decisions.",
+          "items": [
+            "Bottlenecks: Which parts will stress first?",
+            "Failure Points: Where is the system vulnerable?"
+          ],
+          "tradeoffs": {
+            "title": "Trade-offs:",
+            "items": [
+              "Consistency vs. availability (CAP theorem)",
+              "Cost vs. latency",
+              "Simplicity vs. extensibility"
+            ]
+          },
+          "warning": "Always document trade-offs and fallback plans."
+        },
+        "review": {
+          "title": "7. Review, Validate & Iterate",
+          "description": "System design is a living process.",
+          "items": [
+            "Explain your design to colleagues or stakeholders",
+            "Use diagrams to support communication",
+            "Iterate based on feedback and testing (load tests, chaos tests)",
+            "Monitor and adjust in production"
+          ]
+        }
+      }
+    },
+    "conclusion": {
+      "title": "Conclusion",
+      "paragraph1": "Designing robust, scalable, and maintainable systems is both a technical discipline and a creative art. It demands foresight, collaboration, and structured problem-solving.",
+      "paragraph2": "By breaking down the process, from identifying requirements and estimating scale to architecting components and validating decisions, you create systems that can gracefully scale, recover from failures, and adapt to change.",
+      "paragraph3": "Whether you're tackling a small feature or building a global platform, the mindset and tools of system design remain the same: clarity, resilience, and purpose.",
+      "quote": "Mastering system design is not about memorizing patterns, it's about applying principles to real-world problems with context-aware judgment."
+    }
+  },
   "content": {
     "httpGrpc": {
       "title": "HTTP vs gRPC",
@@ -105,1622 +417,7 @@
     "restGraphql": {
       "title": "REST vs GraphQL",
       "description": "REST and GraphQL are API design paradigms offering different approaches to data fetching, with REST providing resource-based endpoints and GraphQL enabling flexible query-driven data access.",
-      "learningTip": "Think of REST like a restaurant menu with fixed meals (endpoints) and GraphQL like a buffet where you pick exactly what you want. Practice designing both approaches for a simple blog API to understand when the flexibility of GraphQL is worth the added complexity.",
-      "keyPoints": [
-        "Choose based on data fetching patterns and client requirements",
-        "Consider development complexity and learning curve",
-        "Evaluate caching strategies and performance characteristics",
-        "Plan for API evolution and backward compatibility",
-        "Balance flexibility with simplicity and tooling support"
-      ],
-      "restCharacteristics": [
-        "Resource-based URLs with standard HTTP methods",
-        "Stateless communication with clear separation of concerns",
-        "Multiple endpoints for different resources and operations",
-        "Well-established patterns and extensive tooling",
-        "Simple caching with HTTP cache headers"
-      ],
-      "graphqlCharacteristics": [
-        "Single endpoint with flexible query language",
-        "Client-specified data requirements and nested queries",
-        "Strong type system with introspection capabilities",
-        "Real-time subscriptions and efficient data fetching",
-        "Schema-first development with code generation"
-      ],
-      "restAdvantages": [
-        "Simple to understand and implement",
-        "Excellent caching support with HTTP standards",
-        "Wide tooling support and established patterns",
-        "Easy debugging with standard HTTP tools",
-        "Good for CRUD operations and resource management"
-      ],
-      "graphqlAdvantages": [
-        "Eliminates over-fetching and under-fetching",
-        "Single request for complex data requirements",
-        "Strong typing with compile-time validation",
-        "Excellent developer experience with introspection",
-        "Efficient for mobile and bandwidth-constrained clients"
-      ],
-      "restChallenges": [
-        "Multiple requests for complex data (N+1 problem)",
-        "Over-fetching of unnecessary data",
-        "API versioning and backward compatibility",
-        "Tight coupling between client and server endpoints",
-        "Limited flexibility for evolving client requirements"
-      ],
-      "graphqlChallenges": [
-        "Complex caching due to dynamic queries",
-        "Potential for expensive queries and N+1 problems",
-        "Learning curve for query language and concepts",
-        "File upload complexity and limited HTTP caching",
-        "Debugging challenges with single endpoint"
-      ],
-      "whenToUseRest": [
-        "Simple CRUD operations with well-defined resources",
-        "Public APIs requiring wide compatibility",
-        "Applications with straightforward data relationships",
-        "Teams preferring established patterns and tooling",
-        "Systems requiring extensive HTTP caching"
-      ],
-      "whenToUseGraphql": [
-        "Complex data relationships and nested queries",
-        "Mobile applications with bandwidth constraints",
-        "Rapid frontend development with changing requirements",
-        "Microservices aggregation and data federation",
-        "Real-time applications requiring subscriptions"
-      ]
-    },
-    "websockets": {
-      "title": "WebSockets",
-      "description": "WebSockets provide full-duplex communication channels over TCP, enabling real-time, bidirectional data exchange between clients and servers for interactive applications.",
-      "learningTip": "Compare WebSockets to a phone call (real-time, two-way conversation) versus HTTP like sending letters back and forth. Practice identifying which apps need 'phone call' communication (chat, gaming) versus 'letter' communication (reading articles, shopping) to understand when to use WebSockets.",
-      "keyPoints": [
-        "Enable real-time, bidirectional communication between client and server",
-        "Maintain persistent connections for low-latency data exchange",
-        "Support various messaging patterns and protocols",
-        "Require careful connection management and error handling",
-        "Essential for interactive and collaborative applications"
-      ],
-      "websockets": [
-        "Persistent TCP connection with low overhead",
-        "Full-duplex communication allowing simultaneous send/receive",
-        "Event-driven programming model with message handlers",
-        "Support for text and binary data transmission",
-        "Built-in ping/pong frames for connection health monitoring"
-      ],
-      "pollingTypes": [
-        "Short Polling - Regular HTTP requests at fixed intervals",
-        "Long Polling - Server holds request until data available",
-        "WebSockets - Persistent bidirectional connection",
-        "Server-Sent Events - Unidirectional server-to-client streaming",
-        "HTTP/2 Server Push - Server initiates data transmission"
-      ],
-      "serverSentEvents": [
-        "Unidirectional server-to-client communication",
-        "Built on standard HTTP with automatic reconnection",
-        "Simple text-based protocol with event streaming",
-        "Better browser support and simpler implementation",
-        "Ideal for live updates and notifications"
-      ],
-      "streamingPatterns": [
-        "Real-time chat and messaging applications",
-        "Live data feeds and financial market updates",
-        "Collaborative editing and document sharing",
-        "Gaming and interactive multimedia applications",
-        "IoT device communication and sensor data streaming"
-      ],
-      "implementationConsiderations": [
-        "Connection scaling and resource management",
-        "Message queuing and delivery guarantees",
-        "Authentication and authorization for persistent connections",
-        "Graceful degradation and fallback mechanisms",
-        "Load balancing and sticky session requirements"
-      ]
-    },
-    "apiGateway": {
-      "title": "API Gateway",
-      "description": "API Gateway acts as a single entry point for client requests, providing centralized management of API traffic, security, monitoring, and cross-cutting concerns in microservices architectures.",
-      "learningTip": "Think of API Gateway as a hotel concierge - guests (clients) come to one person who knows how to route requests to different hotel services (microservices). Practice drawing a hotel layout and explaining how the concierge handles authentication, directions, and service coordination.",
-      "keyPoints": [
-        "Centralize API management and provide single entry point",
-        "Handle cross-cutting concerns like authentication and rate limiting",
-        "Enable API composition and backend service abstraction",
-        "Provide monitoring, analytics, and operational visibility",
-        "Support API versioning and backward compatibility"
-      ],
-      "coreFeatures": [
-        "Request routing and load balancing to backend services",
-        "Authentication, authorization, and security enforcement",
-        "Rate limiting, throttling, and quota management",
-        "Request/response transformation and protocol translation",
-        "Monitoring, logging, and analytics collection"
-      ],
-      "securityFeatures": [
-        "API key management and validation",
-        "OAuth2 and JWT token validation",
-        "IP whitelisting and blacklisting",
-        "SSL termination and certificate management",
-        "DDoS protection and threat detection"
-      ],
-      "trafficManagement": [
-        "Load balancing across multiple backend instances",
-        "Circuit breaker pattern for fault tolerance",
-        "Retry logic and timeout configuration",
-        "Caching for improved performance",
-        "Request/response compression and optimization"
-      ],
-      "operationalFeatures": [
-        "Real-time monitoring and alerting",
-        "API usage analytics and reporting",
-        "Health checks and service discovery",
-        "A/B testing and canary deployments",
-        "API documentation and developer portal"
-      ],
-      "implementationPatterns": [
-        "Centralized gateway for all API traffic",
-        "Backend for Frontend (BFF) pattern",
-        "Micro-gateway for specific service domains",
-        "Edge gateway for external traffic",
-        "Internal gateway for service-to-service communication"
-      ]
-    },
-    "serviceMesh": {
-      "title": "Service Mesh",
-      "description": "Service mesh provides a dedicated infrastructure layer for service-to-service communication, offering traffic management, security, and observability without requiring application code changes.",
-      "learningTip": "Visualize service mesh as a city's road infrastructure - services are buildings, and the mesh is the roads, traffic lights, and signs that manage how traffic flows between them. Practice explaining how you can upgrade the roads without changing the buildings (services).",
-      "keyPoints": [
-        "Provide dedicated infrastructure for service communication",
-        "Handle traffic management, security, and observability transparently",
-        "Enable policy enforcement and configuration management",
-        "Support gradual adoption and polyglot environments",
-        "Separate infrastructure concerns from application logic"
-      ],
-      "architecture": [
-        "Data Plane - Sidecar proxies handling service communication",
-        "Control Plane - Management and configuration of data plane",
-        "Service Discovery - Automatic detection and registration",
-        "Configuration Management - Policy and routing rules",
-        "Telemetry Collection - Metrics, logs, and distributed tracing"
-      ],
-      "trafficManagement": [
-        "Intelligent load balancing and traffic routing",
-        "Circuit breaker and retry policies",
-        "Timeout and deadline management",
-        "Traffic splitting for canary deployments",
-        "Fault injection for chaos engineering"
-      ],
-      "securityFeatures": [
-        "Mutual TLS (mTLS) for service-to-service encryption",
-        "Identity-based access control and authorization",
-        "Certificate management and rotation",
-        "Security policy enforcement and compliance",
-        "Zero-trust networking principles"
-      ],
-      "observabilityFeatures": [
-        "Distributed tracing across service boundaries",
-        "Metrics collection and monitoring",
-        "Access logging and audit trails",
-        "Service topology visualization",
-        "Performance analysis and bottleneck identification"
-      ],
-      "popularSolutions": [
-        "Istio - Comprehensive service mesh with extensive features",
-        "Linkerd - Lightweight and simple service mesh",
-        "Consul Connect - HashiCorp's service mesh solution",
-        "AWS App Mesh - Managed service mesh for AWS",
-        "Envoy Proxy - High-performance proxy for service mesh data plane"
-      ],
-      "adoptionStrategy": [
-        "Start with observability and monitoring features",
-        "Gradually add traffic management capabilities",
-        "Implement security policies and mTLS",
-        "Expand to advanced features like fault injection",
-        "Consider operational complexity and team expertise"
-      ]
-    },
-    "messageQueues": {
-      "title": "Message Queues",
-      "description": "Message queues enable asynchronous communication between services by storing messages in a queue until they can be processed, providing loose coupling and improved system resilience.",
-      "learningTip": "Use the post office analogy - senders drop letters in mailboxes (producers to queues) and mail carriers deliver them when convenient (consumers process messages). Practice explaining how this prevents the sender from waiting around and what happens when the mail carrier is sick (consumer failure).",
-      "keyPoints": [
-        "Enable asynchronous communication between distributed services",
-        "Provide loose coupling and improved system resilience",
-        "Support load balancing and horizontal scaling of consumers",
-        "Ensure message durability and delivery guarantees",
-        "Enable event-driven architectures and microservices communication"
-      ],
-      "types": [
-        "Point-to-Point - One producer sends to one consumer",
-        "Publish-Subscribe - One producer sends to multiple consumers",
-        "Request-Reply - Synchronous-like communication over async channels",
-        "Dead Letter Queue - Handle failed message processing",
-        "Priority Queue - Process high-priority messages first"
-      ],
-      "patterns": [
-        "Producer-Consumer - Basic message sending and receiving",
-        "Work Queue - Distribute tasks among multiple workers",
-        "Fan-out - Broadcast messages to multiple consumers",
-        "Routing - Route messages based on content or headers",
-        "RPC over MQ - Remote procedure calls using message queues"
-      ],
-      "considerations": [
-        "Message ordering and delivery guarantees",
-        "Queue durability and persistence requirements",
-        "Error handling and retry mechanisms",
-        "Message serialization and schema evolution",
-        "Monitoring queue depth and consumer lag"
-      ],
-      "whenToUse": [
-        "Decoupling microservices communication",
-        "Handling traffic spikes and load balancing",
-        "Implementing event-driven architectures",
-        "Processing background jobs and tasks",
-        "Integrating systems with different processing speeds"
-      ],
-      "popularSolutions": [
-        "Apache Kafka - High-throughput distributed streaming",
-        "RabbitMQ - Feature-rich message broker",
-        "Amazon SQS - Managed cloud message queue service",
-        "Redis Pub/Sub - In-memory messaging for real-time apps",
-        "Apache Pulsar - Multi-tenant, geo-replicated messaging"
-      ]
-    },
-    "eventualConsistency": {
-      "title": "Eventual Consistency",
-      "description": "Eventual consistency is a consistency model where the system will become consistent over time, allowing for temporary inconsistencies to achieve better availability and partition tolerance.",
-      "learningTip": "Think of eventual consistency like gossip spreading through a school - not everyone hears the news at the same time, but eventually everyone knows. Practice explaining why this delay is acceptable for social media likes but not for bank account balances.",
-      "keyPoints": [
-        "Allows temporary inconsistencies for better availability",
-        "System becomes consistent over time without external intervention",
-        "Enables high availability and partition tolerance (AP in CAP)",
-        "Reduces latency by avoiding synchronous coordination",
-        "Essential for large-scale distributed systems"
-      ],
-      "types": [
-        "Strong Eventual Consistency - Convergence guaranteed",
-        "Weak Consistency - No guarantees about when consistency occurs",
-        "Session Consistency - Consistency within a user session",
-        "Monotonic Read Consistency - Reads never go backwards",
-        "Causal Consistency - Causally related operations are ordered"
-      ],
-      "patterns": [
-        "Event Sourcing - Store events and replay for consistency",
-        "CQRS - Separate read and write models with async sync",
-        "Saga Pattern - Manage distributed transactions",
-        "Conflict-Free Replicated Data Types (CRDTs)",
-        "Vector Clocks - Track causality in distributed systems"
-      ],
-      "considerations": [
-        "Business tolerance for temporary inconsistencies",
-        "Conflict resolution strategies and policies",
-        "User experience during inconsistent states",
-        "Monitoring and alerting for consistency lag",
-        "Data reconciliation and repair mechanisms"
-      ],
-      "whenToUse": [
-        "Global distributed systems with high availability needs",
-        "Social media platforms and content sharing",
-        "E-commerce inventory and catalog systems",
-        "Real-time collaboration applications",
-        "IoT and sensor data collection systems"
-      ],
-      "tradeOffs": [
-        "Availability vs Consistency - Choose availability over immediate consistency",
-        "Performance vs Correctness - Faster responses with delayed consistency",
-        "Complexity vs Simplicity - More complex conflict resolution logic",
-        "User Experience vs System Design - Handle inconsistent states gracefully"
-      ]
-    },
-    "eventSourcing": {
-      "title": "Event Sourcing",
-      "description": "Event sourcing stores the state of a business entity as a sequence of state-changing events, providing a complete audit trail and enabling powerful querying and reconstruction capabilities.",
-      "learningTip": "Compare event sourcing to keeping a detailed diary instead of just updating your current status. Practice 'rebuilding' your day by reading diary entries chronologically - this mirrors how event sourcing reconstructs current state from historical events.",
-      "keyPoints": [
-        "Store events as the single source of truth instead of current state",
-        "Provide complete audit trail and historical reconstruction",
-        "Enable temporal queries and point-in-time analysis",
-        "Support event replay for debugging and testing",
-        "Facilitate integration with event-driven architectures"
-      ],
-      "types": [
-        "Command Events - Actions that change system state",
-        "Domain Events - Business-meaningful occurrences",
-        "Integration Events - Cross-boundary system events",
-        "Snapshot Events - Periodic state snapshots for performance",
-        "Compensating Events - Undo or correct previous events"
-      ],
-      "patterns": [
-        "Event Store - Specialized database for storing events",
-        "Event Streaming - Real-time event processing and distribution",
-        "Projection - Build read models from event streams",
-        "Snapshot - Periodic state snapshots for performance",
-        "Event Versioning - Handle schema evolution over time"
-      ],
-      "considerations": [
-        "Event schema design and versioning strategies",
-        "Storage requirements for growing event streams",
-        "Query performance and projection maintenance",
-        "Event ordering and consistency guarantees",
-        "Privacy and data retention compliance"
-      ],
-      "whenToUse": [
-        "Systems requiring complete audit trails",
-        "Complex business domains with rich behavior",
-        "Applications needing temporal queries",
-        "Systems with regulatory compliance requirements",
-        "Event-driven microservices architectures"
-      ],
-      "benefits": [
-        "Complete audit trail and historical analysis",
-        "Natural fit for event-driven architectures",
-        "Simplified testing with event replay",
-        "Flexible read model generation",
-        "Support for complex business workflows"
-      ],
-      "challenges": [
-        "Increased storage requirements over time",
-        "Complexity in event schema evolution",
-        "Performance considerations for large event streams",
-        "Learning curve for development teams",
-        "Eventual consistency in read models"
-      ]
-    },
-    "cqrs": {
-      "title": "CQRS (Command Query Responsibility Segregation)",
-      "description": "CQRS separates read and write operations into different models, allowing for optimized data structures and processing patterns for commands (writes) and queries (reads).",
-      "learningTip": "Think of CQRS like having separate checkout lines at a store - one optimized for quick purchases (writes) and another for browsing and comparing products (reads). Practice designing simple examples where read and write needs are very different, like a blog or e-commerce site.",
-      "keyPoints": [
-        "Separate read and write models for optimal performance",
-        "Enable independent scaling of read and write operations",
-        "Support complex business logic in command processing",
-        "Allow multiple optimized read models for different use cases",
-        "Facilitate event-driven architectures and eventual consistency"
-      ],
-      "types": [
-        "Simple CQRS - Separate models, shared database",
-        "CQRS with Event Sourcing - Events as the source of truth",
-        "CQRS with Separate Databases - Different stores for reads/writes",
-        "Read-only CQRS - Optimize only the read side",
-        "Full CQRS - Complete separation with async synchronization"
-      ],
-      "patterns": [
-        "Command Handler - Process and validate commands",
-        "Query Handler - Execute optimized read operations",
-        "Projection - Build read models from write model events",
-        "Saga - Coordinate complex business processes",
-        "Event Bus - Communicate between command and query sides"
-      ],
-      "considerations": [
-        "Complexity increase compared to simple CRUD operations",
-        "Eventual consistency between read and write models",
-        "Data synchronization and projection maintenance",
-        "Testing strategies for separated models",
-        "Team skills and learning curve requirements"
-      ],
-      "whenToUse": [
-        "Complex domains with different read/write requirements",
-        "High-performance applications with read/write scaling needs",
-        "Event-driven systems with rich business logic",
-        "Applications requiring multiple specialized read models",
-        "Systems with complex reporting and analytics needs"
-      ],
-      "benefits": [
-        "Independent optimization of read and write operations",
-        "Better performance through specialized data models",
-        "Improved scalability with separate scaling strategies",
-        "Enhanced security with role-based model access",
-        "Simplified complex business logic handling"
-      ],
-      "challenges": [
-        "Increased system complexity and development overhead",
-        "Eventual consistency management between models",
-        "Additional infrastructure and operational complexity",
-        "Potential code duplication between models",
-        "Learning curve for development teams"
-      ],
-      "implementationPatterns": [
-        "Mediator Pattern - Route commands and queries to handlers",
-        "Repository Pattern - Abstract data access for each model",
-        "Unit of Work - Manage transactions in command processing",
-        "Specification Pattern - Encapsulate query logic",
-        "Domain Events - Communicate changes between bounded contexts"
-      ]
-    },
-    "appServers": {
-      "title": "Application Servers",
-      "description": "Application servers host and execute business logic, providing runtime environments for applications and managing resources like connections, transactions, and security.",
-      "learningTip": "Think of app servers as restaurants - they take orders (requests), prepare food (process business logic), and serve customers (return responses). Practice listing what 'kitchen equipment' (middleware services) different types of restaurants (Java, .NET, Node.js) would need.",
-      "keyPoints": [
-        "Host and execute application business logic and processing",
-        "Manage application lifecycle and resource allocation",
-        "Provide runtime environments and middleware services",
-        "Handle concurrent user requests and session management",
-        "Integrate with databases, message queues, and external services"
-      ],
-      "types": [
-        "Java Application Servers - Tomcat, JBoss, WebLogic, WebSphere",
-        ".NET Application Servers - IIS, Kestrel, Azure App Service",
-        "Node.js Servers - Express, Fastify, NestJS applications",
-        "Python Servers - Django, Flask, FastAPI applications",
-        "Container-based - Docker containers with orchestration"
-      ],
-      "coreFeatures": [
-        "Request Processing - Handle HTTP requests and route to handlers",
-        "Session Management - Maintain user state across requests",
-        "Connection Pooling - Manage database and external connections",
-        "Security - Authentication, authorization, and data protection",
-        "Monitoring - Health checks, metrics, and logging capabilities"
-      ],
-      "considerations": [
-        "Resource management and memory optimization",
-        "Concurrent request handling and thread safety",
-        "Integration with load balancers and reverse proxies",
-        "Deployment strategies and environment configuration",
-        "Monitoring, logging, and performance optimization"
-      ],
-      "whenToUse": [
-        "Web applications requiring business logic processing",
-        "API services and microservices architectures",
-        "Enterprise applications with complex workflows",
-        "Applications requiring session and state management",
-        "Systems needing integration with multiple data sources"
-      ],
-      "bestPractices": [
-        "Implement proper error handling and logging",
-        "Use connection pooling for database access",
-        "Configure appropriate thread pools and resource limits",
-        "Implement health checks and monitoring endpoints",
-        "Follow security best practices for authentication and authorization"
-      ],
-      "scalingStrategies": [
-        "Horizontal scaling with multiple server instances",
-        "Vertical scaling by increasing server resources",
-        "Auto-scaling based on CPU, memory, or request metrics",
-        "Load balancing across multiple application servers",
-        "Containerization for easier deployment and scaling"
-      ]
-    },
-    "caching": {
-      "title": "Caching",
-      "description": "Caching stores frequently accessed data in fast storage layers to reduce latency, improve performance, and decrease load on backend systems and databases.",
-      "learningTip": "Create a 'cache hierarchy pyramid' drawing with your brain at the top (fastest), then paper notes, then books, then library. Practice explaining why you'd check each level before going to the next - this mirrors how computer caches work from CPU to disk.",
-      "keyPoints": [
-        "Dramatically improve application response times and user experience",
-        "Reduce load on databases and expensive backend operations",
-        "Lower infrastructure costs through reduced resource usage",
-        "Enable better scalability under high traffic conditions",
-        "Provide resilience during backend service outages"
-      ],
-      "types": [
-        "Browser Cache - Client-side caching in web browsers",
-        "CDN Cache - Geographic distribution of static content",
-        "Reverse Proxy Cache - Server-side caching at edge",
-        "Application Cache - In-memory caching within applications",
-        "Database Cache - Query result caching and buffer pools"
-      ],
-      "cachingStrategies": [
-        "Cache-Aside (Lazy Loading) - Application manages cache explicitly",
-        "Write-Through - Write to cache and database simultaneously",
-        "Write-Behind (Write-Back) - Write to cache first, database later",
-        "Refresh-Ahead - Proactively refresh cache before expiration",
-        "Read-Through - Cache automatically loads data on cache miss"
-      ],
-      "considerations": [
-        "Cache invalidation strategies and data consistency",
-        "Memory usage optimization and eviction policies",
-        "Cache hit ratio monitoring and performance tuning",
-        "Data freshness requirements and TTL configuration",
-        "Cache warming strategies for application startup"
-      ],
-      "whenToUse": [
-        "Frequently accessed data with low change frequency",
-        "Expensive database queries or computational results",
-        "Static content delivery (images, CSS, JavaScript)",
-        "Session data and user preferences storage",
-        "API responses with predictable access patterns"
-      ],
-      "bestPractices": [
-        "Implement consistent cache key naming conventions",
-        "Monitor cache hit ratios and performance metrics",
-        "Use appropriate TTL values for different data types",
-        "Plan for cache failure scenarios and fallback mechanisms",
-        "Implement cache warming for critical application data"
-      ],
-      "popularSolutions": [
-        "Redis - In-memory data structure store with persistence",
-        "Memcached - High-performance distributed memory caching",
-        "Hazelcast - Distributed in-memory computing platform",
-        "Caffeine - High-performance Java caching library",
-        "Varnish - HTTP accelerator and reverse proxy cache"
-      ]
-    },
-    "databases": {
-      "title": "Databases",
-      "description": "Databases provide persistent storage and retrieval of structured and unstructured data, offering different models optimized for various use cases and performance requirements.",
-      "learningTip": "Use the filing cabinet analogy - SQL databases are like organized filing cabinets with labeled folders (tables) and strict rules, while NoSQL databases are like flexible storage boxes where you can throw different items together. Practice categorizing real apps (Instagram, banking) into SQL vs NoSQL needs.",
-      "keyPoints": [
-        "Provide persistent, reliable storage for application data",
-        "Support complex queries and data relationships",
-        "Ensure data consistency, integrity, and durability (ACID)",
-        "Enable concurrent access with transaction management",
-        "Offer different models optimized for specific use cases"
-      ],
-      "sqlDatabases": [
-        "Relational structure with tables, rows, and columns",
-        "ACID compliance for data consistency and reliability",
-        "Complex queries with JOINs and aggregations",
-        "Mature ecosystem with extensive tooling and support",
-        "Examples: PostgreSQL, MySQL, Oracle, SQL Server"
-      ],
-      "nosqlTypes": [
-        "Document Stores - MongoDB, CouchDB for flexible schemas",
-        "Key-Value Stores - Redis, DynamoDB for simple lookups",
-        "Column Family - Cassandra, HBase for wide-column data",
-        "Graph Databases - Neo4j, Amazon Neptune for relationships",
-        "Multi-Model - CosmosDB, ArangoDB supporting multiple paradigms"
-      ],
-      "considerations": [
-        "Data consistency requirements (ACID vs eventual consistency)",
-        "Query complexity and performance requirements",
-        "Scalability needs (vertical vs horizontal scaling)",
-        "Schema flexibility and evolution requirements",
-        "Operational complexity and team expertise"
-      ],
-      "whenToUse": [
-        "SQL: Complex relationships, ACID requirements, reporting",
-        "Document: Flexible schemas, rapid development, content management",
-        "Key-Value: Simple lookups, caching, session storage",
-        "Graph: Social networks, recommendations, fraud detection",
-        "Column: Time-series data, analytics, high write volumes"
-      ],
-      "bestPractices": [
-        "Choose the right database type for your use case",
-        "Design efficient indexes for query performance",
-        "Implement proper backup and disaster recovery",
-        "Monitor performance metrics and query optimization",
-        "Plan for data growth and scaling requirements"
-      ],
-      "decisionFactors": [
-        "Data structure and relationship complexity",
-        "Consistency and transaction requirements",
-        "Read vs write performance priorities",
-        "Scaling and availability requirements",
-        "Team expertise and operational capabilities"
-      ]
-    },
-    "storage": {
-      "title": "Storage",
-      "description": "Storage systems provide different types of data persistence with varying performance, durability, and cost characteristics to meet diverse application requirements.",
-      "learningTip": "Compare storage types to your closet organization - frequently worn clothes (hot data) in easy reach, seasonal items (warm data) on higher shelves, and old clothes (cold data) in storage boxes. Practice matching different app features to storage types based on access patterns.",
-      "keyPoints": [
-        "Provide persistent data storage with different performance characteristics",
-        "Offer various storage types optimized for specific use cases",
-        "Balance cost, performance, and durability requirements",
-        "Support different access patterns and data lifecycle management",
-        "Enable data backup, archival, and disaster recovery strategies"
-      ],
-      "memoryStorage": [
-        "Fastest access times with nanosecond latency",
-        "Volatile storage that loses data on power loss",
-        "Limited capacity but extremely high performance",
-        "Used for caching, session storage, and real-time processing",
-        "Examples: RAM, Redis, Memcached, in-memory databases"
-      ],
-      "diskStorage": [
-        "Persistent storage with millisecond access times",
-        "Much larger capacity than memory storage",
-        "SSD vs HDD trade-offs between speed and cost",
-        "Used for databases, file systems, and application data",
-        "Examples: Local SSDs, network-attached storage (NAS)"
-      ],
-      "blobStorage": [
-        "Object storage for unstructured data like files and media",
-        "Highly scalable with virtually unlimited capacity",
-        "REST API access with global distribution capabilities",
-        "Cost-effective for large-scale data storage and archival",
-        "Examples: Amazon S3, Azure Blob Storage, Google Cloud Storage"
-      ],
-      "considerations": [
-        "Performance requirements (latency, throughput, IOPS)",
-        "Durability and availability requirements",
-        "Cost optimization for different storage tiers",
-        "Data lifecycle management and archival policies",
-        "Backup, replication, and disaster recovery strategies"
-      ],
-      "whenToUse": [
-        "Memory: Real-time processing, caching, session data",
-        "Disk: Database storage, file systems, application data",
-        "Blob: Media files, backups, data archival, static content",
-        "Hybrid: Tiered storage with automatic data movement",
-        "Distributed: High availability and geographic distribution"
-      ],
-      "storagePatterns": [
-        "Hot Storage - Frequently accessed data with high performance",
-        "Warm Storage - Occasionally accessed data with moderate performance",
-        "Cold Storage - Rarely accessed data with lower cost",
-        "Archive Storage - Long-term retention with minimal access",
-        "Tiered Storage - Automatic movement between storage classes"
-      ],
-      "bestPractices": [
-        "Choose appropriate storage types for different data categories",
-        "Implement data lifecycle policies for cost optimization",
-        "Design for durability with replication and backups",
-        "Monitor storage performance and capacity utilization",
-        "Plan for data growth and scaling requirements"
-      ]
-    },
-    "replication": {
-      "title": "Replication",
-      "description": "Replication creates copies of data across multiple servers or locations to improve availability, fault tolerance, and read performance while ensuring data consistency.",
-      "learningTip": "Practice the 'backup buddy system' - explain replication like having study partners who keep copies of your notes. Draw master-slave setups as one person taking notes (master) while others copy them (slaves), then practice explaining what happens when the note-taker is absent.",
-      "keyPoints": [
-        "Improve system availability and fault tolerance through redundancy",
-        "Enhance read performance by distributing queries across replicas",
-        "Provide geographic distribution for reduced latency",
-        "Enable disaster recovery and business continuity",
-        "Support load balancing for read-heavy workloads"
-      ],
-      "types": [
-        "Master-Slave - One primary write node, multiple read replicas",
-        "Master-Master - Multiple nodes can accept writes",
-        "Synchronous - Writes confirmed on all replicas before success",
-        "Asynchronous - Writes confirmed immediately, replicated later",
-        "Semi-Synchronous - Hybrid approach with configurable consistency"
-      ],
-      "patterns": [
-        "Read Replicas - Dedicated nodes for read operations",
-        "Hot Standby - Ready-to-activate backup systems",
-        "Geographic Replication - Cross-region data distribution",
-        "Cascading Replication - Multi-level replication hierarchies",
-        "Selective Replication - Replicate only specific data subsets"
-      ],
-      "considerations": [
-        "Consistency vs availability trade-offs (CAP theorem)",
-        "Replication lag and eventual consistency implications",
-        "Network bandwidth and storage overhead",
-        "Conflict resolution in multi-master setups",
-        "Monitoring replication health and lag metrics"
-      ],
-      "whenToUse": [
-        "High availability requirements with minimal downtime",
-        "Read-heavy workloads requiring horizontal scaling",
-        "Geographic distribution for global applications",
-        "Disaster recovery and business continuity planning",
-        "Compliance requirements for data redundancy"
-      ],
-      "bestPractices": [
-        "Monitor replication lag and set appropriate alerts",
-        "Implement proper failover and failback procedures",
-        "Test disaster recovery scenarios regularly",
-        "Choose consistency level based on business requirements",
-        "Plan for network partitions and split-brain scenarios"
-      ],
-      "challenges": [
-        "Managing consistency across distributed replicas",
-        "Handling network partitions and split-brain scenarios",
-        "Increased storage and network costs",
-        "Complexity in conflict resolution and data merging",
-        "Operational overhead for monitoring and maintenance"
-      ]
-    },
-    "sharding": {
-      "title": "Sharding",
-      "description": "Sharding horizontally partitions data across multiple databases or servers, distributing both data and load to achieve better performance and scalability.",
-      "learningTip": "Use a pizza analogy - instead of making one giant pizza (vertical scaling), make multiple smaller pizzas (sharding) that different ovens (servers) can handle. Practice drawing how you'd split user data by geography, user ID ranges, or features to internalize partitioning strategies.",
-      "keyPoints": [
-        "Horizontally partition data across multiple database instances",
-        "Distribute both storage and computational load",
-        "Enable linear scalability by adding more shards",
-        "Improve query performance through parallel processing",
-        "Support very large datasets that exceed single server capacity"
-      ],
-      "strategies": [
-        "Range-based Sharding - Partition by data value ranges",
-        "Hash-based Sharding - Use hash function for even distribution",
-        "Directory-based Sharding - Lookup service maps keys to shards",
-        "Geographic Sharding - Partition by geographic regions",
-        "Feature-based Sharding - Separate by application features"
-      ],
-      "considerations": [
-        "Choosing appropriate sharding key for even distribution",
-        "Handling cross-shard queries and transactions",
-        "Rebalancing data when adding or removing shards",
-        "Managing hotspots and uneven data distribution",
-        "Increased application complexity for shard routing"
-      ],
-      "whenToUse": [
-        "Datasets too large for single database servers",
-        "High write throughput requirements",
-        "Need for horizontal scalability beyond vertical limits",
-        "Geographic distribution requirements",
-        "Cost optimization through commodity hardware"
-      ],
-      "challenges": [
-        "Complex cross-shard queries and joins",
-        "Maintaining referential integrity across shards",
-        "Rebalancing data during shard additions/removals",
-        "Handling shard failures and recovery",
-        "Increased operational complexity and monitoring"
-      ],
-      "bestPractices": [
-        "Choose sharding keys that distribute data evenly",
-        "Design application to minimize cross-shard operations",
-        "Implement proper monitoring for shard health and balance",
-        "Plan for shard rebalancing and data migration",
-        "Use consistent hashing for better distribution"
-      ],
-      "implementationPatterns": [
-        "Application-level sharding with routing logic",
-        "Proxy-based sharding with transparent routing",
-        "Database-native sharding features",
-        "Middleware solutions for shard management",
-        "Microservices with dedicated data stores"
-      ]
-    },
-    "cdn": {
-      "title": "Content Delivery Network (CDN)",
-      "description": "CDNs distribute content across geographically dispersed servers to deliver web content and services with high performance, availability, and reduced latency to users worldwide.",
-      "learningTip": "Imagine CDNs as a chain of coffee shops - instead of everyone traveling to one central location, you place shops in every neighborhood. Practice explaining why a user in Tokyo gets faster Netflix loading than if all servers were in California, using travel time analogies.",
-      "keyPoints": [
-        "Reduce latency by serving content from geographically closer servers",
-        "Improve website performance and user experience globally",
-        "Reduce bandwidth costs and server load",
-        "Provide DDoS protection and enhanced security",
-        "Enable global scalability for content delivery"
-      ],
-      "types": [
-        "Static CDN - Cache static assets like images, CSS, JavaScript",
-        "Dynamic CDN - Cache and optimize dynamic content",
-        "Video CDN - Specialized for video streaming and delivery",
-        "API CDN - Cache and accelerate API responses",
-        "Edge Computing CDN - Run code at edge locations"
-      ],
-      "coreFeatures": [
-        "Global Points of Presence (PoPs) for content distribution",
-        "Intelligent caching with TTL and cache invalidation",
-        "Load balancing and failover across edge servers",
-        "Compression and optimization for faster delivery",
-        "Real-time analytics and performance monitoring"
-      ],
-      "considerations": [
-        "Cache invalidation strategies and content freshness",
-        "Geographic coverage and edge server locations",
-        "Cost optimization for bandwidth and requests",
-        "SSL/TLS certificate management across edge nodes",
-        "Integration with origin servers and applications"
-      ],
-      "whenToUse": [
-        "Global applications with international users",
-        "High-traffic websites requiring fast content delivery",
-        "Media-rich applications with large static assets",
-        "E-commerce sites needing fast page load times",
-        "API services requiring global performance optimization"
-      ],
-      "benefits": [
-        "Significantly reduced page load times globally",
-        "Lower bandwidth costs and server resource usage",
-        "Improved SEO rankings through faster performance",
-        "Enhanced user experience and engagement",
-        "Built-in DDoS protection and security features"
-      ],
-      "popularSolutions": [
-        "Cloudflare - Global CDN with security features",
-        "Amazon CloudFront - AWS-integrated CDN service",
-        "Fastly - Real-time CDN with edge computing",
-        "Azure CDN - Microsoft's global content delivery",
-        "Google Cloud CDN - Integrated with Google infrastructure"
-      ]
-    },
-    "scalingTypes": {
-      "title": "Scaling Types",
-      "description": "Scaling strategies define how systems handle increased load through vertical scaling (adding more power) or horizontal scaling (adding more servers) to meet performance demands.",
-      "learningTip": "Use the 'muscle vs team' analogy - vertical scaling is like getting stronger muscles (bigger server), horizontal scaling is like adding more people to your team (more servers). Practice identifying when you'd choose each approach for different real-world scenarios like restaurants or delivery services.",
-      "keyPoints": [
-        "Address increasing load and performance requirements",
-        "Choose between vertical and horizontal scaling approaches",
-        "Balance cost, complexity, and performance benefits",
-        "Plan for both immediate and long-term scaling needs",
-        "Consider application architecture and technology constraints"
-      ],
-      "verticalScaling": [
-        "Add more CPU, RAM, or storage to existing servers",
-        "Simpler to implement with minimal code changes",
-        "Limited by hardware constraints and single points of failure",
-        "More expensive per unit of additional capacity",
-        "Suitable for applications with shared state or complex transactions"
-      ],
-      "horizontalScaling": [
-        "Add more servers to distribute load across instances",
-        "Virtually unlimited scaling potential",
-        "Requires stateless application design and load balancing",
-        "More cost-effective for large-scale requirements",
-        "Better fault tolerance through redundancy"
-      ],
-      "considerations": [
-        "Application architecture and state management requirements",
-        "Database scaling limitations and strategies",
-        "Network bandwidth and latency implications",
-        "Operational complexity and monitoring requirements",
-        "Cost analysis for different scaling approaches"
-      ],
-      "whenToUse": [
-        "Vertical: Legacy applications, databases, quick fixes",
-        "Horizontal: Web applications, microservices, high availability",
-        "Hybrid: Combine both approaches for optimal results",
-        "Auto-scaling: Dynamic adjustment based on demand",
-        "Predictive scaling: Proactive scaling based on patterns"
-      ],
-      "bestPractices": [
-        "Design applications to be stateless for horizontal scaling",
-        "Implement proper load balancing and health checks",
-        "Monitor performance metrics and scaling triggers",
-        "Plan for graceful degradation during scaling events",
-        "Test scaling procedures and automation regularly"
-      ],
-      "hybridApproaches": [
-        "Start with vertical scaling for simplicity",
-        "Transition to horizontal scaling as requirements grow",
-        "Use auto-scaling groups for dynamic adjustment",
-        "Implement microservices for independent scaling",
-        "Combine edge computing with centralized processing"
-      ]
-    },
-    "capTheorem": {
-      "title": "CAP Theorem",
-      "description": "CAP Theorem states that distributed systems can only guarantee two of three properties: Consistency, Availability, and Partition tolerance, requiring trade-off decisions in system design.",
-      "learningTip": "Remember CAP with the 'triangle rule' - draw a triangle with C, A, P at each corner and practice explaining real systems by covering one corner. For example, traditional banks choose CA (consistency + availability) while social media often chooses AP (availability + partition tolerance).",
-      "keyPoints": [
-        "Fundamental principle governing distributed system design",
-        "Only two of three properties can be guaranteed simultaneously",
-        "Forces explicit trade-off decisions in system architecture",
-        "Helps understand limitations of distributed systems",
-        "Guides technology selection and design patterns"
-      ],
-      "consistency": [
-        "All nodes see the same data simultaneously",
-        "Strong consistency ensures immediate data synchronization",
-        "ACID transactions provide consistency guarantees",
-        "May require coordination and locking mechanisms",
-        "Can impact system performance and availability"
-      ],
-      "availability": [
-        "System remains operational and responsive",
-        "Requests receive responses without guaranteeing latest data",
-        "Requires redundancy and failover mechanisms",
-        "May serve stale data during network issues",
-        "Critical for user-facing applications and services"
-      ],
-      "partitionTolerance": [
-        "System continues operating despite network failures",
-        "Essential for distributed systems across networks",
-        "Handles communication failures between nodes",
-        "Requires replication and consensus mechanisms",
-        "Fundamental requirement for geographic distribution"
-      ],
-      "systemTypes": [
-        "CP Systems - Consistency + Partition Tolerance (MongoDB, Redis)",
-        "AP Systems - Availability + Partition Tolerance (Cassandra, DynamoDB)",
-        "CA Systems - Consistency + Availability (Traditional RDBMS)",
-        "Eventually Consistent - Favor availability with eventual consistency",
-        "Tunable Consistency - Allow configuration of consistency levels"
-      ],
-      "tradeOffs": [
-        "CP: Sacrifice availability for strong consistency",
-        "AP: Accept eventual consistency for high availability",
-        "CA: Limited to single-node or perfect networks",
-        "Business requirements drive trade-off decisions",
-        "Different parts of system may make different choices"
-      ],
-      "whenToUse": [
-        "CP: Financial systems, inventory management, critical data",
-        "AP: Social media, content delivery, user preferences",
-        "Hybrid: Different consistency levels for different data types",
-        "Tunable: Allow applications to choose consistency level",
-        "Context-dependent: Match requirements to system properties"
-      ]
-    },
-    "loadBalancers": {
-      "title": "Load Balancers",
-      "description": "Load balancers distribute incoming network traffic across multiple servers to ensure high availability, reliability, and optimal performance of applications.",
-      "learningTip": "Practice drawing load balancer architectures by hand and explain the traffic flow out loud. Start with a simple round-robin setup, then add complexity like health checks and sticky sessions to build your mental model step by step.",
-      "keyPoints": [
-        "Distribute traffic across multiple servers to prevent overload",
-        "Provide high availability through redundancy and failover",
-        "Improve response times by routing to optimal servers",
-        "Enable horizontal scaling by adding more servers",
-        "Perform health checks to route traffic only to healthy servers"
-      ],
-      "types": [
-        "Layer 4 (Transport) - Routes based on IP and port",
-        "Layer 7 (Application) - Routes based on content and HTTP headers",
-        "Hardware Load Balancers - Dedicated physical devices",
-        "Software Load Balancers - Applications running on standard servers",
-        "Cloud Load Balancers - Managed services from cloud providers"
-      ],
-      "patterns": [
-        "Round Robin - Requests distributed sequentially",
-        "Weighted Round Robin - Servers assigned different weights",
-        "Least Connections - Route to server with fewest active connections",
-        "IP Hash - Route based on client IP hash",
-        "Geographic - Route based on client location"
-      ],
-      "considerations": [
-        "Single point of failure if not properly configured",
-        "SSL termination and certificate management",
-        "Session persistence and sticky sessions",
-        "Monitoring and alerting for load balancer health",
-        "Cost considerations for hardware vs software solutions"
-      ]
-    },
-    "rateLimiting": {
-      "title": "Rate Limiting",
-      "description": "Rate limiting controls the number of requests a client can make to an API or service within a specific time window, protecting systems from abuse and ensuring fair resource usage.",
-      "learningTip": "Create a simple token bucket simulation using coins or tokens on your desk. Practice calculating how many requests can be handled per minute with different bucket sizes and refill rates to internalize the concept.",
-      "keyPoints": [
-        "Prevents system overload and protects against abuse",
-        "Ensures fair resource allocation among users",
-        "Improves system stability and performance",
-        "Reduces costs by preventing resource waste",
-        "Essential for API monetization and SLA enforcement"
-      ],
-      "types": [
-        "Token Bucket - Tokens added at fixed rate, consumed per request",
-        "Leaky Bucket - Requests processed at steady rate regardless of input",
-        "Fixed Window - Fixed number of requests per time window",
-        "Sliding Window - Rolling time window for more accurate limiting",
-        "Sliding Window Counter - Hybrid approach with better memory efficiency"
-      ],
-      "considerations": [
-        "Choose appropriate time windows (seconds, minutes, hours)",
-        "Handle rate limit exceeded responses gracefully",
-        "Consider different limits for different user tiers",
-        "Implement proper error messages and retry guidance",
-        "Monitor rate limiting effectiveness and adjust as needed"
-      ],
-      "whenToUse": [
-        "Public APIs to prevent abuse and ensure availability",
-        "User-facing features to prevent spam and misuse",
-        "Resource-intensive operations like file uploads",
-        "Third-party integrations to respect their limits",
-        "Microservices communication to prevent cascading failures"
-      ],
-      "bestPractices": [
-        "Use distributed rate limiting for scalability",
-        "Implement multiple rate limiting layers (user, IP, API key)",
-        "Provide clear rate limit headers in responses",
-        "Allow burst capacity for legitimate traffic spikes",
-        "Log and monitor rate limiting events for analysis"
-      ],
-      "implementationPatterns": [
-        "In-memory counters for single-server applications",
-        "Redis-based distributed rate limiting",
-        "Database-backed rate limiting for persistence",
-        "Edge-based rate limiting using CDN capabilities",
-        "API Gateway integrated rate limiting"
-      ]
-    },
-    "jwt": {
-      "title": "JWT & OAuth2",
-      "description": "JSON Web Tokens (JWT) and OAuth2 provide secure authentication and authorization mechanisms for modern applications, enabling stateless authentication and secure API access.",
-      "learningTip": "Decode a real JWT token using jwt.io and examine each section (header, payload, signature). Practice explaining the difference between authentication ('who you are') and authorization ('what you can do') using everyday examples like ID cards and keys.",
-      "keyPoints": [
-        "Stateless authentication without server-side sessions",
-        "Self-contained tokens with encoded user information",
-        "Secure token-based authorization for APIs",
-        "Standardized protocols for third-party integrations",
-        "Scalable authentication across distributed systems"
-      ],
-      "types": [
-        "Access Tokens - Short-lived tokens for API access",
-        "Refresh Tokens - Long-lived tokens to obtain new access tokens",
-        "ID Tokens - Contains user identity information",
-        "Bearer Tokens - Most common token type for HTTP headers",
-        "Signed Tokens - Cryptographically signed for integrity"
-      ],
-      "considerations": [
-        "Token expiration and refresh strategies",
-        "Secure token storage on client side",
-        "Token revocation and blacklisting mechanisms",
-        "Proper secret key management and rotation",
-        "Protection against token theft and replay attacks"
-      ],
-      "whenToUse": [
-        "Single Sign-On (SSO) implementations",
-        "API authentication for mobile and web apps",
-        "Microservices authentication and authorization",
-        "Third-party service integrations",
-        "Stateless authentication requirements"
-      ],
-      "bestPractices": [
-        "Use HTTPS for all token transmissions",
-        "Implement proper token validation and verification",
-        "Set appropriate token expiration times",
-        "Store tokens securely (HttpOnly cookies, secure storage)",
-        "Implement proper logout and token cleanup"
-      ],
-      "securityFeatures": [
-        "Digital signatures for token integrity",
-        "Encryption for sensitive token data",
-        "Audience and issuer validation",
-        "Time-based token validation (exp, iat, nbf)",
-        "Scope-based access control"
-      ]
-    },
-    "tls": {
-      "title": "TLS/HTTPS",
-      "description": "Transport Layer Security (TLS) and HTTPS provide encrypted communication channels, ensuring data confidentiality, integrity, and authentication between clients and servers.",
-      "learningTip": "Use the analogy of sending a locked box through the mail - practice explaining the TLS handshake as exchanging keys, verifying identity, and agreeing on the lock type. Check real certificate details in your browser to see these concepts in action.",
-      "keyPoints": [
-        "Encrypts data in transit to prevent eavesdropping",
-        "Provides server authentication through certificates",
-        "Ensures data integrity and prevents tampering",
-        "Essential for secure web communications",
-        "Required for modern web standards and SEO"
-      ],
-      "types": [
-        "TLS 1.2 - Widely supported, secure version",
-        "TLS 1.3 - Latest version with improved security and performance",
-        "SSL (deprecated) - Older protocol, no longer recommended",
-        "mTLS - Mutual TLS with client certificate authentication",
-        "End-to-End Encryption - Complete encryption from client to server"
-      ],
-      "considerations": [
-        "Certificate management and renewal processes",
-        "Performance impact of encryption/decryption",
-        "Cipher suite selection and security",
-        "Certificate validation and trust chains",
-        "Mixed content issues in web applications"
-      ],
-      "whenToUse": [
-        "All web applications handling sensitive data",
-        "API endpoints transmitting confidential information",
-        "Authentication and authorization systems",
-        "E-commerce and financial applications",
-        "Any application requiring data privacy compliance"
-      ],
-      "bestPractices": [
-        "Use TLS 1.2 or higher versions only",
-        "Implement HTTP Strict Transport Security (HSTS)",
-        "Use strong cipher suites and disable weak ones",
-        "Implement certificate pinning for mobile apps",
-        "Regular certificate monitoring and renewal"
-      ],
-      "implementationPatterns": [
-        "Load balancer SSL termination",
-        "End-to-end encryption through proxies",
-        "Certificate automation with Let's Encrypt",
-        "Wildcard certificates for subdomains",
-        "Certificate transparency monitoring"
-      ]
-    },
-    "featureFlags": {
-      "title": "Feature Flags",
-      "description": "Feature flags (feature toggles) allow developers to enable or disable features dynamically without deploying new code, enabling safer deployments and controlled feature rollouts.",
-      "learningTip": "Think of feature flags like light switches in your home - you can turn features on/off for different rooms (user groups). Practice designing a simple if/else statement that checks a flag before showing a feature to understand the basic implementation.",
-      "keyPoints": [
-        "Enable/disable features without code deployment",
-        "Reduce deployment risk through gradual rollouts",
-        "Support A/B testing and experimentation",
-        "Allow quick feature rollback if issues arise",
-        "Enable different features for different user segments"
-      ],
-      "types": [
-        "Release Flags - Control feature availability in production",
-        "Experiment Flags - Support A/B testing and experiments",
-        "Operational Flags - Control system behavior and performance",
-        "Permission Flags - Control access based on user roles",
-        "Kill Switches - Emergency feature disabling capabilities"
-      ],
-      "considerations": [
-        "Flag lifecycle management and cleanup",
-        "Performance impact of flag evaluation",
-        "Consistency across distributed systems",
-        "Flag configuration management and versioning",
-        "Technical debt from long-lived flags"
-      ],
-      "whenToUse": [
-        "New feature rollouts and canary deployments",
-        "A/B testing and user experience experiments",
-        "Emergency feature disabling capabilities",
-        "User segmentation and personalization",
-        "Gradual migration to new system components"
-      ],
-      "bestPractices": [
-        "Implement flag evaluation caching for performance",
-        "Use structured flag naming conventions",
-        "Regular flag cleanup and technical debt management",
-        "Implement flag change auditing and monitoring",
-        "Separate flag configuration from application code"
-      ],
-      "implementationPatterns": [
-        "Configuration file-based flags",
-        "Database-driven flag management",
-        "External feature flag services",
-        "Environment variable-based flags",
-        "Real-time flag updates through messaging"
-      ]
-    },
-    "deployment": {
-      "title": "Deployment Strategies",
-      "description": "Deployment strategies define how new versions of applications are released to production, balancing speed, safety, and resource utilization while minimizing downtime and risk.",
-      "learningTip": "Use colored sticky notes to simulate different deployment strategies on a whiteboard. Blue notes for old version, green for new - practice moving them around to visualize blue-green, canary, and rolling deployments until the patterns become intuitive.",
-      "keyPoints": [
-        "Minimize downtime during application updates",
-        "Reduce risk through controlled rollout processes",
-        "Enable quick rollback if issues are detected",
-        "Support different release cadences and requirements",
-        "Balance resource utilization and deployment speed"
-      ],
-      "types": [
-        "Blue-Green Deployment - Two identical production environments",
-        "Rolling Deployment - Gradual replacement of instances",
-        "Canary Deployment - Small subset testing before full rollout",
-        "A/B Testing - Compare different versions with user traffic",
-        "Recreate Deployment - Stop old version, start new version"
-      ],
-      "considerations": [
-        "Database migration and schema compatibility",
-        "Session handling during deployments",
-        "Resource requirements for parallel environments",
-        "Monitoring and rollback trigger conditions",
-        "Testing strategies for deployment validation"
-      ],
-      "whenToUse": [
-        "High-availability applications requiring zero downtime",
-        "Applications with strict SLA requirements",
-        "Systems requiring gradual feature validation",
-        "Applications with complex database dependencies",
-        "Services requiring extensive integration testing"
-      ],
-      "bestPractices": [
-        "Implement comprehensive health checks",
-        "Use infrastructure as code for consistency",
-        "Automate rollback procedures and triggers",
-        "Monitor key metrics during deployments",
-        "Maintain deployment documentation and runbooks"
-      ],
-      "implementationPatterns": [
-        "Container orchestration-based deployments",
-        "Load balancer-assisted traffic switching",
-        "Feature flag-controlled rollouts",
-        "Database migration automation",
-        "Automated testing and validation pipelines"
-      ]
-    },
-    "circuitBreaker": {
-      "title": "Circuit Breaker",
-      "description": "Circuit breaker pattern prevents cascading failures in distributed systems by monitoring service calls and temporarily blocking requests to failing services, allowing them time to recover.",
-      "learningTip": "Compare circuit breakers to electrical circuit breakers in your home - when there's an overload, they 'trip' to prevent damage. Practice drawing the three states (closed, open, half-open) and role-play being the circuit breaker making decisions about when to block requests.",
-      "keyPoints": [
-        "Prevents cascading failures in distributed systems",
-        "Provides fast failure response instead of waiting for timeouts",
-        "Allows failing services time to recover",
-        "Improves overall system resilience and stability",
-        "Reduces resource consumption on failing dependencies"
-      ],
-      "types": [
-        "Closed State - Normal operation, requests pass through",
-        "Open State - Requests blocked, service assumed to be failing",
-        "Half-Open State - Limited requests allowed to test recovery",
-        "Timeout-based - Opens based on response time thresholds",
-        "Failure Rate-based - Opens based on error rate thresholds"
-      ],
-      "considerations": [
-        "Appropriate timeout and failure thresholds",
-        "Recovery time and half-open state duration",
-        "Fallback mechanisms when circuit is open",
-        "Monitoring and alerting for circuit state changes",
-        "Impact on user experience during failures"
-      ],
-      "whenToUse": [
-        "Microservices architectures with service dependencies",
-        "External API integrations with reliability concerns",
-        "Database connections prone to failures",
-        "Network calls across unreliable connections",
-        "Any system requiring fault tolerance and resilience"
-      ],
-      "bestPractices": [
-        "Implement proper fallback mechanisms",
-        "Monitor circuit breaker metrics and states",
-        "Configure appropriate thresholds for your use case",
-        "Provide meaningful error messages to users",
-        "Test circuit breaker behavior in staging environments"
-      ],
-      "implementationPatterns": [
-        "Library-based circuit breakers (Hystrix, Resilience4j)",
-        "Service mesh integrated circuit breaking",
-        "API gateway circuit breaker features",
-        "Custom implementation with state management",
-        "Cloud provider managed circuit breaking"
-      ]
-    },
-    "retryTimeout": {
-      "title": "Retry Logic & Timeouts",
-      "description": "Retry logic and timeout mechanisms handle transient failures gracefully by automatically retrying failed operations with appropriate delays and giving up after reasonable time limits.",
-      "learningTip": "Practice the 'exponential backoff dance' - clap your hands with increasing delays (1 sec, 2 sec, 4 sec, 8 sec) to feel the rhythm. This physical memory helps you remember why we don't retry immediately and avoid overwhelming failing services.",
-      "keyPoints": [
-        "Handle transient failures automatically without user intervention",
-        "Improve system reliability and user experience",
-        "Prevent resource waste from hanging operations",
-        "Provide graceful degradation under failure conditions",
-        "Balance between persistence and system protection"
-      ],
-      "types": [
-        "Fixed Delay Retry - Constant time between retry attempts",
-        "Exponential Backoff - Increasing delay between retries",
-        "Linear Backoff - Linearly increasing retry delays",
-        "Jittered Retry - Random component added to prevent thundering herd",
-        "Circuit Breaker Integration - Stop retries when circuit opens"
-      ],
-      "considerations": [
-        "Maximum retry attempts and total timeout duration",
-        "Appropriate delay strategies for different failure types",
-        "Idempotency requirements for retry operations",
-        "Resource consumption during retry attempts",
-        "User experience during retry operations"
-      ],
-      "whenToUse": [
-        "Network calls prone to transient failures",
-        "Database operations that might temporarily fail",
-        "External service integrations with reliability issues",
-        "File system operations in distributed environments",
-        "Any operation where temporary failures are expected"
-      ],
-      "bestPractices": [
-        "Implement exponential backoff with jitter",
-        "Set reasonable maximum retry counts and timeouts",
-        "Ensure operations are idempotent before retrying",
-        "Log retry attempts for monitoring and debugging",
-        "Provide user feedback during long retry sequences"
-      ],
-      "implementationPatterns": [
-        "Decorator pattern for adding retry logic",
-        "Async/await with retry libraries",
-        "Message queue-based retry mechanisms",
-        "Proxy-based retry implementation",
-        "Framework-integrated retry capabilities"
-      ]
-    },
-    "observability": {
-      "title": "Observability",
-      "description": "Observability provides comprehensive insight into system behavior through metrics, logs, and traces, enabling teams to understand, debug, and optimize distributed systems effectively.",
-      "learningTip": "Remember the 'three pillars' using your senses: Metrics are like taking your temperature (numbers), Logs are like keeping a diary (events), and Traces are like following breadcrumbs through a forest (request paths). Practice identifying which pillar would help debug different problems.",
-      "keyPoints": [
-        "Provides deep insight into system behavior and performance",
-        "Enables proactive issue detection and resolution",
-        "Supports data-driven decision making and optimization",
-        "Essential for debugging complex distributed systems",
-        "Improves mean time to detection and resolution (MTTD/MTTR)"
-      ],
-      "types": [
-        "Metrics - Numerical measurements of system behavior",
-        "Logs - Structured records of system events",
-        "Traces - Request flow tracking across services",
-        "Events - Discrete occurrences in the system",
-        "Profiles - Performance analysis and resource usage"
-      ],
-      "considerations": [
-        "Data volume and storage costs for observability data",
-        "Performance impact of instrumentation overhead",
-        "Data retention policies and compliance requirements",
-        "Alert fatigue and notification management",
-        "Privacy and security of observability data"
-      ],
-      "whenToUse": [
-        "Production systems requiring monitoring and alerting",
-        "Distributed systems with complex service interactions",
-        "Applications with strict SLA requirements",
-        "Systems requiring performance optimization",
-        "Any system where understanding behavior is critical"
-      ],
-      "bestPractices": [
-        "Implement structured logging with consistent formats",
-        "Use distributed tracing for request flow visibility",
-        "Set up meaningful alerts based on SLIs and SLOs",
-        "Implement proper sampling strategies for high-volume data",
-        "Create dashboards focused on business and operational metrics"
-      ],
-      "observabilityFeatures": [
-        "Real-time monitoring and alerting capabilities",
-        "Distributed tracing across service boundaries",
-        "Log aggregation and search functionality",
-        "Custom metrics and business KPI tracking",
-        "Automated anomaly detection and alerting"
-      ]
-    },
-    "cachingPatterns": {
-      "title": "Caching Patterns",
-      "description": "Caching patterns define strategies for storing and retrieving frequently accessed data to improve application performance, reduce latency, and decrease load on backend systems.",
-      "learningTip": "Use your kitchen as a caching analogy - frequently used items (salt, oil) stay on the counter (cache), while rarely used items go in the pantry (database). Practice explaining cache-aside vs write-through using cooking scenarios to make the patterns memorable.",
-      "keyPoints": [
-        "Significantly improve application response times",
-        "Reduce load on databases and backend services",
-        "Lower infrastructure costs through reduced resource usage",
-        "Improve user experience with faster data access",
-        "Enable better scalability under high traffic loads"
-      ],
-      "types": [
-        "Cache-Aside (Lazy Loading) - Application manages cache explicitly",
-        "Write-Through - Write to cache and database simultaneously",
-        "Write-Behind (Write-Back) - Write to cache first, database later",
-        "Refresh-Ahead - Proactively refresh cache before expiration",
-        "Read-Through - Cache automatically loads data on cache miss"
-      ],
-      "considerations": [
-        "Cache invalidation strategies and consistency",
-        "Memory usage and cache size limitations",
-        "Cache hit ratio optimization and monitoring",
-        "Data freshness requirements and TTL settings",
-        "Cache warming strategies for cold starts"
-      ],
-      "whenToUse": [
-        "Frequently accessed data with low change frequency",
-        "Expensive database queries or computations",
-        "Static or semi-static content delivery",
-        "Session data and user preferences",
-        "API responses with predictable access patterns"
-      ],
-      "bestPractices": [
-        "Implement proper cache key naming conventions",
-        "Monitor cache hit ratios and performance metrics",
-        "Use appropriate TTL values for different data types",
-        "Implement cache warming for critical data",
-        "Plan for cache failure scenarios and fallbacks"
-      ],
-      "implementationPatterns": [
-        "In-memory caching with Redis or Memcached",
-        "Application-level caching with local storage",
-        "CDN-based caching for static content",
-        "Database query result caching",
-        "Multi-level caching hierarchies"
-      ]
-    }
-  },
-  "home": {
-    "hero": {
-      "subtitle": "Master the fundamentals of distributed systems, scalability, and modern architecture patterns"
-    },
-    "framework": {
-      "title": "System Design Interview Framework",
-      "example": "Example",
-      "tip": "Tip",
-      "step2": {
-        "architecture": {
-          "title": "High-Level Architecture",
-          "components": {
-            "title": "Key Components",
-            "items": [
-              "Client applications (web, mobile)",
-              "Load balancers",
-              "Application servers",
-              "Databases (SQL, NoSQL)",
-              "Caching layers",
-              "Message queues",
-              "Storage systems"
-            ]
-          },
-          "patterns": {
-            "title": "Architectural Patterns",
-            "items": [
-              "Microservices vs Monolith",
-              "Event-driven architecture",
-              "Layered architecture",
-              "Serverless architecture"
-            ]
-          },
-          "tip": "Draw a simple diagram to visualize the flow of data between components"
-        },
-        "dataModel": {
-          "title": "Data Model & Storage",
-          "entities": {
-            "title": "Data Entities",
-            "description": "Define the main objects and their relationships:",
-            "items": [
-              "User profiles",
-              "Content/posts",
-              "Relationships (follows, likes)",
-              "Activity logs"
-            ]
-          },
-          "storage": {
-            "title": "Storage Decisions",
-            "items": [
-              "SQL vs NoSQL tradeoffs",
-              "Data partitioning strategy",
-              "Replication approach",
-              "Backup and recovery plans"
-            ]
-          }
-        }
-      },
-      "step1": {
-        "functionalRequirements": {
-          "title": "Functional Requirements: What the system should DO",
-          "userActions": {
-            "title": "User Actions",
-            "items": {
-              "posting": "Post content, search, send messages",
-              "upload": "Upload files, share media",
-              "registration": "User registration and profiles"
-            }
-          },
-          "systemBehaviors": {
-            "title": "System Behaviors",
-            "items": {
-              "notifications": "Notifications and recommendations",
-              "processing": "Data processing and analytics",
-              "moderation": "Content moderation"
-            }
-          },
-          "example": "Users can create posts, like/comment on posts, follow other users"
-        },
-        "nonFunctionalRequirements": {
-          "title": "Non-Functional Requirements: HOW WELL the system should perform",
-          "scale": {
-            "title": "Scale",
-            "description": "How many users? (100K DAU vs 100M DAU)"
-          },
-          "performance": {
-            "title": "Performance",
-            "description": "Response time (<200ms), throughput (1000 QPS)"
-          },
-          "availability": {
-            "title": "Availability",
-            "description": "Uptime requirements (99.9% vs 99.99%)"
-          },
-          "consistency": {
-            "title": "Consistency",
-            "description": "Strong vs eventual consistency needs"
-          },
-          "security": {
-            "title": "Security",
-            "description": "Authentication, authorization, data privacy"
-          },
-          "example": "Support 10M users, <100ms response time, 99.9% uptime"
-        },
-        "edgeCases": {
-          "title": "Edge Cases & Constraints",
-          "geographic": {
-            "title": "Geographic",
-            "description": "Global distribution requirements"
-          },
-          "platform": {
-            "title": "Platform",
-            "description": "Mobile vs web considerations"
-          },
-          "budget": {
-            "title": "Budget",
-            "description": "Cost and resource limits"
-          }
-        }
-      },
-      "subtitle": "A structured approach to tackle any system design interview with confidence",
-      "steps": {
-        "step1": {
-          "title": "1. Clarify Requirements (5-10 min)",
-          "points": [
-            "Start by understanding what you're building and the constraints you're working within.",
-            "Ask about functional requirements (what the system should do)",
-            "Discuss non-functional requirements (scale, performance, availability)",
-            "Identify any constraints or assumptions",
-            "Confirm your understanding with the interviewer"
-          ]
-        },
-        "step2": {
-          "title": "2. High-Level Design (10-15 min)",
-          "points": [
-            "Draw the major components and their interactions",
-            "Start simple - basic client-server architecture",
-            "Identify key services and data flows",
-            "Show how requests flow through the system",
-            "Keep it high-level, avoid implementation details"
-          ]
-        },
-        "step3": {
-          "title": "3. Deep Dive & Data Design (15-20 min)",
-          "points": [
-            "Design the database schema and data models",
-            "Choose appropriate database types (SQL vs NoSQL)",
-            "Discuss data partitioning and sharding strategies",
-            "Address data consistency and replication",
-            "Design APIs and service interfaces"
-          ]
-        },
-        "step4": {
-          "title": "4. Scale & Iterate (10-15 min)",
-          "points": [
-            "Identify bottlenecks in your current design",
-            "Add caching layers (Redis, CDN, application cache)",
-            "Implement load balancing and auto-scaling",
-            "Add monitoring, logging, and observability",
-            "Discuss deployment and operational concerns"
-          ]
-        },
-        "step5": {
-          "title": "5. Wrap Up & Trade-offs (5 min)",
-          "points": [
-            "Summarize your design and key decisions",
-            "Discuss trade-offs you made and alternatives",
-            "Address any remaining concerns or questions",
-            "Mention additional considerations (security, compliance)",
-            "Show awareness of real-world operational challenges"
-          ]
-        }
-      },
-      "timeAllocation": {
-        "title": "Time Allocation",
-        "subtitle": "Suggested time breakdown for a 45-60 minute interview",
-        "phases": {
-          "clarify": {
-            "title": "Clarify Requirements",
-            "duration": "5-10min"
-          },
-          "highlevel": {
-            "title": "High-Level Design",
-            "duration": "10-15min"
-          },
-          "deepdive": {
-            "title": "Deep Dive",
-            "duration": "15-20min"
-          },
-          "iterate": {
-            "title": "Iterate & Optimize",
-            "duration": "10-15min"
-          },
-          "wrapup": {
-            "title": "Wrap Up",
-            "duration": "5min"
-          }
-        }
-      },
-      "whyWorks": {
-        "title": "Why This Framework Works",
-        "points": [
-          "Demonstrates structured thinking and problem-solving approach",
-          "Shows you can work within constraints and ask clarifying questions",
-          "Proves you understand both technical and business requirements",
-          "Exhibits knowledge of scalability patterns and trade-offs",
-          "Displays awareness of real-world operational concerns"
-        ]
-      },
-      "tldr": {
-        "title": "TL;DR Framework",
-        "steps": [
-          "clarify what you're building and constraints",
-          "draw high-level components and data flow",
-          "design data models and choose databases",
-          "identify bottlenecks and add scaling solutions",
-          "summarize design and discuss trade-offs"
-        ]
-      }
-    },
-    "categories": {
-      "title": "Explore System Design Topics",
-      "exploreTopics": "Explore Topics",
-      "topics": {
-        "architecture": ["Load Balancers", "App Servers", "Caching", "Databases", "Storage"],
-        "scalability": ["Replication", "Sharding", "CDN", "Scaling Types", "CAP Theorem"],
-        "communication": ["HTTP vs gRPC", "REST vs GraphQL", "WebSockets", "API Gateway"],
-        "async": ["Message Queues", "Event Sourcing", "CQRS", "Consistency"],
-        "performance": ["Caching Patterns", "Circuit Breaker", "Observability", "Retry Logic"],
-        "security": ["JWT & OAuth2", "Rate Limiting", "TLS/HTTPS", "Feature Flags"]
-      }
-    },
-    "quickStart": {
-      "title": "Quick Start",
-      "subtitle": "New to system design? Start with these fundamental concepts",
-      "loadBalancers": {
-        "title": "Load Balancers",
-        "description": "Learn how to distribute traffic across multiple servers"
-      },
-      "databases": {
-        "title": "Databases",
-        "description": "Understand SQL vs NoSQL and when to use each"
-      },
-      "caching": {
-        "title": "Caching",
-        "description": "Improve performance with effective caching strategies"
-      }
+      "learningTip": "Think of REST like a restaurant menu with fixed meals (endpoints) and GraphQL like a buffet where you pick exactly what you want. Practice designing both approaches for a simple blog API to understand when the flexibility of GraphQL is worth the added complexity."
     }
   }
 }

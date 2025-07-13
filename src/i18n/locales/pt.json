@@ -45,7 +45,7 @@
     "types": "Tipos",
     "patterns": "Padrões",
     "considerations": "Considerações",
-    "learningTip": "Dica de Aprendizagem",
+    "learningTip": "Dica de Aprendizado",
     "whenToUse": "Quando Usar",
     "bestPractices": "Melhores Práticas",
     "challenges": "Desafios",
@@ -53,6 +53,311 @@
     "blobStorage": "Armazenamento Blob",
     "storagePatterns": "Padrões de Armazenamento",
     "systemTypes": "Tipos de Sistemas"
+  },
+  "homePage": {
+    "title": "Os Fundamentos do Design de Sistemas",
+    "subtitle": "Um guia abrangente para construir sistemas escaláveis, confiáveis e manuteníveis",
+    "whatIsSystemDesign": {
+      "title": "O que é Design de Sistemas?",
+      "paragraph1": "O design de sistemas é o processo de definir a arquitetura, os componentes, o fluxo de dados e as interações de um sistema de software para atender a metas específicas. Envolve tomar decisões de alto nível que equilibram trade-offs entre desempenho, escalabilidade, confiabilidade, manutenibilidade, custo e complexidade.",
+      "paragraph2": "No seu cerne, o design de sistemas é sobre resolver problemas do mundo real por meio de pensamento estruturado, abstrações claras e insights técnicos. Seja você construindo uma plataforma de mídia social, um site de comércio eletrônico ou um jogo multiplayer em tempo real, o design de sistemas garante que seu sistema possa crescer, se adaptar e performar sob carga.",
+      "paragraph3": "Diferentemente da implementação, que foca em funcionalidades isoladas, o design de sistemas olha para o 'quadro geral', como as diferentes partes de um sistema se encaixam e trabalham juntas. É um processo colaborativo e criativo que muitas vezes começa muito antes da primeira linha de código ser escrita."
+    },
+    "keyQuestions": {
+      "title": "Design de Sistemas: 10 Perguntas Fundamentais",
+      "intro": "Um sistema bem projetado deve responder a essas dez perguntas fundamentais. Essas perguntas ajudam a guiar decisões arquiteturais e preparar o sistema para escala, mudança e resiliência.",
+      "questions": [
+        {
+          "number": 1,
+          "title": "Escalabilidade",
+          "question": "Como o sistema lidará com o aumento de usuários, solicitações e volume de dados de forma eficiente?"
+        },
+        {
+          "number": 2,
+          "title": "Latência e Desempenho",
+          "question": "Como garantir tempos de resposta baixos e desempenho consistente sob carga?"
+        },
+        {
+          "number": 3,
+          "title": "Tolerância a Falhas e Confiabilidade",
+          "question": "O que acontece quando um componente falha? O sistema pode detectar, se recuperar e permanecer disponível?"
+        },
+        {
+          "number": 4,
+          "title": "Gerenciamento de Dados",
+          "question": "Como os dados devem ser armazenados, recuperados, indexados e armazenados em cache para garantir integridade e desempenho?"
+        },
+        {
+          "number": 5,
+          "title": "Comunicação",
+          "question": "Como os componentes do sistema interagem, de forma síncrona ou assíncrona, e por meio de quais protocolos (por exemplo, HTTP, gRPC, filas de mensagens)?"
+        },
+        {
+          "number": 6,
+          "title": "Segurança",
+          "question": "Como protegemos contra acesso não autorizado, vazamentos de dados e ataques como DDoS ou injeção?"
+        },
+        {
+          "number": 7,
+          "title": "Observabilidade e Monitoramento",
+          "question": "Como obter visibilidade sobre a saúde do sistema, erros e padrões de uso?"
+        },
+        {
+          "number": 8,
+          "title": "Conformidade e Privacidade",
+          "question": "Estamos atendendo aos requisitos regulatórios (por exemplo, GDPR, HIPAA)? Como os dados sensíveis são protegidos e gerenciados?"
+        },
+        {
+          "number": 9,
+          "title": "Manutenibilidade e Extensibilidade",
+          "question": "O sistema pode ser facilmente depurado, monitorado, atualizado e expandido à medida que os requisitos evoluem?"
+        },
+        {
+          "number": 10,
+          "title": "Eficiência de Custos",
+          "question": "Estamos equilibrando desempenho e confiabilidade com os custos de infraestrutura e operação?"
+        }
+      ]
+    },
+    "keyComponents": {
+      "title": "Componentes Principais de um Sistema de Software",
+      "subtitle": "Entendendo os Blocos de Construção",
+      "intro": "Um sistema de software típico consiste em vários componentes fundamentais, cada um contribuindo para a capacidade e resiliência geral do sistema:",
+      "client": {
+        "title": "1. Cliente / Frontend",
+        "description": "O cliente é a interface por meio da qual os usuários interagem com o sistema (ou seja, navegadores web e aplicativos móveis).",
+        "responsibilities": "Responsabilidades",
+        "responsibilitiesList": [
+          "Renderizar a interface do usuário (UI)",
+          "Capturar e validar entrada do usuário",
+          "Comunicar com APIs de backend (por exemplo, REST, GraphQL)"
+        ]
+      },
+      "server": {
+        "title": "2. Servidor / Backend",
+        "description": "O backend alimenta a lógica de negócios e orquestra o comportamento do sistema.",
+        "responsibilities": "Responsabilidades",
+        "responsibilitiesList": [
+          "Processar solicitações do usuário",
+          "Gerenciar autenticação e autorização",
+          "Executar fluxos de trabalho e tarefas em segundo plano",
+          "Comunicar com bancos de dados e serviços"
+        ],
+        "patterns": "Padrões Comuns",
+        "patternsList": [
+          "Monolito",
+          "Microsserviços",
+          "Sem servidor"
+        ]
+      },
+      "database": {
+        "title": "3. Banco de Dados / Armazenamento",
+        "description": "Este componente é responsável por persistir e gerenciar dados.",
+        "intro": "Aqui estão alguns tipos comuns:",
+        "types": {
+          "sql": {
+            "title": "SQL",
+            "examples": [
+              "PostgreSQL/MySQL (dados estruturados, transações)"
+            ]
+          },
+          "nosql": {
+            "title": "NoSQL",
+            "examples": [
+              "MongoDB (esquema flexível)",
+              "Cassandra (alto throughput)"
+            ]
+          },
+          "inmemory": {
+            "title": "Em Memória",
+            "examples": [
+              "Redis/Memcached (cache rápido)"
+            ]
+          },
+          "objectStorage": {
+            "title": "Armazenamento de Objetos",
+            "examples": [
+              "Amazon S3/GCP Storage (arquivos e blobs de mídia como imagens, vídeos, etc.)"
+            ]
+          }
+        }
+      },
+      "networking": {
+        "title": "4. Camada de Rede e Infraestrutura",
+        "description": "Esta camada garante comunicação segura e eficiente em todo o sistema.",
+        "components": {
+          "loadBalancers": {
+            "title": "Balanceadores de Carga",
+            "description": "Distribuem tráfego",
+            "examples": [
+              "HAProxy",
+              "AWS ALB"
+            ]
+          },
+          "apiGateways": {
+            "title": "Gateways de API",
+            "description": "Centralizam o roteamento de solicitações, autenticação, limitação de taxa",
+            "examples": [
+              "Kong",
+              "Amazon API Gateway"
+            ]
+          },
+          "cdns": {
+            "title": "CDNs",
+            "description": "Armazenam ativos estáticos próximos aos usuários",
+            "examples": [
+              "Cloudflare",
+              "Akamai"
+            ]
+          },
+          "serviceMesh": {
+            "title": "Malha de Serviços",
+            "description": "Gerenciam comunicação serviço-a-serviço em microsserviços",
+            "examples": [
+              "Istio",
+              "Linkerd"
+            ]
+          }
+        }
+      },
+      "thirdParty": {
+        "title": "5. Serviços de Terceiros e Externos",
+        "description": "Sistemas modernos frequentemente integram plataformas externas para descarregar funcionalidades complexas ou não centrais. Essas ferramentas ajudam a reduzir o tempo de lançamento e permitem que as equipes foquem na lógica de negócios principal. Alguns exemplos incluem:",
+        "services": {
+          "authentication": {
+            "title": "Autenticação",
+            "examples": [
+              "Auth0",
+              "Firebase Auth"
+            ]
+          },
+          "payments": {
+            "title": "Pagamentos",
+            "examples": [
+              "Stripe",
+              "PayPal"
+            ]
+          },
+          "notifications": {
+            "title": "Notificações",
+            "examples": [
+              "Twilio (SMS)",
+              "SendGrid (e-mail)",
+              "Firebase Cloud Messaging (push)"
+            ]
+          },
+          "monitoring": {
+            "title": "Monitoramento",
+            "examples": [
+              "Datadog",
+              "New Relic",
+              "Sentry"
+            ]
+          },
+          "mlai": {
+            "title": "APIs de ML/IA",
+            "examples": [
+              "OpenAI",
+              "AWS Rekognition",
+              "Google Cloud Vision"
+            ]
+          }
+        }
+      }
+    },
+    "designProcess": {
+      "title": "O Processo de Design de Sistemas",
+      "subtitle": "Dos Requisitos ao Projeto",
+      "intro": "Projetar um sistema não é uma lista de verificação rígida, é um processo iterativo que evolui por meio de exploração, validação e refinamento. Aqui está uma estrutura comprovada passo a passo:",
+      "steps": {
+        "requirements": {
+          "title": "1. Coleta de Requisitos",
+          "description": "Entenda o que o sistema precisa realizar.",
+          "items": [
+            "Requisitos Funcionais: O que ele deve fazer? (por exemplo, fazer upload de fotos, enviar mensagens)",
+            "Requisitos Não Funcionais (NFRs): Desempenho, latência, uptime, consistência",
+            "Modelagem de Usuários: Quem são os usuários? Quais são seus casos de uso e volume?",
+            "Restrições: Pilhas tecnológicas, orçamentos, SLAs, requisitos legais"
+          ]
+        },
+        "estimations": {
+          "title": "2. Estimativas de Ordem de Grandeza",
+          "description": "Estime a escala para informar decisões de tecnologia e arquitetura:",
+          "items": [
+            "Necessidades de Armazenamento: GBs/TBs por dia ou por usuário",
+            "Carga de Tráfego: QPS de pico, leituras vs. escritas",
+            "Largura de Banda de Rede: Dados transferidos entre usuários/serviços",
+            "Contagem de Servidores: Número de réplicas necessárias para atender à carga esperada"
+          ],
+          "tip": "Estimativas rápidas ajudam a evitar sobreengenharia ou subestimação da arquitetura."
+        },
+        "hld": {
+          "title": "3. Design de Alto Nível (HLD)",
+          "description": "Esboce a arquitetura do sistema e o fluxo de dados.",
+          "items": [
+            "Identifique módulos principais (por exemplo, serviço de usuário, serviço de feed, autenticação)",
+            "Mapeie interações entre componentes",
+            "Defina dependências externas (por exemplo, APIs de terceiros)",
+            "Escolha tecnologias fundamentais (bancos de dados, frameworks, hospedagem)"
+          ]
+        },
+        "dataModeling": {
+          "title": "4. Modelagem de Dados e Design de API",
+          "description": "Defina as interfaces internas e externas.",
+          "items": [
+            "Design de Banco de Dados: Escolha modelos de dados, esquema, indexação, particionamento",
+            "Design de API: Defina endpoints RESTful ou RPC, contratos, autenticação"
+          ],
+          "examples": [
+            "POST /tweet → cria um tweet",
+            "GET /timeline → obtém o feed de um usuário"
+          ]
+        },
+        "detailedDesign": {
+          "title": "5. Design Detalhado e Aprofundamento em Componentes",
+          "description": "Aprofunde-se em cada serviço ou módulo.",
+          "items": [
+            "Defina responsabilidades, entradas/saídas, modos de falha",
+            "Aplique cache, replicação, enfileiramento e balanceamento de carga",
+            "Garanta que cada componente atenda aos NFRs (disponibilidade, segurança, observabilidade)"
+          ]
+        },
+        "bottlenecks": {
+          "title": "6. Gargalos, Trade-offs e Pontos de Falha",
+          "description": "Nenhum design é perfeito. Analise riscos e justifique decisões.",
+          "items": [
+            "Gargalos: Quais partes sofrerão estresse primeiro?",
+            "Pontos de Falha: Onde o sistema é vulnerável?"
+          ],
+          "tradeoffs": {
+            "title": "Trade-offs",
+            "items": [
+              "Consistência vs. disponibilidade (teorema CAP)",
+              "Custo vs. latência",
+              "Simplicidade vs. extensibilidade"
+            ]
+          },
+          "warning": "Sempre documente trade-offs e planos de contingência."
+        },
+        "review": {
+          "title": "7. Revisão, Validação e Iteração",
+          "description": "O design de sistemas é um processo vivo.",
+          "items": [
+            "Explique seu design para colegas ou partes interessadas",
+            "Use diagramas para apoiar a comunicação",
+            "Iterar com base em feedback e testes (testes de carga, testes de caos)",
+            "Monitorar e ajustar em produção"
+          ]
+        }
+      }
+    },
+    "conclusion": {
+      "title": "Conclusão",
+      "paragraph1": "Projetar sistemas robustos, escaláveis e manuteníveis é tanto uma disciplina técnica quanto uma arte criativa. Exige previsão, colaboração e resolução estruturada de problemas.",
+      "paragraph2": "Ao dividir o processo, desde a identificação de requisitos e estimativa de escala até a arquitetura de componentes e validação de decisões, você cria sistemas que podem escalar graciosamente, se recuperar de falhas e se adaptar a mudanças.",
+      "paragraph3": "Seja enfrentando uma pequena funcionalidade ou construindo uma plataforma global, a mentalidade e as ferramentas do design de sistemas permanecem as mesmas: clareza, resiliência e propósito.",
+      "quote": "Dominar o design de sistemas não é sobre memorizar padrões, mas sobre aplicar princípios a problemas do mundo real com julgamento consciente do contexto."
+    }
   },
   "content": {
     "httpGrpc": {
@@ -538,11 +843,11 @@
         "Integrar com bancos de dados, filas de mensagens e serviços externos"
       ],
       "types": [
+        "Servidores Ruby - Puma, Unicorn, Passenger (para aplicações Ruby on Rails ou Sinatra)",
+        "Servidores Node.js - Express, Fastify, NestJS",
+        "Servidores Python - Django, Flask, FastAPI",
         "Servidores de Aplicação Java - Tomcat, JBoss, WebLogic, WebSphere",
-        "Servidores de Aplicação .NET - IIS, Kestrel, Azure App Service",
-        "Servidores Node.js - Aplicações Express, Fastify, NestJS",
-        "Servidores Python - Aplicações Django, Flask, FastAPI",
-        "Baseado em Contêineres - Contêineres Docker com orquestração"
+        "Servidores de Aplicação baseados em Contêineres - Contêineres Docker orquestrados com Kubernetes, ECS ou Nomad"
       ],
       "coreFeatures": [
         "Processamento de Solicitações - Lida com solicitações HTTP e roteia para manipuladores",
