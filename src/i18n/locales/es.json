@@ -21,6 +21,10 @@
     "copied": "¡Copiado!",
     "shareTitle": "Compartir esta página"
   },
+  "search": {
+    "placeholder": "Buscar temas...",
+    "noResults": "No se encontraron resultados para"
+  },
   "topics": {
     "loadBalancers": "Balanceadores de Carga",
     "appServers": "Servidores de Aplicaciones",

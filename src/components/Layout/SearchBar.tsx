@@ -134,7 +134,7 @@ const SearchBar: React.FC = () => {
         <input
           ref={inputRef}
           type="text"
-          placeholder="Search topics..."
+          placeholder={t('search.placeholder')}
           value={query}
           onChange={(e) => setQuery(e.target.value)}
           onFocus={() => setIsOpen(true)}
@@ -177,7 +177,7 @@ const SearchBar: React.FC = () => {
           ) : query.trim() !== '' ? (
             <div className="px-4 py-6 text-center text-gray-500 dark:text-gray-400">
               <Search className="w-8 h-8 mx-auto mb-2 opacity-50" />
-              <p className="text-sm">No results found for "{query}"</p>
+              <p className="text-sm">{t('search.noResults')} "{query}"</p>
             </div>
           ) : null}
         </div>

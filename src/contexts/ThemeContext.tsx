@@ -32,6 +32,7 @@ export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   useEffect(() => {
     // Save theme preference to localStorage
+    
     localStorage.setItem('system-design-theme', theme);
     
     // Apply theme to document

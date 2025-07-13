@@ -21,6 +21,10 @@
     "copied": "Copied!",
     "shareTitle": "Share this page"
   },
+  "search": {
+    "placeholder": "Search topics...",
+    "noResults": "No results found for"
+  },
   "topics": {
     "loadBalancers": "Load Balancers",
     "appServers": "Application Servers",
