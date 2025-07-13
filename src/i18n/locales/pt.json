@@ -11,6 +11,16 @@
     "performance": "Desempenho",
     "security": "Segurança"
   },
+  "categoryPage": {
+    "learnMore": "Saiba mais",
+    "backToHome": "Voltar para Início",
+    "categoryNotFound": "Categoria Não Encontrada",
+    "categoryNotFoundDesc": "A categoria solicitada não pode ser encontrada.",
+    "exploreConcepts": "Explore os conceitos e padrões fundamentais em",
+    "share": "Compartilhar",
+    "copied": "Copiado!",
+    "shareTitle": "Compartilhar esta página"
+  },
   "topics": {
     "loadBalancers": "Balanceadores de Carga",
     "appServers": "Servidores de Aplicação",

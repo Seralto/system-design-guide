@@ -11,6 +11,16 @@
     "performance": "Performance",
     "security": "Security"
   },
+  "categoryPage": {
+    "learnMore": "Learn more",
+    "backToHome": "Back to Home",
+    "categoryNotFound": "Category Not Found",
+    "categoryNotFoundDesc": "The requested category could not be found.",
+    "exploreConcepts": "Explore the fundamental concepts and patterns in",
+    "share": "Share",
+    "copied": "Copied!",
+    "shareTitle": "Share this page"
+  },
   "topics": {
     "loadBalancers": "Load Balancers",
     "appServers": "Application Servers",

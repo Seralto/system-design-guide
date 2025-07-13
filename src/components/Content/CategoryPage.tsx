@@ -116,17 +116,17 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
       <div className="max-w-4xl mx-auto p-8">
         <div className="text-center">
           <h1 className="text-3xl font-bold text-gray-900 dark:text-white mb-4">
-            Category Not Found
+            {t('categoryPage.categoryNotFound')}
           </h1>
           <p className="text-gray-600 dark:text-gray-300">
-            The requested category could not be found.
+            {t('categoryPage.categoryNotFoundDesc')}
           </p>
           <Link 
             to="/" 
             className="inline-flex items-center mt-4 px-4 py-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors"
           >
             <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-            Back to Home
+            {t('categoryPage.backToHome')}
           </Link>
         </div>
       </div>
@@ -147,24 +147,24 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
                 {t(`nav.${categoryKey}`)}
               </h1>
               <p className="text-lg text-gray-600 dark:text-gray-300">
-                Explore the fundamental concepts and patterns in {t(`nav.${categoryKey}`).toLowerCase()}
+                {t('categoryPage.exploreConcepts')} {t(`nav.${categoryKey}`).toLowerCase()}
               </p>
             </div>
           </div>
           <button
             onClick={handleShare}
             className="flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
-            title="Share this page"
+            title={t('categoryPage.shareTitle')}
           >
             {copied ? (
               <>
                 <Check className="w-4 h-4" />
-                <span className="text-sm">Copied!</span>
+                <span className="text-sm">{t('categoryPage.copied')}</span>
               </>
             ) : (
               <>
                 <Share2 className="w-4 h-4" />
-                <span className="text-sm">Share</span>
+                <span className="text-sm">{t('categoryPage.share')}</span>
               </>
             )}
           </button>
@@ -188,7 +188,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
               </p>
             </div>
             <div className="flex items-center text-blue-600 dark:text-blue-400 group-hover:text-blue-700 dark:group-hover:text-blue-300 transition-colors">
-              <span className="text-sm font-medium">Learn more</span>
+              <span className="text-sm font-medium">{t('categoryPage.learnMore')}</span>
               <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
             </div>
           </Link>
@@ -202,7 +202,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
           className="inline-flex items-center px-6 py-3 bg-gray-100 dark:bg-gray-800 text-gray-700 dark:text-gray-300 rounded-lg hover:bg-gray-200 dark:hover:bg-gray-700 transition-colors"
         >
           <ArrowRight className="w-4 h-4 mr-2 rotate-180" />
-          Back to Home
+          {t('categoryPage.backToHome')}
         </Link>
       </div>
     </div>
