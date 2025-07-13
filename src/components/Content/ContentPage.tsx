@@ -106,17 +106,17 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
           <button
             onClick={handleShare}
             className="flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
-            title="Share this page"
+            title={t('categoryPage.shareTitle')}
           >
             {copied ? (
               <>
                 <Check className="w-4 h-4" />
-                <span className="text-sm">Copied!</span>
+                <span className="text-sm">{t('categoryPage.copied')}</span>
               </>
             ) : (
               <>
                 <Share2 className="w-4 h-4" />
-                <span className="text-sm">Share</span>
+                <span className="text-sm">{t('categoryPage.share')}</span>
               </>
             )}
           </button>

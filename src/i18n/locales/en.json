@@ -1037,13 +1037,7 @@
         "Graph Databases - Neo4j, Amazon Neptune for relationships",
         "Multi-Model - CosmosDB, ArangoDB supporting multiple paradigms"
       ],
-      "considerations": [
-        "Data consistency requirements (ACID vs eventual consistency)",
-        "Query complexity and performance requirements",
-        "Scalability needs (vertical vs horizontal scaling)",
-        "Schema flexibility and evolution requirements",
-        "Operational complexity and team expertise"
-      ],
+
       "whenToUse": [
         "SQL: Complex relationships, ACID requirements, reporting",
         "Document: Flexible schemas, rapid development, content management",

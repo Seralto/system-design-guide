@@ -1037,13 +1037,6 @@
         "Bancos de Dados de Grafos - Neo4j, Amazon Neptune para relacionamentos",
         "Multi-Modelo - CosmosDB, ArangoDB suportando múltiplos paradigmas"
       ],
-      "considerations": [
-        "Requisitos de consistência de dados (ACID vs consistência eventual)",
-        "Complexidade de consulta e requisitos de desempenho",
-        "Necessidades de escalabilidade (escalonamento vertical vs horizontal)",
-        "Flexibilidade de esquema e requisitos de evolução",
-        "Complexidade operacional e experiência da equipe"
-      ],
       "whenToUse": [
         "SQL: Relacionamentos complexos, requisitos ACID, relatórios",
         "Documento: Esquemas flexíveis, desenvolvimento rápido, gerenciamento de conteúdo",
