@@ -40,7 +40,7 @@
     "websockets": "WebSockets",
     "coreFeatures": "Funcionalidades Principais",
     "architecture": "Arquitetura",
-    "nosqlTypes": "Tipos NoSQL",
+    "nosqlTypes": "Bancos de Dados NoSQL",
     "cachingStrategies": "Estratégias de Cache",
     "horizontalScaling": "Escalabilidade Horizontal",
     "grpcCharacteristics": "Características gRPC",
