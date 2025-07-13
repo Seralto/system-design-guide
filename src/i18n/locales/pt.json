@@ -61,12 +61,12 @@
     "whatIsSystemDesign": {
       "title": "O que é Design de Sistemas?",
       "paragraph1": "O design de sistemas é o processo de definir a arquitetura, os componentes, o fluxo de dados e as interações de um sistema de software para atender a metas específicas. Envolve tomar decisões de alto nível que equilibram trade-offs entre desempenho, escalabilidade, confiabilidade, manutenibilidade, custo e complexidade.",
-      "paragraph2": "No seu cerne, o design de sistemas é sobre resolver problemas do mundo real por meio de pensamento estruturado, abstrações claras e insights técnicos. Seja você construindo uma plataforma de mídia social, um site de comércio eletrônico ou um jogo multiplayer em tempo real, o design de sistemas garante que seu sistema possa crescer, se adaptar e performar sob carga.",
+      "paragraph2": "No seu cerne, o design de sistemas é sobre resolver problemas do mundo real por meio de pensamento estruturado, abstrações claras e insights técnicos. Seja construindo uma plataforma de mídia social, um site de comércio eletrônico ou um jogo multiplayer em tempo real, o design de sistemas garante que seu sistema possa crescer, se adaptar e performar sob carga.",
       "paragraph3": "Diferentemente da implementação, que foca em funcionalidades isoladas, o design de sistemas olha para o 'quadro geral', como as diferentes partes de um sistema se encaixam e trabalham juntas. É um processo colaborativo e criativo que muitas vezes começa muito antes da primeira linha de código ser escrita."
     },
     "keyQuestions": {
       "title": "Design de Sistemas: 10 Perguntas Fundamentais",
-      "intro": "Um sistema bem projetado deve responder a essas dez perguntas fundamentais. Essas perguntas ajudam a guiar decisões arquiteturais e preparar o sistema para escala, mudança e resiliência.",
+      "intro": "Um sistema bem projetado deve responder a essas dez perguntas fundamentais. Elas ajudam a guiar decisões arquiteturais e preparar o sistema para escala, mudança e resiliência.",
       "questions": [
         {
           "number": 1,
@@ -76,7 +76,7 @@
         {
           "number": 2,
           "title": "Latência e Desempenho",
-          "question": "Como garantir tempos de resposta baixos e desempenho consistente sob carga?"
+          "question": "Como garantir tempos de resposta baixos e desempenho consistente sob alta demanda?"
         },
         {
           "number": 3,
@@ -106,7 +106,7 @@
         {
           "number": 8,
           "title": "Conformidade e Privacidade",
-          "question": "Estamos atendendo aos requisitos regulatórios (por exemplo, GDPR, HIPAA)? Como os dados sensíveis são protegidos e gerenciados?"
+          "question": "Estamos atendendo aos requisitos regulatórios (por exemplo, GDPR, LGPD)? Como os dados sensíveis são protegidos e gerenciados?"
         },
         {
           "number": 9,
@@ -136,7 +136,7 @@
       },
       "server": {
         "title": "2. Servidor / Backend",
-        "description": "O backend alimenta a lógica de negócios e orquestra o comportamento do sistema.",
+        "description": "O backend implementa a lógica de negócios e orquestra o comportamento do sistema.",
         "responsibilities": "Responsabilidades",
         "responsibilitiesList": [
           "Processar solicitações do usuário",
@@ -159,26 +159,26 @@
           "sql": {
             "title": "SQL",
             "examples": [
-              "PostgreSQL/MySQL (dados estruturados, transações)"
+              "PostgreSQL/MySQL (banco de dados relacional, armazenamento em tabelas, dados estruturados)"
             ]
           },
           "nosql": {
             "title": "NoSQL",
             "examples": [
-              "MongoDB (esquema flexível)",
-              "Cassandra (alto throughput)"
+              "MongoDB (banco de dados não relacional, armazenamento em documentos, esquema flexível)",
+              "Cassandra (banco de dados não relacional, alta escalabilidade, alto throughput)"
             ]
           },
           "inmemory": {
             "title": "Em Memória",
             "examples": [
-              "Redis/Memcached (cache rápido)"
+              "Redis/Memcached (utilizado para cache rápido)"
             ]
           },
           "objectStorage": {
             "title": "Armazenamento de Objetos",
             "examples": [
-              "Amazon S3/GCP Storage (arquivos e blobs de mídia como imagens, vídeos, etc.)"
+              "Amazon S3/GCP Storage (armazenamento em blobs, arquivos e mídia como imagens, vídeos, etc.)"
             ]
           }
         }
@@ -186,34 +186,34 @@
       "networking": {
         "title": "4. Camada de Rede e Infraestrutura",
         "description": "Esta camada garante comunicação segura e eficiente em todo o sistema.",
-        "components": {
+        "types": {
           "loadBalancers": {
-            "title": "Balanceadores de Carga",
-            "description": "Distribuem tráfego",
+            "title": "Balanceadores de Carga (Load Balancers)",
+            "description": "Distribui o tráfego de rede entre múltiplos servidores para garantir alta disponibilidade e desempenho de aplicações.",
             "examples": [
               "HAProxy",
               "AWS ALB"
             ]
           },
           "apiGateways": {
-            "title": "Gateways de API",
-            "description": "Centralizam o roteamento de solicitações, autenticação, limitação de taxa",
+            "title": "Gateways de API (API Gateways)",
+            "description": "Centraliza o roteamento de solicitações, autenticação, rate-limiting, gerenciamento de tráfego e entre outros.",
             "examples": [
               "Kong",
               "Amazon API Gateway"
             ]
           },
           "cdns": {
-            "title": "CDNs",
-            "description": "Armazenam ativos estáticos próximos aos usuários",
+            "title": "CDNs (Content Delivery Networks)",
+            "description": "Armazenam ativos estáticos (imagens, vídeos, etc.) próximos aos usuários para reduzir latência e melhorar a performance.",
             "examples": [
               "Cloudflare",
               "Akamai"
             ]
           },
           "serviceMesh": {
-            "title": "Malha de Serviços",
-            "description": "Gerenciam comunicação serviço-a-serviço em microsserviços",
+            "title": "Malha de Serviços (Service Mesh)",
+            "description": "Gerenciam comunicação serviço-a-serviço em microsserviços, fornecendo funções de roteamento de tráfego, segurança, observabilidade e resiliência.",
             "examples": [
               "Istio",
               "Linkerd"
@@ -223,11 +223,11 @@
       },
       "thirdParty": {
         "title": "5. Serviços de Terceiros e Externos",
-        "description": "Sistemas modernos frequentemente integram plataformas externas para descarregar funcionalidades complexas ou não centrais. Essas ferramentas ajudam a reduzir o tempo de lançamento e permitem que as equipes foquem na lógica de negócios principal. Alguns exemplos incluem:",
+        "description": "Sistemas modernos frequentemente integram plataformas externas para delegar funcionalidades complexas ou não centrais para terceiros. Essas ferramentas ajudam a reduzir o tempo de lançamento e permitem que as equipes foquem na lógica de negócios principal. Alguns exemplos incluem:",
         "types": {
           "authentication": {
-            "title": "Autenticação",
-            "description": "Gerenciam autenticação e autorização",
+            "title": "Provedores de autenticação",
+            "description": "Gerenciam autenticação e autorização de usuários.",
             "examples": [
               "Auth0",
               "Firebase Auth",
@@ -236,7 +236,7 @@
           },
           "payments": {
             "title": "Pagamentos",
-            "description": "Gerenciam pagamentos e transações financeiras",
+            "description": "Gerenciam pagamentos e transações financeiras.",
             "examples": [
               "Stripe",
               "PayPal",
@@ -245,7 +245,7 @@
           },
           "notifications": {
             "title": "Notificações",
-            "description": "Gerenciam notificações e mensagens",
+            "description": "Gerenciam notificações e mensagens.",
             "examples": [
               "Twilio (SMS)",
               "SendGrid (e-mail)",
@@ -254,7 +254,7 @@
           },
           "monitoring": {
             "title": "Monitoramento",
-            "description": "Gerenciam monitoramento e métricas",
+            "description": "Gerenciam monitoramento e métricas de desempenho.",
             "examples": [
               "Datadog",
               "New Relic",
@@ -263,7 +263,7 @@
           },
           "ai": {
             "title": "Serviços de IA/ML",
-            "description": "Adicione inteligência aos aplicativos",
+            "description": "Soluções baseadas em inteligência artificial que oferecem ferramentas e funcionalidades para automatizar tarefas, analisar dados, tomar decisões e melhorar processos.",
             "examples": [
               "OpenAI API",
               "Google Cloud AI",
@@ -276,31 +276,31 @@
     "designProcess": {
       "title": "O Processo de Design de Sistemas",
       "subtitle": "Dos Requisitos ao Projeto",
-      "intro": "Projetar um sistema não é uma lista de verificação rígida, é um processo iterativo que evolui por meio de exploração, validação e refinamento. Aqui está uma estrutura comprovada passo a passo:",
+      "intro": "Projetar um sistema não é uma lista rígida de passos, é um processo iterativo que evolui por meio de exploração, validação e refinamento. Aqui está uma estrutura comprovada passo a passo:",
       "steps": {
         "requirements": {
           "title": "1. Coleta de Requisitos",
           "description": "Entenda o que o sistema precisa realizar.",
           "items": [
             "Requisitos Funcionais: O que ele deve fazer? (por exemplo, fazer upload de fotos, enviar mensagens)",
-            "Requisitos Não Funcionais (NFRs): Desempenho, latência, uptime, consistência",
+            "Requisitos Não Funcionais: Desempenho, latência, uptime, consistência",
             "Modelagem de Usuários: Quem são os usuários? Quais são seus casos de uso e volume?",
-            "Restrições: Pilhas tecnológicas, orçamentos, SLAs, requisitos legais"
+            "Restrições: Tecnologias utilizadas (tech stacks), orçamentos, SLAs (acordos de nível de serviço), exigências legais"
           ]
         },
         "estimations": {
-          "title": "2. Estimativas de Ordem de Grandeza",
+          "title": "2. Estimativas Rápidas",
           "description": "Estime a escala para informar decisões de tecnologia e arquitetura:",
           "items": [
             "Necessidades de Armazenamento: GBs/TBs por dia ou por usuário",
-            "Carga de Tráfego: QPS de pico, leituras vs. escritas",
+            "Carga de Tráfego: Pico de QPS (Queries Per Second), leituras vs. escritas",
             "Largura de Banda de Rede: Dados transferidos entre usuários/serviços",
             "Contagem de Servidores: Número de réplicas necessárias para atender à carga esperada"
           ],
           "tip": "Estimativas rápidas ajudam a evitar sobreengenharia ou subestimação da arquitetura."
         },
         "hld": {
-          "title": "3. Design de Alto Nível (HLD)",
+          "title": "3. Design de Alto Nível (HLD - High-Level Design)",
           "description": "Esboce a arquitetura do sistema e o fluxo de dados.",
           "items": [
             "Identifique módulos principais (por exemplo, serviço de usuário, serviço de feed, autenticação)",
@@ -313,12 +313,8 @@
           "title": "4. Modelagem de Dados e Design de API",
           "description": "Defina as interfaces internas e externas.",
           "items": [
-            "Design de Banco de Dados: Escolha modelos de dados, esquema, indexação, particionamento",
-            "Design de API: Defina endpoints RESTful ou RPC, contratos, autenticação"
-          ],
-          "examples": [
-            "POST /tweet → cria um tweet",
-            "GET /timeline → obtém o feed de um usuário"
+            "Design de Banco de Dados: Escolha o tipo (SQL, NoSQL), modelos, esquema, indexação, particionamento",
+            "Design de API: Defina o tipo (REST, GraphQL ou gRPC), endpoints, contratos, autenticação"
           ]
         },
         "detailedDesign": {
@@ -327,7 +323,7 @@
           "items": [
             "Defina responsabilidades, entradas/saídas, modos de falha",
             "Aplique cache, replicação, enfileiramento e balanceamento de carga",
-            "Garanta que cada componente atenda aos NFRs (disponibilidade, segurança, observabilidade)"
+            "Garanta que cada componente atenda aos requisitos não funcionais (disponibilidade, segurança, observabilidade)"
           ]
         },
         "bottlenecks": {
@@ -1876,15 +1872,15 @@
           "title": "Requisitos Não Funcionais: QUÃO BEM o sistema deve funcionar",
           "scale": {
             "title": "Escala",
-            "description": "Quantos usuários? (100 mil DAU vs 100 milhões DAU)"
+            "description": "Quantos usuários (DAU - Daily Active Users)? (100 mil vs 100 milhões)"
           },
           "performance": {
             "title": "Desempenho",
-            "description": "Tempo de resposta (<200ms), throughput (1000 QPS)"
+            "description": "Tempo de resposta (<200ms), throughput (1000 QPS - Queries Per Second)"
           },
           "availability": {
             "title": "Disponibilidade",
-            "description": "Requisitos de uptime (99,9% vs 99,99%)"
+            "description": "Requisitos de uptime (99,9% vs 99,99% vs 99,999%...)"
           },
           "consistency": {
             "title": "Consistência",
@@ -1894,7 +1890,7 @@
             "title": "Segurança",
             "description": "Autenticação, autorização, privacidade de dados"
           },
-          "example": "Suportar 10 milhões de usuários, tempo de resposta <100ms, uptime de 99,9%"
+          "example": "Suportar 10 milhões de usuários, tempo de resposta <100ms, uptime de 99,999%"
         },
         "edgeCases": {
           "title": "Casos Extremos e Restrições",
@@ -2004,11 +2000,11 @@
       "tldr": {
         "title": "Resumo da Estrutura",
         "steps": [
-          "esclarecer o que você está construindo e as restrições",
-          "desenhar componentes de alto nível e fluxo de dados",
-          "projetar modelos de dados e escolher bancos de dados",
-          "identificar gargalos e adicionar soluções de escalabilidade",
-          "resumir o design e discutir trade-offs"
+          "Esclarecer o que você está construindo e as restrições",
+          "Desenhar componentes de alto nível e fluxo de dados",
+          "Projetar modelos de dados e escolher bancos de dados",
+          "Identificar gargalos e adicionar soluções de escalabilidade",
+          "Resumir o design e discutir trade-offs"
         ]
       }
     },

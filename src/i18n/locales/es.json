@@ -186,7 +186,7 @@
       "networking": {
         "title": "4. Capa de Red e Infraestructura",
         "description": "Esta capa garantiza una comunicación segura y eficiente en todo el sistema.",
-        "components": {
+        "types": {
           "loadBalancers": {
             "title": "Balanceadores de carga",
             "description": "Distribuyen el tráfico",
@@ -283,24 +283,24 @@
           "description": "Entender lo que el sistema debe lograr.",
           "items": [
             "Requisitos Funcionales: ¿Qué debe hacer? (por ejemplo, subir fotos, enviar mensajes)",
-            "Requisitos No Funcionales (RNF): Rendimiento, latencia, tiempo de actividad, consistencia",
+            "Requisitos No Funcionales: Rendimiento, latencia, tiempo de actividad, consistencia",
             "Modelado de Usuarios: ¿Quiénes son los usuarios? ¿Cuáles son sus casos de uso y volumen?",
-            "Restricciones: Pilas tecnológicas, presupuestos, SLAs, requisitos legales"
+            "Restricciones: Tecnologías utilizadas (tech stacks), presupuestos, SLAs (acordos de nivel de servicio), requisitos legales"
           ]
         },
         "estimations": {
-          "title": "2. Estimaciones en el Reverso de un Sobre",
+          "title": "2. Estimaciones Rápidas",
           "description": "Estimar la escala para tomar decisiones de tecnología y arquitectura:",
           "items": [
             "Necesidades de Almacenamiento: GBs/TBs por día o por usuario",
-            "Carga de Tráfico: QPS máximo, lecturas vs. escrituras",
+            "Carga de Tráfico: QPS (Queries Per Second) máximo, lecturas vs. escrituras",
             "Ancho de Banda de Red: Datos transferidos entre usuarios/servicios",
             "Recuento de Servidores: Número de réplicas necesarias para atender la carga esperada"
           ],
           "tip": "Las estimaciones rápidas te ayudan a evitar sobreingeniería o subestimar tu arquitectura."
         },
         "hld": {
-          "title": "3. Diseño de Alto Nivel (HLD)",
+          "title": "3. Diseño de Alto Nivel (HLD - High-Level Design)",
           "description": "Esbozar la arquitectura del sistema y el flujo de datos.",
           "items": [
             "Identificar módulos principales (por ejemplo, servicio de usuario, servicio de feed, autenticación)",
@@ -313,12 +313,8 @@
           "title": "4. Modelado de Datos y Diseño de API",
           "description": "Definir las interfaces internas y externas.",
           "items": [
-            "Diseño de Base de Datos: Elegir modelos de datos, esquema, indexación, particionamiento",
-            "Diseño de API: Definir endpoints RESTful o RPC, contratos, autenticación"
-          ],
-          "examples": [
-            "POST /tweet → crea un tweet",
-            "GET /timeline → obtiene el feed de un usuario"
+            "Diseño de Base de Datos: Elegir el tipo (SQL, NoSQL), modelos, esquema, indexación, particionamiento",
+            "Diseño de API: Definir el tipo (REST, GraphQL o gRPC), endpoints, contratos, autenticación"
           ]
         },
         "detailedDesign": {
@@ -327,7 +323,7 @@
           "items": [
             "Definir responsabilidades, entradas/salidas, modos de fallo",
             "Aplicar caché, replicación, colas y balanceo de carga",
-            "Asegurar que cada componente cumpla con sus RNF (disponibilidad, seguridad, observabilidad)"
+            "Asegurar que cada componente cumpla con sus requisitos no funcionales (disponibilidad, seguridad, observabilidad)"
           ]
         },
         "bottlenecks": {
@@ -1876,15 +1872,15 @@
           "title": "Requisitos No Funcionales: QUÉ TAN BIEN debe funcionar el sistema",
           "scale": {
             "title": "Escala",
-            "description": "¿Cuántos usuarios? (100K DAU vs 100M DAU)"
+            "description": "¿Cuántos usuarios (DAU - Daily Active Users)? (100K vs 100M)"
           },
           "performance": {
             "title": "Rendimiento",
-            "description": "Tiempo de respuesta (<200ms), rendimiento (1000 QPS)"
+            "description": "Tiempo de respuesta (<200ms), rendimiento (1000 QPS - Queries Per Second)"
           },
           "availability": {
             "title": "Disponibilidad",
-            "description": "Requisitos de tiempo de actividad (99.9% vs 99.99%)"
+            "description": "Requisitos de tiempo de actividad (99.9% vs 99.99% vs 99.999%...)"
           },
           "consistency": {
             "title": "Consistencia",
@@ -1894,7 +1890,7 @@
             "title": "Seguridad",
             "description": "Autenticación, autorización, privacidad de datos"
           },
-          "example": "Soportar 10M de usuarios, tiempo de respuesta <100ms, 99.9% de tiempo de actividad"
+          "example": "Soportar 10M de usuarios, tiempo de respuesta <100ms, 99.999% de tiempo de actividad"
         },
         "edgeCases": {
           "title": "Casos Extremos y Restricciones",

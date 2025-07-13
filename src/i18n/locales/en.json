@@ -189,7 +189,7 @@
         "types": {
           "loadBalancers": {
             "title": "Load balancers",
-            "description": "Distribute traffic",
+            "description": "Distribute traffic between multiple servers to ensure high availability and application performance.",
             "examples": [
               "HAProxy",
               "AWS ALB"
@@ -197,7 +197,7 @@
           },
           "apiGateways": {
             "title": "API gateways",
-            "description": "Centralize request routing, auth, rate-limiting",
+            "description": "Centralize request routing, auth, rate-limiting, and more.",
             "examples": [
               "Kong",
               "Amazon API Gateway"
@@ -205,7 +205,7 @@
           },
           "cdns": {
             "title": "CDNs",
-            "description": "Cache static assets close to users",
+            "description": "Cache static assets (images, videos, etc.) close to users.",
             "examples": [
               "Cloudflare",
               "Akamai"
@@ -213,7 +213,7 @@
           },
           "serviceMesh": {
             "title": "Service mesh",
-            "description": "Manage service-to-service communication in microservices",
+            "description": "Manage service-to-service communication in microservices, providing traffic routing, security, observability, and resiliency functions.",
             "examples": [
               "Istio",
               "Linkerd"
@@ -227,7 +227,7 @@
         "types": {
           "authentication": {
             "title": "Authentication providers",
-            "description": "Handle user authentication and authorization",
+            "description": "Handle user authentication and authorization.",
             "examples": [
               "Auth0",
               "Firebase Auth",
@@ -236,7 +236,7 @@
           },
           "payments": {
             "title": "Payment processors",
-            "description": "Handle financial transactions",
+            "description": "Handle financial transactions.",
             "examples": [
               "Stripe",
               "PayPal",
@@ -245,7 +245,7 @@
           },
           "notifications": {
             "title": "Notification services",
-            "description": "Deliver messages across channels",
+            "description": "Deliver messages across channels.",
             "examples": [
               "Twilio (SMS)",
               "SendGrid (e-mail)",
@@ -254,7 +254,7 @@
           },
           "monitoring": {
             "title": "Monitoring tools",
-            "description": "Track system health and performance",
+            "description": "Track system health and performance.",
             "examples": [
               "Datadog",
               "New Relic",
@@ -263,7 +263,7 @@
           },
           "ai": {
             "title": "AI/ML services",
-            "description": "Add intelligence to applications",
+            "description": "Solutions based on artificial intelligence that offer tools and features to automate tasks, analyze data, make decisions, and improve processes.",
             "examples": [
               "OpenAI API",
               "Google Cloud AI",
@@ -283,7 +283,7 @@
           "description": "Understand what the system needs to accomplish.",
           "items": [
             "Functional Requirements: What should it do? (e.g., upload photos, send messages)",
-            "Non-Functional Requirements (NFRs): Performance, latency, uptime, consistency",
+            "Non-Functional Requirements: Performance, latency, uptime, consistency",
             "User Modeling: Who are the users? What are their use cases and volume?",
             "Constraints: Tech stacks, budgets, SLAs, legal requirements"
           ]
@@ -313,12 +313,8 @@
           "title": "4. Data Modeling & API Design",
           "description": "Define the internal and external interfaces.",
           "items": [
-            "Database Design: Choose data models, schema, indexing, partitioning",
-            "API Design: Define RESTful or RPC endpoints, contracts, authentication"
-          ],
-          "examples": [
-            "POST /tweet → creates a tweet",
-            "GET /timeline → fetches a user's feed"
+            "Database Design: Choose the type (SQL, NoSQL), models, schema, indexing, partitioning",
+            "API Design: Define the type (REST, GraphQL or gRPC), endpoints, contracts, authentication"
           ]
         },
         "detailedDesign": {
@@ -1876,15 +1872,15 @@
           "title": "Non-Functional Requirements: HOW WELL the system should perform",
           "scale": {
             "title": "Scale",
-            "description": "How many users? (100K DAU vs 100M DAU)"
+            "description": "How many users (DAU - Daily Active Users)? (100K vs 100M)"
           },
           "performance": {
             "title": "Performance",
-            "description": "Response time (<200ms), throughput (1000 QPS)"
+            "description": "Response time (<200ms), throughput (1000 QPS - Queries Per Second)"
           },
           "availability": {
             "title": "Availability",
-            "description": "Uptime requirements (99.9% vs 99.99%)"
+            "description": "Uptime requirements (99.9% vs 99.99% vs 99.999%...)"
           },
           "consistency": {
             "title": "Consistency",
@@ -1894,7 +1890,7 @@
             "title": "Security",
             "description": "Authentication, authorization, data privacy"
           },
-          "example": "Support 10M users, <100ms response time, 99.9% uptime"
+          "example": "Support 10M users, <100ms response time, 99.999% uptime"
         },
         "edgeCases": {
           "title": "Edge Cases & Constraints",
@@ -2004,11 +2000,11 @@
       "tldr": {
         "title": "TL;DR Framework",
         "steps": [
-          "clarify what you're building and constraints",
-          "draw high-level components and data flow",
-          "design data models and choose databases",
-          "identify bottlenecks and add scaling solutions",
-          "summarize design and discuss trade-offs"
+          "Clarify what you're building and constraints",
+          "Draw high-level components and data flow",
+          "Design data models and choose databases",
+          "Identify bottlenecks and add scaling solutions",
+          "Summarize design and discuss trade-offs"
         ]
       }
     },

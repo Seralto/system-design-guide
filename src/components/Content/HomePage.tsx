@@ -94,7 +94,7 @@ const HomePage: React.FC = () => {
             {t('homePage.keyComponents.intro')}
           </p>
 
-          {/* Client/Frontend */}
+          {/* 1. Client/Frontend */}
           <div className="mb-6 border-l-4 border-blue-500 pl-4 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-r-lg">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center">
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 w-7 h-7 rounded-full flex items-center justify-center mr-2 text-sm font-bold">1</span>
@@ -118,7 +118,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Server/Backend */}
+          {/* 2. Server/Backend */}
           <div className="mb-6 border-l-4 border-green-500 pl-4 bg-green-50 dark:bg-green-900/20 p-4 rounded-r-lg">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center">
               <span className="bg-green-100 dark:bg-green-900 text-green-800 dark:text-green-200 w-7 h-7 rounded-full flex items-center justify-center mr-2 text-sm font-bold">2</span>
@@ -155,7 +155,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Database/Storage */}
+          {/* 3. Database/Storage */}
           <div className="mb-6 border-l-4 border-purple-500 pl-4 bg-purple-50 dark:bg-purple-900/20 p-4 rounded-r-lg">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center">
               <span className="bg-purple-100 dark:bg-purple-900 text-purple-800 dark:text-purple-200 w-7 h-7 rounded-full flex items-center justify-center mr-2 text-sm font-bold">3</span>
@@ -220,7 +220,7 @@ const HomePage: React.FC = () => {
             </div>
           </div>
 
-          {/* Networking & Infrastructure */}
+          {/* 4. Networking & Infrastructure */}
           <div className="mb-6 border-l-4 border-orange-500 pl-4 bg-orange-50 dark:bg-orange-900/20 p-4 rounded-r-lg">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center">
               <span className="bg-orange-100 dark:bg-orange-900 text-orange-800 dark:text-orange-200 w-7 h-7 rounded-full flex items-center justify-center mr-2 text-sm font-bold">4</span>
@@ -229,10 +229,15 @@ const HomePage: React.FC = () => {
             <p className="mb-3 text-gray-800 dark:text-gray-200">
               {t('homePage.keyComponents.networking.description')}
             </p>
+
+            {/* Load Balancers */}
             <div className="mb-3">
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.networking.types.loadBalancers.title')}
               </h5>
+              <p className="mb-2 text-gray-800 dark:text-gray-200 text-sm italic">
+                {t('homePage.keyComponents.networking.types.loadBalancers.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.networking.types.loadBalancers.examples', { returnObjects: true });
@@ -242,10 +247,15 @@ const HomePage: React.FC = () => {
                 })()}
               </ul>
             </div>
+
+            {/* API Gateways */}
             <div className="mb-3">
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.networking.types.apiGateways.title')}
               </h5>
+              <p className="mb-2 text-gray-800 dark:text-gray-200 text-sm italic">
+                {t('homePage.keyComponents.networking.types.apiGateways.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.networking.types.apiGateways.examples', { returnObjects: true });
@@ -255,10 +265,15 @@ const HomePage: React.FC = () => {
                 })()}
               </ul>
             </div>
+
+            {/* CDNs */}
             <div className="mb-3">
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.networking.types.cdns.title')}
               </h5>
+              <p className="mb-2 text-gray-800 dark:text-gray-200 text-sm italic">
+                {t('homePage.keyComponents.networking.types.cdns.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.networking.types.cdns.examples', { returnObjects: true });
@@ -268,10 +283,15 @@ const HomePage: React.FC = () => {
                 })()}
               </ul>
             </div>
+
+            {/* Service Mesh */}
             <div className="mb-3">
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.networking.types.serviceMesh.title')}
               </h5>
+              <p className="mb-2 text-gray-800 dark:text-gray-200 text-sm italic">
+                {t('homePage.keyComponents.networking.types.serviceMesh.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.networking.types.serviceMesh.examples', { returnObjects: true });
@@ -296,7 +316,7 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.authentication.title')}
               </h5>
-              <p className="mb-3 text-gray-800 dark:text-gray-200">
+              <p className="mb-3 text-gray-800 dark:text-gray-200 text-sm italic">
                 {t('homePage.keyComponents.thirdParty.types.authentication.description')}
               </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
@@ -312,7 +332,7 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.payments.title')}
               </h5>
-              <p className="mb-3 text-gray-800 dark:text-gray-200">
+              <p className="mb-3 text-gray-800 dark:text-gray-200 text-sm italic">
                 {t('homePage.keyComponents.thirdParty.types.payments.description')}
               </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
@@ -328,7 +348,7 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.notifications.title')}
               </h5>
-              <p className="mb-3 text-gray-800 dark:text-gray-200">
+              <p className="mb-3 text-gray-800 dark:text-gray-200 text-sm italic">
                 {t('homePage.keyComponents.thirdParty.types.notifications.description')}
               </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
@@ -344,7 +364,7 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.monitoring.title')}
               </h5>
-              <p className="mb-3 text-gray-800 dark:text-gray-200">
+              <p className="mb-3 text-gray-800 dark:text-gray-200 text-sm italic">
                 {t('homePage.keyComponents.thirdParty.types.monitoring.description')}
               </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
@@ -360,7 +380,7 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.ai.title')}
               </h5>
-              <p className="mb-3 text-gray-800 dark:text-gray-200">
+              <p className="mb-3 text-gray-800 dark:text-gray-200 text-sm italic">
                 {t('homePage.keyComponents.thirdParty.types.ai.description')}
               </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
@@ -398,11 +418,11 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.requirements.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.requirements.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
@@ -417,11 +437,11 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.estimations.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.estimations.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
@@ -439,11 +459,11 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.hld.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.hld.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
@@ -458,19 +478,11 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.dataModeling.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.dataModeling.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
-                  ));
-                })()}
-              </ul>
-              <ul className="mt-2 space-y-1">
-                {(() => {
-                  const items = t('homePage.designProcess.steps.dataModeling.examples', { returnObjects: true });
-                  return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200"> {item}</li>
                   ));
                 })()}
               </ul>
@@ -485,11 +497,11 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.detailedDesign.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.detailedDesign.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
@@ -504,20 +516,20 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.bottlenecks.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.bottlenecks.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
               <strong className="text-gray-800 dark:text-gray-200"> {t('homePage.designProcess.steps.bottlenecks.tradeoffs.title')}</strong>
                 {(() => {
                   const items = t('homePage.designProcess.steps.bottlenecks.tradeoffs.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
@@ -533,11 +545,11 @@ const HomePage: React.FC = () => {
               <p className="text-gray-800 dark:text-gray-200">
                 {t('homePage.designProcess.steps.review.description')}
               </p>
-              <ul className="mt-2 space-y-1">
+              <ul className="mt-2 space-y-1 list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.designProcess.steps.review.items', { returnObjects: true });
                   return Array.isArray(items) && items.map((item, index) => (
-                    <li key={index} className="text-gray-800 dark:text-gray-200">• {item}</li>
+                    <li key={index} className="text-gray-800 dark:text-gray-200">{item}</li>
                   ));
                 })()}
               </ul>
