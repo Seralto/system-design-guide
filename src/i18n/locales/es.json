@@ -1822,7 +1822,7 @@
               "Microservicios vs Monolito",
               "Arquitectura dirigida por eventos",
               "Arquitectura en capas",
-              "Arquitectura sin servidor"
+              "Arquitectura serverless"
             ]
           },
           "tip": "Dibuja un diagrama simple para visualizar el flujo de datos entre componentes"

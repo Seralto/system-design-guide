@@ -147,7 +147,7 @@
         "patternsList": [
           "Monolito",
           "Microsserviços",
-          "Sem servidor"
+          "Serverless"
         ]
       },
       "database": {
@@ -1822,7 +1822,7 @@
               "Microsserviços vs Monolito",
               "Arquitetura orientada a eventos",
               "Arquitetura em camadas",
-              "Arquitetura sem servidor"
+              "Arquitetura serverless"
             ]
           },
           "tip": "Desenhe um diagrama simples para visualizar o fluxo de dados entre os componentes"
