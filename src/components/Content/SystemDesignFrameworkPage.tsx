@@ -29,37 +29,43 @@ const SystemDesignFrameworkPage: React.FC = () => {
       icon: Server,
       titleKey: 'nav.architecture',
       color: 'bg-blue-500',
-      topicsKey: 'home.categories.topics.architecture'
+      topicsKey: 'home.categories.topics.architecture',
+      path: '/architecture'
     },
     {
       icon: BarChart3,
       titleKey: 'nav.scalability',
       color: 'bg-green-500',
-      topicsKey: 'home.categories.topics.scalability'
+      topicsKey: 'home.categories.topics.scalability',
+      path: '/scalability'
     },
     {
       icon: Globe,
       titleKey: 'nav.communication',
       color: 'bg-purple-500',
-      topicsKey: 'home.categories.topics.communication'
+      topicsKey: 'home.categories.topics.communication',
+      path: '/communication'
     },
     {
       icon: Zap,
       titleKey: 'nav.async',
       color: 'bg-yellow-500',
-      topicsKey: 'home.categories.topics.async'
+      topicsKey: 'home.categories.topics.async',
+      path: '/async'
     },
     {
       icon: Database,
       titleKey: 'nav.performance',
       color: 'bg-red-500',
-      topicsKey: 'home.categories.topics.performance'
+      topicsKey: 'home.categories.topics.performance',
+      path: '/performance'
     },
     {
       icon: Shield,
       titleKey: 'nav.security',
       color: 'bg-indigo-500',
-      topicsKey: 'home.categories.topics.security'
+      topicsKey: 'home.categories.topics.security',
+      path: '/security'
     }
   ];
 
@@ -367,9 +373,10 @@ const SystemDesignFrameworkPage: React.FC = () => {
               {categories.map((category, index) => {
                 const Icon = category.icon;
                 return (
-                  <div
+                  <Link
+                    to={category.path}
                     key={index}
-                    className="group bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:scale-105"
+                    className="group bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 hover:shadow-lg transition-all duration-300 hover:scale-105 block"
                   >
                     <div className="flex items-center mb-4">
                       <div className={`w-12 h-12 ${category.color} rounded-lg flex items-center justify-center mr-4`}>
@@ -390,7 +397,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
                       <span className="text-sm font-medium">{t('home.categories.exploreTopics')}</span>
                       <ArrowRight className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" />
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
