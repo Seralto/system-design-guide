@@ -364,6 +364,11 @@
       "paragraph2": "Ao dividir o processo, desde a identificação de requisitos e estimativa de escala até a arquitetura de componentes e validação de decisões, você cria sistemas que podem escalar graciosamente, se recuperar de falhas e se adaptar a mudanças.",
       "paragraph3": "Seja enfrentando uma pequena funcionalidade ou construindo uma plataforma global, a mentalidade e as ferramentas do design de sistemas permanecem as mesmas: clareza, resiliência e propósito.",
       "quote": "Dominar o design de sistemas não é sobre memorizar padrões, mas sobre aplicar princípios a problemas do mundo real com julgamento consciente do contexto."
+    },
+    "nextPage": {
+      "title": "Pronto para o próximo passo?",
+      "description": "Aprenda nosso framework prático para abordar entrevistas de design de sistemas.",
+      "buttonText": "Framework de Design de Sistemas"
     }
   },
   "content": {

@@ -364,6 +364,11 @@
       "paragraph2": "By breaking down the process, from identifying requirements and estimating scale to architecting components and validating decisions, you create systems that can gracefully scale, recover from failures, and adapt to change.",
       "paragraph3": "Whether you're tackling a small feature or building a global platform, the mindset and tools of system design remain the same: clarity, resilience, and purpose.",
       "quote": "Mastering system design is not about memorizing patterns, it's about applying principles to real-world problems with context-aware judgment."
+    },
+    "nextPage": {
+      "title": "Ready for the next step?",
+      "description": "Learn our practical framework for tackling system design interviews.",
+      "buttonText": "System Design Interview Framework"
     }
   },
 "content": {

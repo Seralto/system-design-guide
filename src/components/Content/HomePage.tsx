@@ -1,5 +1,6 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
+import { Link } from 'react-router-dom';
 import {
   HelpCircle,
   List,
@@ -10,7 +11,8 @@ import {
   BarChart2,
   AlertTriangle,
   RefreshCw,
-  CheckCircle
+  CheckCircle,
+  ArrowRight
 } from 'lucide-react';
 
 const HomePage: React.FC = () => {
@@ -562,6 +564,23 @@ const HomePage: React.FC = () => {
             <blockquote className="border-l-4 border-teal-500 pl-4 italic bg-teal-50 dark:bg-teal-900/20 p-4 rounded-r-lg">
               <strong className="text-gray-900 dark:text-white">{t('homePage.conclusion.quote')}</strong>
             </blockquote>
+          </div>
+        </section>
+
+        {/* Next Page Navigation */}
+        <section className="mb-10 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-indigo-100 dark:border-indigo-800">
+          <div className="flex flex-col md:flex-row items-center justify-between">
+            <div className="mb-4 md:mb-0 md:mr-6">
+              <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('homePage.nextPage.title') || 'Ready for the next step?'}</h2>
+              <p className="text-gray-700 dark:text-gray-300">{t('homePage.nextPage.description') || 'Learn our practical framework for tackling system design interviews.'}</p>
+            </div>
+            <Link 
+              to="/system-design-framework"
+              className="flex items-center justify-center px-6 py-3 bg-indigo-600 hover:bg-indigo-700 text-white font-medium rounded-lg transition-colors duration-300 group"
+            >
+              <span>{t('homePage.nextPage.buttonText') || 'System Design Interview Framework'}</span>
+              <ArrowRight className="ml-2 group-hover:translate-x-1 transition-transform duration-300" size={18} />
+            </Link>
           </div>
         </section>
       </div>

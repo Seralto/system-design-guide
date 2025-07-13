@@ -363,7 +363,12 @@
       "paragraph1": "Diseñar sistemas robustos, escalables y mantenibles es tanto una disciplina técnica como un arte creativo. Exige previsión, colaboración y resolución estructurada de problemas.",
       "paragraph2": "Al desglosar el proceso, desde identificar requisitos y estimar la escala hasta arquitecturar componentes y validar decisiones, creas sistemas que pueden escalar con elegancia, recuperarse de fallos y adaptarse al cambio.",
       "paragraph3": "Ya sea que estés abordando una pequeña característica o construyendo una plataforma global, la mentalidad y las herramientas del diseño de sistemas siguen siendo las mismas: claridad, resiliencia y propósito.",
-      "quote": "Dominar el diseño de sistemas no se trata de memorizar patrones, se trata de aplicar principios a problemas reales con juicio consciente del contexto."
+      "quote": "Dominar el diseño de sistemas no se trata de memorizar patrones, sino de aplicar principios a problemas del mundo real con juicio consciente del contexto."
+    },
+    "nextPage": {
+      "title": "¿Listo para el siguiente paso?",
+      "description": "Aprende nuestro marco práctico para abordar entrevistas de diseño de sistemas.",
+      "buttonText": "Marco de Diseño de Sistemas"
     }
   },
   "content": {
