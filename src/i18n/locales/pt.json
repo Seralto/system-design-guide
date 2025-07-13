@@ -45,15 +45,15 @@
     "eventualConsistency": "Consistência Eventual",
     "eventSourcing": "Event Sourcing",
     "cqrs": "CQRS",
-    "cachingPatterns": "Caching Patterns",
+    "cachingPatterns": "Padrões de Cache",
     "circuitBreaker": "Circuit Breaker",
-    "retryTimeout": "Lógica de Tentativa e Tempos de Espera",
+    "retryTimeout": "Lógica de Retry e Timeout",
     "observability": "Observabilidade",
     "jwt": "JWT e OAuth2",
     "rateLimiting": "Rate Limiting",
     "tls": "TLS/HTTPS",
     "featureFlags": "Feature Flags",
-    "deployment": "Estratégias de Implantação"
+    "deployment": "Estratégias de Deploy"
   },
   "sectionHeaders": {
     "keyPoints": "Pontos-Chave",
@@ -883,7 +883,7 @@
         "Gerenciamento de recursos e otimização de memória",
         "Tratamento de solicitações simultâneas e segurança de threads",
         "Integração com balanceadores de carga e proxies reversos",
-        "Estratégias de implantação e configuração de ambiente",
+        "Estratégias de deploy e configuração de ambiente",
         "Monitoramento, registro e otimização de desempenho"
       ],
       "whenToUse": [
@@ -969,7 +969,7 @@
       "keyPoints": [
         "Fornecem armazenamento confiável e persistente para dados da aplicação",
         "Suportam consultas complexas e relacionamentos de dados",
-        "Garantem consistência, integridade e durabilidade de dados (ACID)",
+        "Garantem consistência, integridade e durabilidade de dados (ACID - Atomicidade, Consistência, Isolamento e Durabilidade)",
         "Habilitam acesso concorrente com gerenciamento de transações",
         "Oferecem diferentes modelos otimizados para casos de uso específicos"
       ],
@@ -1569,9 +1569,9 @@
       ]
     },
     "deployment": {
-      "title": "Estratégias de Implantação",
-      "description": "As estratégias de implantação definem como novas versões de aplicações são lançadas em produção, equilibrando velocidade, segurança e utilização de recursos, enquanto minimizam o tempo de inatividade e o risco.",
-      "learningTip": "Use notas adesivas coloridas para simular diferentes estratégias de implantação em um quadro branco. Notas azuis para a versão antiga, verdes para a nova - pratique movê-las para visualizar implantações azul-verde, canárias e rolantes até que os padrões se tornem intuitivos.",
+      "title": "Estratégias de Deploy",
+      "description": "As estratégias de deploy definem como novas versões de aplicações são lançadas em produção, equilibrando velocidade, segurança e utilização de recursos, enquanto minimizam o tempo de inatividade e o risco.",
+      "learningTip": "Use notas adesivas coloridas para simular diferentes estratégias de deploy em um quadro branco. Notas azuis para a versão antiga, verdes para a nova - pratique movê-las para visualizar implantações azul-verde, canárias e rolantes até que os padrões se tornem intuitivos.",
       "keyPoints": [
         "Minimizar o tempo de inatividade durante atualizações de aplicações",
         "Reduzir o risco por meio de processos de lançamento controlados",
