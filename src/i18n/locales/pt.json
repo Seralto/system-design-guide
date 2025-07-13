@@ -223,23 +223,28 @@
       "thirdParty": {
         "title": "5. Serviços de Terceiros e Externos",
         "description": "Sistemas modernos frequentemente integram plataformas externas para descarregar funcionalidades complexas ou não centrais. Essas ferramentas ajudam a reduzir o tempo de lançamento e permitem que as equipes foquem na lógica de negócios principal. Alguns exemplos incluem:",
-        "services": {
+        "types": {
           "authentication": {
             "title": "Autenticação",
+            "description": "Gerenciam autenticação e autorização",
             "examples": [
               "Auth0",
-              "Firebase Auth"
+              "Firebase Auth",
+              "Okta"
             ]
           },
           "payments": {
             "title": "Pagamentos",
+            "description": "Gerenciam pagamentos e transações financeiras",
             "examples": [
               "Stripe",
-              "PayPal"
+              "PayPal",
+              "Square"
             ]
           },
           "notifications": {
             "title": "Notificações",
+            "description": "Gerenciam notificações e mensagens",
             "examples": [
               "Twilio (SMS)",
               "SendGrid (e-mail)",
@@ -248,18 +253,20 @@
           },
           "monitoring": {
             "title": "Monitoramento",
+            "description": "Gerenciam monitoramento e métricas",
             "examples": [
               "Datadog",
               "New Relic",
               "Sentry"
             ]
           },
-          "mlai": {
-            "title": "APIs de ML/IA",
+          "ai": {
+            "title": "Serviços de IA/ML",
+            "description": "Adicione inteligência aos aplicativos",
             "examples": [
-              "OpenAI",
-              "AWS Rekognition",
-              "Google Cloud Vision"
+              "OpenAI API",
+              "Google Cloud AI",
+              "AWS Rekognition"
             ]
           }
         }

@@ -294,6 +294,9 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.authentication.title')}
               </h5>
+              <p className="mb-3 text-gray-800 dark:text-gray-200">
+                {t('homePage.keyComponents.thirdParty.types.authentication.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.thirdParty.types.authentication.examples', { returnObjects: true });
@@ -307,6 +310,9 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.payments.title')}
               </h5>
+              <p className="mb-3 text-gray-800 dark:text-gray-200">
+                {t('homePage.keyComponents.thirdParty.types.payments.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.thirdParty.types.payments.examples', { returnObjects: true });
@@ -320,6 +326,9 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.notifications.title')}
               </h5>
+              <p className="mb-3 text-gray-800 dark:text-gray-200">
+                {t('homePage.keyComponents.thirdParty.types.notifications.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.thirdParty.types.notifications.examples', { returnObjects: true });
@@ -333,6 +342,9 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.monitoring.title')}
               </h5>
+              <p className="mb-3 text-gray-800 dark:text-gray-200">
+                {t('homePage.keyComponents.thirdParty.types.monitoring.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.thirdParty.types.monitoring.examples', { returnObjects: true });
@@ -346,6 +358,9 @@ const HomePage: React.FC = () => {
               <h5 className="font-semibold text-gray-900 dark:text-white">
                 {t('homePage.keyComponents.thirdParty.types.ai.title')}
               </h5>
+              <p className="mb-3 text-gray-800 dark:text-gray-200">
+                {t('homePage.keyComponents.thirdParty.types.ai.description')}
+              </p>
               <ul className="list-disc pl-5 space-y-1 text-gray-800 dark:text-gray-200">
                 {(() => {
                   const items = t('homePage.keyComponents.thirdParty.types.ai.examples', { returnObjects: true });
