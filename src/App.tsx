@@ -5,12 +5,14 @@ import HomePage from './components/Content/HomePage';
 import ContentPage from './components/Content/ContentPage';
 import CategoryPage from './components/Content/CategoryPage';
 import SystemDesignFrameworkPage from './components/Content/SystemDesignFrameworkPage';
+import ScrollToTop from './components/Utils/ScrollToTop';
 import './i18n';
 
 function App() {
   return (
     <ThemeProvider>
       <Router>
+        <ScrollToTop />
         <Layout>
           <Routes>
             <Route path="/" element={<HomePage />} />
