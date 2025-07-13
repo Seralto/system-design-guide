@@ -27,64 +27,64 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
       icon: Server,
       color: 'bg-blue-500',
       topics: [
-        { key: 'loadBalancers', titleKey: 'topics.loadBalancers', path: '/load-balancers', description: 'Distribute traffic across multiple servers for high availability' },
-        { key: 'appServers', titleKey: 'topics.appServers', path: '/app-servers', description: 'Host and execute application logic and business processing' },
-        { key: 'caching', titleKey: 'topics.caching', path: '/caching', description: 'Improve performance by storing frequently accessed data' },
-        { key: 'databases', titleKey: 'topics.databases', path: '/databases', description: 'Choose between SQL and NoSQL for data storage needs' },
-        { key: 'storage', titleKey: 'topics.storage', path: '/storage', description: 'Understand different storage types: disk, memory, and blob' },
+        { key: 'loadBalancers', titleKey: 'topics.loadBalancers', path: '/architecture/load-balancers', description: 'Distribute traffic across multiple servers for high availability' },
+        { key: 'appServers', titleKey: 'topics.appServers', path: '/architecture/app-servers', description: 'Host and execute application logic and business processing' },
+        { key: 'caching', titleKey: 'topics.caching', path: '/architecture/caching', description: 'Improve performance by storing frequently accessed data' },
+        { key: 'databases', titleKey: 'topics.databases', path: '/architecture/databases', description: 'Choose between SQL and NoSQL for data storage needs' },
+        { key: 'storage', titleKey: 'topics.storage', path: '/architecture/storage', description: 'Understand different storage types: disk, memory, and blob' },
       ]
     },
     scalability: {
       icon: BarChart3,
       color: 'bg-green-500',
       topics: [
-        { key: 'replication', titleKey: 'topics.replication', path: '/replication', description: 'Create copies of data for availability and performance' },
-        { key: 'sharding', titleKey: 'topics.sharding', path: '/sharding', description: 'Distribute data across multiple databases' },
-        { key: 'cdn', titleKey: 'topics.cdn', path: '/cdn', description: 'Deliver content from geographically distributed servers' },
-        { key: 'scalingTypes', titleKey: 'topics.scalingTypes', path: '/scaling-types', description: 'Horizontal vs vertical scaling strategies' },
-        { key: 'capTheorem', titleKey: 'topics.capTheorem', path: '/cap-theorem', description: 'Understand consistency, availability, and partition tolerance' },
+        { key: 'replication', titleKey: 'topics.replication', path: '/scalability/replication', description: 'Create copies of data for availability and performance' },
+        { key: 'sharding', titleKey: 'topics.sharding', path: '/scalability/sharding', description: 'Distribute data across multiple databases' },
+        { key: 'cdn', titleKey: 'topics.cdn', path: '/scalability/cdn', description: 'Deliver content from geographically distributed servers' },
+        { key: 'scalingTypes', titleKey: 'topics.scalingTypes', path: '/scalability/scaling-types', description: 'Horizontal vs vertical scaling strategies' },
+        { key: 'capTheorem', titleKey: 'topics.capTheorem', path: '/scalability/cap-theorem', description: 'Understand consistency, availability, and partition tolerance' },
       ]
     },
     communication: {
       icon: Globe,
       color: 'bg-purple-500',
       topics: [
-        { key: 'httpGrpc', titleKey: 'topics.httpGrpc', path: '/http-grpc', description: 'Compare HTTP and gRPC communication protocols' },
-        { key: 'restGraphql', titleKey: 'topics.restGraphql', path: '/rest-graphql', description: 'REST vs GraphQL API design approaches' },
-        { key: 'websockets', titleKey: 'topics.websockets', path: '/websockets', description: 'Real-time communication patterns and protocols' },
-        { key: 'apiGateway', titleKey: 'topics.apiGateway', path: '/api-gateway', description: 'Centralized API management and routing' },
-        { key: 'serviceMesh', titleKey: 'topics.serviceMesh', path: '/service-mesh', description: 'Infrastructure layer for service-to-service communication' },
+        { key: 'httpGrpc', titleKey: 'topics.httpGrpc', path: '/communication/http-grpc', description: 'Compare HTTP and gRPC communication protocols' },
+        { key: 'restGraphql', titleKey: 'topics.restGraphql', path: '/communication/rest-graphql', description: 'REST vs GraphQL API design approaches' },
+        { key: 'websockets', titleKey: 'topics.websockets', path: '/communication/websockets', description: 'Real-time communication patterns and protocols' },
+        { key: 'apiGateway', titleKey: 'topics.apiGateway', path: '/communication/api-gateway', description: 'Centralized API management and routing' },
+        { key: 'serviceMesh', titleKey: 'topics.serviceMesh', path: '/communication/service-mesh', description: 'Infrastructure layer for service-to-service communication' },
       ]
     },
     async: {
       icon: Zap,
       color: 'bg-yellow-500',
       topics: [
-        { key: 'messageQueues', titleKey: 'topics.messageQueues', path: '/message-queues', description: 'Asynchronous communication between services' },
-        { key: 'eventualConsistency', titleKey: 'topics.eventualConsistency', path: '/eventual-consistency', description: 'Consistency models in distributed systems' },
-        { key: 'eventSourcing', titleKey: 'topics.eventSourcing', path: '/event-sourcing', description: 'Store events as the source of truth' },
-        { key: 'cqrs', titleKey: 'topics.cqrs', path: '/cqrs', description: 'Separate read and write operations' },
+        { key: 'messageQueues', titleKey: 'topics.messageQueues', path: '/async/message-queues', description: 'Asynchronous communication between services' },
+        { key: 'eventualConsistency', titleKey: 'topics.eventualConsistency', path: '/async/eventual-consistency', description: 'Consistency models in distributed systems' },
+        { key: 'eventSourcing', titleKey: 'topics.eventSourcing', path: '/async/event-sourcing', description: 'Store events as the source of truth' },
+        { key: 'cqrs', titleKey: 'topics.cqrs', path: '/async/cqrs', description: 'Separate read and write operations' },
       ]
     },
     performance: {
       icon: Database,
       color: 'bg-red-500',
       topics: [
-        { key: 'cachingPatterns', titleKey: 'topics.cachingPatterns', path: '/caching-patterns', description: 'Common caching strategies and patterns' },
-        { key: 'circuitBreaker', titleKey: 'topics.circuitBreaker', path: '/circuit-breaker', description: 'Prevent cascading failures in distributed systems' },
-        { key: 'retryTimeout', titleKey: 'topics.retryTimeout', path: '/retry-timeout', description: 'Handle transient failures gracefully' },
-        { key: 'observability', titleKey: 'topics.observability', path: '/observability', description: 'Monitor, log, and trace system behavior' },
+        { key: 'cachingPatterns', titleKey: 'topics.cachingPatterns', path: '/performance/caching-patterns', description: 'Common caching strategies and patterns' },
+        { key: 'circuitBreaker', titleKey: 'topics.circuitBreaker', path: '/performance/circuit-breaker', description: 'Prevent cascading failures in distributed systems' },
+        { key: 'retryTimeout', titleKey: 'topics.retryTimeout', path: '/performance/retry-timeout', description: 'Handle transient failures gracefully' },
+        { key: 'observability', titleKey: 'topics.observability', path: '/performance/observability', description: 'Monitor, log, and trace system behavior' },
       ]
     },
     security: {
       icon: Shield,
       color: 'bg-indigo-500',
       topics: [
-        { key: 'jwt', titleKey: 'topics.jwt', path: '/jwt', description: 'Authentication and authorization with JWT and OAuth2' },
-        { key: 'rateLimiting', titleKey: 'topics.rateLimiting', path: '/rate-limiting', description: 'Control request rates to prevent abuse' },
-        { key: 'tls', titleKey: 'topics.tls', path: '/tls', description: 'Secure communication with TLS/HTTPS' },
-        { key: 'featureFlags', titleKey: 'topics.featureFlags', path: '/feature-flags', description: 'Control feature rollouts and experimentation' },
-        { key: 'deployment', titleKey: 'topics.deployment', path: '/deployment', description: 'Safe deployment strategies and practices' },
+        { key: 'jwt', titleKey: 'topics.jwt', path: '/security/jwt', description: 'Authentication and authorization with JWT and OAuth2' },
+        { key: 'rateLimiting', titleKey: 'topics.rateLimiting', path: '/security/rate-limiting', description: 'Control request rates to prevent abuse' },
+        { key: 'tls', titleKey: 'topics.tls', path: '/security/tls', description: 'Secure communication with TLS/HTTPS' },
+        { key: 'featureFlags', titleKey: 'topics.featureFlags', path: '/security/feature-flags', description: 'Control feature rollouts and experimentation' },
+        { key: 'deployment', titleKey: 'topics.deployment', path: '/security/deployment', description: 'Safe deployment strategies and practices' },
       ]
     }
   };

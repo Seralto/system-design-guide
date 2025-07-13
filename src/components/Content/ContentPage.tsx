@@ -10,43 +10,44 @@ interface ContentPageProps {
 // Define the page navigation structure
 const pageNavigation: Record<string, { prev?: { key: string; path: string }, next?: { key: string; path: string } }> = {
   // Architecture category
-  loadBalancers: { next: { key: 'appServers', path: '/app-servers' } },
-  appServers: { prev: { key: 'loadBalancers', path: '/load-balancers' }, next: { key: 'caching', path: '/caching' } },
-  caching: { prev: { key: 'appServers', path: '/app-servers' }, next: { key: 'databases', path: '/databases' } },
-  databases: { prev: { key: 'caching', path: '/caching' }, next: { key: 'storage', path: '/storage' } },
-  storage: { prev: { key: 'databases', path: '/databases' } },
+  loadBalancers: { next: { key: 'appServers', path: '/architecture/app-servers' } },
+  appServers: { prev: { key: 'loadBalancers', path: '/architecture/load-balancers' }, next: { key: 'caching', path: '/architecture/caching' } },
+  caching: { prev: { key: 'appServers', path: '/architecture/app-servers' }, next: { key: 'databases', path: '/architecture/databases' } },
+  databases: { prev: { key: 'caching', path: '/architecture/caching' }, next: { key: 'storage', path: '/architecture/storage' } },
+  storage: { prev: { key: 'databases', path: '/architecture/databases' } },
   
   // Scalability category
-  replication: { next: { key: 'sharding', path: '/sharding' } },
-  sharding: { prev: { key: 'replication', path: '/replication' }, next: { key: 'cdn', path: '/cdn' } },
-  cdn: { prev: { key: 'sharding', path: '/sharding' }, next: { key: 'scalingTypes', path: '/scaling-types' } },
-  scalingTypes: { prev: { key: 'cdn', path: '/cdn' }, next: { key: 'capTheorem', path: '/cap-theorem' } },
-  capTheorem: { prev: { key: 'scalingTypes', path: '/scaling-types' } },
+  replication: { next: { key: 'sharding', path: '/scalability/sharding' } },
+  sharding: { prev: { key: 'replication', path: '/scalability/replication' }, next: { key: 'cdn', path: '/scalability/cdn' } },
+  cdn: { prev: { key: 'sharding', path: '/scalability/sharding' }, next: { key: 'scalingTypes', path: '/scalability/scaling-types' } },
+  scalingTypes: { prev: { key: 'cdn', path: '/scalability/cdn' }, next: { key: 'capTheorem', path: '/scalability/cap-theorem' } },
+  capTheorem: { prev: { key: 'scalingTypes', path: '/scalability/scaling-types' } },
   
   // Communication category
-  httpGrpc: { next: { key: 'restGraphql', path: '/rest-graphql' } },
-  restGraphql: { prev: { key: 'httpGrpc', path: '/http-grpc' }, next: { key: 'websockets', path: '/websockets' } },
-  websockets: { prev: { key: 'restGraphql', path: '/rest-graphql' }, next: { key: 'apiGateway', path: '/api-gateway' } },
-  apiGateway: { prev: { key: 'websockets', path: '/websockets' }, next: { key: 'serviceMesh', path: '/service-mesh' } },
-  serviceMesh: { prev: { key: 'apiGateway', path: '/api-gateway' } },
+  httpGrpc: { next: { key: 'restGraphql', path: '/communication/rest-graphql' } },
+  restGraphql: { prev: { key: 'httpGrpc', path: '/communication/http-grpc' }, next: { key: 'websockets', path: '/communication/websockets' } },
+  websockets: { prev: { key: 'restGraphql', path: '/communication/rest-graphql' }, next: { key: 'apiGateway', path: '/communication/api-gateway' } },
+  apiGateway: { prev: { key: 'websockets', path: '/communication/websockets' }, next: { key: 'serviceMesh', path: '/communication/service-mesh' } },
+  serviceMesh: { prev: { key: 'apiGateway', path: '/communication/api-gateway' } },
   
   // Async patterns category
-  messageQueues: { next: { key: 'eventualConsistency', path: '/eventual-consistency' } },
-  eventualConsistency: { prev: { key: 'messageQueues', path: '/message-queues' }, next: { key: 'eventSourcing', path: '/event-sourcing' } },
-  eventSourcing: { prev: { key: 'eventualConsistency', path: '/eventual-consistency' }, next: { key: 'cqrs', path: '/cqrs' } },
-  cqrs: { prev: { key: 'eventSourcing', path: '/event-sourcing' } },
+  messageQueues: { next: { key: 'eventualConsistency', path: '/async/eventual-consistency' } },
+  eventualConsistency: { prev: { key: 'messageQueues', path: '/async/message-queues' }, next: { key: 'eventSourcing', path: '/async/event-sourcing' } },
+  eventSourcing: { prev: { key: 'eventualConsistency', path: '/async/eventual-consistency' }, next: { key: 'cqrs', path: '/async/cqrs' } },
+  cqrs: { prev: { key: 'eventSourcing', path: '/async/event-sourcing' } },
   
   // Performance category
-  cachingPatterns: { next: { key: 'circuitBreaker', path: '/circuit-breaker' } },
-  circuitBreaker: { prev: { key: 'cachingPatterns', path: '/caching-patterns' }, next: { key: 'retryTimeout', path: '/retry-timeout' } },
-  retryTimeout: { prev: { key: 'circuitBreaker', path: '/circuit-breaker' }, next: { key: 'observability', path: '/observability' } },
-  observability: { prev: { key: 'retryTimeout', path: '/retry-timeout' } },
+  cachingPatterns: { next: { key: 'circuitBreaker', path: '/performance/circuit-breaker' } },
+  circuitBreaker: { prev: { key: 'cachingPatterns', path: '/performance/caching-patterns' }, next: { key: 'retryTimeout', path: '/performance/retry-timeout' } },
+  retryTimeout: { prev: { key: 'circuitBreaker', path: '/performance/circuit-breaker' }, next: { key: 'observability', path: '/performance/observability' } },
+  observability: { prev: { key: 'retryTimeout', path: '/performance/retry-timeout' } },
   
   // Security category
-  jwtOauth: { next: { key: 'rateLimiting', path: '/rate-limiting' } },
-  rateLimiting: { prev: { key: 'jwtOauth', path: '/jwt-oauth' }, next: { key: 'tlsHttps', path: '/tls-https' } },
-  tlsHttps: { prev: { key: 'rateLimiting', path: '/rate-limiting' }, next: { key: 'featureFlags', path: '/feature-flags' } },
-  featureFlags: { prev: { key: 'tlsHttps', path: '/tls-https' } }
+  jwt: { next: { key: 'rateLimiting', path: '/security/rate-limiting' } },
+  rateLimiting: { prev: { key: 'jwt', path: '/security/jwt' }, next: { key: 'tls', path: '/security/tls' } },
+  tls: { prev: { key: 'rateLimiting', path: '/security/rate-limiting' }, next: { key: 'featureFlags', path: '/security/feature-flags' } },
+  featureFlags: { prev: { key: 'tls', path: '/security/tls' }, next: { key: 'deployment', path: '/security/deployment' } },
+  deployment: { prev: { key: 'featureFlags', path: '/security/feature-flags' } }
 };
 
 const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {

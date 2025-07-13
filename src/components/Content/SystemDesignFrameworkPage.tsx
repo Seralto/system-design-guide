@@ -416,7 +416,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
             
             <div className="grid gap-4 md:grid-cols-3">
               <Link 
-                to="/load-balancers"
+                to="/architecture/load-balancers"
                 className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
@@ -428,7 +428,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
               </Link>
               
               <Link 
-                to="/databases"
+                to="/architecture/databases"
                 className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">
@@ -440,7 +440,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
               </Link>
               
               <Link 
-                to="/caching"
+                to="/architecture/caching"
                 className="bg-white dark:bg-gray-800 rounded-lg p-4 border border-gray-200 dark:border-gray-700 hover:shadow-md transition-shadow"
               >
                 <h3 className="font-semibold text-gray-900 dark:text-white mb-2">

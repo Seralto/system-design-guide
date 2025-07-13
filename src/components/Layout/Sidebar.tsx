@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { 
@@ -33,11 +33,11 @@ const sidebarSections: SidebarSection[] = [
     path: '/architecture',
     icon: Server,
     topics: [
-      { key: 'loadBalancers', titleKey: 'topics.loadBalancers', path: '/load-balancers' },
-      { key: 'appServers', titleKey: 'topics.appServers', path: '/app-servers' },
-      { key: 'caching', titleKey: 'topics.caching', path: '/caching' },
-      { key: 'databases', titleKey: 'topics.databases', path: '/databases' },
-      { key: 'storage', titleKey: 'topics.storage', path: '/storage' },
+      { key: 'loadBalancers', titleKey: 'topics.loadBalancers', path: '/architecture/load-balancers' },
+      { key: 'appServers', titleKey: 'topics.appServers', path: '/architecture/app-servers' },
+      { key: 'caching', titleKey: 'topics.caching', path: '/architecture/caching' },
+      { key: 'databases', titleKey: 'topics.databases', path: '/architecture/databases' },
+      { key: 'storage', titleKey: 'topics.storage', path: '/architecture/storage' },
     ],
   },
   {
@@ -46,11 +46,11 @@ const sidebarSections: SidebarSection[] = [
     path: '/scalability',
     icon: BarChart3,
     topics: [
-      { key: 'replication', titleKey: 'topics.replication', path: '/replication' },
-      { key: 'sharding', titleKey: 'topics.sharding', path: '/sharding' },
-      { key: 'cdn', titleKey: 'topics.cdn', path: '/cdn' },
-      { key: 'scalingTypes', titleKey: 'topics.scalingTypes', path: '/scaling-types' },
-      { key: 'capTheorem', titleKey: 'topics.capTheorem', path: '/cap-theorem' },
+      { key: 'replication', titleKey: 'topics.replication', path: '/scalability/replication' },
+      { key: 'sharding', titleKey: 'topics.sharding', path: '/scalability/sharding' },
+      { key: 'cdn', titleKey: 'topics.cdn', path: '/scalability/cdn' },
+      { key: 'scalingTypes', titleKey: 'topics.scalingTypes', path: '/scalability/scaling-types' },
+      { key: 'capTheorem', titleKey: 'topics.capTheorem', path: '/scalability/cap-theorem' },
     ],
   },
   {
@@ -59,11 +59,11 @@ const sidebarSections: SidebarSection[] = [
     path: '/communication',
     icon: Globe,
     topics: [
-      { key: 'httpGrpc', titleKey: 'topics.httpGrpc', path: '/http-grpc' },
-      { key: 'restGraphql', titleKey: 'topics.restGraphql', path: '/rest-graphql' },
-      { key: 'websockets', titleKey: 'topics.websockets', path: '/websockets' },
-      { key: 'apiGateway', titleKey: 'topics.apiGateway', path: '/api-gateway' },
-      { key: 'serviceMesh', titleKey: 'topics.serviceMesh', path: '/service-mesh' },
+      { key: 'httpGrpc', titleKey: 'topics.httpGrpc', path: '/communication/http-grpc' },
+      { key: 'restGraphql', titleKey: 'topics.restGraphql', path: '/communication/rest-graphql' },
+      { key: 'websockets', titleKey: 'topics.websockets', path: '/communication/websockets' },
+      { key: 'apiGateway', titleKey: 'topics.apiGateway', path: '/communication/api-gateway' },
+      { key: 'serviceMesh', titleKey: 'topics.serviceMesh', path: '/communication/service-mesh' },
     ],
   },
   {
@@ -72,10 +72,10 @@ const sidebarSections: SidebarSection[] = [
     path: '/async',
     icon: Zap,
     topics: [
-      { key: 'messageQueues', titleKey: 'topics.messageQueues', path: '/message-queues' },
-      { key: 'eventualConsistency', titleKey: 'topics.eventualConsistency', path: '/eventual-consistency' },
-      { key: 'eventSourcing', titleKey: 'topics.eventSourcing', path: '/event-sourcing' },
-      { key: 'cqrs', titleKey: 'topics.cqrs', path: '/cqrs' },
+      { key: 'messageQueues', titleKey: 'topics.messageQueues', path: '/async/message-queues' },
+      { key: 'eventualConsistency', titleKey: 'topics.eventualConsistency', path: '/async/eventual-consistency' },
+      { key: 'eventSourcing', titleKey: 'topics.eventSourcing', path: '/async/event-sourcing' },
+      { key: 'cqrs', titleKey: 'topics.cqrs', path: '/async/cqrs' },
     ],
   },
   {
@@ -84,10 +84,10 @@ const sidebarSections: SidebarSection[] = [
     path: '/performance',
     icon: Database,
     topics: [
-      { key: 'cachingPatterns', titleKey: 'topics.cachingPatterns', path: '/caching-patterns' },
-      { key: 'circuitBreaker', titleKey: 'topics.circuitBreaker', path: '/circuit-breaker' },
-      { key: 'retryTimeout', titleKey: 'topics.retryTimeout', path: '/retry-timeout' },
-      { key: 'observability', titleKey: 'topics.observability', path: '/observability' },
+      { key: 'cachingPatterns', titleKey: 'topics.cachingPatterns', path: '/performance/caching-patterns' },
+      { key: 'circuitBreaker', titleKey: 'topics.circuitBreaker', path: '/performance/circuit-breaker' },
+      { key: 'retryTimeout', titleKey: 'topics.retryTimeout', path: '/performance/retry-timeout' },
+      { key: 'observability', titleKey: 'topics.observability', path: '/performance/observability' },
     ],
   },
   {
@@ -96,11 +96,11 @@ const sidebarSections: SidebarSection[] = [
     path: '/security',
     icon: Shield,
     topics: [
-      { key: 'jwt', titleKey: 'topics.jwt', path: '/jwt' },
-      { key: 'rateLimiting', titleKey: 'topics.rateLimiting', path: '/rate-limiting' },
-      { key: 'tls', titleKey: 'topics.tls', path: '/tls' },
-      { key: 'featureFlags', titleKey: 'topics.featureFlags', path: '/feature-flags' },
-      { key: 'deployment', titleKey: 'topics.deployment', path: '/deployment' },
+      { key: 'jwt', titleKey: 'topics.jwt', path: '/security/jwt' },
+      { key: 'rateLimiting', titleKey: 'topics.rateLimiting', path: '/security/rate-limiting' },
+      { key: 'tls', titleKey: 'topics.tls', path: '/security/tls' },
+      { key: 'featureFlags', titleKey: 'topics.featureFlags', path: '/security/feature-flags' },
+      { key: 'deployment', titleKey: 'topics.deployment', path: '/security/deployment' },
     ],
   },
 ];
@@ -108,9 +108,56 @@ const sidebarSections: SidebarSection[] = [
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  
+  // Determine which section should be expanded based on the current path
+  const getCurrentSection = () => {
+    const path = location.pathname;
+    
+    // Don't expand any section on the home page
+    if (path === '/') {
+      return '';
+    }
+    
+    // First check for exact matches with section paths
+    for (const section of sidebarSections) {
+      if (path === section.path) {
+        return section.key;
+      }
+    }
+    
+    // Then check if the path is a nested route under any section
+    // Extract the first segment of the path
+    const pathSegments = path.split('/').filter(Boolean);
+    if (pathSegments.length > 0) {
+      const firstSegment = pathSegments[0];
+      
+      // Find the section that matches this segment
+      for (const section of sidebarSections) {
+        const sectionPathSegments = section.path.split('/').filter(Boolean);
+        if (sectionPathSegments.length > 0 && sectionPathSegments[0] === firstSegment) {
+          return section.key;
+        }
+      }
+    }
+    
+    // Don't default to any section if no match
+    return '';
+  };
+  
+  // Initialize with the current section expanded
   const [expandedSections, setExpandedSections] = useState<Set<string>>(
-    new Set(['architecture']) // Default expanded section
+    new Set([getCurrentSection()])
   );
+  
+  // Update expanded sections when the location changes
+  useEffect(() => {
+    const currentSection = getCurrentSection();
+    setExpandedSections(prev => {
+      const newSet = new Set(prev);
+      newSet.add(currentSection);
+      return newSet;
+    });
+  }, [location.pathname]);
 
   const toggleSection = (sectionKey: string) => {
     setExpandedSections(prev => {
@@ -124,8 +171,15 @@ const Sidebar: React.FC = () => {
     });
   };
 
-  const isActiveLink = (path: string) => location.pathname === path;
-  const isActiveSectionLink = (path: string) => location.pathname === path;
+  const isActiveLink = (path: string) => {
+    // Check if the current path matches exactly or is a nested route
+    return location.pathname === path || location.pathname.startsWith(`${path}/`);
+  };
+  
+  const isActiveSectionLink = (path: string) => {
+    // Check if the current path matches exactly or is a nested route
+    return location.pathname === path || location.pathname.startsWith(`${path}/`);
+  };
 
   return (
     <div className="w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen overflow-y-auto">
