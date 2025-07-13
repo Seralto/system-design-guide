@@ -15,25 +15,27 @@ export const useTheme = () => {
   return context;
 };
 
-export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = useState<'light' | 'dark'>('dark');
+// Helper function to get the initial theme
+const getInitialTheme = (): 'light' | 'dark' => {
+  // Check localStorage first
+  const savedTheme = localStorage.getItem('sdg:theme') as 'light' | 'dark';
+  if (savedTheme && (savedTheme === 'light' || savedTheme === 'dark')) {
+    return savedTheme;
+  }
+  
+  // If no valid theme in localStorage, check system preference
+  const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  return prefersDark ? 'dark' : 'light';
+};
 
-  useEffect(() => {
-    // Load theme preference from localStorage
-    const savedTheme = localStorage.getItem('system-design-theme') as 'light' | 'dark';
-    if (savedTheme) {
-      setTheme(savedTheme);
-    } else {
-      // Check system preference if no saved preference
-      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-      setTheme(prefersDark ? 'dark' : 'light');
-    }
-  }, []);
+export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+  // Use lazy initializer to get the correct theme immediately
+  const [theme, setTheme] = useState<'light' | 'dark'>(getInitialTheme);
 
   useEffect(() => {
     // Save theme preference to localStorage
     
-    localStorage.setItem('system-design-theme', theme);
+    localStorage.setItem('sdg:theme', theme);
     
     // Apply theme to document
     if (theme === 'dark') {

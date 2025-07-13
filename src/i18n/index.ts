@@ -6,7 +6,7 @@ import es from './locales/es.json';
 
 // Get saved language preference or detect browser language
 const getSavedLanguage = (): string => {
-  const savedLang = localStorage.getItem('system-design-language');
+  const savedLang = localStorage.getItem('system-design:language');
   if (savedLang && ['en', 'pt', 'es'].includes(savedLang)) {
     return savedLang;
   }
@@ -37,7 +37,7 @@ i18n
 
 // Save language preference when it changes
 i18n.on('languageChanged', (lng) => {
-  localStorage.setItem('system-design-language', lng);
+  localStorage.setItem('system-design:language', lng);
 });
 
 export default i18n;
