@@ -34,7 +34,7 @@ const Header: React.FC = () => {
           <span className="text-white font-bold text-sm">SD</span>
         </div>
         <h1 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          {t('nav.title')}
+          {t('nav.header')}
         </h1>
       </Link>
       

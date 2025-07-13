@@ -184,11 +184,11 @@ const Sidebar: React.FC = () => {
   return (
     <div className="w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen overflow-y-auto">
       <nav className="p-4 space-y-2">
-        {/* <Link to="/" className="flex items-center mb-6 px-2">
+        <Link to="/" className="flex items-center mb-6 px-2">
           <span className="text-xl font-semibold text-gray-800 dark:text-white">
             {t('nav.title')}
           </span>
-        </Link> */}
+        </Link>
         <div className="mb-6">
           <Link 
             to="/" 
