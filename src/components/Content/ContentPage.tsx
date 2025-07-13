@@ -154,16 +154,16 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <Info className="w-5 h-5 text-blue-500 mr-2" />
               <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                 {displayContent.types ? t('sectionHeaders.types') : 
-                 displayContent.sqlDatabases ? 'SQL Databases' : 
-                 displayContent.memoryStorage ? 'Memory Storage' :
-                 displayContent.strategies ? 'Strategies' :
-                 displayContent.verticalScaling ? 'Vertical Scaling' :
-                 displayContent.consistency ? 'Consistency' :
-                  displayContent.httpCharacteristics ? 'HTTP Characteristics' :
-                  displayContent.restCharacteristics ? 'REST Characteristics' :
-                  displayContent.websockets ? 'WebSockets' :
-                  displayContent.coreFeatures ? 'Core Features' :
-                  'Architecture'}
+                 displayContent.sqlDatabases ? t('contentSections.sqlDatabases') : 
+                 displayContent.memoryStorage ? t('contentSections.memoryStorage') :
+                 displayContent.strategies ? t('contentSections.strategies') :
+                 displayContent.verticalScaling ? t('contentSections.verticalScaling') :
+                 displayContent.consistency ? t('contentSections.consistency') :
+                  displayContent.httpCharacteristics ? t('contentSections.httpCharacteristics') :
+                  displayContent.restCharacteristics ? t('contentSections.restCharacteristics') :
+                  displayContent.websockets ? t('contentSections.websockets') :
+                  displayContent.coreFeatures ? t('contentSections.coreFeatures') :
+                  t('contentSections.architecture')}
               </h2>
             </div>
             <ul className="space-y-3">
@@ -188,13 +188,13 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                 <Info className="w-5 h-5 text-purple-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {displayContent.patterns ? t('sectionHeaders.patterns') : 
-                   displayContent.nosqlTypes ? 'NoSQL Types' :
-                   displayContent.cachingStrategies ? 'Caching Strategies' :
-                   displayContent.horizontalScaling ? 'Horizontal Scaling' :
-                   displayContent.grpcCharacteristics ? 'gRPC Characteristics' :
-                   displayContent.graphqlCharacteristics ? 'GraphQL Characteristics' :
-                   displayContent.pollingTypes ? 'Polling Types' :
-                   'Security Features'}
+                   displayContent.nosqlTypes ? t('contentSections.nosqlTypes') :
+                   displayContent.cachingStrategies ? t('contentSections.cachingStrategies') :
+                   displayContent.horizontalScaling ? t('contentSections.horizontalScaling') :
+                   displayContent.grpcCharacteristics ? t('contentSections.grpcCharacteristics') :
+                   displayContent.graphqlCharacteristics ? t('contentSections.graphqlCharacteristics') :
+                   displayContent.pollingTypes ? t('contentSections.pollingTypes') :
+                   t('contentSections.securityFeatures')}
                 </h2>
               </div>
               <ul className="space-y-3">
@@ -216,15 +216,15 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {displayContent.considerations ? t('sectionHeaders.considerations') : 
                    displayContent.whenToUse ? t('sectionHeaders.whenToUse') : 
-                   displayContent.diskStorage ? 'Disk Storage' :
+                   displayContent.diskStorage ? t('contentSections.diskStorage') :
                    displayContent.challenges ? t('sectionHeaders.challenges') :
                    displayContent.benefits ? t('sectionHeaders.benefits') :
-                   displayContent.availability ? 'Availability' :
-                   displayContent.httpUseCases ? 'HTTP Use Cases' :
-                   displayContent.restAdvantages ? 'REST Advantages' :
-                   displayContent.serverSentEvents ? 'Server-Sent Events' :
-                   displayContent.operationalFeatures ? 'Operational Features' :
-                   'Traffic Management'}
+                   displayContent.availability ? t('contentSections.availability') :
+                   displayContent.httpUseCases ? t('contentSections.httpUseCases') :
+                   displayContent.restAdvantages ? t('contentSections.restAdvantages') :
+                   displayContent.serverSentEvents ? t('contentSections.serverSentEvents') :
+                   displayContent.operationalFeatures ? t('contentSections.operationalFeatures') :
+                   t('contentSections.trafficManagement')}
                 </h2>
               </div>
               <ul className="space-y-3">
@@ -250,10 +250,10 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {displayContent.blobStorage ? t('sectionHeaders.blobStorage') :
                    displayContent.bestPractices ? t('sectionHeaders.bestPractices') :
-                   displayContent.hybridApproaches ? 'Hybrid Approaches' :
-                   displayContent.grpcUseCases ? 'gRPC Use Cases' :
-                   displayContent.graphqlAdvantages ? 'GraphQL Advantages' :
-                   'Streaming Patterns'}
+                   displayContent.hybridApproaches ? t('contentSections.hybridApproaches') :
+                   displayContent.grpcUseCases ? t('contentSections.grpcUseCases') :
+                   displayContent.graphqlAdvantages ? t('contentSections.graphqlAdvantages') :
+                   t('contentSections.streamingPatterns')}
                 </h2>
               </div>
               <ul className="space-y-3">
@@ -273,13 +273,13 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                 <Info className="w-5 h-5 text-teal-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                   {displayContent.storagePatterns ? t('sectionHeaders.storagePatterns') :
-                   displayContent.decisionFactors ? 'Decision Factors' :
-                   displayContent.partitionTolerance ? 'Partition Tolerance' :
-                   displayContent.performanceComparison ? 'Performance Comparison' :
-                   displayContent.restChallenges ? 'REST Challenges' :
-                   displayContent.implementationConsiderations ? 'Implementation Considerations' :
-                   displayContent.implementationPatterns ? 'Implementation Patterns' :
-                   'Observability Features'}
+                   displayContent.decisionFactors ? t('contentSections.decisionFactors') :
+                   displayContent.partitionTolerance ? t('contentSections.partitionTolerance') :
+                   displayContent.performanceComparison ? t('contentSections.performanceComparison') :
+                   displayContent.restChallenges ? t('contentSections.restChallenges') :
+                   displayContent.implementationConsiderations ? t('contentSections.implementationConsiderations') :
+                   displayContent.implementationPatterns ? t('contentSections.implementationPatterns') :
+                   t('contentSections.observabilityFeatures')}
                 </h2>
               </div>
               <ul className="space-y-3">
@@ -305,8 +305,8 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                   <Info className="w-5 h-5 text-pink-500 mr-2" />
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
                     {displayContent.systemTypes ? t('sectionHeaders.systemTypes') :
-                     displayContent.tradeOffs ? 'Trade-offs' :
-                     'GraphQL Challenges'}
+                     displayContent.tradeOffs ? t('contentSections.tradeOffs') :
+                     t('contentSections.graphqlChallenges')}
                   </h2>
                 </div>
                 <ul className="space-y-3">
@@ -325,7 +325,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
                 <div className="flex items-center mb-4">
                   <Info className="w-5 h-5 text-emerald-500 mr-2" />
                   <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                    {displayContent.popularSolutions ? 'Popular Solutions' : 'Adoption Strategy'}
+                    {displayContent.popularSolutions ? t('contentSections.popularSolutions') : t('contentSections.adoptionStrategy')}
                   </h2>
                 </div>
                 <ul className="space-y-3">
@@ -350,7 +350,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <div className="flex items-center mb-4">
                 <Info className="w-5 h-5 text-blue-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  When to Use REST
+                  {t('contentSections.whenToUseRest')}
                 </h2>
               </div>
               <ul className="space-y-3">
@@ -369,7 +369,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
               <div className="flex items-center mb-4">
                 <Info className="w-5 h-5 text-purple-500 mr-2" />
                 <h2 className="text-xl font-semibold text-gray-900 dark:text-white">
-                  When to Use GraphQL
+                  {t('contentSections.whenToUseGraphql')}
                 </h2>
               </div>
               <ul className="space-y-3">
@@ -408,7 +408,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
             <div className="flex items-center">
               <ArrowLeft className="w-5 h-5 mr-3 text-blue-500 group-hover:-translate-x-1 transition-transform" />
               <div>
-                <p className="text-sm text-gray-500 dark:text-gray-400">Previous</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{t('navigation.previous')}</p>
                 <h3 className="font-medium text-gray-900 dark:text-white">
                   {t(`topics.${pageNavigation[topicKey].prev!.key}`)}
                 </h3>
@@ -426,7 +426,7 @@ const ContentPage: React.FC<ContentPageProps> = ({ topicKey }) => {
           >
             <div className="flex items-center">
               <div className="text-right">
-                <p className="text-sm text-gray-500 dark:text-gray-400">Next</p>
+                <p className="text-sm text-gray-500 dark:text-gray-400">{t('navigation.next')}</p>
                 <h3 className="font-medium text-gray-900 dark:text-white">
                   {t(`topics.${pageNavigation[topicKey].next!.key}`)}
                 </h3>
