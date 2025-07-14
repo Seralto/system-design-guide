@@ -29,6 +29,10 @@
     "previous": "Previous",
     "next": "Next"
   },
+  "footer": {
+    "copyright": "© {{year}} System Design Guide",
+    "createdBy": "Created by"
+  },
   "contentSections": {
     "sqlDatabases": "SQL Databases",
     "memoryStorage": "Memory Storage",

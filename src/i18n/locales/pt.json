@@ -29,6 +29,10 @@
     "previous": "Anterior",
     "next": "Próximo"
   },
+  "footer": {
+    "copyright": "© {{year}} System Design Guide",
+    "createdBy": "Criado por"
+  },
   "contentSections": {
     "sqlDatabases": "Bancos de Dados SQL",
     "memoryStorage": "Armazenamento em Memória",
