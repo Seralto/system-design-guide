@@ -1,13 +1,15 @@
 import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { Link } from 'react-router-dom';
-import { Sun, Moon, Globe } from 'lucide-react';
+import { Sun, Moon, Globe, Menu } from 'lucide-react';
+import { useSidebar } from '../../contexts/SidebarContext';
 import { useTheme } from '../../contexts/ThemeContext';
 import SearchBar from './SearchBar';
 
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
+  const { toggleSidebar } = useSidebar();
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -25,22 +27,35 @@ const Header: React.FC = () => {
 
   return (
     <header className="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6">
-      <Link 
-        to="/" 
-        className="flex items-center space-x-4 hover:opacity-80 transition-opacity group"
-        title="Go to home page"
-      >
-        <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
-          <span className="text-white font-bold text-sm">SD</span>
-        </div>
-        <h1 className="text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
-          {t('nav.header')}
-        </h1>
-      </Link>
+      <div className="flex items-center">
+        {/* Hamburger menu button - only visible on mobile */}
+        <button 
+          onClick={toggleSidebar}
+          className="mr-4 p-1 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white md:hidden focus:outline-none focus:ring-2 focus:ring-blue-500"
+          aria-label="Toggle sidebar menu"
+        >
+          <Menu className="w-6 h-6" />
+        </button>
+        
+        <Link 
+          to="/" 
+          className="flex items-center space-x-4 hover:opacity-80 transition-opacity group"
+          title="Go to home page"
+        >
+          <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-purple-600 rounded-lg flex items-center justify-center group-hover:scale-105 transition-transform">
+            <span className="text-white font-bold text-sm">SD</span>
+          </div>
+          <h1 className="hidden md:block text-lg font-semibold text-gray-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
+            {t('nav.header')}
+          </h1>
+        </Link>
+      </div>
       
       <div className="flex items-center space-x-4">
-        {/* Search Bar */}
-        <SearchBar />
+        {/* Search Bar - hidden on mobile */}
+        <div className="hidden md:block">
+          <SearchBar />
+        </div>
         
         {/* Language Selector */}
         <div className="relative group">

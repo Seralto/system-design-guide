@@ -1,5 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import { ThemeProvider } from './contexts/ThemeContext';
+import { SidebarProvider } from './contexts/SidebarContext';
 import Layout from './components/Layout/Layout';
 import HomePage from './components/Content/HomePage';
 import ContentPage from './components/Content/ContentPage';
@@ -11,7 +12,8 @@ import './i18n';
 function App() {
   return (
     <ThemeProvider>
-      <Router>
+      <SidebarProvider>
+        <Router>
         <ScrollToTop />
         <Layout>
           <Routes>
@@ -61,6 +63,7 @@ function App() {
           </Routes>
         </Layout>
       </Router>
+      </SidebarProvider>
     </ThemeProvider>
   );
 }

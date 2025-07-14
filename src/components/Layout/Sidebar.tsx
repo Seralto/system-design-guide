@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useSidebar } from '../../contexts/SidebarContext';
 import { useTranslation } from 'react-i18next';
 import { 
   ChevronDown, 
@@ -108,6 +109,7 @@ const sidebarSections: SidebarSection[] = [
 const Sidebar: React.FC = () => {
   const { t } = useTranslation();
   const location = useLocation();
+  const { isSidebarOpen, closeSidebar } = useSidebar();
   
   // Determine which section should be expanded based on the current path
   const getCurrentSection = () => {
@@ -181,8 +183,21 @@ const Sidebar: React.FC = () => {
     return location.pathname === path || location.pathname.startsWith(`${path}/`);
   };
 
+  // Close sidebar when clicking a link on mobile
+  const handleLinkClick = () => {
+    if (window.innerWidth < 768) {
+      closeSidebar();
+    }
+  };
+
   return (
-    <div className="w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 h-screen overflow-y-auto">
+    <div className={`
+      fixed md:static inset-y-0 left-0 z-30
+      transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
+      md:translate-x-0 transition-transform duration-300 ease-in-out
+      w-72 md:w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 
+      h-screen overflow-y-auto
+    `}>
       <nav className="p-4 space-y-2">
         <Link to="/" className="flex items-center mb-6 px-2">
           <span className="text-xl font-semibold text-gray-800 dark:text-white">
@@ -193,6 +208,7 @@ const Sidebar: React.FC = () => {
           <Link 
             to="/" 
             className={`flex items-center px-4 py-2 mb-2 rounded-md ${location.pathname === '/' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+            onClick={handleLinkClick}
           >
             <BookOpen className="mr-2" size={18} />
             <span className="text-sm font-medium">
@@ -202,6 +218,7 @@ const Sidebar: React.FC = () => {
           <Link 
             to="/system-design-framework" 
             className={`flex items-center px-4 py-2 rounded-md ${location.pathname === '/system-design-framework' ? 'bg-blue-100 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400' : 'text-gray-700 dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700'}`}
+            onClick={handleLinkClick}
           >
             <Layout className="mr-2" size={18} />
             <span className="text-sm font-medium">
@@ -223,6 +240,7 @@ const Sidebar: React.FC = () => {
                       : 'text-gray-700 dark:text-gray-300 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
                     }
                   `}
+                  onClick={handleLinkClick}
                 >
                   {React.createElement(section.icon, { className: "inline-block mr-2 w-4 h-4" })}
                   <span className="text-sm font-semibold tracking-wide">
@@ -255,6 +273,7 @@ const Sidebar: React.FC = () => {
                           : 'text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white hover:bg-gray-50 dark:hover:bg-gray-800'
                         }
                       `}
+                      onClick={handleLinkClick}
                     >
                       {t(topic.titleKey)}
                     </Link>
