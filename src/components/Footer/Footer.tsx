@@ -10,7 +10,8 @@ const Footer: React.FC = () => {
         <div className="flex flex-col items-center justify-center text-sm text-gray-500 dark:text-gray-400">
           <p className="mb-2">
             {t('footer.copyright', { year: new Date().getFullYear() })}
-            {" - "}
+          </p>
+          <p>
             {t('footer.createdBy')}{' '}
             <a 
               href="https://www.sergiotoledo.com.br/" 

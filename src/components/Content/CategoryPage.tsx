@@ -164,7 +164,7 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
             ) : (
               <>
                 <Share2 className="w-4 h-4" />
-                <span className="text-sm">{t('categoryPage.share')}</span>
+                <span className="hidden md:inline text-sm">{t('categoryPage.share')}</span>
               </>
             )}
           </button>
