@@ -19,18 +19,18 @@ const HomePage: React.FC = () => {
   const { t } = useTranslation();
   
   return (
-    <div className="max-w-6xl mx-auto p-8">
-      <div className="mb-12 p-8">
-        <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6 text-center">
+    <div className="max-w-7xl mx-auto p-4 md:p-6">
+      <div className="mb-8 p-4 md:p-6">
+        <h1 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-4 text-center">
           {t('homePage.title')}
         </h1>
-        <p className="text-center text-gray-700 dark:text-gray-300 text-lg mb-8">
+        <p className="text-center text-gray-700 dark:text-gray-300 text-base md:text-lg mb-6">
           {t('homePage.subtitle')}
         </p>
 
         {/* What is System Design Section */}
         <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-          <h2 className="text-2xl font-bold text-blue-600 dark:text-blue-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+          <h2 className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <HelpCircle className="mr-2 text-blue-500 dark:text-blue-400" size={24} />
             {t('homePage.whatIsSystemDesign.title')}
           </h2>
@@ -49,22 +49,22 @@ const HomePage: React.FC = () => {
 
         {/* 10 Key Questions Section */}
         <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-          <h2 className="text-2xl font-bold text-green-600 dark:text-green-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+          <h2 className="text-xl md:text-2xl font-bold text-green-600 dark:text-green-400 mb-3 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <List className="mr-2 text-green-500 dark:text-green-400" size={24} />
             {t('homePage.keyQuestions.title')}
           </h2>
           <div className="prose dark:prose-invert max-w-none">
-            <p className="mb-8 text-gray-800 dark:text-gray-200">
+            <p className="mb-4 text-gray-800 dark:text-gray-200">
             {t('homePage.keyQuestions.intro')}
             </p>
 
-            <div className="space-y-6">
+            <div className="space-y-4">
               {/* Questions 1-10 */}
               {Array.from({ length: 10 }).map((_, i) => {
                 const title = t(`homePage.keyQuestions.questions.${i}.title`);
                 const question = t(`homePage.keyQuestions.questions.${i}.question`);
                 return (
-                  <div key={i} className="relative bg-blue-50 dark:bg-blue-900/10 p-6 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
+                  <div key={i} className="!mt-8 relative bg-blue-50 dark:bg-blue-900/10 p-3 md:p-4 rounded-lg border border-blue-100 dark:border-blue-800 shadow-sm">
                     <div className="absolute -top-4 -left-4 w-8 h-8 bg-blue-600 text-white rounded-full flex items-center justify-center font-bold shadow-md">{i + 1}</div>
                     <div className="ml-4">
                       <strong className="text-gray-900 dark:text-white text-lg">
@@ -83,11 +83,11 @@ const HomePage: React.FC = () => {
 
         {/* Key Components Section */}
         <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
-          <h2 className="text-2xl font-bold text-purple-600 dark:text-purple-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
+          <h2 className="text-xl md:text-2xl font-bold text-purple-600 dark:text-purple-400 mb-3 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <Server className="mr-2 text-purple-500 dark:text-purple-400" size={24} />
             {t('homePage.keyComponents.title')}
           </h2>
-          <h3 className="text-xl font-semibold text-purple-500 dark:text-purple-400 mb-4">
+          <h3 className="text-lg md:text-xl font-semibold text-purple-500 dark:text-purple-400 mb-3">
             {t('homePage.keyComponents.subtitle')}
           </h3>
           <p className="mb-6 text-gray-800 dark:text-gray-200">
@@ -95,7 +95,7 @@ const HomePage: React.FC = () => {
           </p>
 
           {/* 1. Client/Frontend */}
-          <div className="mb-6 border-l-4 border-blue-500 pl-4 bg-blue-50 dark:bg-blue-900/20 p-4 rounded-r-lg">
+          <div className="mb-4 border-l-4 border-blue-500 pl-3 bg-blue-50 dark:bg-blue-900/20 p-3 rounded-r-lg">
             <h4 className="text-lg font-bold text-gray-900 dark:text-white mb-2 flex items-center">
               <span className="bg-blue-100 dark:bg-blue-900 text-blue-800 dark:text-blue-200 w-7 h-7 rounded-full flex items-center justify-center mr-2 text-sm font-bold">1</span>
               {t('homePage.keyComponents.client.title')}
