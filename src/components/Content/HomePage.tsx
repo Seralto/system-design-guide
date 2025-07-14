@@ -29,7 +29,7 @@ const HomePage: React.FC = () => {
         </p>
 
         {/* What is System Design Section */}
-        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <section className="mb-6 bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
           <h2 className="text-xl md:text-2xl font-bold text-blue-600 dark:text-blue-400 mb-3 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <HelpCircle className="mr-2 text-blue-500 dark:text-blue-400" size={24} />
             {t('homePage.whatIsSystemDesign.title')}
@@ -48,7 +48,7 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* 10 Key Questions Section */}
-        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <section className="mb-6 bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
           <h2 className="text-xl md:text-2xl font-bold text-green-600 dark:text-green-400 mb-3 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <List className="mr-2 text-green-500 dark:text-green-400" size={24} />
             {t('homePage.keyQuestions.title')}
@@ -82,7 +82,7 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Key Components Section */}
-        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <section className="mb-6 bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
           <h2 className="text-xl md:text-2xl font-bold text-purple-600 dark:text-purple-400 mb-3 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <Server className="mr-2 text-purple-500 dark:text-purple-400" size={24} />
             {t('homePage.keyComponents.title')}
@@ -396,7 +396,7 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* System Design Process Section */}
-        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <section className="mb-6 bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
           <h2 className="text-2xl font-bold text-orange-600 dark:text-orange-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <FileText className="mr-2 text-orange-500 dark:text-orange-400" size={24} />
             {t('homePage.designProcess.title')}
@@ -558,7 +558,7 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Conclusion Section */}
-        <section className="mb-10 bg-white dark:bg-gray-800 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300">
+        <section className="mb-6 bg-white dark:bg-gray-800 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300">
           <h2 className="text-2xl font-bold text-teal-600 dark:text-teal-400 mb-4 flex items-center border-b pb-2 border-gray-200 dark:border-gray-700">
             <CheckCircle className="mr-2 text-teal-500 dark:text-teal-400" size={24} />
             {t('homePage.conclusion.title')}
@@ -580,7 +580,7 @@ const HomePage: React.FC = () => {
         </section>
 
         {/* Next Page Navigation */}
-        <section className="mb-10 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-6 rounded-xl shadow-md hover:shadow-lg transition-shadow duration-300 border border-indigo-100 dark:border-indigo-800">
+        <section className="mb-6 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-900/20 dark:to-purple-900/20 p-4 md:p-6 rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 border border-indigo-100 dark:border-indigo-800">
           <div className="flex flex-col md:flex-row items-center justify-between">
             <div className="mb-4 md:mb-0 md:mr-6">
               <h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-2">{t('homePage.nextPage.title') || 'Ready for the next step?'}</h2>

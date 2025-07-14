@@ -246,20 +246,17 @@ const SystemDesignFrameworkPage: React.FC = () => {
 
       {/* Main Content */}
       <div className={`flex-1 ${showLeftMenu ? 'ml-0' : ''} overflow-y-auto`}>
-        <div className="max-w-6xl mx-auto p-8">
-
-          {/* Hero Section */}
-          <div className="p-8">
-            <h1 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-6 text-center">
+        <div className="max-w-7xl mx-auto p-4 md:p-6">
+          <div className="mb-8 p-4 md:p-6">
+            <h1 className="text-3xl md:text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400 mb-4 text-center">
               {t('home.framework.title')}
             </h1>
-            <p className="text-center text-gray-700 dark:text-gray-300 text-lg">
+            <p className="text-center text-gray-700 dark:text-gray-300 text-base md:text-lg mb-6">
               {t('home.framework.subtitle')}
             </p>
-          </div>
 
           {/* System Design Interview Framework */}
-          <div className="mb-16">
+          <div className="mb-8">
             {/* Interview Steps */}
             <div className="space-y-6 mb-12">
               {interviewSteps.map((step, index) => {
@@ -271,12 +268,15 @@ const SystemDesignFrameworkPage: React.FC = () => {
                     key={index}
                     className="bg-white dark:bg-gray-800 rounded-xl p-6 border border-gray-200 dark:border-gray-700 shadow-sm"
                   >
-                    <div className="flex items-start mb-4">
-                      <div className={`w-10 h-10 ${step.color} rounded-lg flex items-center justify-center mr-4 flex-shrink-0`}>
-                        <Icon className="w-5 h-5 text-white" />
+                    <div className="flex flex-col md:flex-row md:items-start mb-4">
+                      {/* Mobile: Icon at top, Desktop: Icon at left */}
+                      <div className="flex justify-center mb-3 md:mb-0 md:justify-start md:mr-4">
+                        <div className={`w-10 h-10 ${step.color} rounded-lg flex items-center justify-center flex-shrink-0`}>
+                          <Icon className="w-5 h-5 text-white" />
+                        </div>
                       </div>
                       <div className="flex-1">
-                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3">
+                        <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-3 text-center md:text-left">
                           {t(step.titleKey)}
                         </h3>
                         {index === 0 ? (
@@ -450,6 +450,7 @@ const SystemDesignFrameworkPage: React.FC = () => {
                   {t('home.quickStart.caching.description')}
                 </p>
               </Link>
+            </div>
             </div>
           </div>
         </div>
