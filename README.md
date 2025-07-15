@@ -2,6 +2,8 @@
 
 A comprehensive web application for learning and applying system design principles, built with React, TypeScript, and Tailwind CSS.
 
+**Live Demo**: [https://system-design-guide.netlify.app/](https://system-design-guide.netlify.app/)
+
 ![System Design Guide](public/system-design.png)
 
 ## Overview
