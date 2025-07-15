@@ -12,7 +12,8 @@ import {
   Globe, 
   Zap, 
   Database, 
-  Shield 
+  Shield,
+  X
 } from 'lucide-react';
 
 interface SidebarSection {
@@ -191,19 +192,40 @@ const Sidebar: React.FC = () => {
   };
 
   return (
-    <div className={`
-      fixed md:static inset-y-0 left-0 z-30
-      transform ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full'}
-      md:translate-x-0 transition-transform duration-300 ease-in-out
-      w-72 md:w-80 bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700 
-      h-screen overflow-y-auto
-    `}>
-      <nav className="p-4 space-y-2">
-        <Link to="/" className="flex items-center mb-6 px-2">
-          <span className="text-xl font-semibold text-gray-800 dark:text-white">
-            {t('nav.title')}
-          </span>
-        </Link>
+    <>
+      {/* Mobile overlay */}
+      {isSidebarOpen && window.innerWidth < 768 && (
+        <div 
+          className="fixed inset-0 bg-black bg-opacity-50 z-20 md:hidden"
+          onClick={closeSidebar}
+        />
+      )}
+      
+      {/* Sidebar */}
+      <aside 
+        className={`
+          fixed md:sticky top-0 left-0 h-screen overflow-y-auto
+          bg-white dark:bg-gray-900 border-r border-gray-200 dark:border-gray-700
+          z-30 transition-all duration-300 ease-in-out
+          ${isSidebarOpen ? 'w-64' : 'w-0 md:w-0'}
+          ${isSidebarOpen ? 'translate-x-0' : '-translate-x-full md:-translate-x-full'}
+        `}
+      >
+        <nav className="p-4 space-y-2 w-64 h-full"> {/* Fixed width container */}
+          <div className="flex items-center justify-between mb-6 px-2">
+            <Link to="/" className="flex items-center">
+              <span className="text-xl font-semibold text-gray-800 dark:text-white">
+                {t('nav.title')}
+              </span>
+            </Link>
+            <button 
+              onClick={closeSidebar}
+              className="p-1 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white md:block hidden focus:outline-none focus:ring-2 focus:ring-blue-500"
+              aria-label="Close sidebar"
+            >
+              <X className="w-5 h-5" />
+            </button>
+          </div>
         <div className="mb-6">
           <Link 
             to="/" 
@@ -284,7 +306,8 @@ const Sidebar: React.FC = () => {
           ))}
         </div>
       </nav>
-    </div>
+    </aside>
+    </>
   );
 };
 

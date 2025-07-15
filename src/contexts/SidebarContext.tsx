@@ -11,20 +11,24 @@ const SidebarContext = createContext<SidebarContextType | undefined>(undefined);
 export const SidebarProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
   // Default to closed on mobile, open on desktop
   const [isSidebarOpen, setIsSidebarOpen] = useState(window.innerWidth >= 768);
+  // Track if we're on mobile or desktop
+  const [isMobile, setIsMobile] = useState(window.innerWidth < 768);
 
-  // Close sidebar when window resizes to mobile
+  // Handle resize events
   useEffect(() => {
     const handleResize = () => {
-      if (window.innerWidth >= 768) {
-        setIsSidebarOpen(true);
-      } else {
+      const mobile = window.innerWidth < 768;
+      setIsMobile(mobile);
+      
+      // Only auto-close on transition to mobile
+      if (mobile && !isMobile) {
         setIsSidebarOpen(false);
       }
     };
 
     window.addEventListener('resize', handleResize);
     return () => window.removeEventListener('resize', handleResize);
-  }, []);
+  }, [isMobile]);
 
   const toggleSidebar = () => {
     setIsSidebarOpen(prev => !prev);

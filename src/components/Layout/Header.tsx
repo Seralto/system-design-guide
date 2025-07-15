@@ -9,7 +9,7 @@ import SearchBar from './SearchBar';
 const Header: React.FC = () => {
   const { t, i18n } = useTranslation();
   const { theme, toggleTheme } = useTheme();
-  const { toggleSidebar } = useSidebar();
+  const { isSidebarOpen, toggleSidebar } = useSidebar();
 
   const languages = [
     { code: 'en', name: 'English', flag: '🇺🇸' },
@@ -28,14 +28,16 @@ const Header: React.FC = () => {
   return (
     <header className="h-16 bg-white dark:bg-gray-900 border-b border-gray-200 dark:border-gray-700 flex items-center justify-between px-6">
       <div className="flex items-center">
-        {/* Hamburger menu button - only visible on mobile */}
-        <button 
-          onClick={toggleSidebar}
-          className="mr-4 p-1 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white md:hidden focus:outline-none focus:ring-2 focus:ring-blue-500"
-          aria-label="Toggle sidebar menu"
-        >
-          <Menu className="w-6 h-6" />
-        </button>
+        {/* Hamburger menu button - only visible when sidebar is collapsed */}
+        {!isSidebarOpen && (
+          <button 
+            onClick={toggleSidebar}
+            className="mr-4 p-1 rounded-md text-gray-500 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            aria-label="Toggle sidebar menu"
+          >
+            <Menu className="w-6 h-6" />
+          </button>
+        )}
         
         <Link 
           to="/" 
