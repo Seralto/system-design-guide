@@ -137,23 +137,14 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
     <div className="max-w-6xl mx-auto p-8">
       {/* Header */}
       <div className="mb-12">
-        <div className="flex items-center justify-between mb-6">
-          <div className="flex items-center">
-            <div className={`w-16 h-16 ${category.color} rounded-2xl flex items-center justify-center mr-6`}>
-              <Icon className="w-8 h-8 text-white" />
-            </div>
-            <div>
-              <h1 className="text-4xl font-bold text-gray-900 dark:text-white mb-2">
-                {t(`nav.${categoryKey}`)}
-              </h1>
-              <p className="text-lg text-gray-600 dark:text-gray-300">
-                {t('categoryPage.exploreConcepts')} {t(`nav.${categoryKey}`).toLowerCase()}
-              </p>
-            </div>
+        {/* Mobile layout - Icon and Share button above title */}
+        <div className="md:hidden flex items-center justify-between mb-4">
+          <div className={`w-14 h-14 ${category.color} rounded-xl flex items-center justify-center`}>
+            <Icon className="w-7 h-7 text-white" />
           </div>
           <button
             onClick={handleShare}
-            className="flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+            className="flex items-center space-x-2 px-3 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
             title={t('categoryPage.shareTitle')}
           >
             {copied ? (
@@ -164,7 +155,42 @@ const CategoryPage: React.FC<CategoryPageProps> = ({ categoryKey }) => {
             ) : (
               <>
                 <Share2 className="w-4 h-4" />
-                <span className="hidden md:inline text-sm">{t('categoryPage.share')}</span>
+              </>
+            )}
+          </button>
+        </div>
+        
+        {/* Desktop layout - Icon and title side by side, share button on right */}
+        <div className="flex items-center justify-between mb-6">
+          <div className="flex items-center">
+            {/* Icon only visible on desktop */}
+            <div className={`hidden md:flex w-16 h-16 ${category.color} rounded-2xl items-center justify-center mr-6`}>
+              <Icon className="w-8 h-8 text-white" />
+            </div>
+            <div>
+              <h1 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-2">
+                {t(`nav.${categoryKey}`)}
+              </h1>
+              <p className="text-base md:text-lg text-gray-600 dark:text-gray-300">
+                {t('categoryPage.exploreConcepts')} {t(`nav.${categoryKey}`).toLowerCase()}
+              </p>
+            </div>
+          </div>
+          {/* Share button only visible on desktop */}
+          <button
+            onClick={handleShare}
+            className="hidden md:flex items-center space-x-2 px-4 py-2 bg-blue-500 hover:bg-blue-600 text-white rounded-lg transition-colors"
+            title={t('categoryPage.shareTitle')}
+          >
+            {copied ? (
+              <>
+                <Check className="w-4 h-4" />
+                <span className="text-sm">{t('categoryPage.copied')}</span>
+              </>
+            ) : (
+              <>
+                <Share2 className="w-4 h-4" />
+                <span className="text-sm">{t('categoryPage.share')}</span>
               </>
             )}
           </button>
